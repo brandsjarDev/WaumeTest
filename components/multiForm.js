@@ -85,13 +85,13 @@ const LinaerStepper = () => {
   };
 
   return (
-    <div className="flex-row w-full mb-5">
+    <div className="flex-row w-full mb-5 max-w-[1440px]">
       <div className="flex gap-10 w-full">
         <div className="flex flex-col w-1/5 p-1 md:p-4">
           <Stepper currentStep={stepper} steps={getSteps()} />
         </div>
-        <div className="grid grid-cols-1 justify-between content-between p-1 md:p-4 mt-0 w-full">
-          <div className="w-full">
+        <div className="grid grid-cols-1 p-1 md:p-4 mt-0 w-full">
+          <div className="flex justify-center items-center">
             {getStepContent(activeStep, formData, setFormData)}
           </div>
         </div>

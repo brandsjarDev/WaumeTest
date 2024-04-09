@@ -64,7 +64,7 @@ export default function CheckoutForm({ formData, setFormData }) {
   };
   return (
     <>
-      <div className="">
+      <div className="w-full">
         <ToastContainer />
         <h1 className="my-5 text-4xl font-bold font-hossRound">
           Order Summary
@@ -110,7 +110,7 @@ export default function CheckoutForm({ formData, setFormData }) {
           <div className="w-3/4 grid grid-cols-2 gap-5">
             <RoundInput
               id="password"
-              type="text"
+              type="password"
               name="password"
               value={formValues}
               setValue={setFormValues}
@@ -119,7 +119,7 @@ export default function CheckoutForm({ formData, setFormData }) {
             />
             <RoundInput
               id="confirmPassword"
-              type="text"
+              type="password"
               name="confirmPassword"
               value={formValues}
               setValue={setFormValues}

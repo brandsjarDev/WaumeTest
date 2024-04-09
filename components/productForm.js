@@ -7,6 +7,7 @@ const products = [
   {
     title: "Movement Friend",
     name: "chicken",
+    allergyName: "Poultry",
     content: "EUR 111.11/ Month",
     imageUrl: fullBoard,
     active: true,
@@ -14,18 +15,23 @@ const products = [
   {
     title: "Belly Buddy",
     name: "beef",
+    allergyName: "Beef",
     content: "EUR 111.11/ Month",
     imageUrl: halfBoard,
   },
   {
     title: "Belly Buddy Plus",
     name: "horse",
+    allergyName: "Horse",
+
     content: "EUR 111.11/ Month",
     imageUrl: fullBoard,
   },
   {
     title: "Veggie Amigo",
     name: "veg",
+    allergyName: "Vegetable Protein",
+
     content: "EUR 111.11/ Month",
     imageUrl: halfBoard,
   },
@@ -50,10 +56,13 @@ const ProductForm = ({ formData, setFormData }) => {
     return num;
   }
 
+  const filterProducts = products.filter(
+    (item) => !formData.allergies.includes(item.allergyName)
+  );
   return (
     <>
-      <div className="flex justify-around gap-4 mt-5">
-        {products.map((item, index) => (
+      <div className="flex justify-center gap-10 mt-5">
+        {filterProducts.map((item, index) => (
           <Card
             key={index}
             title={item.title}

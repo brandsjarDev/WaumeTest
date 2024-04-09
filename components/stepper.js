@@ -5,7 +5,7 @@ import "./stepper.css";
 const Stepper = ({ currentStep, steps }) => {
   return (
     <>
-      <div className="h-[400px]">
+      <div className="h-[350px]">
         {steps?.map((step, i) => (
           <div
             key={i}

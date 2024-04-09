@@ -10,7 +10,7 @@ const genderOptions = [
 export default function PersonalInfoForm({ formData, setFormData }) {
   return (
     <>
-      <div className="flex flex-wrap mb-4 text-[34px] mt-10 text-end">
+      <div className="flex flex-wrap mb-4 text-[34px]  text-end">
         <span className="my-4"> My name is</span>
         <ThemeInput
           className="w-[300px]"
