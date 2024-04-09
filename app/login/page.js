@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { account, ID } from "../appWrite";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";

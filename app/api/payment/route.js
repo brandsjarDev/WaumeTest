@@ -44,8 +44,8 @@ export async function POST(req) {
     });
     if (plan == "Trial Pack") unit = 1;
     const session = await stripe.checkout.sessions.create({
-      success_url: "http://localhost:3000/success",
-      cancel_url: "http://localhost:3000",
+      success_url: `${process.env.DOMAIN}/success`,
+      cancel_url: `${process.env.DOMAIN}`,
       //   payment_method_types: ["card"],
       mode: "payment",
       billing_address_collection: "auto",
