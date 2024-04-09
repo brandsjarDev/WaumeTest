@@ -2,18 +2,24 @@
 const nextConfig = {
   experimental: {
     appDir: true,
-    serverComponentsExternalPackages: ["mongoose"],
+    serverComponentsExternalPackages: [
+      "mongoose",
+      "@react-email/components",
+      "@react-email/render",
+      "@react-email/tailwind",
+      "resend",
+    ],
   },
   images: {
-    domains: ['lh3.googleusercontent.com'],
+    domains: ["lh3.googleusercontent.com", "picsum.photos"],
   },
   webpack(config) {
     config.experiments = {
       ...config.experiments,
       topLevelAwait: true,
-    }
-    return config
-  }
-}
+    };
+    return config;
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

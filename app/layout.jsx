@@ -1,20 +1,19 @@
+"use client"
 import "@styles/globals.css";
-
+import { Provider } from 'react-redux';
+import { store } from '../store/store';
 import Nav from "@components/Nav";
-import Provider from "@components/Provider";
 
 export const metadata = {
-  title: "Promptopia",
-  description: "Discover & Share AI Prompts",
+  title: "Waume",
+  description: "Dog food",
 };
 
 const RootLayout = ({ children }) => (
   <html lang='en'>
+    <head><link rel="stylesheet" href="https://use.typekit.net/vea6vvp.css"/></head>
     <body>
-      <Provider>
-        <div className='main'>
-          <div className='gradient' />
-        </div>
+    <Provider store={store}>
 
         <main className='app'>
           <Nav />

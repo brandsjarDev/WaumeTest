@@ -1,0 +1,22 @@
+.step-item {
+  @apply relative flex flex-row justify-end gap-4 items-center w-full;
+}
+.step-item:not(:first-child):before {
+  @apply content-[''] bg-[#EEEEEE] absolute w-[5px] h-full right-[18px] -top-[40%] ;
+}
+.step {
+  @apply w-10 h-10 flex items-center justify-center z-10 relative bg-[#EEEEEE] rounded-full font-semibold text-white;
+}
+.active .step {
+  @apply bg-primary;
+}
+.complete .step {
+  @apply bg-primary;
+}
+.complete p {
+  @apply text-black;
+}
+.complete:not(:first-child):before,
+.active:not(:first-child):before {
+    @apply bg-primary;
+}
