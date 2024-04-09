@@ -17,7 +17,7 @@ const RoundInput = ({
       name={name}
       value={value[name]}
       onChange={handleInputChange}
-      className={`mx-4 mt-6 h-[40px] p-4 rounded-full block border-[1px]  text-primary border-slate-500  ${className}`}
+      className={`mx-4  h-[40px] p-4 rounded-full block border-[1px]  text-primary border-slate-500  ${className}`}
       placeholder={placeholder}
       {...rest}
     />

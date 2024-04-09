@@ -42,7 +42,7 @@ export async function POST(req) {
         state: address.state,
       },
     });
-    if (plan == "Trial Pack") unit = 1;
+    if (plan == "Trial Pack") unit = 10;
     const session = await stripe.checkout.sessions.create({
       success_url: `${process.env.DOMAIN}/success`,
       cancel_url: `${process.env.DOMAIN}`,

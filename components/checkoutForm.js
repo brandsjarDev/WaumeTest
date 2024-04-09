@@ -138,8 +138,8 @@ export default function CheckoutForm({ formData, setFormData }) {
           </div>
 
           {/* Section for RoundInputs for address */}
-          <span className="my-10 font-semibold font-hossRound">Address</span>
-          <div className="w-3/4 grid grid-cols-2 gap-5">
+          <span className="my-5 font-semibold font-hossRound">Address</span>
+          <div className="w-3/4 grid grid-cols-2 items-center gap-5">
             <RoundInput
               id="addressLine1"
               type="text"
