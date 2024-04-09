@@ -64,8 +64,6 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           options={breeds}
         />
         <span className="my-4">. &nbsp; </span>
-      </div>
-      <div className="flex flex-wrap mb-4 text-[34px] text-end">
         <span className="my-4">
           <span className="font-bold"> {formData.dogName}'s</span> weight is{" "}
         </span>
