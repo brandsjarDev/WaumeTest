@@ -58,7 +58,7 @@ export async function POST(req) {
             // unit_amount_decimal: 14.5,
           },
           //   price: defaultPrice,
-          quantity: unit / 10,
+          quantity: Math.floor(unit / 10),
 
           //   price: amount * 100, // Convert amount to cents
           //   currency: "eur",
