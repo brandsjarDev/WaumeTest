@@ -28,7 +28,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
         <ThemeInput
           className="w-[500px]"
           id="email"
-          type="text"
+          type="email"
           name="email"
           value={formData}
           setValue={setFormData}

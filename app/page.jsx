@@ -5,7 +5,7 @@ import { CssBaseline, Container, Paper, Box } from "@material-ui/core";
 const Home = () => (
    
     <>
-      <div className="flex h-full">
+      <div className="flex h-full justify-center">
           <LinearStepper /></div>
     </>
   

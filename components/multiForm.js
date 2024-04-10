@@ -15,6 +15,8 @@ import IllnessForm from "./illnessForm";
 import SubscriptionForm from "./subscriptionForm";
 import CheckoutForm from "./checkoutForm";
 import ThemeButton from "./themeButton";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const foodData = [
   { name: "Beef", kcalPer100g: 130 },
@@ -22,7 +24,35 @@ const foodData = [
   { name: "Chicken", kcalPer100g: 123 },
   { name: "Veg", kcalPer100g: 126 },
 ];
-
+const validationArr = [
+  [
+    { feild: "ownerName", type: "text", msg: "name" },
+    { feild: "email", type: "text", msg: "email" },
+    { feild: "dogName", type: "text", msg: "Pet's Name" },
+  ],
+  [{ feild: "weight", type: "text", msg: "weight" }],
+  [],
+  [],
+  [],
+  [
+    {
+      feild: "allergies",
+      type: "multicard",
+      msg: "allergy if not select none",
+    },
+  ],
+  [
+    {
+      feild: "illness",
+      type: "multicard",
+      msg: "illness if not select none",
+    },
+  ],
+  [{ feild: "portion", type: "singlecard", msg: "portion" }],
+  [{ feild: "product", type: "singlecard", msg: "product" }],
+  [{ feild: "subscriptionTitle", type: "singlecard", msg: "subscription" }],
+  [{ feild: "plan", type: "singlecard", msg: "plan" }],
+];
 function getSteps() {
   return ["Me", "My Dog", "Plan", "Checkout"];
 }
@@ -68,13 +98,37 @@ const LinaerStepper = () => {
 
   console.log("formData", formData);
 
-  const handleNext = () => {
-    setFormData(calcFoodWeight(formData));
-
-    if (checkPoints.includes(activeStep)) {
-      setStepper((prev) => prev + 1);
+  function validate() {
+    console.log(activeStep);
+    // toast.error(`Please enter asd`);
+    for (let i = 0; i < validationArr[activeStep].length; i++) {
+      const item = validationArr[activeStep][i];
+      if (item.type === "text" && !formData[item.feild]) {
+        console.log(!formData[item.feild]);
+        toast.error(`Please enter ${item.msg}`);
+        return false;
+      }
+      if (item.type === "singlecard" && !formData[item.feild]) {
+        toast.error(`Please select ${item.msg}`);
+        return false;
+      }
+      if (item.type === "multicard" && formData[item.feild].length === 0) {
+        toast.error(`Please select ${item.msg}`);
+        return false;
+      }
     }
-    setActiveStep(activeStep + 1);
+    return true;
+  }
+
+  const handleNext = () => {
+    if (validate()) {
+      setFormData(calcFoodWeight(formData));
+
+      if (checkPoints.includes(activeStep)) {
+        setStepper((prev) => prev + 1);
+      }
+      setActiveStep(activeStep + 1);
+    }
   };
 
   const handleBack = () => {
@@ -86,6 +140,7 @@ const LinaerStepper = () => {
 
   return (
     <div className="flex-row w-full mb-5 max-w-[1440px]">
+      <ToastContainer />
       <div className="flex gap-10 w-full">
         <div className="flex flex-col w-1/5 p-1 md:p-4">
           <Stepper currentStep={stepper} steps={getSteps()} />

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import BasicSelect from "./themeSelect";
 import ThemeInput from "@components/themeInput";
-
-const breeds = [
-  { label: "Affenpinscher", value: "Affenpinscher" },
-  { label: "Afghan Hound", value: "Afghan Hound" },
-  { label: "Airedale Terrier", value: "Airedale Terrier" },
-  { label: "Akita", value: "Akita" },
-];
+import breeds from "@utils/breeds";
+import ThemeAutoSuggest from "./themeAutosuggest";
+// const breeds = [
+//   { label: "Affenpinscher", value: "Affenpinscher" },
+//   { label: "Afghan Hound", value: "Afghan Hound" },
+//   { label: "Airedale Terrier", value: "Airedale Terrier" },
+//   { label: "Akita", value: "Akita" },
+// ];
 const genderOptions = [
   { label: "He", value: "Male" },
   { label: "She", value: "Female" },
@@ -55,7 +56,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
 
         <span className="my-4">&nbsp; and a</span>
 
-        <BasicSelect
+        <ThemeAutoSuggest
           className="w-[300px]"
           label="Breed"
           name="breed"

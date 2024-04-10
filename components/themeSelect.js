@@ -39,7 +39,7 @@ function BasicSelect({
           placeholder={getLabel(value[name])}
         />
       </SelectTrigger>
-      <SelectContent className="text-primary">
+      <SelectContent className="text-primary max-h-[200px]">
         {options.map((option) => (
           <SelectItem
             key={option.value}
