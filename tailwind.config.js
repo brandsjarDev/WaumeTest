@@ -16,6 +16,23 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontSize: {
+      sm: ["14px", "20px"],
+      base: ["16px", "24px"],
+      lg: ["20px", "28px"],
+      xl: ["24px", "32px"],
+      "2xl": "1.563rem",
+      "3xl": "1.953rem",
+      "4xl": [
+        "1.875rem",
+        {
+          lineHeight: "56px",
+          letterSpacing: "-0.02em",
+          fontWeight: "700",
+        },
+      ],
+      "5xl": "3.052rem",
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -30,8 +47,11 @@ module.exports = {
         primaryDark: {
           DEFAULT: "#8CA377",
         },
+        primaryLight: {
+          DEFAULT: "#DCF0BE",
+        },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "#FFFAEF",
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
@@ -76,6 +96,14 @@ module.exports = {
       },
       fontFamily: {
         hossRound: ["hoss-round"],
+        bioSans: ["bio-sans"],
+      },
+      boxShadow: {
+        right: "shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]",
+      },
+
+      lineHeight: {
+        "4xl": "56px",
       },
     },
   },

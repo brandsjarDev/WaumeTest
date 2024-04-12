@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faWhatsapp } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = () => {
+const Navbar = ({ className }) => {
   const dropdownRef = useRef(null);
   const router = useRouter();
 
@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white z-50 hidden md:block sticky p-4 mt-3 top-0">
+      <nav className={`z-50 hidden md:block sticky p-5 top-0 ${className}`}>
         <div className="max-w-screen-xl mx-auto flex justify-around items-center ">
           <div className="flex justify-center">
             <Link href="/">
@@ -45,60 +45,58 @@ const Navbar = () => {
           <div className="flex justify-center">
             <div className="flex items-center py-2">
               {/* <SearchBar /> */}
-              <ul className="flex flex-col font-hossRound p-4 md:p-0 mt-4 text-gray-500 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white ">
-              <li>
-                <Link
-                  href="#"
-                  className="block py-2 px-3  text-white bg-[#1ac5c2] rounded md:bg-transparent md:text-blue-700 md:p-0 "
-                  aria-current="page"
-                  
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href=""
-                  className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
-                  onClick={() => console.log("hii")}
-                >
-                  How it works
-                </Link>
-              </li>
-              <li>
-          <Link
-            href="#"
-            className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
-          >
-            Products
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="#"
-            className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
-          >
-            Preparation
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="#"
-            className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
-          >
-            About Us
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="#"
-            className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
-          >
-            FAQ
-          </Link>
-        </li>
-              
-            </ul>
+              <ul className="flex flex-col font-hossRound p-4 md:p-0 mt-4 text-gray-500 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
+                <li>
+                  <Link
+                    href="#"
+                    className="block py-2 px-3  text-white bg-primary rounded md:bg-transparent md:text-blue-700 md:p-0 "
+                    aria-current="page"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href=""
+                    className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                    onClick={() => console.log("hii")}
+                  >
+                    How it works
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  >
+                    Products
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  >
+                    Preparation
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  >
+                    FAQ
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
           <div className="flex justify-evenly">
@@ -129,7 +127,7 @@ const Navbar = () => {
       <nav className="bg-white z-50 shadow-md sticky top-0 md:hidden">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
           <Link href="/" className="flex items-center py-2 space-x-3 ">
-            {/* <Image src={logo} alt="logo" height={40} /> */}
+            <Image src={logo} alt="logo" height={40} />
           </Link>
           <button
             data-collapse-toggle="navbar-default"
@@ -165,7 +163,7 @@ const Navbar = () => {
               <li>
                 <Link
                   href="#"
-                  className="block py-2 px-3 text-white bg-[#1ac5c2] rounded md:bg-transparent md:text-blue-700 md:p-0 "
+                  className="block py-2 px-3  text-white bg-primary rounded md:bg-transparent md:text-blue-700 md:p-0 "
                   aria-current="page"
                 >
                   Home
@@ -173,11 +171,43 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="/properties"
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  href=""
+                  className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
                   onClick={() => console.log("hii")}
                 >
-                  Properties
+                  How it works
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                >
+                  Products
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                >
+                  Preparation
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                >
+                  FAQ
                 </Link>
               </li>
               {/* <li>

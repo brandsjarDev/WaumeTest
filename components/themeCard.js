@@ -1,6 +1,5 @@
 import React from "react";
 import FoodImage from "@public/assets/images/fullBoard.png";
-
 import Image from "next/image";
 
 const Card = ({

@@ -1,4 +1,5 @@
 @import url("https://use.typekit.net/vea6vvp.css");
+@import url("https://use.typekit.net/nio7czy.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -64,6 +65,12 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer components{
+  .shadow-bottom-right {
+    @apply shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)];
   }
 }
 
