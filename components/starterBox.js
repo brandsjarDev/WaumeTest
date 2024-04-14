@@ -23,7 +23,7 @@ const cardData = [
 
 const StarterBox = () => (
   <>
-    <div className="flex flex-col justify-center items-center bg-secondary gap-10 md:gap-15 py-10 md:py-15 mt-10 md:mt-20 px-5 md:px-10">
+    <div className="flex flex-col justify-center items-center bg-secondaryLight gap-10 md:gap-15 py-10 md:py-15 mt-10 md:mt-20 px-5 md:px-10">
       <div className="flex flex-col w-full md:flex-row justify-between items-center gap-5">
         <div className="flex flex-col justify-between items-center mx-5 gap-5">
           <h2 className="flex text-center justify-center text-3xl md:text-4xl font-hossRound font-semibold">

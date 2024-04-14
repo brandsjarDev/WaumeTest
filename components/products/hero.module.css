@@ -1,0 +1,16 @@
+.heroBackground {
+    background-image: url('../../public/assets/images/movementfriendHero.png');
+    background-size: cover;
+    /* background-position: center bottom 50px; */
+    /* animation: moveForward 10s linear infinite;  */
+  }
+  
+  @keyframes moveForward {
+    from {
+      background-position: 0 90px; /* Starting position 90px from the top */
+    }
+    to {
+      background-position: 100% 90px; /* Ending position 90px from the top */
+    }
+  }
+  

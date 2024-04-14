@@ -8,14 +8,15 @@ import HowItWorks from "@components/howItWorks";
 import StarterBox from "@components/starterBox";
 import Consultation from "@components/consultation";
 import FreshFood from "@components/freshFood";
-
+import Testimonials from "@components/testimonial";
 const Home = () => (
   <>
     <div className="bg-[#fafafa]">
-      <Navbar className="bg-secondary" />
+      <Navbar className="bg-secondaryLight" />
       <Hero /> <NutritionNeeds /> <HowItWorks />
       <StarterBox />
       <Consultation />
+      <Testimonials />
       <FreshFood />
     </div>
   </>

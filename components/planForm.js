@@ -37,7 +37,7 @@ const PaymentForm = ({ formData, setFormData }) => {
 
   return (
     <>
-      <div className="flex justify-around">
+      <div className="flex flex-col md:flex-row justify-center gap-8">
         <Card
           title={"Full Board"}
           content={"Daily ration, the full pampering program for your darling."}

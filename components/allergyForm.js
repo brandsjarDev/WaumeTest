@@ -36,7 +36,7 @@ const AllergyForm = ({ formData, setFormData }) => {
         <h1 className="flex justify-center mt-2 mb-10">
           Does {formData.dogName} have allergies?
         </h1>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {allergies.map((item, index) => (
             <SimpleCard
               key={index}

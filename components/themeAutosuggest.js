@@ -59,7 +59,7 @@ export default function ThemeAutoSuggest({
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger
         asChild
-        className={`text-[34px] rounded-none border-b-4 ${
+        className={`rounded-none border-b-4 ${
           value[name] ? "text-primary" : "text-slate-400"
         } text-center border-white border-b-primary mx-4 mt-6 h-[40px] p-2 pb-4 ${className}`}
       >

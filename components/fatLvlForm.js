@@ -3,7 +3,7 @@ import Card from "@components/themeCard";
 import halfBoard from "@public/assets/images/halfBoard.png";
 import fullBoard from "@public/assets/images/fullBoard.png";
 
-const descriptions = [
+const fatLvls = [
   {
     title: "A bit narrow",
     name: "low",
@@ -28,8 +28,8 @@ const descriptions = [
 const FatLvlForm = ({ formData, setFormData }) => {
   return (
     <>
-      <div className="flex justify-center gap-8">
-        {descriptions.map((item, index) => (
+      <div className="flex flex-col md:flex-row justify-center gap-8">
+        {fatLvls.map((item, index) => (
           <Card
             key={index}
             title={item.title}

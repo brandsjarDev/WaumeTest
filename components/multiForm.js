@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { calcFoodWeight, initialValue } from "@helpers/foodCalc";
 import PersonalInfoForm from "./personalInfo";
 import DogInfo from "./dogInfo";
@@ -89,12 +89,20 @@ function getStepContent(step, formData, setFormData) {
   }
 }
 
+const LazyHorizontalStepper = React.lazy(() => import("./horizontalStepper"));
+
 const LinaerStepper = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [stepper, setStepper] = useState(1);
-
-  const steps = getSteps();
+  const [shouldLoadHorizontalStepper, setShouldLoadHorizontalStepper] =
+    useState(false);
   const [formData, setFormData] = useState(initialValue);
+
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setShouldLoadHorizontalStepper(true);
+    }
+  }, []);
 
   console.log("formData", formData);
 
@@ -142,28 +150,34 @@ const LinaerStepper = () => {
     <div className="flex-row w-full mb-5 max-w-[1440px]">
       <ToastContainer />
       <div className="flex gap-10 w-full">
-        <div className="flex flex-col w-1/5 p-1 md:p-4">
+        <div className="hidden md:flex md:flex-col md:w-1/5 p-1 md:p-4">
           <Stepper currentStep={stepper} steps={getSteps()} />
         </div>
         <div className="grid grid-cols-1 p-1 md:p-4 mt-0 w-full">
-          <div className="flex justify-center items-center">
+          <div className="flex flex-col md:flex-row justify-center items-center p-5">
+            <div className="md:hidden w-[270px]">
+              {shouldLoadHorizontalStepper && (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <LazyHorizontalStepper
+                    currentStep={activeStep}
+                    steps={getSteps()}
+                  />
+                </Suspense>
+              )}
+            </div>
             {getStepContent(activeStep, formData, setFormData)}
           </div>
         </div>
       </div>
-      <div className="flex justify-evenly w-full mt-10">
-        <ThemeButton
-          disabled={activeStep === 0}
-          onClick={handleBack}
-          className="w-[190px]"
-        >
+      <div className="flex flex-col-reverse md:flex-row justify-evenly w-full gap-5 px-5 mt-10">
+        <ThemeButton disabled={activeStep === 0} onClick={handleBack} size="lg">
           Back
         </ThemeButton>
         {activeStep < 10 && (
           <ThemeButton
             disabled={activeStep === 10}
             onClick={handleNext}
-            className="w-[190px]"
+            size="lg"
           >
             {activeStep === 9 ? "Finish" : "Next"}
           </ThemeButton>

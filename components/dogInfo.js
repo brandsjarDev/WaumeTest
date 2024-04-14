@@ -23,18 +23,18 @@ const durationOptions = [
 export default function PersonalInfoForm({ formData, setFormData }) {
   return (
     <>
-      <div className="flex flex-wrap mb-4 text-[34px] mt-10 text-end">
+      <div className="flex flex-wrap justify-center mb-4 md:text-[34px] mt-10 text-center md:text-end px-5">
         <BasicSelect
-          className="w-[150px]"
+          className="w-[100px] md:w-[150px]"
           label="He/She"
           name="gender"
           value={formData}
           setValue={setFormData}
           options={genderOptions}
         />
-        <span className="my-4">&nbsp;is</span>
+        <span className="my-6 md:my-4">&nbsp;is</span>
         <ThemeInput
-          className="w-[100px]"
+          className="w-[50px] md:w-[100px]"
           id="age"
           type="number"
           name="age"
@@ -44,7 +44,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           required
         />
         <BasicSelect
-          className="w-[200px]"
+          className="w-[150px] md:w-[200px]"
           label="Duration"
           name="ageDuration"
           value={formData}
@@ -52,24 +52,24 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           options={durationOptions}
         />
 
-        <span className="my-4"> old </span>
+        <span className="my-6 md:my-4"> old </span>
 
-        <span className="my-4">&nbsp; and a</span>
+        <span className="my-6 md:my-4">&nbsp; and a</span>
 
         <ThemeAutoSuggest
-          className="w-[300px]"
+          className="w-[150px] md:w-[300px]"
           label="Breed"
           name="breed"
           value={formData}
           setValue={setFormData}
           options={breeds}
         />
-        <span className="my-4">. &nbsp; </span>
-        <span className="my-4">
+        <span className="my-6 md:my-4">. &nbsp; </span>
+        <span className="my-6 md:my-4">
           <span className="font-bold"> {formData.dogName}'s</span> weight is{" "}
         </span>
         <ThemeInput
-          className="w-[300px]"
+          className="w-[150px] md:w-[300px]"
           id="ownerName"
           type="number"
           name="weight"

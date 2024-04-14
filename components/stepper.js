@@ -1,8 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./stepper.css";
 
 const Stepper = ({ currentStep, steps }) => {
+  useEffect(() => {
+    if (window.innerHeight < 768) {
+      // import("./horizontalStepper.css");
+    }
+  }, []);
+
   return (
     <>
       <div className="h-[350px]">

@@ -10,10 +10,10 @@ const genderOptions = [
 export default function PersonalInfoForm({ formData, setFormData }) {
   return (
     <>
-      <div className="flex flex-wrap mb-4 text-[34px]  text-end">
-        <span className="my-4"> My name is</span>
+      <div className="flex flex-wrap mb-4 text-xl md:text-[34px] justify-center text-center md:text-end">
+        <span className="my-6 md:my-4"> My name is</span>
         <ThemeInput
-          className="w-[300px]"
+          className="w-[170px] md:w-[300px]"
           id="ownerName"
           type="text"
           name="ownerName"
@@ -22,11 +22,11 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           placeholder="Enter Your Name"
           required
         />
-        <span className="my-4"> and my email ID</span>
+        <span className="my-6 md:my-4"> and my email ID</span>
 
-        <span className="my-4">&nbsp;is</span>
+        <span className="my-6 md:my-4">&nbsp;is</span>
         <ThemeInput
-          className="w-[500px]"
+          className="w-[250px] md:w-[500px]"
           id="email"
           type="email"
           name="email"
@@ -35,20 +35,20 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           placeholder="Enter Your Email"
           required
         />
-        <span className="my-4"> . I have a dog</span>
+        <span className="my-6 md:my-4"> . I have a dog</span>
 
-        <span className="my-4">&nbsp; named</span>
+        <span className="my-6 md:my-4">&nbsp; named</span>
         <ThemeInput
           id="dogName"
           type="text"
           name="dogName"
-          className="w-[200px]"
+          className="w-[100px] md:w-[200px]"
           value={formData}
           setValue={setFormData}
           placeholder="Name"
           required
         />
-        {/* <span className="my-4"> , who is</span>
+        {/* <span className="my-6 md:my-4"> , who is</span>
         <BasicSelect
           className="w-[200px]"
           label="Gender"
@@ -57,7 +57,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           setValue={setFormData}
           options={genderOptions}
         />
-        <span className="my-4"> dog</span> */}
+        <span className="my-6 md:my-4"> dog</span> */}
       </div>
     </>
   );

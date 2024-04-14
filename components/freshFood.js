@@ -5,15 +5,14 @@ import ParcelTracker from "@public/assets/images/parcel-tracker-svgrepo-com.png"
 import Calendar from "@public/assets/images/calendar.png";
 import fresh1 from "@public/assets/images/fresh1.png";
 import fresh2 from "@public/assets/images/fresh2.png";
-
 import fresh3 from "@public/assets/images/fresh3.png";
 import fresh4 from "@public/assets/images/fresh4.png";
 import fresh5 from "@public/assets/images/fresh5.png";
 
 const FreshFood = () => (
   <>
-    <div className="flex flex-col justify-center items-center bg-secondary gap-10 md:gap-15  mt-10 md:mt-20 py-20 md:px-10">
-      <div className="flex flex-col w-full md:flex-row justify-between items-center text-center gap-8 md:gap-16 md:px-15">
+    <div className="flex flex-col justify-center items-center bg-secondaryLight gap-10 md:gap-15  mt-10 md:mt-20 py-20 md:px-10">
+      <div className="flex flex-col w-full md:flex-row justify-between items-center text-center gap-8 md:gap-16 px-5 md:px-15">
         <h2 className="flex text-2xl md:text-4xl  font-hossRound font-semibold">
           Great Food For Great Dogs
         </h2>
@@ -34,7 +33,7 @@ const FreshFood = () => (
       </div>
       {/* Second Card */}
       <div className="flex flex-col justify-center items-center max-w-xs mx-5 gap-5 mt-0 md:mt-10">
-        <CircleWithImage imageUrl={fresh2} />
+        <CircleWithImage imageUrl={fresh2} className="right-10" />
         <h2 className="flex text-center justify-center text-base font-hossRound font-semibold">
           100% Fresh And Regional Ingredients
         </h2>

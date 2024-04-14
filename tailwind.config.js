@@ -16,9 +16,23 @@ module.exports = {
         "2xl": "1400px",
       },
     },
-    fontSize: {
-      sm: ["14px", "20px"],
-      base: ["16px", "24px"],
+    fontSizes: {
+      sm: [
+        "14px",
+        {
+          lineHeight: "56px",
+          letterSpacing: "-0.02em",
+          fontWeight: "700",
+        },
+      ],
+      base: [
+        "16px",
+        {
+          lineHeight: "56px",
+          letterSpacing: "-0.02em",
+          fontWeight: "700",
+        },
+      ],
       lg: ["20px", "28px"],
       xl: ["24px", "32px"],
       "2xl": "1.563rem",
@@ -33,6 +47,7 @@ module.exports = {
       ],
       "5xl": "3.052rem",
     },
+
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -44,13 +59,17 @@ module.exports = {
           DEFAULT: "#A0B77B",
           foreground: "hsl(var(--primary-foreground))",
         },
+        secondary: {
+          DEFAULT: "#FBF2E0",
+          foreground: "hsl(var(--primary-foreground))",
+        },
         primaryDark: {
           DEFAULT: "#8CA377",
         },
         primaryLight: {
           DEFAULT: "#DCF0BE",
         },
-        secondary: {
+        secondaryLight: {
           DEFAULT: "#FFFAEF",
           foreground: "hsl(var(--secondary-foreground))",
         },

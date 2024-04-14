@@ -10,7 +10,7 @@ import Nav from "@components/Nav";
 const Home = () => (
   <>
     <div className="">
-      <Nav className="bg-secondary" />
+      <Nav className="bg-secondaryLight" />
       <Hero />
     </div>
   </>

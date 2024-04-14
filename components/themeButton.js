@@ -11,7 +11,7 @@ const ThemeButton = ({
 }) => {
   return (
     <Button
-      className={`bg-primary hover:bg-primaryDark text-white font-bold rounded-[14px]  ${className}`}
+      className={`block bg-primary hover:bg-primaryDark text-white font-bold rounded-[14px]  ${className}`}
       onClick={onClick}
       disabled={disabled}
       size={size}

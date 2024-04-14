@@ -73,7 +73,7 @@ const SubscriptionForm = ({ formData, setFormData }) => {
   }
   return (
     <>
-      <div className="grid grid-cols-4  gap-4 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-4  gap-4 mt-10">
         {products.map((item, index) => (
           <Card
             key={index}

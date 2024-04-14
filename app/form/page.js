@@ -3,7 +3,7 @@ import LinearStepper from "@components/multiForm";
 import Navbar from "@components/Nav";
 const Home = () => (
   <>
-    <Navbar />
+    <Navbar className="bg-white" />
     <LinearStepper />
   </>
 );

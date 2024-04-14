@@ -29,7 +29,7 @@ const IllnessForm = ({ formData, setFormData }) => {
         <h1 className="flex justify-center mt-2 mb-10">
           Does your dog have any illness?
         </h1>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {illness.map((item, index) => (
             <SimpleCard
               key={index}

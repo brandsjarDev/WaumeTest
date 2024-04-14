@@ -8,7 +8,7 @@ const Hero = () => {
   // const router = useRouter();
   // router.push("/form");
   return (
-    <div className="flex flex-col md:h-[650px] bg-secondary overflow-hidden">
+    <div className="flex flex-col md:h-[650px] bg-secondaryLight overflow-hidden">
       <div className="md:w-1/2 h-full flex flex-col justify-center  font-hossRound ">
         <div className=" flex flex-col justify-center  gap-4 md:gap-8 ml-10">
           <h1 className="block  text-3xl md:text-5xl font-bold">

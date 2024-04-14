@@ -25,7 +25,7 @@ const descriptions = [
 const ActiveLvlForm = ({ formData, setFormData }) => {
   return (
     <>
-      <div className="flex justify-center gap-8">
+      <div className="flex flex-col md:flex-row justify-center gap-8">
         {descriptions.map((item, index) => (
           <Card
             key={index}

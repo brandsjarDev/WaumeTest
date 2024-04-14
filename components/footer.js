@@ -4,7 +4,7 @@ import logo from "@public/assets/images/waume-logo-dag.svg";
 
 const Footer = () => {
   return (
-    <footer className="md:px-10 bg-secondary">
+    <footer className="md:px-10 pt-10 bg-secondaryLight">
       <div className="grid grid-cols-1 md:grid-cols-5  border-b-[1px] border-slate-500  p-4 mb-5">
         {/* Logo Section (1/4 width) */}
         <div className="col-span-2 flex justify-center items-start">

@@ -8,13 +8,16 @@ const Card = ({
   content,
   active,
   onClick,
+  className,
   knowMore = false,
 }) => {
   return (
     <div
       className={`flex flex-col items-center justify-center ${
         !active && "border-2"
-      } max-w-[290px] ${active && "border-8 border-primary"} p-4 rounded-3xl`}
+      } max-w-[290px] ${
+        active && "border-8 border-primary"
+      } p-4 rounded-3xl ${className}`}
       onClick={onClick}
     >
       <div className="flex justify-center">
