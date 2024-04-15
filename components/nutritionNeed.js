@@ -5,7 +5,7 @@ import halfBoard from "@public/assets/images/halfBoardHomePage.png";
 
 const NutritionNeeds = () => (
   <>
-    <div className="flex flex-col justify-center mt-20 md:mt-40">
+    <div className="flex flex-col justify-center mt-10 md:mt-20">
       <div className="flex flex-col justify-center font-bold md:text-4xl gap-5 md:gap-10 mb-10 md:mb-20">
         {" "}
         <h1 className="flex text-center text-2xl md:text-4xl font-hossRound justify-center">

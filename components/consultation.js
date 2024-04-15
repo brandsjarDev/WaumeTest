@@ -2,9 +2,15 @@ import React from "react";
 import Portrait from "@public/assets/images/Portraits_Auswahl.png";
 import Image from "next/image";
 import ThemeButton from "./themeButton";
+import { cn } from "@/lib/utils";
 
-const Consultation = () => (
-  <div className="relative flex-col md:flex-row flex justify-center py-5 mt-20 md:mt-40 mx-5 md:mx-20">
+const Consultation = ({ className }) => (
+  <div
+    className={cn(
+      "relative flex-col md:flex-row flex justify-center py-5 mt-20 md:mt-40 mx-5 md:mx-20",
+      className
+    )}
+  >
     <h1 className="text-2xl  md:hidden text-center font-bold font-hossRound mb-5">
       “Dogs are amazing and deserve <br />
       only the best food so they can

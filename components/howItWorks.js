@@ -52,7 +52,7 @@ const HowItWorks = () => (
       </div>
       {/* Button */}
       <div className="flex justify-center">
-        <ThemeButton size="xl">Here's how it works</ThemeButton>
+        <ThemeButton size="xl">Get Started</ThemeButton>
       </div>
     </div>
   </>

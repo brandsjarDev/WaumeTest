@@ -10,6 +10,8 @@ import horse from "@public/assets/images/horse.webp";
 import eggs from "@public/assets/images/eggs.webp";
 import pumpkinProtein from "@public/assets/images/pumpkinProtein.webp";
 import millet from "@public/assets/images/millet.webp";
+import halfBoard from "@public/assets/images/halfBoard.png";
+import fullBoard from "@public/assets/images/fullBoard.png";
 
 export default function getContent(prodName) {
   let obj = {};
@@ -206,4 +208,32 @@ export function getAccordianData(prodName) {
       },
     ];
   return accordianData;
+}
+
+export function getProdData() {
+  const products = [
+    {
+      title: "Movement Friend",
+      content: "Beef. Quinoa. Carrot.",
+      imageUrl: fullBoard,
+    },
+    {
+      title: "Belly Buddy",
+      content: "Chicken. Oatmeal. Berry.",
+      imageUrl: halfBoard,
+    },
+    {
+      title: "Belly Buddy Plus",
+
+      content: "Horse. Oatmeal. Berry.",
+      imageUrl: fullBoard,
+    },
+    {
+      title: "Veggie Amigo",
+
+      content: "Egg. Pumpkin Seed Protein. Pumpkin.",
+      imageUrl: halfBoard,
+    },
+  ];
+  return products;
 }

@@ -16,36 +16,14 @@ module.exports = {
         "2xl": "1400px",
       },
     },
-    fontSizes: {
-      sm: [
-        "14px",
-        {
-          lineHeight: "56px",
-          letterSpacing: "-0.02em",
-          fontWeight: "700",
-        },
-      ],
-      base: [
-        "16px",
-        {
-          lineHeight: "56px",
-          letterSpacing: "-0.02em",
-          fontWeight: "700",
-        },
-      ],
-      lg: ["20px", "28px"],
-      xl: ["24px", "32px"],
-      "2xl": "1.563rem",
-      "3xl": "1.953rem",
-      "4xl": [
-        "1.875rem",
-        {
-          lineHeight: "56px",
-          letterSpacing: "-0.02em",
-          fontWeight: "700",
-        },
-      ],
-      "5xl": "3.052rem",
+    fontSize: {
+      sm: ["14px", "20px"],
+      base: ["16px", "24px"],
+      lg: ["18px", "28px"],
+      xl: ["20px", "28px"],
+      "2xl": ["24px", "32px"],
+      "4xl": ["36px", "56px"],
+      "5xl": ["38px", "60px"],
     },
 
     extend: {
@@ -59,18 +37,23 @@ module.exports = {
           DEFAULT: "#A0B77B",
           foreground: "hsl(var(--primary-foreground))",
         },
-        secondary: {
-          DEFAULT: "#FBF2E0",
-          foreground: "hsl(var(--primary-foreground))",
-        },
         primaryDark: {
           DEFAULT: "#8CA377",
         },
         primaryLight: {
           DEFAULT: "#DCF0BE",
         },
+        secondary: {
+          DEFAULT: "#FBF2E0",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+
         secondaryLight: {
           DEFAULT: "#FFFAEF",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        secondaryDark: {
+          DEFAULT: "#FBF2E0",
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {

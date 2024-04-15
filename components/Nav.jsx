@@ -5,7 +5,7 @@ import logo from "@public/assets/images/waume-logo-dag.svg";
 import Link from "next/link";
 import { useRouter } from "next/navigation"; // Import from 'next/router' instead of 'next/navigation'
 
-const Navbar = ({ className }) => {
+const Navbar = ({ className = "bg-white" }) => {
   const dropdownRef = useRef(null);
   const router = useRouter();
   const [showDropdown, setShowDropdown] = useState(false);
@@ -76,7 +76,7 @@ const Navbar = ({ className }) => {
                 <li>
                   <Link
                     href="#"
-                    className="block py-2 px-3  text-white bg-primary rounded md:bg-transparent md:text-blue-700 md:p-0 "
+                    className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
                     aria-current="page"
                   >
                     Home
@@ -84,7 +84,7 @@ const Navbar = ({ className }) => {
                 </li>
                 <li>
                   <Link
-                    href=""
+                    href="/howItWorks"
                     className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
                     onClick={() => console.log("hii")}
                   >
@@ -142,7 +142,7 @@ const Navbar = ({ className }) => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/preparation"
                     className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
                   >
                     Preparation
