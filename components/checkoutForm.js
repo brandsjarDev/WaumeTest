@@ -66,15 +66,15 @@ export default function CheckoutForm({ formData, setFormData }) {
     <>
       <div className="w-full">
         <ToastContainer />
-        <h1 className="my-5 text-4xl font-bold font-hossRound">
+        <h1 className="my-5 text-2xl md:text-4xl font-bold font-hossRound">
           Order Summary
         </h1>
-        <div className="flex gap-2 font-hossRound text-lg">
+        <div className="flex gap-2 font-hossRound md:text-lg">
           <h3 className="font-semibold ">Estimated Delivery Date </h3>
           <span>- 14 April 2024</span>
         </div>
-        <div className="flex w-1/2 mt-10">
-          <div className="flex flex-col gap-5 w-full text-2xl">
+        <div className="flex md:w-1/2 mt-10">
+          <div className="flex flex-col gap-5 w-full text-xl md:text-2xl">
             <div className="flex justify-between">
               <span className="font-semibold ">{formData.dogName}'s Plan</span>
               <span>
@@ -101,13 +101,13 @@ export default function CheckoutForm({ formData, setFormData }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col my-10">
+        <div className="flex flex-col my-5 md:my-10">
           {/* Section for three RoundInputs */}
           <span className="my-5 font-semibold font-hossRound">
             User Account
           </span>
 
-          <div className="w-3/4 grid grid-cols-2 gap-5">
+          <div className="md:w-3/4 grid md:grid-cols-2 gap-5">
             <RoundInput
               id="password"
               type="password"
@@ -139,7 +139,7 @@ export default function CheckoutForm({ formData, setFormData }) {
 
           {/* Section for RoundInputs for address */}
           <span className="my-5 font-semibold font-hossRound">Address</span>
-          <div className="w-3/4 grid grid-cols-2 items-center gap-5">
+          <div className="md:w-3/4 grid md:grid-cols-2 items-center gap-5">
             <RoundInput
               id="addressLine1"
               type="text"
@@ -187,7 +187,7 @@ export default function CheckoutForm({ formData, setFormData }) {
               required
             />
           </div>
-          <div className="flex w-3/4">
+          <div className="flex md:w-3/4 mt-5 md:mt-10">
             <ThemeButton className="w-full mt-5" onClick={handleSubscription}>
               Start First Box for EUR {formData.subscriptionAmt}
             </ThemeButton>

@@ -154,7 +154,7 @@ const LinaerStepper = () => {
           <Stepper currentStep={stepper} steps={getSteps()} />
         </div>
         <div className="grid grid-cols-1 p-1 md:p-4 mt-0 w-full">
-          <div className="flex flex-col md:flex-row justify-center items-center p-5">
+          <div className="flex flex-col md:flex-row justify-center text-center items-center p-5">
             <div className="md:hidden w-[270px]">
               {shouldLoadHorizontalStepper && (
                 <Suspense fallback={<div>Loading...</div>}>
@@ -170,14 +170,14 @@ const LinaerStepper = () => {
         </div>
       </div>
       <div className="flex flex-col-reverse md:flex-row justify-evenly w-full gap-5 px-5 mt-10">
-        <ThemeButton disabled={activeStep === 0} onClick={handleBack} size="lg">
+        <ThemeButton disabled={activeStep === 0} onClick={handleBack} size="xl">
           Back
         </ThemeButton>
         {activeStep < 10 && (
           <ThemeButton
             disabled={activeStep === 10}
             onClick={handleNext}
-            size="lg"
+            size="xl"
           >
             {activeStep === 9 ? "Finish" : "Next"}
           </ThemeButton>

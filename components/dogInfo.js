@@ -23,7 +23,7 @@ const durationOptions = [
 export default function PersonalInfoForm({ formData, setFormData }) {
   return (
     <>
-      <div className="flex flex-wrap justify-center mb-4 md:text-[34px] mt-10 text-center md:text-end px-5">
+      <div className="flex flex-wrap justify-center md:justify-start mb-4 md:text-[34px] mt-10 text-center md:text-end px-5">
         <BasicSelect
           className="w-[100px] md:w-[150px]"
           label="He/She"
