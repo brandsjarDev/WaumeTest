@@ -14,7 +14,7 @@ const SimpleCard = ({ title, content = "", active, onClick, className }) => {
       onClick={onClick}
     >
       <div className="px-6 py-4">
-        <div className="font-bold text-xl">{title}</div>
+        <div className=" text-xl">{title}</div>
         {content && <p className="text-gray-700 text-base">{content}</p>}
       </div>
     </div>

@@ -13,7 +13,7 @@ const HorizontalStepper = ({ currentStep, steps }) => {
         {steps?.map((step, i) => (
           <div
             key={i}
-            className={`step-item font-hossRound font-bold  ${
+            className={`step-item font-hossRound   ${
               currentStep === i + 1 && "active"
             } ${i + 1 < currentStep || complete ? "complete" : ""}`}
           >
@@ -37,7 +37,7 @@ const styles = `
   @apply content-[''] bg-slate-200 absolute h-[3px] right-2/4 top-1/2 -translate-y-2/4;
 }
 .step {
-  @apply w-2 h-5 flex items-center justify-center z-10 relative bg-slate-700 rounded-full font-semibold text-white;
+  @apply w-2 h-5 flex items-center justify-center z-10 relative bg-slate-700 rounded-full  text-white;
 }
 .active .step {
   @apply bg-primary;

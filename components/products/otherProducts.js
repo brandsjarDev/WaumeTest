@@ -20,7 +20,7 @@ const OtherProducts = ({
           className
         )}
       >
-        <h1 className="flex justify-center text-center text-2xl md:text-4xl font-bold font-hossRound">
+        <h1 className="flex justify-center text-center text-2xl md:text-4xl  font-hossRound">
           {title}
         </h1>
         <div>

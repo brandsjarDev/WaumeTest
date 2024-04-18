@@ -67,7 +67,7 @@ function getSteps() {
 
 const checkPoints = [0, 6, 9];
 
-function getStepContent(step, formData, setFormData, validate) {
+function getStepContent(step, formData, setFormData, validate, toast) {
   switch (step) {
     case 0:
       return <PersonalInfoForm formData={formData} setFormData={setFormData} />;
@@ -96,6 +96,7 @@ function getStepContent(step, formData, setFormData, validate) {
           formData={formData}
           setFormData={setFormData}
           validate={validate}
+          toast={toast}
         />
       );
     default:
@@ -182,13 +183,13 @@ const LinaerStepper = () => {
               {shouldLoadHorizontalStepper && (
                 <Suspense fallback={<div>Loading...</div>}>
                   <LazyHorizontalStepper
-                    currentStep={activeStep}
+                    currentStep={stepper}
                     steps={getSteps()}
                   />
                 </Suspense>
               )}
             </div>
-            {getStepContent(activeStep, formData, setFormData, validate)}
+            {getStepContent(activeStep, formData, setFormData, validate, toast)}
           </div>
         </div>
       </div>

@@ -36,7 +36,7 @@ const Page = () => {
         <NutritionNeeds />
         <ImageRowLayout imageUrl={threesausage}>
           <div className="flex flex-col justify-start gap-5">
-            <h2 className="text-2xl md:text-4xl font-hossRound font-semibold">
+            <h2 className="text-2xl md:text-4xl font-hossRound ">
               Cover Your Dog’s Daily Nutritional Needs
             </h2>
             <p className="text-slate-500 leading-8">
@@ -55,7 +55,7 @@ const Page = () => {
             reverse
             className="bg-secondaryDark"
           >
-            <h2 className="text-2xl md:text-4xl text-center font-hossRound font-semibold">
+            <h2 className="text-2xl md:text-4xl text-center font-hossRound ">
               Fresh ingredients, gentle preparation, stored without
               refrigeration
             </h2>
@@ -66,7 +66,7 @@ const Page = () => {
         <Consultation className="mt-10 md:mt-20" />
         <ImageRowLayout imageUrl={starterpacket} className="my-5 md:my-10">
           <div className="flex flex-col justify-start gap-5">
-            <h2 className="text-2xl md:text-4xl font-hossRound font-semibold">
+            <h2 className="text-2xl md:text-4xl font-hossRound ">
               Let your dog convince you! Order our sample box once.
             </h2>
 
@@ -81,7 +81,7 @@ const Page = () => {
             </div>
           </div>
         </ImageRowLayout>
-        <h2 className="text-2xl md:text-4xl text-center font-hossRound font-bold mt-10 md:mt-20">
+        <h2 className="text-2xl md:text-4xl text-center font-hossRound  mt-10 md:mt-20">
           Frequently Asked Questions
         </h2>
         <Accordions />

@@ -73,11 +73,9 @@ const LoginPage = () => {
       <ToastContainer />
       {loggedInUser ? (
         <div>
-          <p className="text-lg font-bold mb-4">
-            Logged in as {loggedInUser.username}
-          </p>
+          <p className="text-lg  mb-4">Logged in as {loggedInUser.username}</p>
           <button
-            className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-red-500 hover:bg-red-600 text-white  py-2 px-4 rounded"
             onClick={logout}
           >
             Logout
@@ -85,7 +83,7 @@ const LoginPage = () => {
         </div>
       ) : (
         <div>
-          <p className="text-lg font-bold mb-4">Not logged in</p>
+          <p className="text-lg  mb-4">Not logged in</p>
           <form>
             <input
               className="block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
@@ -109,14 +107,14 @@ const LoginPage = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
             <button
-              className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+              className="mt-4 bg-blue-500 hover:bg-blue-600 text-white  py-2 px-4 rounded"
               type="button"
               onClick={() => handleLogin(email, password)}
             >
               Login
             </button>
             <button
-              className="mt-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+              className="mt-2 bg-green-500 hover:bg-green-600 text-white  py-2 px-4 rounded"
               type="button"
               onClick={register}
             >

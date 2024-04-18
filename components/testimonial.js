@@ -10,7 +10,7 @@ import Image from "next/image";
 const Testimonials = () => (
   <>
     <div className="flex flex-col justify-center mt-20 md:mt-40">
-      <h1 className="flex text-center text-2xl md:text-4xl font-bold font-hossRound justify-center">
+      <h1 className="flex text-center text-2xl md:text-4xl  font-hossRound justify-center">
         What Our Beloved Clients Say About Us
       </h1>
       <div className="flex flex-col md:flex-row justify-center gap-5 md:gap-10">
@@ -18,13 +18,13 @@ const Testimonials = () => (
         <div className="flex flex-col gap-5 px-5">
           <Image src={quote} />
           <p>
-            <span className="font-semibold">Pippilotta's menu</span>
+            <span className="">Pippilotta's menu</span>
             &nbsp;&nbsp;&nbsp;
             <span className="text-slate-500">
               Feinspitz with a love for treats
             </span>
           </p>
-          <h2 className="text-lg md:text-2xl font-hossRound font-semibold">
+          <h2 className="text-lg md:text-2xl font-hossRound ">
             300g WAUME Veggie Lover per day, for well- <br /> padded four-legged
             friends
           </h2>
@@ -61,7 +61,7 @@ const Testimonials = () => (
             </p>
           </div>
           <div>
-            <h2 className="text-lg font-hossRound font-semibold">
+            <h2 className="text-lg font-hossRound ">
               Costs for Pippilotta's full board
             </h2>
             <p className="flex text-slate-500">3.2 EUR/day</p>

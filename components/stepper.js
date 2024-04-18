@@ -15,7 +15,7 @@ const Stepper = ({ currentStep, steps }) => {
         {steps?.map((step, i) => (
           <div
             key={i}
-            className={`step-item font-hossRound font-bold h-1/4 ${
+            className={`step-item font-hossRound  h-1/4 ${
               currentStep === i + 1 && "active"
             } ${i + 1 < currentStep && "complete"} `}
           >

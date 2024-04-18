@@ -9,7 +9,7 @@ const fatLvls = [
     title: "A bit narrow",
     name: "low",
     content: "The waist is narrow and you can clearly see the ribs.",
-    imageUrl: wellpadded,
+    imageUrl: skinny,
   },
   {
     title: "Precisely",
@@ -22,7 +22,7 @@ const fatLvls = [
     title: "Well Padded",
     name: "high",
     content: "The waist is not visible and the ribs are difficult to feel.",
-    imageUrl: skinny,
+    imageUrl: wellpadded,
   },
 ];
 

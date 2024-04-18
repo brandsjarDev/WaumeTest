@@ -26,7 +26,7 @@ const Card = ({
         <Image src={imageUrl ? imageUrl : FoodImage} alt={title} />
       </div>
       <div className="flex-col justify-center">
-        <div className="flex justify-center font-hossRound font-bold text-xl my-5">
+        <div className="flex justify-center font-hossRound  text-xl my-5">
           {title}
         </div>
         <p className="flex justify-center text-gray-700 text-base">{content}</p>

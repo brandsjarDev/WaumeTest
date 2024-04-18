@@ -14,9 +14,7 @@ const Hero = ({ prodName }) => {
     >
       <div className="md:w-1/2 h-full flex flex-col justify-center font-hossRound">
         <div className="md:w-3/4 flex flex-col justify-center gap-4 md:gap-8 ml-10">
-          <h1 className="block text-2xl md:text-4xl font-bold">
-            {content.title}
-          </h1>
+          <h1 className="block text-2xl md:text-4xl ">{content.title}</h1>
           <div className="flex flex-col gap-4 font-bioSans">
             <p className="text-slate-500 text-xl md:text-2xl">
               {content.ingredients}

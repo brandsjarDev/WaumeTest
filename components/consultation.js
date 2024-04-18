@@ -11,7 +11,7 @@ const Consultation = ({ className }) => (
       className
     )}
   >
-    <h1 className="text-2xl  md:hidden text-center font-bold font-hossRound mb-5">
+    <h1 className="text-2xl  md:hidden text-center  font-hossRound mb-5">
       “Dogs are amazing and deserve <br />
       only the best food so they can
       <br /> live healthy, happy lives.”

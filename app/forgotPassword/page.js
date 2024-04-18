@@ -30,7 +30,7 @@ const ForgotPasswordPage = () => {
     <div className="max-w-md mx-auto mt-8 p-4 bg-gray-100 rounded-lg">
       <ToastContainer />
       <div>
-        <p className="text-lg font-bold mb-4">Forgot Password</p>
+        <p className="text-lg  mb-4">Forgot Password</p>
         <form>
           <input
             className="block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
@@ -40,7 +40,7 @@ const ForgotPasswordPage = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <button
-            className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            className="mt-4 bg-blue-500 hover:bg-blue-600 text-white  py-2 px-4 rounded"
             type="button"
             onClick={handleForgotPassword}
           >

@@ -6,7 +6,6 @@ import ThemeButton from "./themeButton";
 import { useEffect } from "react";
 import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
-import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const public_stripe_key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
@@ -18,7 +17,12 @@ function getProdId(prod) {
     return "prod_PtFvZI2HQY8UTL";
   } else return "prod_PtFwbhFRmmy9CH";
 }
-export default function CheckoutForm({ formData, setFormData }) {
+export default function zCheckoutForm({
+  formData,
+  setFormData,
+  validate,
+  toast,
+}) {
   // const [formData, setFormData] = useState({
   //   password: "",
   //   confirmPassword: "",
@@ -57,16 +61,16 @@ export default function CheckoutForm({ formData, setFormData }) {
       });
       console.log(response.status, response.data);
       if (response.status == 400) toast.error(response.data.error);
-      // if (response.status === 409) {
-      //   if (response.data && response.data.redirectUrl) {
-      //     window.location.href = response.data.redirectUrl;
-      //   }
-      // } else {
-      //   const session = response.data;
-      //   stripePromise.redirectToCheckout({
-      //     sessionId: session.id,
-      //   });
-      // }
+      if (response.status === 409) {
+        if (response.data && response.data.redirectUrl) {
+          window.location.href = response.data.redirectUrl;
+        }
+      } else {
+        const session = response.data;
+        stripePromise.redirectToCheckout({
+          sessionId: session.id,
+        });
+      }
     } catch (error) {
       if (error.response.status == 400) toast.error(error.response.data.error);
       else toast.error("An error occurred. Please try again later.");
@@ -76,18 +80,17 @@ export default function CheckoutForm({ formData, setFormData }) {
   return (
     <>
       <div className="w-full">
-        <ToastContainer />
-        <h1 className="my-5 text-2xl md:text-4xl font-bold text-start font-hossRound">
+        <h1 className="my-5 text-2xl md:text-4xl  text-start font-hossRound">
           Order Summary
         </h1>
         <div className="flex gap-2 font-hossRound md:text-lg">
-          <h3 className="font-semibold ">Estimated Delivery Date </h3>
+          <h3 className=" ">Estimated Delivery Date </h3>
           <span>- 14 April 2024</span>
         </div>
         <div className="flex md:w-1/2 mt-10">
           <div className="flex flex-col gap-5 w-full text-xl md:text-2xl">
             <div className="flex justify-between">
-              <span className="font-semibold ">{formData.dogName}'s Plan</span>
+              <span className=" ">{formData.dogName}'s Plan</span>
               <span>
                 EUR{" "}
                 {Number(
@@ -107,16 +110,14 @@ export default function CheckoutForm({ formData, setFormData }) {
             </div>
             <div class="border-t-[3px]  border-primary"></div>
             <div className="flex justify-between">
-              <span className="font-semibold ">TOTAL ORDER PRICE</span>
+              <span className=" ">TOTAL ORDER PRICE</span>
               <span>EUR {formData.subscriptionAmt}</span>
             </div>
           </div>
         </div>
         <div className="flex flex-col text-start my-5 md:my-10">
           {/* Section for three RoundInputs */}
-          <span className="my-5 font-semibold font-hossRound">
-            User Account
-          </span>
+          <span className="my-5  font-hossRound">User Account</span>
 
           <div className="md:w-3/4 grid md:grid-cols-2 gap-5">
             <RoundInput
@@ -156,7 +157,7 @@ export default function CheckoutForm({ formData, setFormData }) {
           </div>
 
           {/* Section for RoundInputs for address */}
-          <span className="my-5 font-semibold font-hossRound">Address</span>
+          <span className="my-5  font-hossRound">Address</span>
           <div className="md:w-3/4 grid md:grid-cols-2 items-center gap-5">
             <RoundInput
               id="addressLine1"
@@ -213,7 +214,7 @@ export default function CheckoutForm({ formData, setFormData }) {
             <ThemeButton
               className="w-full mt-5"
               onClick={() => {
-                handleSubscription();
+                validate() && handleSubscription();
               }}
             >
               Start First Box for EUR {formData.subscriptionAmt}

@@ -11,7 +11,7 @@ const Hero = () => {
     <>
       <div className="flex flex-col bg-secondary pt-10 md:pt-20">
         <div className="flex flex-col gap-5 md:gap-10 px-5">
-          <h1 className="text-center text-3xl md:text-5xl font-bold font-hossRound">
+          <h1 className="text-center text-3xl md:text-5xl  font-hossRound">
             Preparation
           </h1>
           <p className="text-center text-slate-500">
@@ -27,7 +27,7 @@ const Hero = () => {
               style={{ objectFit: "fill" }}
             />
             <div className="flex flex-col max-w-xl gap-5">
-              <h2 className="text-2xl md:text-4xl font-hossRound font-semibold">
+              <h2 className="text-2xl md:text-4xl font-hossRound ">
                 We know our suppliers, raw materials and the individual
                 production steps.
               </h2>
@@ -44,7 +44,7 @@ const Hero = () => {
       <div className="flex bg-secondary h-28 rounded-b-[100%]"></div>
       <ImageRowLayout imageUrl={solarpanel} reverse>
         <div className="flex flex-col gap-5">
-          <h2 className="text-2xl md:text-4xl font-hossRound font-semibold">
+          <h2 className="text-2xl md:text-4xl font-hossRound ">
             It is important to us to act in a way that conserves resources.
           </h2>
           <p className="text-slate-500 leading-8">
@@ -59,7 +59,7 @@ const Hero = () => {
       </ImageRowLayout>
       <ImageRowLayout imageUrl={threesausage}>
         <div className="flex flex-col gap-5">
-          <h2 className="text-2xl md:text-4xl font-hossRound font-semibold">
+          <h2 className="text-2xl md:text-4xl font-hossRound ">
             The amount of food is adjusted to your dog and packed into practical
             portions.
           </h2>

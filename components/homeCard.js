@@ -22,7 +22,7 @@ const HomeCard = ({
         <Image src={imageUrl} alt={title} />
       </div>
       <div className="flex-col">
-        <div className="flex font-hossRound font-bold text-sm md:text-[28px] my-2 md:my-3">
+        <div className="flex font-hossRound  text-sm md:text-[28px] my-2 md:my-3">
           {title}
         </div>
         <p className="flex text-[#797979] text-xs md:text-xl font-bioSans">

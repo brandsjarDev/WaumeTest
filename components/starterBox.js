@@ -33,11 +33,11 @@ const StarterBox = ({ className }) => (
     >
       <div className="flex flex-col w-full md:flex-row justify-between items-center gap-5">
         <div className="flex flex-col justify-between items-center mx-5 gap-5">
-          <h2 className="flex text-center justify-center text-3xl md:text-4xl font-hossRound font-semibold">
+          <h2 className="flex text-center justify-center text-3xl md:text-4xl font-hossRound ">
             IN YOUR STARTER BOX
           </h2>
 
-          <p className="text-center  text-slate-500 font-hossRound font-semibold">
+          <p className="text-center  text-slate-500 font-hossRound ">
             All animals are in the best condition and vaccinated as always
           </p>
         </div>

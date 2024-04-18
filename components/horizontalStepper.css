@@ -5,7 +5,7 @@
   @apply content-[''] bg-slate-200 absolute w-full h-[3px] right-2/4 top-1/2 -translate-y-2/4;
 }
 .step {
-  @apply w-5 h-5 flex items-center justify-center z-10 relative bg-slate-700 rounded-full font-semibold text-white;
+  @apply w-5 h-5 flex items-center justify-center z-10 relative bg-slate-700 rounded-full  text-white;
 }
 .active .step {
   @apply bg-primary;
@@ -18,5 +18,5 @@
 }
 .complete:not(:first-child):before,
 .active:not(:first-child):before {
-    @apply bg-primary;
+  @apply bg-primary;
 }

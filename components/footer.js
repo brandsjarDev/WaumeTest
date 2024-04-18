@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="col-span-3 grid grid-cols-2 md:grid-cols-4 text-slate-500  text-center md:text-start gap-4 md:gap-8 mt-10 md:mt-0">
           {/* First List */}
           <ul className="space-y-5 mt-10 md:mt-0">
-            <li className="font-bold text-black mb-5">Services</li>
+            <li className=" text-black mb-5">Services</li>
             <li>How it works</li>
             <li>Recipies</li>
             <li>Preparation</li>
@@ -24,7 +24,7 @@ const Footer = () => {
 
           {/* Second List */}
           <ul className="space-y-5 mt-10 md:mt-0">
-            <li className="font-bold text-black mb-5">Blogs</li>
+            <li className=" text-black mb-5">Blogs</li>
             <li>Moment Friend</li>
             <li>Belly Buddy</li>
             <li>Belly Buddy Plus</li>
@@ -33,7 +33,7 @@ const Footer = () => {
 
           {/* Third List */}
           <ul className="space-y-5 mt-10 md:mt-0">
-            <li className="font-bold text-black mb-5">Support</li>
+            <li className=" text-black mb-5">Support</li>
             <li>FAQ</li>
             <li>info@waume.at</li>
             <li>+43 699 11343715</li>
@@ -41,7 +41,7 @@ const Footer = () => {
 
           {/* Fourth List */}
           <ul className="space-y-5 mt-10 md:mt-0">
-            <li className="font-bold text-black mb-5">Company</li>
+            <li className=" text-black mb-5">Company</li>
             <li>About Us</li>
             <li>Data</li>
             <li>Terms of Service</li>
