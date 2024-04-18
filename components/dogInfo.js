@@ -23,7 +23,7 @@ const durationOptions = [
 export default function PersonalInfoForm({ formData, setFormData }) {
   return (
     <>
-      <div className="flex flex-wrap justify-center md:justify-start mb-4 md:text-[34px] mt-10 text-center md:text-end px-5">
+      <div className="flex flex-wrap justify-center items-center md:justify-start mb-4 md:text-[34px] mt-10 text-center md:text-end px-5">
         <BasicSelect
           className="w-[100px] md:w-[150px]"
           label="He/She"
@@ -34,7 +34,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
         />
         <span className="my-6 md:my-4">&nbsp;is</span>
         <ThemeInput
-          className="w-[50px] md:w-[100px]"
+          className="w-[50px] md:w-[100px] mt-6"
           id="age"
           type="number"
           name="age"
@@ -69,8 +69,8 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           <span className="font-bold"> {formData.dogName}'s</span> weight is{" "}
         </span>
         <ThemeInput
-          className="w-[150px] md:w-[300px]"
-          id="ownerName"
+          className="w-[150px] md:w-[300px] mt-6"
+          id="weight"
           type="number"
           name="weight"
           value={formData}

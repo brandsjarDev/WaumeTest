@@ -1,4 +1,5 @@
 import React from "react";
+import { cn } from "@lib/utils";
 
 const ThemeInput = ({
   name,
@@ -6,9 +7,11 @@ const ThemeInput = ({
   setValue,
   placeholder,
   className,
+  type = "text",
   ...rest
 }) => {
   const handleInputChange = (e) => {
+    if (type == "number" && e.target.value <= 0) return;
     setValue({ ...value, [name]: e.target.value });
   };
 
@@ -17,7 +20,11 @@ const ThemeInput = ({
       name={name}
       value={value[name]}
       onChange={handleInputChange}
-      className={`mx-4 mt-6 h-[40px] p-2 pb-4 block border-b-4 text-center  text-primary border-white border-b-primary ${className}`}
+      type={type}
+      className={cn(
+        "mx-4 mt-4 h-[40px] p-2 pb-4 block border-b-4 text-center  text-primary border-white border-b-primary",
+        className
+      )}
       placeholder={placeholder}
       {...rest}
     />

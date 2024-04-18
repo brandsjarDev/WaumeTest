@@ -19,54 +19,65 @@ function getProdId(prod) {
   } else return "prod_PtFwbhFRmmy9CH";
 }
 export default function CheckoutForm({ formData, setFormData }) {
-  const [formValues, setFormValues] = useState({
-    password: "",
-    confirmPassword: "",
-    phoneNo: "",
-    street: "",
-    addressLine1: "",
-    addressLine2: "",
-    city: "",
-    state: "",
-    zipcode: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   password: "",
+  //   confirmPassword: "",
+  //   phoneNo: "",
+  //   street: "",
+  //   addressLine1: "",
+  //   addressLine2: "",
+  //   city: "",
+  //   state: "",
+  //   zipcode: "",
+  // });
 
-  console.log("formValues", formValues);
   const handleSubscription = async () => {
     const stripePromise = await loadStripe(public_stripe_key);
-
+    const stripeData = {
+      name: formData.ownerName,
+      email: formData.email,
+      address: {
+        city: formData.city,
+        country: formData.country,
+        line1: formData.addressLine1,
+        postal_code: formData.zipcode,
+        state: formData.state,
+      },
+      unit: formData.product ? formData[formData.product] : "0",
+      product: formData.productId,
+      prodType: formData.product,
+      portion: formData.portion,
+      plan: formData.subscriptionTitle,
+    };
+    const userData = { ...formData };
     try {
       const response = await axios.post("/api/payment", {
-        name: formData.ownerName,
-        email: formData.email,
-        address: formValues,
-        unit: formData.product ? formData[formData.product] : "0",
-        product: getProdId(formData.product),
-        prodType: formData.product,
-        portion: formData.portion,
-        plan: formData.subscriptionTitle,
+        stripeData,
+        userData,
       });
-
-      if (response.status === 409) {
-        if (response.data && response.data.redirectUrl) {
-          window.location.href = response.data.redirectUrl;
-        }
-      } else {
-        const session = response.data;
-        stripePromise.redirectToCheckout({
-          sessionId: session.id,
-        });
-      }
+      console.log(response.status, response.data);
+      if (response.status == 400) toast.error(response.data.error);
+      // if (response.status === 409) {
+      //   if (response.data && response.data.redirectUrl) {
+      //     window.location.href = response.data.redirectUrl;
+      //   }
+      // } else {
+      //   const session = response.data;
+      //   stripePromise.redirectToCheckout({
+      //     sessionId: session.id,
+      //   });
+      // }
     } catch (error) {
-      console.error("Error:", error);
-      toast.error("An error occurred. Please try again later.");
+      if (error.response.status == 400) toast.error(error.response.data.error);
+      else toast.error("An error occurred. Please try again later.");
+      console.error("Error:", error.response.data.error);
     }
   };
   return (
     <>
       <div className="w-full">
         <ToastContainer />
-        <h1 className="my-5 text-2xl md:text-4xl font-bold font-hossRound">
+        <h1 className="my-5 text-2xl md:text-4xl font-bold text-start font-hossRound">
           Order Summary
         </h1>
         <div className="flex gap-2 font-hossRound md:text-lg">
@@ -101,7 +112,7 @@ export default function CheckoutForm({ formData, setFormData }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col my-5 md:my-10">
+        <div className="flex flex-col text-start my-5 md:my-10">
           {/* Section for three RoundInputs */}
           <span className="my-5 font-semibold font-hossRound">
             User Account
@@ -109,31 +120,38 @@ export default function CheckoutForm({ formData, setFormData }) {
 
           <div className="md:w-3/4 grid md:grid-cols-2 gap-5">
             <RoundInput
+              id="email"
+              type="text"
+              name="email"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Email"
+            />
+
+            <RoundInput
+              id="phoneNumber"
+              type="text"
+              name="phoneNumber"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Phone Number"
+            />
+
+            <RoundInput
               id="password"
               type="password"
               name="password"
-              value={formValues}
-              setValue={setFormValues}
+              value={formData}
+              setValue={setFormData}
               placeholder="Password"
-              required
             />
             <RoundInput
               id="confirmPassword"
               type="password"
               name="confirmPassword"
-              value={formValues}
-              setValue={setFormValues}
+              value={formData}
+              setValue={setFormData}
               placeholder="Confirm Password"
-              required
-            />
-            <RoundInput
-              id="phoneNo"
-              type="text"
-              name="phoneNo"
-              value={formValues}
-              setValue={setFormValues}
-              placeholder="Phone Number"
-              required
             />
           </div>
 
@@ -144,51 +162,60 @@ export default function CheckoutForm({ formData, setFormData }) {
               id="addressLine1"
               type="text"
               name="addressLine1"
-              value={formValues}
-              setValue={setFormValues}
+              value={formData}
+              setValue={setFormData}
               placeholder="Address Line 1"
-              required
             />
             <RoundInput
               id="addressLine2"
               type="text"
               name="addressLine2"
-              value={formValues}
-              setValue={setFormValues}
+              value={formData}
+              setValue={setFormData}
               placeholder="Address Line 2"
-              required
             />
 
             <RoundInput
               id="city"
               type="text"
               name="city"
-              value={formValues}
-              setValue={setFormValues}
+              value={formData}
+              setValue={setFormData}
               placeholder="City"
-              required
             />
             <RoundInput
               id="state"
               type="text"
               name="state"
-              value={formValues}
-              setValue={setFormValues}
+              value={formData}
+              setValue={setFormData}
               placeholder="State"
-              required
             />
             <RoundInput
-              id="zipcode"
+              id="country"
               type="text"
+              name="country"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Country"
+            />
+
+            <RoundInput
+              id="zipcode"
+              type="number"
               name="zipcode"
-              value={formValues}
-              setValue={setFormValues}
+              value={formData}
+              setValue={setFormData}
               placeholder="Zip Code"
-              required
             />
           </div>
           <div className="flex md:w-3/4 mt-5 md:mt-10">
-            <ThemeButton className="w-full mt-5" onClick={handleSubscription}>
+            <ThemeButton
+              className="w-full mt-5"
+              onClick={() => {
+                handleSubscription();
+              }}
+            >
               Start First Box for EUR {formData.subscriptionAmt}
             </ThemeButton>
           </div>

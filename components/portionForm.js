@@ -29,7 +29,7 @@ const PortionForm = ({ formData, setFormData }) => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-center gap-8">
+      <div className="flex flex-1 flex-col md:flex-row justify-center gap-8">
         {products.map((item, index) => (
           <Card
             key={index}

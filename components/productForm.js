@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Card from "@components/themeCard";
 import halfBoard from "@public/assets/images/halfBoard.png";
 import fullBoard from "@public/assets/images/fullBoard.png";
+import bellyBuddy from "@public/assets/images/belly-buddy.png";
+import bellyBuddyPlus from "@public/assets/images/belly-buddy-plus.png";
+import movementFreind from "@public/assets/images/movement-friend.png";
+import veggieAmigo from "@public/assets/images/veggie-amigo.png";
 
 const products = [
   {
@@ -9,31 +13,34 @@ const products = [
     name: "chicken",
     allergyName: "Poultry",
     content: "EUR 111.11/ Month",
-    imageUrl: fullBoard,
+    imageUrl: bellyBuddy,
     active: true,
+    href: "/products/Movement-Friend",
   },
   {
     title: "Belly Buddy",
     name: "beef",
     allergyName: "Beef",
     content: "EUR 111.11/ Month",
-    imageUrl: halfBoard,
+    imageUrl: bellyBuddyPlus,
+    href: "/products/Belly-Buddy",
   },
   {
     title: "Belly Buddy Plus",
     name: "horse",
     allergyName: "Horse",
+    href: "/products/Belly-Buddy-Plus",
 
     content: "EUR 111.11/ Month",
-    imageUrl: fullBoard,
+    imageUrl: movementFreind,
   },
   {
     title: "Veggie Amigo",
     name: "veg",
     allergyName: "Vegetable Protein",
-
+    href: "/products/Veggie-Amigo",
     content: "EUR 111.11/ Month",
-    imageUrl: halfBoard,
+    imageUrl: veggieAmigo,
   },
 ];
 
@@ -70,6 +77,7 @@ const ProductForm = ({ formData, setFormData }) => {
             imageUrl={item.imageUrl}
             active={formData.product == item.name}
             knowMore
+            href={item.href}
             onClick={() =>
               setFormData({
                 ...formData,

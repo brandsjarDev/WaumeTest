@@ -18,22 +18,15 @@ import ThemeButton from "./themeButton";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const foodData = [
-  { name: "Beef", kcalPer100g: 130 },
-  { name: "Horse", kcalPer100g: 110 },
-  { name: "Chicken", kcalPer100g: 123 },
-  { name: "Veg", kcalPer100g: 126 },
-];
 const validationArr = [
   [
     { feild: "ownerName", type: "text", msg: "name" },
-    { feild: "email", type: "text", msg: "email" },
     { feild: "dogName", type: "text", msg: "Pet's Name" },
   ],
   [{ feild: "weight", type: "text", msg: "weight" }],
-  [],
-  [],
-  [],
+  [{ feild: "fatLevel", type: "singlecard", msg: "an option" }],
+  [{ feild: "active", type: "singlecard", msg: "an option" }],
+  [{ feild: "treat", type: "singlecard", msg: "an option" }],
   [
     {
       feild: "allergies",
@@ -51,15 +44,30 @@ const validationArr = [
   [{ feild: "portion", type: "singlecard", msg: "portion" }],
   [{ feild: "product", type: "singlecard", msg: "product" }],
   [{ feild: "subscriptionTitle", type: "singlecard", msg: "subscription" }],
-  [{ feild: "plan", type: "singlecard", msg: "plan" }],
+  [
+    { feild: "email", type: "text", msg: "email" },
+
+    { feild: "password", type: "text", msg: "password" },
+    { feild: "phoneNumber", type: "text", msg: "phoneNumber" },
+    { feild: "addressLine1", type: "text", msg: "addressLine1" },
+    { feild: "addressLine2", type: "text", msg: "addressLine2" },
+    { feild: "city", type: "text", msg: "city" },
+    { feild: "state", type: "text", msg: "state" },
+    { feild: "zipcode", type: "text", msg: "zipcode" },
+  ],
 ];
+function validateEmail(email) {
+  // Regular expression for email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
 function getSteps() {
   return ["Me", "My Dog", "Plan", "Checkout"];
 }
 
 const checkPoints = [0, 6, 9];
 
-function getStepContent(step, formData, setFormData) {
+function getStepContent(step, formData, setFormData, validate) {
   switch (step) {
     case 0:
       return <PersonalInfoForm formData={formData} setFormData={setFormData} />;
@@ -83,7 +91,13 @@ function getStepContent(step, formData, setFormData) {
     case 9:
       return <SubscriptionForm formData={formData} setFormData={setFormData} />;
     case 10:
-      return <CheckoutForm formData={formData} setFormData={setFormData} />;
+      return (
+        <CheckoutForm
+          formData={formData}
+          setFormData={setFormData}
+          validate={validate}
+        />
+      );
     default:
       return "unknown step";
   }
@@ -107,12 +121,13 @@ const LinaerStepper = () => {
   console.log("formData", formData);
 
   function validate() {
-    console.log(activeStep);
+    // console.log(activeStep);
     // toast.error(`Please enter asd`);
     for (let i = 0; i < validationArr[activeStep].length; i++) {
       const item = validationArr[activeStep][i];
+
       if (item.type === "text" && !formData[item.feild]) {
-        console.log(!formData[item.feild]);
+        // console.log(!formData[item.feild]);
         toast.error(`Please enter ${item.msg}`);
         return false;
       }
@@ -122,6 +137,10 @@ const LinaerStepper = () => {
       }
       if (item.type === "multicard" && formData[item.feild].length === 0) {
         toast.error(`Please select ${item.msg}`);
+        return false;
+      }
+      if (item.feild === "email" && !validateEmail(formData[item.feild])) {
+        toast.error("Please enter a valid email address");
         return false;
       }
     }
@@ -150,11 +169,15 @@ const LinaerStepper = () => {
     <div className="flex-row w-full mb-5 max-w-[1440px]">
       <ToastContainer />
       <div className="flex gap-10 w-full">
-        <div className="hidden md:flex md:flex-col md:w-1/5 p-1 md:p-4">
+        <div
+          className={`hidden md:flex md:flex-col ${
+            (activeStep > 1 && activeStep) < 4 ? "justify-center" : ""
+          } md:w-1/5 p-1 md:p-4`}
+        >
           <Stepper currentStep={stepper} steps={getSteps()} />
         </div>
         <div className="grid grid-cols-1 p-1 md:p-4 mt-0 w-full">
-          <div className="flex flex-col md:flex-row justify-center text-center items-center p-5">
+          <div className="flex flex-col md:flex-row  text-center items-center p-5">
             <div className="md:hidden w-[270px]">
               {shouldLoadHorizontalStepper && (
                 <Suspense fallback={<div>Loading...</div>}>
@@ -165,7 +188,7 @@ const LinaerStepper = () => {
                 </Suspense>
               )}
             </div>
-            {getStepContent(activeStep, formData, setFormData)}
+            {getStepContent(activeStep, formData, setFormData, validate)}
           </div>
         </div>
       </div>

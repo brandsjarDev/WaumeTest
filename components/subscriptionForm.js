@@ -35,6 +35,23 @@ const products = [
     active: true,
   },
 ];
+function getProdIdOfOneTimeCost(prod) {
+  if (prod == "chicken") return "prod_PwRICkgOGmaK34";
+  else if (prod == "beef") {
+    return "prod_PwRuctGfss2Tdt";
+  } else if (prod == "horse") {
+    return "prod_PwRLvWsLASiXaE";
+  } else return "prod_PtFwbhFRmmy9CH";
+}
+
+function getProdIdPerMonth(prod) {
+  if (prod == "chicken") return "prod_PtInW7Kz4dGcnk";
+  else if (prod == "beef") {
+    return "prod_PtFsIFJYk9wCet";
+  } else if (prod == "horse") {
+    return "prod_PtFvZI2HQY8UTL";
+  } else return "prod_PwRLSREjV9mj1A";
+}
 
 const SubscriptionForm = ({ formData, setFormData }) => {
   function getContent(step) {
@@ -42,15 +59,13 @@ const SubscriptionForm = ({ formData, setFormData }) => {
       case 0:
         return "Eur 25";
       case 1:
-        return `Eur ${formData.prodCost}`;
+        return `Eur ${getCost(step)}`;
       case 2:
-        return `Eur ${parseFloat((formData.prodCost * 3).toFixed(2))}`;
+        return `Eur ${getCost(step)}`;
       case 3:
-        return `Eur ${formData.prodCost}/ Month`;
+        return `Eur ${getCost(step)}/ Month`;
       case 4:
-        return `Eur ${parseFloat(
-          (formData.prodCost * 3).toFixed(2)
-        )}/ three month`;
+        return `Eur ${getCost(step)}/ three month`;
       default:
         return "unknown step";
     }
@@ -71,6 +86,23 @@ const SubscriptionForm = ({ formData, setFormData }) => {
         return 0;
     }
   }
+  function getProdId(step) {
+    switch (step) {
+      case 0:
+        return "prod_PwSQmvSOeLVfwH";
+      case 1:
+        return getProdIdOfOneTimeCost(formData.product);
+      case 2:
+        return getProdIdOfOneTimeCost(formData.product);
+      case 3:
+        return getProdIdPerMonth(formData.product);
+      case 4:
+        return getProdIdPerMonth(formData.product);
+      default:
+        return 0;
+    }
+  }
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-4  gap-4 mt-10">
@@ -85,6 +117,7 @@ const SubscriptionForm = ({ formData, setFormData }) => {
                 ...formData,
                 subscriptionTitle: item.title,
                 subscriptionAmt: getCost(index),
+                productId: getProdId(index),
               })
             }
           />
