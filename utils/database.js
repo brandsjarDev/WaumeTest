@@ -13,11 +13,16 @@ export const connectToDB = async () => {
   try {
     console.log("connecting to db");
     delete mongoose.connection.models["User"];
-    await mongoose.connect(process.env.MONGO_URI, {
-      dbName: "test",
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(
+      process.env.NODE_ENV == "production"
+        ? process.env.MONGO_URI
+        : process.env.MONGO_LOCAL_URI,
+      {
+        dbName: process.env.DB_NAME,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
 
     isConnected = true;
 

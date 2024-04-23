@@ -13,10 +13,17 @@ import TreatForm from "./treatsForm";
 import AllergyForm from "./allergyForm";
 import IllnessForm from "./illnessForm";
 import SubscriptionForm from "./subscriptionForm";
-import CheckoutForm from "./checkoutForm";
+import CheckoutForm from "./wrappedCheckoutForm";
 import ThemeButton from "./themeButton";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import userSlice from "@store/slices/userSlice";
+import { useSelector, useDispatch } from "react-redux";
+
+const public_stripe_key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+const stripePromise = loadStripe(public_stripe_key);
 
 const validationArr = [
   [
@@ -107,11 +114,14 @@ function getStepContent(step, formData, setFormData, validate, toast) {
 const LazyHorizontalStepper = React.lazy(() => import("./horizontalStepper"));
 
 const LinaerStepper = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.userInfo);
+
   const [activeStep, setActiveStep] = useState(0);
   const [stepper, setStepper] = useState(1);
   const [shouldLoadHorizontalStepper, setShouldLoadHorizontalStepper] =
     useState(false);
-  const [formData, setFormData] = useState(initialValue);
+  const [formData, setFormData] = useState({ ...initialValue, ...user });
 
   useEffect(() => {
     if (window.innerWidth < 768) {
@@ -188,7 +198,7 @@ const LinaerStepper = () => {
                   />
                 </Suspense>
               )}
-            </div>
+            </div>{" "}
             {getStepContent(activeStep, formData, setFormData, validate, toast)}
           </div>
         </div>

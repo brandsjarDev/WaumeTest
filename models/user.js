@@ -123,6 +123,22 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please provide an amount"],
   },
+  zipcode: {
+    type: String,
+    required: [true, "Please provide zipcode"],
+  },
+  city: {
+    type: String,
+    required: [true, "Please provide city"],
+  },
+  state: {
+    type: String,
+    required: [true, "Please provide state"],
+  },
+  deliveryDate: {
+    type: Date,
+    required: true,
+  },
   forgotPasswordToken: {
     type: String,
     default: "",

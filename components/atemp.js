@@ -1,231 +1,308 @@
 "use client";
 import React, { useState } from "react";
+import BasicSelect from "./themeSelect";
+import RoundInput from "@components/roundInput";
+import ThemeButton from "./themeButton";
+import { useEffect } from "react";
+import axios from "axios";
+import { loadStripe } from "@stripe/stripe-js";
+import "react-toastify/dist/ReactToastify.css";
 import {
-  Typography,
-  TextField,
-  Button,
-  Stepper,
-  Step,
-  StepLabel,
-  StepContent,
-} from "@material-ui/core";
-import { styled } from "@mui/material/styles";
-import { calcFoodWeight, initialValue } from "@helpers/foodCalc";
-import PersonalInfoForm from "./personalInfo";
-import DogInfo from "./dogInfo";
-import DogHealth from "./dogHealth";
-import StepConnector, {
-  stepConnectorClasses,
-} from "@mui/material/StepConnector";
+  useStripe,
+  useElements,
+  CardElement,
+  CardNumberElement,
+  CardCvcElement,
+  CardExpiryElement,
+  Elements,
+} from "@stripe/react-stripe-js";
 
-const QontoConnector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 22,
-  },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
-    },
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
-    },
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    height: 3,
-    border: 3,
-    backgroundColor:
-      theme.palette.mode === "dark" ? theme.palette.grey[800] : "#eaeaf0",
-    borderRadius: 2,
-  },
-}));
-
-const foodData = [
-  { name: "Beef", kcalPer100g: 130 },
-  { name: "Horse", kcalPer100g: 110 },
-  { name: "Chicken", kcalPer100g: 123 },
-  { name: "Veg", kcalPer100g: 126 },
-];
-
-function getSteps() {
-  return [
-    "Basic information",
-    "Contact Information",
-    "Personal Information",
-    "Payment",
-  ];
+const public_stripe_key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+const stripePromise = loadStripe(public_stripe_key);
+function getProdId(prod) {
+  if (prod == "chicken") return "prod_PtInW7Kz4dGcnk";
+  else if (prod == "beef") {
+    return "prod_PtFsIFJYk9wCet";
+  } else if (prod == "horse") {
+    return "prod_PtFvZI2HQY8UTL";
+  } else return "prod_PtFwbhFRmmy9CH";
 }
+export default function CheckoutForm({
+  formData,
+  setFormData,
+  validate,
+  toast,
+}) {
+  const stripe = useStripe();
+  const elements = useElements();
+  // const [formData, setFormData] = useState({
+  //   password: "",
+  //   confirmPassword: "",
+  //   phoneNo: "",
+  //   street: "",
+  //   addressLine1: "",
+  //   addressLine2: "",
+  //   city: "",
+  //   state: "",
+  //   zipcode: "",
+  // });
+  const handleSubscription = async () => {
+    // const cardNumberElement = elements.getElement(CardNumberElement);
+    // const cardExpiryElement = elements.getElement(CardExpiryElement);
+    // const cardCvcElement = elements.getElement(CardCvcElement);
 
-const PaymentForm = ({ formData, setFormData }) => {
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    // const { error, paymentMethod } = await stripe.createPaymentMethod({
+    //   type: "card",
+    //   card: cardNumberElement,
+    // });
+
+    // if (error) {
+    //   console.error("Error creating payment method:", error);
+    //   toast.error("An error occurred while processing your payment.");
+    //   return;
+    // } else {
+    // console.log("paymentMethod", paymentMethod);
+
+    const stripePromise = await loadStripe(public_stripe_key);
+    const stripeData = {
+      // paymentMethodId: paymentMethod.id,
+      name: formData.ownerName,
+      email: formData.email,
+      address: {
+        city: formData.city,
+        country: formData.country,
+        line1: formData.addressLine1,
+        postal_code: formData.zipcode,
+        state: formData.state,
+      },
+      unit: formData.unitPerOrder,
+      product: formData.productId,
+      prodType: formData.product,
+      portion: formData.portion,
+      plan: formData.subscriptionTitle,
+    };
+    const userData = { ...formData };
+    try {
+      const response = await axios.post("/api/payment", {
+        stripeData,
+        userData,
+      });
+      console.log(response.status, response.data);
+      if (response.status == 400) toast.error(response.data.error);
+      if (response.status === 409) {
+        if (response.data && response.data.redirectUrl) {
+          window.location.href = response.data.redirectUrl;
+        }
+      } else {
+        const session = response.data;
+        stripePromise.redirectToCheckout({
+          sessionId: session.id,
+        });
+      }
+    } catch (error) {
+      if (error?.response?.status == 400)
+        toast.error(error.response.data.error);
+      else toast.error("An error occurred. Please try again later.");
+      console.error("Error:", error);
+    }
+    // }
   };
-
   return (
     <>
-      <TextField
-        id="horse"
-        label="Horse"
-        name="horse"
-        value={formData.horse}
-        onChange={handleInputChange}
-        placeholder="Enter Your Card Number"
-        fullWidth
-        margin="normal"
-      />
-      <TextField
-        id="beef"
-        label="Beef"
-        name="beef"
-        value={formData.beef}
-        onChange={handleInputChange}
-        placeholder="Enter Your Card Number"
-        fullWidth
-        margin="normal"
-      />
-      <TextField
-        id="chicken"
-        label="Chicken"
-        name="chicken"
-        value={formData.chicken}
-        onChange={handleInputChange}
-        placeholder="Enter Your Card Year"
-        fullWidth
-        margin="normal"
-      />
-      <TextField
-        id="veg"
-        label="Veg"
-        name="veg"
-        value={formData.veg}
-        onChange={handleInputChange}
-        placeholder="Enter Your Card Year"
-        fullWidth
-        margin="normal"
-      />
-    </>
-  );
-};
-
-function getStepContent(step, formData, setFormData) {
-  switch (step) {
-    case 0:
-      return <PersonalInfoForm formData={formData} setFormData={setFormData} />;
-    case 1:
-      return <DogInfo formData={formData} setFormData={setFormData} />;
-    case 2:
-      return <DogHealth formData={formData} setFormData={setFormData} />;
-    case 3:
-      return <PaymentForm formData={formData} setFormData={setFormData} />;
-    default:
-      return "unknown step";
-  }
-}
-
-const LinaerStepper = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  const [skippedSteps, setSkippedSteps] = useState([]);
-  const steps = getSteps();
-  const [formData, setFormData] = useState(initialValue);
-
-  const isStepOptional = (step) => {
-    return step === 1 || step === 2;
-  };
-
-  const isStepSkipped = (step) => {
-    return skippedSteps.includes(step);
-  };
-
-  const handleNext = () => {
-    setFormData(calcFoodWeight(formData));
-    if (activeStep === steps.length - 1) {
-      // Perform final step actions here
-      console.log("Final step");
-    }
-    setActiveStep(activeStep + 1);
-    setSkippedSteps(skippedSteps.filter((skipItem) => skipItem !== activeStep));
-  };
-
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
-
-  const handleSkip = () => {
-    if (!isStepSkipped(activeStep)) {
-      setSkippedSteps([...skippedSteps, activeStep]);
-    }
-    setActiveStep(activeStep + 1);
-  };
-  console.log("formData", formData);
-  return (
-    <div
-      className="flex w-full h-full justify-center align-center p-1 md:p-4"
-      suppressHydrationWarning={true}
-    >
-      <div className="flex h-full p-1 md:p-4">
-        <Stepper
-          activeStep={activeStep}
-          orientation="vertical"
-          connector={<QontoConnector />}
-        >
-          {steps.map((step, index) => (
-            <Step key={step.label}>
-              <StepLabel
-                StepIconProps={{
-                  style: {
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                  },
-                }}
-              >
-                <div className="step-label-content">{step}</div>
-              </StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-        {activeStep === steps.length && (
-          <Paper square elevation={0} sx={{ p: 3 }}>
-            <Typography>All steps completed - you&apos;re finished</Typography>
-            <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
-              Reset
-            </Button>
-          </Paper>
-        )}
-      </div>
-      <div className="flex p-1 md:p-4 w-3/4">
-        <form className="w-full">
-          {getStepContent(activeStep, formData, setFormData)}
-          <div className="flex justify-between mt-5">
-            <div className="flex gap-4">
-              <Button disabled={activeStep === 0} onClick={handleBack}>
-                back
-              </Button>
-
-              <Button variant="contained" color="primary" onClick={handleNext}>
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </Button>
+      <div className="w-full">
+        <h1 className="my-5 text-2xl md:text-4xl  text-start font-hossRound">
+          Order Summary
+        </h1>
+        <div className="flex gap-2 font-hossRound md:text-lg">
+          <h3 className=" ">Estimated Delivery Date </h3>
+          <span>- 14 April 2024</span>
+        </div>
+        <div className="flex md:w-1/2 mt-10">
+          <div className="flex flex-col gap-5 w-full text-xl md:text-2xl">
+            <div className="flex justify-between">
+              <span className=" ">{formData.dogName}'s Plan</span>
+              <span>
+                EUR{" "}
+                {Number(
+                  formData.subscriptionAmt - formData.subscriptionAmt * 0.13
+                ).toFixed(2)}
+              </span>
             </div>
-            <div className="flex-col gap-3">
-              <div className="flex gap-2">
-                Calculation
-                {formData.fatLevel == "high" && <> (well padded -5%)</>}
-                {formData.fatLevel == "low" && <> (skinny +5%)</>}
-                {formData.active == "high" && <> (highly activeness +10%)</>}
-                {formData.active == "low" && <> (low activeness -10%)</>}
-                {formData.treat == "normal" && <> (normal amt treats -10%)</>}
-                {formData.treat == "high" && <>(large amt treats -20%)</>}
-              </div>
+            <div className="flex justify-between">
+              <span className=" ">Shipping</span>
+              <span>EUR 0</span>
+            </div>
+            <div className="flex justify-between">
+              <span className=" ">Tax</span>
+              <span>
+                EUR {Number(formData.subscriptionAmt * 0.13).toFixed(2)}
+              </span>
+            </div>
+            <div class="border-t-[3px]  border-primary"></div>
+            <div className="flex justify-between">
+              <span className=" ">TOTAL ORDER PRICE</span>
+              <span>EUR {formData.subscriptionAmt}</span>
             </div>
           </div>
-        </form>
-      </div>
-    </div>
-  );
-};
+        </div>
+        <div className="flex flex-col text-start my-5 md:my-10">
+          {/* Section for three RoundInputs */}
+          <span className="my-5  font-hossRound">User Account</span>
+          <div className="md:w-3/4 grid md:grid-cols-2 gap-5">
+            <RoundInput
+              id="email"
+              type="text"
+              name="email"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Email"
+            />
 
-export default LinaerStepper;
+            <RoundInput
+              id="phoneNumber"
+              type="text"
+              name="phoneNumber"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Phone Number"
+            />
+
+            <RoundInput
+              id="password"
+              type="password"
+              name="password"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Password"
+            />
+            <RoundInput
+              id="confirmPassword"
+              type="password"
+              name="confirmPassword"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Confirm Password"
+            />
+          </div>
+          {/* Section for RoundInputs for address */}
+          <span className="my-5  font-hossRound">Address</span>
+          <div className="md:w-3/4 grid md:grid-cols-2 items-center gap-5">
+            <RoundInput
+              id="addressLine1"
+              type="text"
+              name="addressLine1"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Address Line 1"
+            />
+            <RoundInput
+              id="addressLine2"
+              type="text"
+              name="addressLine2"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Address Line 2"
+            />
+            <RoundInput
+              id="city"
+              type="text"
+              name="city"
+              value={formData}
+              setValue={setFormData}
+              placeholder="City"
+            />
+            <RoundInput
+              id="state"
+              type="text"
+              name="state"
+              value={formData}
+              setValue={setFormData}
+              placeholder="State"
+            />
+            <RoundInput
+              id="country"
+              type="text"
+              name="country"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Country"
+            />
+            <RoundInput
+              id="zipcode"
+              type="number"
+              name="zipcode"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Zip Code"
+            />{" "}
+          </div>{" "}
+          <span className="my-5  font-hossRound">Credit Card Details</span>
+          <div className="md:w-3/4 grid md:grid-cols-2 items-center gap-5">
+            <div className="mx-4 px-2  h-[40px] content-center rounded-full block border-[1px]  text-primary border-slate-500">
+              <CardNumberElement
+                options={{
+                  placeholder: "Card Number",
+                  style: {
+                    base: {
+                      fontSize: "16px",
+                      color: "#32325d",
+                      fontFamily:
+                        "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+                      "::placeholder": {
+                        color: "#aab7c4",
+                      },
+                    },
+                  },
+                }}
+              />
+            </div>
+            <div className="mx-4 px-2  h-[40px] content-center rounded-full block border-[1px]  text-primary border-slate-500">
+              <CardCvcElement
+                options={{
+                  style: {
+                    base: {
+                      fontSize: "16px",
+                      color: "#32325d",
+                      fontFamily:
+                        "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+                      "::placeholder": {
+                        color: "#aab7c4",
+                      },
+                    },
+                  },
+                }}
+              />
+            </div>
+            <div className="mx-4 px-2  h-[40px] content-center rounded-full block border-[1px]  text-primary border-slate-500">
+              <CardExpiryElement
+                options={{
+                  style: {
+                    base: {
+                      fontSize: "16px",
+                      color: "#32325d",
+                      fontFamily:
+                        "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+                      "::placeholder": {
+                        color: "#aab7c4",
+                      },
+                    },
+                  },
+                }}
+              />
+            </div>
+          </div>
+          <div className="flex md:w-3/4 mt-5 md:mt-10">
+            <ThemeButton
+              className="w-full mt-5"
+              onClick={() => {
+                validate() && handleSubscription();
+              }}
+            >
+              Start First Box for EUR {formData.subscriptionAmt}
+            </ThemeButton>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

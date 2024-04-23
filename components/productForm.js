@@ -7,10 +7,12 @@ import bellyBuddyPlus from "@public/assets/images/belly-buddy-plus.png";
 import movementFreind from "@public/assets/images/movement-friend.png";
 import veggieAmigo from "@public/assets/images/veggie-amigo.png";
 
+const ONE_MONTH = 31;
+
 const products = [
   {
     title: "Movement Friend",
-    name: "chicken",
+    name: "beef",
     allergyName: "Poultry",
     content: "EUR 111.11/ Month",
     imageUrl: bellyBuddy,
@@ -19,7 +21,7 @@ const products = [
   },
   {
     title: "Belly Buddy",
-    name: "beef",
+    name: "chicken",
     allergyName: "Beef",
     content: "EUR 111.11/ Month",
     imageUrl: bellyBuddyPlus,
@@ -51,13 +53,13 @@ const ProductForm = ({ formData, setFormData }) => {
   };
   function getCost(prodType) {
     let num = 0;
-    if (prodType === "chicken") num = formData.chicken * 0.012;
-    if (prodType === "beef") num = formData.beef * 0.012;
-    if (prodType === "horse") num = formData.horse * 0.0145;
-    if (prodType === "veg") num = formData.veg * 0.011;
+    if (prodType === "chicken") num = formData.chicken * 0.012 * ONE_MONTH;
+    if (prodType === "beef") num = formData.beef * 0.012 * ONE_MONTH;
+    if (prodType === "horse") num = formData.horse * 0.0145 * ONE_MONTH;
+    if (prodType === "veg") num = formData.veg * 0.011 * ONE_MONTH;
 
     // Round off num to 2 decimal points
-    if (formData.portion == "half") num *= 0.5;
+    if (formData.portion == "half") num *= 0.6;
     num = parseFloat(num.toFixed(2));
 
     return num;
@@ -66,6 +68,13 @@ const ProductForm = ({ formData, setFormData }) => {
   const filterProducts = products.filter(
     (item) => !formData.allergies.includes(item.allergyName)
   );
+  function handleChange(obj) {
+    setFormData({
+      ...formData,
+      product: obj.name,
+      prodCost: getCost(obj.name),
+    });
+  }
   return (
     <>
       <div className="flex flex-col md:flex-row justify-center gap-10 mt-5">
@@ -78,13 +87,7 @@ const ProductForm = ({ formData, setFormData }) => {
             active={formData.product == item.name}
             knowMore
             href={item.href}
-            onClick={() =>
-              setFormData({
-                ...formData,
-                product: item.name,
-                prodCost: getCost(item.name),
-              })
-            }
+            onClick={() => handleChange(item)}
           />
         ))}
       </div>

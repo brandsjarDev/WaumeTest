@@ -14,7 +14,7 @@ const ForgotPasswordPage = () => {
       const response = await axios.post("/api/forgotPassword", { email });
       if (response.status === 200) {
         toast.success("Password reset email sent successfully");
-        router.push("/login"); // Redirect to login page
+        // router.push("/login"); // Redirect to login page
       }
     } catch (error) {
       console.error("Forgot password failed:", error);

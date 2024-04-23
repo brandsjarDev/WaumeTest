@@ -7,7 +7,10 @@ export async function POST(request) {
     await connectToDB();
 
     const reqBody = await request.json();
-    const { token } = reqBody;
+    let { token } = reqBody;
+
+    // Decode the token if it's URL encoded
+    token = decodeURIComponent(token);
     console.log(token);
 
     const user = await User.findOne({
@@ -30,6 +33,7 @@ export async function POST(request) {
       success: true,
     });
   } catch (error) {
+    console.log("error!!!", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SimpleCard from "@components/simpleCard";
+import WarningDialog from "./dailogue";
 
 const illness = [
   "Kidney disease",
@@ -11,7 +12,9 @@ const illness = [
 ];
 
 const IllnessForm = ({ formData, setFormData }) => {
+  const [open, setOpen] = useState(false);
   const handleSelect = (selectedIllness) => {
+    if (selectedIllness != "None") setOpen(true);
     if (formData.illness.includes(selectedIllness)) {
       const updatedIllness = formData.illness.filter(
         (item) => item !== selectedIllness
@@ -39,6 +42,16 @@ const IllnessForm = ({ formData, setFormData }) => {
             />
           ))}
         </div>
+        <WarningDialog
+          title="Unfortunately we have to interrupt you here because your dog is suffering from an illness."
+          content="We recommend contacting your veterinarian in advance to see whether WAUME is suitable for your four-legged friend.
+
+For questions or more information, contact us or ask your veterinarian.
+
+If you have already done this, click 'next' to continue."
+          isOpen={open}
+          setOpen={setOpen}
+        />
       </div>
     </>
   );

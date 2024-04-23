@@ -35,23 +35,6 @@ const products = [
     active: true,
   },
 ];
-function getProdIdOfOneTimeCost(prod) {
-  if (prod == "chicken") return "prod_PwRICkgOGmaK34";
-  else if (prod == "beef") {
-    return "prod_PwRuctGfss2Tdt";
-  } else if (prod == "horse") {
-    return "prod_PwRLvWsLASiXaE";
-  } else return "prod_PtFwbhFRmmy9CH";
-}
-
-function getProdIdPerMonth(prod) {
-  if (prod == "chicken") return "prod_PtInW7Kz4dGcnk";
-  else if (prod == "beef") {
-    return "prod_PtFsIFJYk9wCet";
-  } else if (prod == "horse") {
-    return "prod_PtFvZI2HQY8UTL";
-  } else return "prod_PwRLSREjV9mj1A";
-}
 
 const SubscriptionForm = ({ formData, setFormData }) => {
   function getContent(step) {
@@ -70,6 +53,7 @@ const SubscriptionForm = ({ formData, setFormData }) => {
         return "unknown step";
     }
   }
+
   function getCost(step) {
     switch (step) {
       case 0:
@@ -82,22 +66,6 @@ const SubscriptionForm = ({ formData, setFormData }) => {
         return formData.prodCost;
       case 4:
         return parseFloat((formData.prodCost * 3).toFixed(2));
-      default:
-        return 0;
-    }
-  }
-  function getProdId(step) {
-    switch (step) {
-      case 0:
-        return "prod_PwSQmvSOeLVfwH";
-      case 1:
-        return getProdIdOfOneTimeCost(formData.product);
-      case 2:
-        return getProdIdOfOneTimeCost(formData.product);
-      case 3:
-        return getProdIdPerMonth(formData.product);
-      case 4:
-        return getProdIdPerMonth(formData.product);
       default:
         return 0;
     }
@@ -116,8 +84,6 @@ const SubscriptionForm = ({ formData, setFormData }) => {
               setFormData({
                 ...formData,
                 subscriptionTitle: item.title,
-                subscriptionAmt: getCost(index),
-                productId: getProdId(index),
               })
             }
           />

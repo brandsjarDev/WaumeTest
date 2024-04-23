@@ -4,11 +4,15 @@ import React, { useEffect, useRef, useState } from "react";
 import logo from "@public/assets/images/waume-logo-dag.svg";
 import Link from "next/link";
 import { useRouter } from "next/navigation"; // Import from 'next/router' instead of 'next/navigation'
+import { useSelector, useDispatch } from "react-redux";
+import { login, logout } from "@store/slices/authSlice";
 
 const Navbar = ({ className = "bg-white" }) => {
   const dropdownRef = useRef(null);
   const router = useRouter();
+  const dispatch = useDispatch();
   const [showDropdown, setShowDropdown] = useState(false);
+  const auth = useSelector((state) => state.auth);
 
   const toggleNavbar = () => {
     const navbar = document.getElementById("navbar-default");
@@ -35,6 +39,12 @@ const Navbar = ({ className = "bg-white" }) => {
 
     setShowDropdown(false);
   };
+  function handleLogout() {
+    dispatch(logout());
+    router.push("/login");
+  }
+
+  console.log("user", auth);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -170,9 +180,11 @@ const Navbar = ({ className = "bg-white" }) => {
           <div className="flex justify-evenly">
             <button
               className="w-[151px] h-[40px] ml-4 bg-primary text-white  hover:bg-[#4baead] rounded-md"
-              onClick={() => router.push("/enquiry")}
+              onClick={() =>
+                auth.isLoggedIn ? handleLogout() : router.push("/login")
+              }
             >
-              Login
+              {auth.isLoggedIn ? "Logout" : "Login"}
             </button>
           </div>
         </div>
@@ -294,7 +306,7 @@ const Navbar = ({ className = "bg-white" }) => {
               </li>
               <li>
                 <Link
-                  href="/enquiry"
+                  href="/login"
                   className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
                 >
                   Login

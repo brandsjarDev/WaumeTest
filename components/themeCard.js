@@ -23,7 +23,9 @@ const Card = ({
       onClick={onClick}
     >
       <div className="flex justify-center">
-        <Image src={imageUrl ? imageUrl : FoodImage} alt={title} />
+        {imageUrl && (
+          <Image src={imageUrl ? imageUrl : FoodImage} alt={title} />
+        )}
       </div>
       <div className="flex-col justify-center">
         <div className="flex justify-center font-hossRound  text-xl my-5">

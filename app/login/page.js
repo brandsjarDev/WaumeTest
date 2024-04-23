@@ -4,26 +4,37 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { login } from "../../store/slices/authSlice";
+import { login, logout } from "../../store/slices/authSlice";
 import { useSelector } from "react-redux";
+import { setUserInfo } from "@store/slices/userSlice";
+import RoundInput from "@components/roundInput";
+import ThemeButton from "@components/themeButton";
+import Navbar from "@components/Nav";
 import axios from "axios";
+import Link from "next/link";
+import Image from "next/image";
+import LoginDog from "@public/assets/images/loginDog.png";
 
 const LoginPage = () => {
-  const [loggedInUser, setLoggedInUser] = useState(null);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
   const router = useRouter();
   const dispatch = useDispatch();
-  const accessToken = useSelector((state) => state.auth.accessToken);
+  const auth = useSelector((state) => state.auth);
+  const user = useSelector((state) => state.user.userInfo);
 
-  console.log("Access Token from Redux:", accessToken);
-  const handleLogin = async (email, password) => {
+  console.log("Access Token from Redux:", auth.accessToken, user);
+
+  const handleLogin = async () => {
     try {
       console.log("Logging in...");
-      const response = await axios.post("/api/login", { email, password });
-      const { token } = response.data;
-      dispatch(login({ accessToken: token }));
+      const response = await axios.post("/api/login", userData);
+      const { token, user } = response.data;
+      await dispatch(login({ accessToken: token, isLoggedIn: true }));
+      await dispatch(setUserInfo(user));
+      router.push("/profile");
       console.log("Login successful", token);
       toast.success("Login successful");
     } catch (error) {
@@ -36,94 +47,39 @@ const LoginPage = () => {
     }
   };
 
-  const register = async () => {
-    try {
-      const response = await axios.post("/api/signup", {
-        email,
-        password,
-        username,
-      });
-      if (response.status === 200) {
-        toast.success("Registration successful");
-        router.push("/login");
-      }
-    } catch (error) {
-      console.error("Registration failed:", error);
-      if (error.response && error.response.status === 400) {
-        toast.error(error.response.data.error);
-      } else {
-        toast.error("Registration failed, please try again later");
-      }
-    }
-  };
-
-  const logout = async () => {
-    try {
-      setLoggedInUser(null);
-      console.log("Logout success");
-    } catch (error) {
-      console.error("Logout failed:", error);
-      // Display error notification using react-toastify
-      toast.error("Logout failed: " + error.message);
-    }
-  };
-
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 bg-gray-100 rounded-lg">
-      <ToastContainer />
-      {loggedInUser ? (
-        <div>
-          <p className="text-lg  mb-4">Logged in as {loggedInUser.username}</p>
-          <button
-            className="bg-red-500 hover:bg-red-600 text-white  py-2 px-4 rounded"
-            onClick={logout}
-          >
-            Logout
-          </button>
+    <>
+      <Navbar />
+      <div className="flex justify-center h-full my-10 md:my-20">
+        <ToastContainer />
+        <div className="flex flex-col items-center w-3/4 md:w-1/2 gap-4">
+          <h1 className="text-4xl mb-4 font-hossRound">Login</h1>
+          <RoundInput
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={userData}
+            setValue={setUserData}
+            className="w-full md:w-[300px]"
+          />
+          <RoundInput
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={userData}
+            setValue={setUserData}
+            className="w-full md:w-[300px]"
+          />
+          <ThemeButton className="w-full md:w-[300px]" onClick={handleLogin}>
+            Login
+          </ThemeButton>
+          <Link href="/forgotPassword" className="font-hossRound">
+            Forgot Password?
+          </Link>
+          <Image src={LoginDog} />
         </div>
-      ) : (
-        <div>
-          <p className="text-lg  mb-4">Not logged in</p>
-          <form>
-            <input
-              className="block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              className="block w-full mt-2 rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <input
-              className="block w-full mt-2 rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
-              type="text"
-              placeholder="Name"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <button
-              className="mt-4 bg-blue-500 hover:bg-blue-600 text-white  py-2 px-4 rounded"
-              type="button"
-              onClick={() => handleLogin(email, password)}
-            >
-              Login
-            </button>
-            <button
-              className="mt-2 bg-green-500 hover:bg-green-600 text-white  py-2 px-4 rounded"
-              type="button"
-              onClick={register}
-            >
-              Register
-            </button>
-          </form>
-        </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -9,6 +9,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import "react-toastify/dist/ReactToastify.css";
 
 const public_stripe_key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+const stripePromise = loadStripe(public_stripe_key);
 function getProdId(prod) {
   if (prod == "chicken") return "prod_PtInW7Kz4dGcnk";
   else if (prod == "beef") {
@@ -17,25 +18,16 @@ function getProdId(prod) {
     return "prod_PtFvZI2HQY8UTL";
   } else return "prod_PtFwbhFRmmy9CH";
 }
-export default function zCheckoutForm({
+export default function CheckoutForm({
   formData,
   setFormData,
   validate,
   toast,
 }) {
-  // const [formData, setFormData] = useState({
-  //   password: "",
-  //   confirmPassword: "",
-  //   phoneNo: "",
-  //   street: "",
-  //   addressLine1: "",
-  //   addressLine2: "",
-  //   city: "",
-  //   state: "",
-  //   zipcode: "",
-  // });
-
+  const [loading, setLoading] = useState(false);
+  const isExistingUser = "_id" in formData;
   const handleSubscription = async () => {
+    setLoading(true);
     const stripePromise = await loadStripe(public_stripe_key);
     const stripeData = {
       name: formData.ownerName,
@@ -47,18 +39,25 @@ export default function zCheckoutForm({
         postal_code: formData.zipcode,
         state: formData.state,
       },
-      unit: formData.product ? formData[formData.product] : "0",
-      product: formData.productId,
+      unit: formData.unitPerOrder,
       prodType: formData.product,
       portion: formData.portion,
       plan: formData.subscriptionTitle,
     };
     const userData = { ...formData };
+    let response;
     try {
-      const response = await axios.post("/api/payment", {
-        stripeData,
-        userData,
-      });
+      if (isExistingUser) {
+        response = await axios.patch("/api/payment", {
+          stripeData,
+          userData,
+        });
+      } else {
+        response = await axios.post("/api/payment", {
+          stripeData,
+          userData,
+        });
+      }
       console.log(response.status, response.data);
       if (response.status == 400) toast.error(response.data.error);
       if (response.status === 409) {
@@ -71,12 +70,20 @@ export default function zCheckoutForm({
           sessionId: session.id,
         });
       }
+      setLoading(false);
     } catch (error) {
-      if (error.response.status == 400) toast.error(error.response.data.error);
+      if (error?.response?.status == 400)
+        toast.error(error.response.data.error);
       else toast.error("An error occurred. Please try again later.");
-      console.error("Error:", error.response.data.error);
+      console.error("Error:", error);
     }
+    // }
   };
+  const options = { day: "2-digit", month: "long", year: "numeric" };
+  const formattedDate = formData.deliveryDate.toLocaleDateString(
+    "en-GB",
+    options
+  );
   return (
     <>
       <div className="w-full">
@@ -85,7 +92,7 @@ export default function zCheckoutForm({
         </h1>
         <div className="flex gap-2 font-hossRound md:text-lg">
           <h3 className=" ">Estimated Delivery Date </h3>
-          <span>- 14 April 2024</span>
+          <span>- {formattedDate}</span>
         </div>
         <div className="flex md:w-1/2 mt-10">
           <div className="flex flex-col gap-5 w-full text-xl md:text-2xl">
@@ -118,7 +125,6 @@ export default function zCheckoutForm({
         <div className="flex flex-col text-start my-5 md:my-10">
           {/* Section for three RoundInputs */}
           <span className="my-5  font-hossRound">User Account</span>
-
           <div className="md:w-3/4 grid md:grid-cols-2 gap-5">
             <RoundInput
               id="email"
@@ -155,7 +161,6 @@ export default function zCheckoutForm({
               placeholder="Confirm Password"
             />
           </div>
-
           {/* Section for RoundInputs for address */}
           <span className="my-5  font-hossRound">Address</span>
           <div className="md:w-3/4 grid md:grid-cols-2 items-center gap-5">
@@ -175,7 +180,6 @@ export default function zCheckoutForm({
               setValue={setFormData}
               placeholder="Address Line 2"
             />
-
             <RoundInput
               id="city"
               type="text"
@@ -200,7 +204,6 @@ export default function zCheckoutForm({
               setValue={setFormData}
               placeholder="Country"
             />
-
             <RoundInput
               id="zipcode"
               type="number"
@@ -208,16 +211,20 @@ export default function zCheckoutForm({
               value={formData}
               setValue={setFormData}
               placeholder="Zip Code"
-            />
-          </div>
+            />{" "}
+          </div>{" "}
           <div className="flex md:w-3/4 mt-5 md:mt-10">
             <ThemeButton
               className="w-full mt-5"
               onClick={() => {
                 validate() && handleSubscription();
               }}
+              loading={loading}
             >
-              Start First Box for EUR {formData.subscriptionAmt}
+              {isExistingUser
+                ? "Update Box for EUR"
+                : "Start First Box for EUR"}{" "}
+              {formData.subscriptionAmt}
             </ThemeButton>
           </div>
         </div>

@@ -1,23 +1,24 @@
 import React from "react";
 import { Button } from "./ui/button";
-
+import { Loader2 } from "lucide-react";
 const ThemeButton = ({
   children,
   onClick,
   className,
   disabled = false,
   size = "default",
+  loading = false,
   ...props
 }) => {
   return (
     <Button
-      className={`block bg-primary hover:bg-primaryDark text-white  rounded-[14px]  ${className}`}
+      className={`flex justify-center bg-primary hover:bg-primaryDark text-white  rounded-[14px]  ${className}`}
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || loading}
       size={size}
       {...props}
     >
-      {children}
+      {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : children}
     </Button>
   );
 };

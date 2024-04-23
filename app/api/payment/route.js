@@ -5,61 +5,72 @@ import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { getDataFromToken } from "@helpers/getDataFromToken";
+import sendMail from "@/helpers/mailer"; // Import the sendMail function
+import { getProdName, formatDate } from "@helpers/foodCalc";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-async function getProductPriceId(productId) {
-  try {
-    const product = await stripe.products.retrieve(productId);
+function getNearestFifthDate() {
+  const currentDate = new Date();
 
-    const defaultPriceId = product.default_price;
+  let currentMonth = currentDate.getMonth(); // Incrementing month to get next month
+  let currentYear = currentDate.getFullYear();
+  const anchorDate = 5;
 
-    const defaultPrice = await stripe.prices.retrieve(defaultPriceId);
-
-    return defaultPrice;
-  } catch (error) {
-    console.error("Error:", error);
-    throw error;
+  if (currentDate.getDate() > anchorDate) {
+    currentMonth++;
+    if (currentMonth === 12) {
+      currentMonth = 0; // January
+      currentYear++; // Increment year
+    }
   }
+
+  const upcomingFifthDateOfMonth = new Date(
+    currentYear,
+    currentMonth,
+    anchorDate
+  );
+
+  const upcomingFifthDateTimeStamp = upcomingFifthDateOfMonth.getTime() / 1000; // Convert milliseconds to seconds
+
+  return upcomingFifthDateTimeStamp;
 }
-function getCost(prodType, portion, plan) {
-  let num = 0;
-  if (prodType === "chicken") num = 12;
-  if (prodType === "beef") num = 12;
-  if (prodType === "horse") num = 14;
-  if (prodType === "veg") num = 11;
-  if (portion == "half") num *= 0.5;
+
+function getCost(prodType, unit, portion, plan) {
+  let num = unit;
+  if (prodType === "chicken") num *= 0.012;
+  if (prodType === "beef") num *= 0.012;
+  if (prodType === "horse") num *= 0.0145;
+  if (prodType === "veg") num *= 0.011;
+  if (portion == "half") num *= 0.6;
+  console.log(num);
+
+  console.log("num=", num);
+
   if (plan == "Trial Pack") {
-    num = 2500;
-  }
-  if (plan == "Three Month") {
-    num *= 3;
-  }
-  if (plan == "Per Three Month") {
-    num *= 3;
+    num = 25;
   }
 
   // Round off num to 2 decimal points
 
-  return num;
+  return Number((num * 100).toFixed(2)); // 15345
 }
-
+function getProdId(prodType) {
+  if (prodType === "horse") return "prod_PwRLvWsLASiXaE";
+  if (prodType === "veg") return "prod_PwRLSREjV9mj1A";
+  if (prodType === "chicken") return "prod_PwRICkgOGmaK34";
+  if (prodType === "beef") return "prod_PxRE6stJDFS19r";
+  return "prod_PwSQmvSOeLVfwH";
+}
 export async function POST(req) {
   try {
     await connectToDB();
-
+    console.log("at POST");
     const obj = await req.json();
-    let { name, email, address, unit, product, prodType, portion, plan } =
+    let { name, email, address, unit, prodType, portion, plan } =
       obj.stripeData;
     let userData = obj.userData;
     const user = await User.findOne({ email });
-    console.log(
-      "product",
-      product,
-      userData.subscriptionTitle == "Per Month" ||
-        userData.subscriptionTitle == "Per Three Month"
-        ? "subscription"
-        : "payment"
-    );
+    console.log("userData", userData.deliveryDate);
     if (user) {
       return NextResponse.json(
         { error: "User with this email already exists" },
@@ -81,46 +92,77 @@ export async function POST(req) {
         state: address?.state,
       },
     });
-    const stripePriceObj = await getProductPriceId(product);
-    if (plan == "Trial Pack") unit = 1;
+    const paymentMode =
+      plan == "Per Month" || plan == "Per Three Month"
+        ? "subscription"
+        : "payment";
+    const subscriptionPeriod = plan == "Per Month" ? 1 : 3;
+
     const session = await stripe.checkout.sessions.create({
       success_url: `${process.env.DOMAIN}/success`,
       cancel_url: `${process.env.DOMAIN}`,
-      //   payment_method_types: ["card"],
-      mode:
-        userData.subscriptionTitle == "Per Month" ||
-        userData.subscriptionTitle == "Per Three Month"
-          ? "subscription"
-          : "payment",
+      payment_method_types: ["card"],
+      mode: paymentMode,
       billing_address_collection: "auto",
       line_items: [
         {
-          price: stripePriceObj.id,
-          //   price: defaultPrice,
-          quantity: Math.floor(unit / 10),
-
-          //   price: amount * 100, // Convert amount to cents
-          //   currency: "eur",
-          //   name: "Payment", // Name of the payment
+          price_data: {
+            currency: "eur",
+            unit_amount: getCost(prodType, unit, portion, plan),
+            ...(paymentMode === "subscription" && {
+              recurring: {
+                interval: "month",
+                interval_count: subscriptionPeriod,
+              },
+            }),
+            product: getProdId(prodType),
+          },
+          quantity: 1,
         },
       ],
       // metadata: {
-      //   userId: auth0UserId,
+      //   creation: true,
+      //   cancellation: false,
+      //   user: JSON.stringify(userData),
       // },
-      // customer_email: "hello@tricksumo.com",
+      ...(paymentMode === "subscription" && {
+        subscription_data: {
+          billing_cycle_anchor: getNearestFifthDate(),
+          proration_behavior: "none",
+        },
+      }),
       customer: customer.id, // Use the customer ID here
     });
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(userData.password, salt);
 
+    // const subscriptionId = session.subscription;
+    // const paymentIntentId = session.payment_intent;
     userData.subscriptionId = session?.line_items?.data[0]?.subscription;
     userData.stripeId = customer.id;
     userData.password = hashedPassword;
+    const success = await sendMail(
+      "Order placed successfully",
+      "develop@brandsjar.com",
+      `<p>Hi ${
+        userData.ownerName
+      } , your order for ${plan} plan for ${getProdName(
+        prodType
+      )} is placed successfully, it is estimated to deliver at ${formatDate(
+        userData.deliveryDate
+      )}`
+    );
 
+    if (!success) {
+      // Handle email sending failure
+      return NextResponse.json(
+        { error: "Email sending failed" },
+        { status: 500 }
+      );
+    }
     // res.json({ id: session.id });
     const newUser = new User(userData);
     const savedUser = await newUser.save();
-
     console.log("customer", customer.id);
     return NextResponse.json(
       {
@@ -133,6 +175,146 @@ export async function POST(req) {
     );
   } catch (error) {
     console.error("error!", error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+export async function PATCH(req) {
+  try {
+    await connectToDB();
+    console.log("at PATCH");
+
+    const obj = await req.json();
+    let { email, unit, prodType, portion, plan } = obj.stripeData;
+    let userData = obj.userData;
+    const userDataToUpdate = { ...userData }; // Create a copy of userData
+
+    delete userDataToUpdate.password;
+    delete userDataToUpdate.email;
+    const user = await User.findOne({ email });
+
+    const validPassword = await bcryptjs.compare(
+      userData.password,
+      user.password
+    );
+    if (!validPassword) {
+      return Response.json({ error: "Invalid password" }, { status: 400 });
+    }
+    const existingCustomers = await stripe.customers.list({
+      email: email,
+      limit: 1,
+    });
+    if (existingCustomers.data.length <= 0)
+      return NextResponse.json({ error: "User not found" }, { status: 400 });
+
+    const customer = existingCustomers.data[0];
+
+    const subscriptions = await stripe.subscriptions.list({
+      customer: customer.id,
+    });
+    let billingCycleAnchor = getNearestFifthDate();
+    if (subscriptions.data.length > 0) {
+      let activeSubscriptionId;
+      // console.log("data", subscriptions.data);
+      await Promise.all(
+        subscriptions.data.map(async (subscription) => {
+          if (subscription.status === "active") {
+            await stripe.subscriptions.update(subscription.id, {
+              cancel_at_period_end: true,
+              proration_behavior: "none",
+            });
+            activeSubscriptionId = subscription.id;
+          } else
+            await stripe.subscriptions.update(subscription.id, {
+              cancel_now: true,
+            });
+        })
+      );
+
+      const activeSubscription = await stripe.subscriptions.retrieve(
+        activeSubscriptionId
+      );
+      console.log("activeSubscription", activeSubscription);
+
+      if (activeSubscription) {
+        billingCycleAnchor = activeSubscription.current_period_end;
+      } else {
+        billingCycleAnchor = getNearestFifthDate();
+      }
+    }
+    const paymentMode =
+      plan == "Per Month" || plan == "Per Three Month"
+        ? "subscription"
+        : "payment";
+    const subscriptionPeriod = plan == "Per Month" ? 1 : 3;
+
+    // 2. Create a new subscription
+    const session = await stripe.checkout.sessions.create({
+      success_url: `${process.env.DOMAIN}/success`,
+      cancel_url: `${process.env.DOMAIN}`,
+      payment_method_types: ["card"],
+      mode: paymentMode,
+      billing_address_collection: "auto",
+      line_items: [
+        {
+          price_data: {
+            currency: "eur",
+            unit_amount: getCost(prodType, unit, portion, plan),
+            ...(paymentMode === "subscription" && {
+              recurring: {
+                interval: "month",
+                interval_count: subscriptionPeriod,
+              },
+            }),
+            product: getProdId(prodType),
+          },
+          quantity: 1,
+        },
+      ],
+      ...(paymentMode === "subscription" && {
+        subscription_data: {
+          billing_cycle_anchor: billingCycleAnchor,
+          proration_behavior: "none",
+        },
+      }),
+      customer: customer.id, // Use the customer ID here
+    });
+
+    // Save the updated user details
+    // const newUser = new User(userData);
+    // const savedUser = await newUser.save();
+    await User.updateOne({ email }, { $set: userDataToUpdate });
+    console.log("customer", customer.id);
+    const success = await sendMail(
+      "Plan updated successfully",
+      "develop@brandsjar.com",
+      `<p>Hi ${
+        userData.ownerName
+      } , your order for ${plan} plan for ${getProdName(
+        prodType
+      )} is placed successfully, it is estimated to deliver at ${formatDate(
+        userData.deliveryDate
+      )}`
+    );
+
+    if (!success) {
+      // Handle email sending failure
+      return NextResponse.json(
+        { error: "Email sending failed" },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json(
+      {
+        id: session.id,
+        // user: savedUser,
+        message: "User created",
+        success: true,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("error! ***", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

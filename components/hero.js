@@ -2,6 +2,10 @@ import HomeCard from "@components/homeCard";
 import moochy from "@public/assets/images/moochy.png";
 import sausage from "@public/assets/images/sausage.png";
 import ThemeButton from "@components/themeButton";
+import heroimg1 from "@public/assets/images/heroimg1.jpg";
+import heroimg2 from "@public/assets/images/heroimg2.jpg";
+import heroimg3 from "@public/assets/images/heroimg3.jpg";
+
 // import { useRouter } from "next/navigation";
 
 const Hero = () => {
@@ -35,20 +39,20 @@ const Hero = () => {
                 title="Moochy"
                 content="Pomeranian, 3 Years"
                 className=""
-                imageUrl={sausage}
+                imageUrl={heroimg1}
               />
             </div>
             <div className="flex flex-col gap-5">
               <HomeCard
-                title="Moochy"
+                title="Coco"
                 content="Siberian Husky, 3 Years"
-                imageUrl={sausage}
+                imageUrl={heroimg2}
                 className=""
               />
               <HomeCard
-                title="Moochy"
-                content="Pomeranian, 3 Years"
-                imageUrl={sausage}
+                title="Tabby"
+                content="Boston Terrier, 2 Years"
+                imageUrl={heroimg3}
                 className=""
               />
             </div>

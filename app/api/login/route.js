@@ -13,23 +13,27 @@ export const POST = async (req, { params }) => {
     console.log(reqBody);
 
     // Check if user with same email exists
-    const user = await User.findOne({ email });
+    let user = await User.findOne({ email }).lean();
+
     if (!user) {
       return Response.json({ error: "User does not exist" }, { status: 400 });
     }
-    console.log("User exists");
+    console.log("User exists", user);
 
     // Check if password is correct
     const validPassword = await bcryptjs.compare(password, user.password);
     if (!validPassword) {
       return Response.json({ error: "Invalid password" }, { status: 400 });
     }
-    console.log(user);
+    console.log(user.password);
+    delete user.password;
+    delete user.forgotPasswordToken;
+    console.log(user.password);
 
     // Create token data
     const tokenData = {
       id: user._id,
-      username: user.username,
+      username: user.ownerName,
       email: user.email,
     };
 
@@ -41,6 +45,8 @@ export const POST = async (req, { params }) => {
     const response = NextResponse.json({
       message: "Login successful",
       success: true,
+      token,
+      user,
     });
 
     // Set HTTP-only cookie to prevent cross-site-scripting

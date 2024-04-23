@@ -224,13 +224,11 @@ export function getProdData() {
     },
     {
       title: "Belly Buddy Plus",
-
       content: "Horse. Oatmeal. Berry.",
       imageUrl: fullBoard,
     },
     {
       title: "Veggie Amigo",
-
       content: "Egg. Pumpkin Seed Protein. Pumpkin.",
       imageUrl: halfBoard,
     },
