@@ -23,7 +23,8 @@ export async function POST(req) {
     event = stripe.webhooks.constructEvent(
       payload,
       sig,
-      "whsec_205f56f60e5267fd420d28721a1cdfd57256fe645b32220beab80df547c9825c"
+      // "whsec_205f56f60e5267fd420d28721a1cdfd57256fe645b32220beab80df547c9825c"
+      "whsec_TSRQhbxae1Dz3zuC6hZKJGNvZTSi5dRW"
     );
     console.log("event.type=> /n", event.type);
     if (event.type === "checkout.session.completed") {
