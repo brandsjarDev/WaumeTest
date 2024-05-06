@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { useEffect } from "react";
 import howitworks from "@public/assets/images/howitworks.webp";
 import Image from "next/image";
 import Navbar from "@components/Nav";
@@ -15,6 +17,32 @@ import Consultation from "@components/consultation";
 import starterpacket from "@public/assets/images/starterpacket.png";
 import ThemeButton from "@components/themeButton";
 import Accordions from "@components/howItWorks/accordions";
+import dynamic from "next/dynamic";
+
+// Importing components dynamically with SSR disabled
+const DynamicNavbar = dynamic(() => import("@components/Nav"), { ssr: false });
+const DynamicHowItWorks = dynamic(() => import("@components/howItWorks"), {
+  ssr: false,
+});
+const DynamicWave = dynamic(() => import("@components/wave"), { ssr: false });
+const DynamicOtherProducts = dynamic(
+  () => import("@components/products/otherProducts"),
+  { ssr: false }
+);
+const DynamicNutritionNeeds = dynamic(
+  () => import("@components/nutritionNeed"),
+  { ssr: false }
+);
+const DynamicStarterBox = dynamic(() => import("@components/starterBox"), {
+  ssr: false,
+});
+const DynamicConsultation = dynamic(() => import("@components/consultation"), {
+  ssr: false,
+});
+const DynamicAccordions = dynamic(
+  () => import("@components/howItWorks/accordions"),
+  { ssr: false }
+);
 
 const Page = () => {
   const title = (
@@ -26,14 +54,14 @@ const Page = () => {
 
   return (
     <>
-      <Navbar />
+      <DynamicNavbar />
       <div className="">
         <Image src={howitworks} style={{ objectFit: "fill" }} />
-        <HowItWorks />
-        <Wave />
-        <OtherProducts title={title} className="bg-secondary md:py-0" />
+        <DynamicHowItWorks />
+        <DynamicWave />
+        <DynamicOtherProducts title={title} className="bg-secondary md:py-0" />
         <div className="flex bg-secondary h-24 rounded-b-[70%]"></div>
-        <NutritionNeeds />
+        <DynamicNutritionNeeds />
         <ImageRowLayout imageUrl={threesausage}>
           <div className="flex flex-col justify-start gap-5">
             <h2 className="text-2xl md:text-4xl font-hossRound ">
@@ -48,7 +76,7 @@ const Page = () => {
             <IconText text="Fresh food at every meal" />
           </div>
         </ImageRowLayout>
-        <Wave />
+        <DynamicWave />
         <div className="bg-secondaryLight">
           <ImageRowLayout
             imageUrl={threesausage}
@@ -62,8 +90,8 @@ const Page = () => {
           </ImageRowLayout>
           <div className="flex bg-secondary h-24 rounded-b-[70%]"></div>
         </div>
-        <StarterBox className="md:mt-0 bg-secondaryLight" />
-        <Consultation className="mt-10 md:mt-20" />
+        <DynamicStarterBox className="md:mt-0 bg-secondaryLight" />
+        <DynamicConsultation className="mt-10 md:mt-20" />
         <ImageRowLayout imageUrl={starterpacket} className="my-5 md:my-10">
           <div className="flex flex-col justify-start gap-5">
             <h2 className="text-2xl md:text-4xl font-hossRound ">
@@ -84,7 +112,7 @@ const Page = () => {
         <h2 className="text-2xl md:text-4xl text-center font-hossRound  mt-10 md:mt-20">
           Frequently Asked Questions
         </h2>
-        <Accordions />
+        <DynamicAccordions />
         {/* <Hero />
         <NutritionNeeds />
         <FreshFood /> */}

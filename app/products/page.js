@@ -1,23 +1,47 @@
 "use client";
-import LinearStepper from "@components/multiForm";
-import { CssBaseline, Container, Paper, Box } from "@material-ui/core";
-import Hero from "@components/products/hero";
-import Navbar from "@components/Nav";
-import FreshIngridients from "@components/products/natural";
-import Accordions from "@components/products/accordions";
-import OtherProducts from "@components/products/otherProducts";
-import HumanFood from "@components/products/humanFood";
+import { useEffect } from "react";
+import dynamic from "next/dynamic";
+
+// Dynamically import components with SSR disabled
+const Navbar = dynamic(() => import("@components/Nav"), {
+  ssr: false,
+});
+
+const DynamicHero = dynamic(() => import("@components/products/hero"), {
+  ssr: false,
+});
+const DynamicFreshIngredients = dynamic(
+  () => import("@components/products/natural"),
+  { ssr: false }
+);
+const DynamicAccordions = dynamic(
+  () => import("@components/products/accordions"),
+  { ssr: false }
+);
+const DynamicOtherProducts = dynamic(
+  () => import("@components/products/otherProducts"),
+  { ssr: false }
+);
+const DynamicHumanFood = dynamic(
+  () => import("@components/products/humanFood"),
+  { ssr: false }
+);
 
 const Home = () => {
+  useEffect(() => {
+    // Add any initialization logic here
+  }, []);
+
   return (
     <>
       <div className="bg-[#fafafa]">
         <Navbar className="bg-secondaryLight" />
-        <Hero />
-        <FreshIngridients />
-        <Accordions />
-        <OtherProducts />
-        <HumanFood />
+        {/* Render dynamically imported components */}
+        <DynamicHero />
+        <DynamicFreshIngredients />
+        <DynamicAccordions />
+        <DynamicOtherProducts />
+        <DynamicHumanFood />
       </div>
     </>
   );

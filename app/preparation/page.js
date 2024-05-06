@@ -1,21 +1,40 @@
-import production from "@public/assets/images/production.png";
-import Image from "next/image";
-import ThemeButton from "@components/themeButton";
-import Navbar from "@components/Nav";
-import Hero from "@components/preparation/hero";
-import ImageRowLayout from "@components/preparation/imageRowLayout";
-import NutritionNeeds from "@components/nutritionNeed";
-import FreshFood from "@components/freshFood";
+"use client";
+import { useEffect } from "react";
+import dynamic from "next/dynamic";
+
+// Dynamically import components with SSR disabled
+const Navbar = dynamic(() => import("@components/Nav"), {
+  ssr: false,
+});
+
+const DynamicHero = dynamic(() => import("@components/preparation/hero"), {
+  ssr: false,
+});
+const DynamicImageRowLayout = dynamic(
+  () => import("@components/preparation/imageRowLayout"),
+  { ssr: false }
+);
+const DynamicNutritionNeeds = dynamic(
+  () => import("@components/nutritionNeed"),
+  { ssr: false }
+);
+const DynamicFreshFood = dynamic(() => import("@components/freshFood"), {
+  ssr: false,
+});
 
 const HumanFood = () => {
+  useEffect(() => {
+    // Add any initialization logic here
+  }, []);
+
   return (
     <>
       <Navbar />
       <div className="">
-        <Image src={production} style={{ objectFit: "fill" }} />
-        <Hero />
-        <NutritionNeeds />
-        <FreshFood />
+        {/* Render dynamically imported components */}
+        <DynamicHero />
+        <DynamicNutritionNeeds />
+        <DynamicFreshFood />
       </div>
     </>
   );

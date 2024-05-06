@@ -1,10 +1,18 @@
-"use client";
-import LinearStepper from "@components/multiForm";
-import Navbar from "@components/Nav";
+import dynamic from "next/dynamic";
+
+// Importing Navbar and LinearStepper dynamically with SSR disabled
+const DynamicNavbar = dynamic(() => import("@components/Nav"), {
+  ssr: false,
+});
+
+const DynamicLinearStepper = dynamic(() => import("@components/multiForm"), {
+  ssr: false,
+});
+
 const Home = () => (
   <>
-    <Navbar className="bg-white" />
-    <LinearStepper />
+    <DynamicNavbar className="bg-white" />
+    <DynamicLinearStepper />
   </>
 );
 

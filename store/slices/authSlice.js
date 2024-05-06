@@ -2,7 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isLoggedIn: document.cookie.includes("token"),
+  isLoggedIn: false,
 };
 
 export const authSlice = createSlice({
