@@ -20,22 +20,27 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const user = useSelector((state) => state.user.userInfo);
 
-  console.log("Access Token from Redux:", auth.accessToken, user);
+  console.log("user from Redux:", user);
 
   const handleLogin = async () => {
     try {
-      console.log("Logging in...");
+      setLoading(true);
+
       const response = await axios.post("/api/login", userData);
-      const { token, user } = response.data;
-      await dispatch(login({ accessToken: token, isLoggedIn: true }));
+      const { user } = response.data;
+
+      await dispatch(login({ isLoggedIn: true }));
       await dispatch(setUserInfo(user));
+
       router.push("/profile");
-      console.log("Login successful", token);
+
       toast.success("Login successful");
     } catch (error) {
       console.error("Login failed:", error);
@@ -44,6 +49,8 @@ const LoginPage = () => {
       } else {
         toast.error("Login failed, please try again later");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -70,7 +77,11 @@ const LoginPage = () => {
             setValue={setUserData}
             className="w-full md:w-[300px]"
           />
-          <ThemeButton className="w-full md:w-[300px]" onClick={handleLogin}>
+          <ThemeButton
+            className="w-full md:w-[300px]"
+            loading={loading}
+            onClick={handleLogin}
+          >
             Login
           </ThemeButton>
           <Link href="/forgotPassword" className="font-hossRound">

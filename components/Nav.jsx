@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation"; // Import from 'next/router' instead of 'next/navigation'
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "@store/slices/authSlice";
+import axios from "axios";
 
 const Navbar = ({ className = "bg-white" }) => {
   const dropdownRef = useRef(null);
@@ -39,12 +40,17 @@ const Navbar = ({ className = "bg-white" }) => {
 
     setShowDropdown(false);
   };
-  function handleLogout() {
-    dispatch(logout());
-    router.push("/login");
+  async function handleLogout() {
+    try {
+      await axios.get("/api/logout");
+      dispatch(logout());
+      router.push("/login");
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
-  console.log("user", auth);
+  console.log("user", document.cookie);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -52,7 +58,7 @@ const Navbar = ({ className = "bg-white" }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
+  const isLoggedIn = document.cookie.includes("token");
   return (
     <>
       <nav className={`z-50 hidden md:block sticky p-5 top-0 ${className}`}>
@@ -181,10 +187,10 @@ const Navbar = ({ className = "bg-white" }) => {
             <button
               className="w-[151px] h-[40px] ml-4 bg-primary text-white  hover:bg-[#4baead] rounded-md"
               onClick={() =>
-                auth.isLoggedIn ? handleLogout() : router.push("/login")
+                isLoggedIn ? handleLogout() : router.push("/login")
               }
             >
-              {auth.isLoggedIn ? "Logout" : "Login"}
+              {isLoggedIn ? "Logout" : "Login"}
             </button>
           </div>
         </div>
@@ -308,8 +314,11 @@ const Navbar = ({ className = "bg-white" }) => {
                 <Link
                   href="/login"
                   className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  onClick={() =>
+                    isLoggedIn ? handleLogout() : router.push("/login")
+                  }
                 >
-                  Login
+                  {isLoggedIn ? "Logout" : "Login"}
                 </Link>
               </li>
             </ul>

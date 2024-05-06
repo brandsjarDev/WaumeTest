@@ -59,7 +59,6 @@ const ProductForm = ({ formData, setFormData }) => {
     if (prodType === "veg") num = formData.veg * 0.011 * ONE_MONTH;
 
     // Round off num to 2 decimal points
-    if (formData.portion == "half") num *= 0.6;
     num = parseFloat(num.toFixed(2));
 
     return num;

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 import "react-toastify/dist/ReactToastify.css";
+import WarningDialog from "./dailogue";
 
 const public_stripe_key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = loadStripe(public_stripe_key);
@@ -25,6 +26,10 @@ export default function CheckoutForm({
   toast,
 }) {
   const [loading, setLoading] = useState(false);
+  const [cancelLoading, setCancelLoading] = useState(false);
+
+  const [open, setOpen] = useState(false);
+
   const isExistingUser = "_id" in formData;
   const handleSubscription = async () => {
     setLoading(true);
@@ -53,7 +58,7 @@ export default function CheckoutForm({
           userData,
         });
       } else {
-        response = await axios.post("/api/payment", {
+        response = await axios.put("/api/payment", {
           stripeData,
           userData,
         });
@@ -70,20 +75,40 @@ export default function CheckoutForm({
           sessionId: session.id,
         });
       }
-      setLoading(false);
     } catch (error) {
       if (error?.response?.status == 400)
         toast.error(error.response.data.error);
       else toast.error("An error occurred. Please try again later.");
       console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
     // }
   };
+
+  async function cancelSubscription() {
+    try {
+      setCancelLoading(true);
+      const response = await axios.post("/api/payment", formData);
+      if (response.status == 200) toast.success(response.data.message);
+      if (response.status == 400) toast.error(response.data.error);
+    } catch (err) {
+      console.log(err);
+      toast.error("An error occurred. Please try again later.");
+    } finally {
+      setCancelLoading(false);
+    }
+  }
+
   const options = { day: "2-digit", month: "long", year: "numeric" };
-  const formattedDate = formData.deliveryDate.toLocaleDateString(
-    "en-GB",
-    options
-  );
+  let formattedDate = "";
+  if (formData.deliveryDate) {
+    formattedDate = new Date(formData.deliveryDate).toLocaleDateString(
+      "en-GB",
+      options
+    );
+  }
+
   return (
     <>
       <div className="w-full">
@@ -227,6 +252,24 @@ export default function CheckoutForm({
               {formData.subscriptionAmt}
             </ThemeButton>
           </div>
+          <div className="flex justify-center md:w-3/4 mt-5 md:mt-10">
+            {formData.subscriptionId && (
+              <ThemeButton
+                onClick={() => setOpen(true)}
+                loading={cancelLoading}
+                size="xl"
+              >
+                Cancel Subscription
+              </ThemeButton>
+            )}
+          </div>
+          <WarningDialog
+            title="Are you sure you want to cancel the subscription?"
+            buttonText="Yes"
+            isOpen={open}
+            setOpen={setOpen}
+            callBack={cancelSubscription}
+          />
         </div>
       </div>
     </>

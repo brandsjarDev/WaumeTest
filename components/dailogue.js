@@ -11,7 +11,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export default function WarningDialog({ isOpen, setOpen, title, content }) {
+export default function WarningDialog({
+  isOpen,
+  setOpen,
+  title,
+  content,
+  buttonText = "Next",
+  callBack = () => {},
+}) {
   return (
     <Dialog open={isOpen} onOpenChange={setOpen}>
       {/* <DialogTrigger asChild>
@@ -24,8 +31,14 @@ export default function WarningDialog({ isOpen, setOpen, title, content }) {
         </DialogHeader>
 
         <DialogFooter>
-          <Button type="submit" onClick={() => setOpen(false)}>
-            Next
+          <Button
+            type="submit"
+            onClick={() => {
+              setOpen(false);
+              callBack();
+            }}
+          >
+            {buttonText}
           </Button>
         </DialogFooter>
       </DialogContent>

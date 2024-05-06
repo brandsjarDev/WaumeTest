@@ -10,6 +10,7 @@ const Card = ({
   active,
   onClick,
   className,
+  price,
   href = "/",
   knowMore = false,
 }) => {
@@ -41,6 +42,11 @@ const Card = ({
           >
             KNOW MORE
           </a>
+        )}
+        {price && (
+          <p className="flex justify-center text-gray-700 text-base mt-2">
+            {price}
+          </p>
         )}
       </div>
     </div>

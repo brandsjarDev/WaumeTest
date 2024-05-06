@@ -35,18 +35,29 @@ function prodTitle(product) {
   return string;
 }
 
-const LoginPage = () => {
-  const [userData, setUserData] = useState({
-    email: "",
-    password: "",
-  });
+const Profile = () => {
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const user = useSelector((state) => state.user.userInfo);
-
-  console.log("Access Token from Redux:", auth.accessToken, user);
-
+  const getUserDetails = async () => {
+    try {
+      const res = await axios.get("/api/form");
+      console.log(res);
+      if (res.status === 200) {
+        await dispatch(setUserInfo(res.data));
+      } else {
+        toast.error("Failed to fetch user details");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to fetch user details");
+    } finally {
+      setLoading(false);
+    }
+  };
+  loading && getUserDetails();
   return (
     <>
       <Navbar />
@@ -56,7 +67,7 @@ const LoginPage = () => {
           My Plan
         </h3>
         <ToastContainer />
-        <div className="relative flex items-center border-2 border-primary rounded-xl w-full md:w-3/4  gap-10 p-5">
+        <div className="relative flex flex-col md:flex-row items-center border-2 border-primary rounded-xl  md:w-3/4  gap-10 m-5 py-8 md:py-5  px-5">
           <Image src={fullBoard} />
           <div className="flex-col h-full space-y-4 justify-around">
             <h1 className="text-3xl mb-4 font-hossRound">
@@ -90,4 +101,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Profile;

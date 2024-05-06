@@ -1,5 +1,5 @@
 import { connectToDB } from "@utils/database";
-import User from "@/models/user";
+import PaidUser from "@/models/paidUser";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -13,7 +13,7 @@ export const POST = async (req, { params }) => {
     console.log(reqBody);
 
     // Check if user with same email exists
-    let user = await User.findOne({ email }).lean();
+    let user = await PaidUser.findOne({ email }).lean(); //convert to js obj
 
     if (!user) {
       return Response.json({ error: "User does not exist" }, { status: 400 });
@@ -51,7 +51,7 @@ export const POST = async (req, { params }) => {
 
     // Set HTTP-only cookie to prevent cross-site-scripting
     response.cookies.set("token", token, {
-      httpOnly: true,
+      httpOnly: false,
     });
 
     return response;

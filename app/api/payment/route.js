@@ -1,14 +1,18 @@
 import Stripe from "stripe";
 import { connectToDB } from "@utils/database";
 import User from "@/models/user";
+import Event from "@/models/event";
+
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { getDataFromToken } from "@helpers/getDataFromToken";
 import sendMail from "@/helpers/mailer"; // Import the sendMail function
 import { getProdName, formatDate } from "@helpers/foodCalc";
+import PaidUser from "@models/paidUser";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
 function getNearestFifthDate() {
   const currentDate = new Date();
 
@@ -16,11 +20,11 @@ function getNearestFifthDate() {
   let currentYear = currentDate.getFullYear();
   const anchorDate = 5;
 
-  if (currentDate.getDate() > anchorDate) {
+  if (currentDate.getDate() >= anchorDate) {
     currentMonth++;
     if (currentMonth === 12) {
-      currentMonth = 0; // January
-      currentYear++; // Increment year
+      currentMonth = 0;
+      currentYear++;
     }
   }
 
@@ -30,11 +34,10 @@ function getNearestFifthDate() {
     anchorDate
   );
 
-  const upcomingFifthDateTimeStamp = upcomingFifthDateOfMonth.getTime() / 1000; // Convert milliseconds to seconds
+  const upcomingFifthDateTimeStamp = upcomingFifthDateOfMonth.getTime() / 1000;
 
   return upcomingFifthDateTimeStamp;
 }
-
 function getCost(prodType, unit, portion, plan) {
   let num = unit;
   if (prodType === "chicken") num *= 0.012;
@@ -42,18 +45,15 @@ function getCost(prodType, unit, portion, plan) {
   if (prodType === "horse") num *= 0.0145;
   if (prodType === "veg") num *= 0.011;
   if (portion == "half") num *= 0.6;
-  console.log(num);
-
-  console.log("num=", num);
 
   if (plan == "Trial Pack") {
     num = 25;
   }
 
   // Round off num to 2 decimal points
-
-  return Number((num * 100).toFixed(2)); // 15345
+  return parseInt(Number(num.toFixed(2)) * 100);
 }
+
 function getProdId(prodType) {
   if (prodType === "horse") return "prod_PwRLvWsLASiXaE";
   if (prodType === "veg") return "prod_PwRLSREjV9mj1A";
@@ -61,15 +61,16 @@ function getProdId(prodType) {
   if (prodType === "beef") return "prod_PxRE6stJDFS19r";
   return "prod_PwSQmvSOeLVfwH";
 }
-export async function POST(req) {
+export async function PUT(req) {
   try {
     await connectToDB();
-    console.log("at POST");
+    console.log("at PUT");
     const obj = await req.json();
     let { name, email, address, unit, prodType, portion, plan } =
       obj.stripeData;
     let userData = obj.userData;
-    const user = await User.findOne({ email });
+    const user = await PaidUser.findOne({ email });
+
     console.log("userData", userData.deliveryDate);
     if (user) {
       return NextResponse.json(
@@ -141,27 +142,10 @@ export async function POST(req) {
     userData.subscriptionId = session?.line_items?.data[0]?.subscription;
     userData.stripeId = customer.id;
     userData.password = hashedPassword;
-    const success = await sendMail(
-      "Order placed successfully",
-      "develop@brandsjar.com",
-      `<p>Hi ${
-        userData.ownerName
-      } , your order for ${plan} plan for ${getProdName(
-        prodType
-      )} is placed successfully, it is estimated to deliver at ${formatDate(
-        userData.deliveryDate
-      )}`
-    );
+    userData.createdAt = new Date();
 
-    if (!success) {
-      // Handle email sending failure
-      return NextResponse.json(
-        { error: "Email sending failed" },
-        { status: 500 }
-      );
-    }
     // res.json({ id: session.id });
-    const newUser = new User(userData);
+    const newUser = new PaidUser(userData);
     const savedUser = await newUser.save();
     console.log("customer", customer.id);
     return NextResponse.json(
@@ -186,11 +170,11 @@ export async function PATCH(req) {
     const obj = await req.json();
     let { email, unit, prodType, portion, plan } = obj.stripeData;
     let userData = obj.userData;
-    const userDataToUpdate = { ...userData }; // Create a copy of userData
+    const userDataToUpdate = { ...userData, updatedAt: new Date() }; // Create a copy of userData
 
     delete userDataToUpdate.password;
     delete userDataToUpdate.email;
-    const user = await User.findOne({ email });
+    const user = await PaidUser.findOne({ email });
 
     const validPassword = await bcryptjs.compare(
       userData.password,
@@ -199,22 +183,15 @@ export async function PATCH(req) {
     if (!validPassword) {
       return Response.json({ error: "Invalid password" }, { status: 400 });
     }
-    const existingCustomers = await stripe.customers.list({
-      email: email,
-      limit: 1,
-    });
-    if (existingCustomers.data.length <= 0)
-      return NextResponse.json({ error: "User not found" }, { status: 400 });
-
-    const customer = existingCustomers.data[0];
 
     const subscriptions = await stripe.subscriptions.list({
-      customer: customer.id,
+      customer: user.stripeId,
     });
     let billingCycleAnchor = getNearestFifthDate();
     if (subscriptions.data.length > 0) {
       let activeSubscriptionId;
       // console.log("data", subscriptions.data);
+
       await Promise.all(
         subscriptions.data.map(async (subscription) => {
           if (subscription.status === "active") {
@@ -276,45 +253,73 @@ export async function PATCH(req) {
           proration_behavior: "none",
         },
       }),
-      customer: customer.id, // Use the customer ID here
+      customer: user.stripeId,
     });
 
     // Save the updated user details
     // const newUser = new User(userData);
     // const savedUser = await newUser.save();
-    await User.updateOne({ email }, { $set: userDataToUpdate });
-    console.log("customer", customer.id);
-    const success = await sendMail(
-      "Plan updated successfully",
-      "develop@brandsjar.com",
-      `<p>Hi ${
-        userData.ownerName
-      } , your order for ${plan} plan for ${getProdName(
-        prodType
-      )} is placed successfully, it is estimated to deliver at ${formatDate(
-        userData.deliveryDate
-      )}`
-    );
-
-    if (!success) {
-      // Handle email sending failure
-      return NextResponse.json(
-        { error: "Email sending failed" },
-        { status: 500 }
-      );
-    }
+    await PaidUser.updateOne({ email }, { $set: userDataToUpdate });
 
     return NextResponse.json(
       {
         id: session.id,
         // user: savedUser,
-        message: "User created",
+        message: "User updated",
         success: true,
       },
       { status: 200 }
     );
   } catch (error) {
     console.error("error! ***", error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+export async function POST(req) {
+  try {
+    let user = await req.json();
+    const email = user.email;
+    console.log(user);
+    const subscription = await stripe.subscriptions.retrieve(
+      user.subscriptionId
+    );
+    console.log("subscription", subscription);
+    await stripe.subscriptions.update(user.subscriptionId, {
+      cancel_at_period_end: true,
+    });
+
+    const updatedUser = await PaidUser.updateOne(
+      { email },
+      { $set: { subscriptionId: "", hasActivePlan: false } }
+    );
+    await PaidUser.updateOne(
+      { email },
+      { $set: { subscriptionId: "", hasActivePlan: false } }
+    );
+
+    const event = {
+      userId: user._id,
+      stripeId: user.stripeId,
+      subscriptionId: "",
+      subscriptionTitle: user.subscriptionTitle,
+      subscriptionAmt: 0,
+      unitPerOrder: 0,
+      updatedAt: new Date(),
+      hasActivePlan: false,
+    };
+    const newEvent = new Event(event);
+    const savedEvent = await newEvent.save();
+
+    console.log(updatedUser);
+    return NextResponse.json(
+      {
+        message:
+          "Subscription cancelled successfully,subscription will end at end of billing cycle",
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error cancelling subscription:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

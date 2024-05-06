@@ -49,6 +49,7 @@ const IllnessForm = ({ formData, setFormData }) => {
 For questions or more information, contact us or ask your veterinarian.
 
 If you have already done this, click 'next' to continue."
+          buttonText="Next"
           isOpen={open}
           setOpen={setOpen}
         />

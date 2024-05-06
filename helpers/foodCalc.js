@@ -64,13 +64,6 @@ function getDeliveryDate() {
 //unitPerOrder
 export function calcFoodWeight(obj) {
   const { fatLevel, weight, active, treat } = obj;
-  console.log(
-    "fatLevel, weight, active, treat",
-    fatLevel,
-    weight,
-    active,
-    treat
-  );
   let kcal = 95 * Math.pow(weight, 0.75);
   if (fatLevel === "high") {
     kcal *= 0.95;
@@ -89,17 +82,21 @@ export function calcFoodWeight(obj) {
   } else if (treat === "normal") {
     kcal *= 0.9;
   }
-  //amt of food according to calories/100g
-  obj.beef = roundToNearestFifty((kcal / 130) * 100);
-  obj.horse = roundToNearestFifty((kcal / 110) * 100);
-  obj.chicken = roundToNearestFifty((kcal / 123) * 100);
-  obj.veg = roundToNearestFifty((kcal / 126) * 100);
-  obj.prodCost = obj.product ? getCost(obj.product, obj) : obj.prodCost;
-  obj.subscriptionAmt = getSubscriptionCost(obj.subscriptionTitle, obj);
-  obj.unitPerOrder = getUnitPerOrder(obj.subscriptionTitle, obj);
-  obj.deliveryDate = getDeliveryDate();
-  //round to nearest 50 gm (ceiling)
-  return obj;
+
+  // Create a new object to avoid modifying the original object
+  const updatedObj = { ...obj };
+
+  // Calculate and assign values to the properties of the new object
+  updatedObj.beef = roundToNearestFifty((kcal / 130) * 100);
+  updatedObj.horse = roundToNearestFifty((kcal / 110) * 100);
+  updatedObj.chicken = roundToNearestFifty((kcal / 123) * 100);
+  updatedObj.veg = roundToNearestFifty((kcal / 126) * 100);
+  updatedObj.prodCost = obj.product ? getCost(obj.product, obj) : obj.prodCost;
+  updatedObj.subscriptionAmt = getSubscriptionCost(obj.subscriptionTitle, obj);
+  updatedObj.unitPerOrder = getUnitPerOrder(obj.subscriptionTitle, obj);
+  updatedObj.deliveryDate = getDeliveryDate();
+
+  return updatedObj;
 }
 
 export const initialValue = {
@@ -141,6 +138,7 @@ export const initialValue = {
   productId: "",
   unitPerOrder: "",
   deliveryDate: "",
+  hasActivePlan: false,
 };
 //   password: "",
 //   confirmPassword: "",

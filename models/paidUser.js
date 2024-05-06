@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+const paidUserSchema = new mongoose.Schema({
   stripeId: {
     type: String,
     default: "",
@@ -109,11 +109,6 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please provide country"],
     default: "",
   },
-  subscriptionId: {
-    type: String,
-    required: false,
-    default: "",
-  },
 
   subscriptionTitle: {
     type: String,
@@ -122,10 +117,6 @@ const userSchema = new mongoose.Schema({
   subscriptionAmt: {
     type: Number,
     required: [true, "Please provide an amount"],
-  },
-  unitPerOrder: {
-    type: Number,
-    required: [true, "Please provide an unitPerOrder"],
   },
   zipcode: {
     type: String,
@@ -163,6 +154,16 @@ const userSchema = new mongoose.Schema({
   //   type: Boolean,
   //   default: false,
   // },
+  unitPerOrder:{
+    type: Number,
+    required: [true, "Please provide an unitPerOrder"],
+  },
+  subscriptionId: {
+    type: String,
+    required: false,
+    default: "",
+  },
+
   createdAt: {
     type: Date,
     required: true,
@@ -175,6 +176,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const User = mongoose.models.users || mongoose.model("users", userSchema);
+const PaidUser =
+  mongoose.models.PaidUser || mongoose.model("PaidUser", paidUserSchema);
 
-export default User;
+export default PaidUser;

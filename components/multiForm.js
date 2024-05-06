@@ -21,6 +21,8 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import userSlice from "@store/slices/userSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { setUserInfo } from "@store/slices/userSlice";
+import axios from "axios";
 
 const public_stripe_key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = loadStripe(public_stripe_key);
@@ -48,8 +50,9 @@ const validationArr = [
       msg: "illness if not select none",
     },
   ],
-  [{ feild: "portion", type: "singlecard", msg: "portion" }],
   [{ feild: "product", type: "singlecard", msg: "product" }],
+  [{ feild: "portion", type: "singlecard", msg: "portion" }],
+
   [{ feild: "subscriptionTitle", type: "singlecard", msg: "subscription" }],
   [
     { feild: "email", type: "text", msg: "email" },
@@ -92,9 +95,10 @@ function getStepContent(step, formData, setFormData, validate, toast) {
       return <IllnessForm formData={formData} setFormData={setFormData} />;
 
     case 7:
-      return <PortionForm formData={formData} setFormData={setFormData} />;
-    case 8:
       return <ProductForm formData={formData} setFormData={setFormData} />;
+    case 8:
+      return <PortionForm formData={formData} setFormData={setFormData} />;
+
     case 9:
       return <SubscriptionForm formData={formData} setFormData={setFormData} />;
     case 10:
@@ -119,9 +123,10 @@ const LinaerStepper = () => {
 
   const [activeStep, setActiveStep] = useState(0);
   const [stepper, setStepper] = useState(1);
+  const [loading, setLoading] = useState(true);
   const [shouldLoadHorizontalStepper, setShouldLoadHorizontalStepper] =
     useState(false);
-  const [formData, setFormData] = useState({ ...initialValue, ...user });
+  const [formData, setFormData] = useState({ ...user, ...initialValue });
 
   useEffect(() => {
     if (window.innerWidth < 768) {
@@ -129,16 +134,27 @@ const LinaerStepper = () => {
     }
   }, []);
 
+  const getUserDetails = async () => {
+    try {
+      const res = await axios.get("/api/form");
+      if (res.status === 200) {
+        await dispatch(setUserInfo(res.data));
+
+        setFormData(res.data);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
   console.log("formData", formData);
 
   function validate() {
-    // console.log(activeStep);
-    // toast.error(`Please enter asd`);
     for (let i = 0; i < validationArr[activeStep].length; i++) {
       const item = validationArr[activeStep][i];
 
       if (item.type === "text" && !formData[item.feild]) {
-        // console.log(!formData[item.feild]);
         toast.error(`Please enter ${item.msg}`);
         return false;
       }
@@ -175,7 +191,7 @@ const LinaerStepper = () => {
     }
     setActiveStep(activeStep - 1);
   };
-
+  loading && getUserDetails();
   return (
     <div className="flex-row w-full mb-5 max-w-[1440px]">
       <ToastContainer />
