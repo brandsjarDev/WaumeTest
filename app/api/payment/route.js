@@ -69,7 +69,7 @@ export async function PUT(req) {
     let { name, email, address, unit, prodType, portion, plan } =
       obj.stripeData;
     let userData = obj.userData;
-    const user = await PaidUser.findOne({ email });
+    const user = await User.findOne({ email });
 
     console.log("userData", userData.deliveryDate);
     if (user) {
@@ -145,7 +145,7 @@ export async function PUT(req) {
     userData.createdAt = new Date();
 
     // res.json({ id: session.id });
-    const newUser = new PaidUser(userData);
+    const newUser = new User(userData);
     const savedUser = await newUser.save();
     console.log("customer", customer.id);
     return NextResponse.json(
@@ -174,7 +174,7 @@ export async function PATCH(req) {
 
     delete userDataToUpdate.password;
     delete userDataToUpdate.email;
-    const user = await PaidUser.findOne({ email });
+    const user = await User.findOne({ email });
 
     const validPassword = await bcryptjs.compare(
       userData.password,
@@ -259,7 +259,7 @@ export async function PATCH(req) {
     // Save the updated user details
     // const newUser = new User(userData);
     // const savedUser = await newUser.save();
-    await PaidUser.updateOne({ email }, { $set: userDataToUpdate });
+    await User.updateOne({ email }, { $set: userDataToUpdate });
 
     return NextResponse.json(
       {
@@ -288,7 +288,7 @@ export async function POST(req) {
       cancel_at_period_end: true,
     });
 
-    const updatedUser = await PaidUser.updateOne(
+    const updatedUser = await User.updateOne(
       { email },
       { $set: { subscriptionId: "", hasActivePlan: false } }
     );
