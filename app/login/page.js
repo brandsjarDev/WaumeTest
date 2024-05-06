@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
@@ -9,11 +9,14 @@ import { useSelector } from "react-redux";
 import { setUserInfo } from "@store/slices/userSlice";
 import RoundInput from "@components/roundInput";
 import ThemeButton from "@components/themeButton";
-import Navbar from "@components/Nav";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
 import LoginDog from "@public/assets/images/loginDog.png";
+import dynamic from "next/dynamic";
+
+// Importing Navbar dynamically with SSR disabled
+const DynamicNavbar = dynamic(() => import("@components/Nav"), { ssr: false });
 
 const LoginPage = () => {
   const [userData, setUserData] = useState({
@@ -26,8 +29,6 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const user = useSelector((state) => state.user.userInfo);
-
-  console.log("user from Redux:", user);
 
   const handleLogin = async () => {
     try {
@@ -56,7 +57,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <Navbar />
+      <DynamicNavbar />
       <div className="flex justify-center h-full my-10 md:my-20">
         <ToastContainer />
         <div className="flex flex-col items-center w-3/4 md:w-1/2 gap-4">
