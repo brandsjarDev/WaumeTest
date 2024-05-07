@@ -10,9 +10,9 @@ export function middleware(request) {
     path === "/";
 
   const token = request.cookies.get("token")?.value || "";
-  if (isPublicPath && token) {
-    return NextResponse.redirect(new URL("/", request.nextUrl));
-  }
+  // if (isPublicPath && token) {
+  //   return NextResponse.redirect(new URL("/", request.nextUrl));
+  // }
   console.log(
     "isPublicPath, token ***********************8\n\n\n\n\n",
     Boolean(isPublicPath),
