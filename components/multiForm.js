@@ -126,7 +126,7 @@ const LinaerStepper = () => {
   const [loading, setLoading] = useState(true);
   const [shouldLoadHorizontalStepper, setShouldLoadHorizontalStepper] =
     useState(false);
-  const [formData, setFormData] = useState({ ...user, ...initialValue });
+  const [formData, setFormData] = useState(initialValue);
 
   useEffect(() => {
     if (window.innerWidth < 768) {
