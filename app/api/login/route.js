@@ -53,7 +53,7 @@ export const POST = async (req, { params }) => {
     response.cookies.set("token", token, {
       httpOnly: false,
     });
-
+    response.headers.set("Cache-Control", "no-store");
     return response;
   } catch (error) {
     console.error(error);
