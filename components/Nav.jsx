@@ -42,7 +42,8 @@ const Navbar = ({ className = "bg-white" }) => {
   };
   async function handleLogout() {
     try {
-      await axios.get("/api/logout");
+      const res = await axios.get("/api/logout");
+      console.log("res=", res);
       dispatch(logout());
       router.push("/login");
     } catch (error) {
