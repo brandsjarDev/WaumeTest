@@ -7,10 +7,13 @@ import { getDataFromToken } from "@helpers/getDataFromToken";
 
 export const GET = async (req) => {
   try {
+    console.log("at form");
     let user = null;
     if (req.cookies.get("token")) {
       await connectToDB();
       const userId = await getDataFromToken(req);
+      console.log("at form", userId);
+
       user = await PaidUser.findOne({ _id: userId }).select("-password");
       if (!user) {
         return NextResponse.json(
