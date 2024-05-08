@@ -17,12 +17,15 @@ export const GET = async (req) => {
       user = await PaidUser.findOne({ _id: userId }).select("-password");
       if (!user) {
         return NextResponse.json(
-          { message: "User not found" },
+          { message: "User not found if" },
           { status: 404 }
         );
       }
     } else {
-      return NextResponse.json({ message: "User not found" }, { status: 404 });
+      return NextResponse.json(
+        { message: "User not found else", token: req.cookies.get("token") },
+        { status: 404 }
+      );
     }
     return NextResponse.json(user, { status: 200 });
   } catch (error) {
