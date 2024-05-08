@@ -136,7 +136,7 @@ const LinaerStepper = () => {
 
   const getUserDetails = async () => {
     try {
-      const res = await axios.get("/api/form");
+      const res = await axios.post("/api/form");
       if (res.status === 200) {
         await dispatch(setUserInfo(res.data));
 

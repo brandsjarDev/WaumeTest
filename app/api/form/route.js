@@ -5,7 +5,7 @@ import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { getDataFromToken } from "@helpers/getDataFromToken";
 
-export const GET = async (req) => {
+export const POST = async (req) => {
   try {
     console.log("at form");
     let user = null;
