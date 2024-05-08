@@ -299,6 +299,7 @@ export async function POST(req) {
 
     const event = {
       userId: user._id,
+      ownerName: user.ownerName,
       stripeId: user.stripeId,
       subscriptionId: "",
       subscriptionTitle: user.subscriptionTitle,

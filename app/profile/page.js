@@ -50,7 +50,7 @@ const Profile = () => {
 
   const getUserDetails = async () => {
     try {
-      const res = await axios.get("/api/form");
+      const res = await axios.post("/api/form");
       console.log(res);
       if (res.status === 200) {
         await dispatch(setUserInfo(res.data));
