@@ -2,6 +2,7 @@ import React from "react";
 import { getAccordianData } from "@helpers/prodData";
 import Navbar from "@components/Nav";
 import ThemeButton from "@components/themeButton";
+import dynamic from "next/dynamic";
 const ThemeAccordion = dynamic(() => import("@components/themeAccordion"), {
   ssr: false,
 });
