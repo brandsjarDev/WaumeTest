@@ -1,5 +1,5 @@
 "use client";
-import HomeCard from "./homeCard";
+import HomeCard from "./newHomeCard";
 import fullBoard from "@public/assets/images/fullBoardHomePage.png";
 import halfBoard from "@public/assets/images/halfBoardHomePage.png";
 

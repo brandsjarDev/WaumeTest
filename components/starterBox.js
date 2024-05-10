@@ -2,7 +2,7 @@ import ThemeButton from "./themeButton";
 import Sausage from "@public/assets/images/sausage.png";
 import Guide from "@public/assets/images/guide.png";
 import Knife from "@public/assets/images/knife.png";
-import HomeCard from "./homeCard";
+import HomeCard from "./newHomeCard";
 import { cn } from "@lib/utils";
 
 const cardData = [
@@ -41,15 +41,17 @@ const StarterBox = ({ className }) => (
             All animals are in the best condition and vaccinated as always
           </p>
         </div>
-        <ThemeButton size="xl">Get Started</ThemeButton>
+        <a href="/form">
+          {" "}
+          <ThemeButton size="xl">Get Started</ThemeButton>
+        </a>
       </div>
-      <div className="flex flex-col md:flex-row justify-center gap-10">
+      <div className="flex flex-col md:flex-row justify-center gap-5">
         <div>
           <HomeCard
             title="WAUME fresh food"
             content="ready to eat for your dog."
             imageUrl={Sausage}
-            className="md:mb-20"
           />
         </div>
         <div>
@@ -57,7 +59,6 @@ const StarterBox = ({ className }) => (
             title="Guide"
             content="information and tips for changing feed."
             imageUrl={Guide}
-            className="md:mt-20"
           />
         </div>
         <div>
@@ -65,7 +66,6 @@ const StarterBox = ({ className }) => (
             title="Knife"
             content="For easy opening of portions."
             imageUrl={Knife}
-            className="md:mb-20"
           />
         </div>
       </div>

@@ -10,6 +10,8 @@ const ImageRowLayout = ({
   imageUrl = solarpanel,
   reverse = false,
   className,
+  height = 500,
+  width = 500,
 }) => {
   return (
     <div
@@ -26,8 +28,8 @@ const ImageRowLayout = ({
         <Image
           src={imageUrl}
           className=" rounded-2xl"
-          width={500}
-          height={500}
+          width={width}
+          height={height}
         />
       </div>
       <div className="flex justify-center items-center max-w-lg">

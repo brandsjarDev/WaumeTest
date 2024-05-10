@@ -35,7 +35,7 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#A0B77B",
+          DEFAULT: "#9ab874",
           foreground: "hsl(var(--primary-foreground))",
         },
         primaryDark: {
@@ -45,16 +45,20 @@ module.exports = {
           DEFAULT: "#DCF0BE",
         },
         secondary: {
-          DEFAULT: "#FBF2E0",
+          DEFAULT: "#e9e7e5",
           foreground: "hsl(var(--primary-foreground))",
         },
 
         secondaryLight: {
-          DEFAULT: "#FFFAEF",
+          DEFAULT: "#e9e7e5",
           foreground: "hsl(var(--secondary-foreground))",
         },
         secondaryDark: {
-          DEFAULT: "#FBF2E0",
+          DEFAULT: "#e9e7e5",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        softBlack: {
+          DEFAULT: "#323232",
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {

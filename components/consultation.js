@@ -35,12 +35,15 @@ const Consultation = ({ className }) => (
           <br />
           nutritionist and dog mom Beatrix.
         </p>
-        <ThemeButton
-          size="lg"
-          className="w-[180px] md:w-[260px] mt-5 bg-primaryLight text-black"
-        >
-          More about us
-        </ThemeButton>
+        <a href="/aboutUs">
+          {" "}
+          <ThemeButton
+            size="lg"
+            className="w-[180px] md:w-[260px] mt-5 bg-primaryLight text-black"
+          >
+            More about us
+          </ThemeButton>
+        </a>
       </div>
     </div>
     <div className="absolute bottom-0  w-full h-3/4 md:h-1/2 bg-primary rounded-3xl  z-0"></div>

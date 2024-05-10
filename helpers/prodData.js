@@ -12,6 +12,10 @@ import pumpkinProtein from "@public/assets/images/pumpkinProtein.webp";
 import millet from "@public/assets/images/millet.webp";
 import halfBoard from "@public/assets/images/halfBoard.png";
 import fullBoard from "@public/assets/images/fullBoard.png";
+import bellyBuddy from "@public/assets/images/belly-buddy.png";
+import bellyBuddyPlus from "@public/assets/images/belly-buddy-plus.png";
+import movementFreind from "@public/assets/images/movement-friend.png";
+import veggieAmigo from "@public/assets/images/veggie-amigo.png";
 
 export default function getContent(prodName) {
   let obj = {};
@@ -215,22 +219,22 @@ export function getProdData() {
     {
       title: "Movement Friend",
       content: "Beef. Quinoa. Carrot.",
-      imageUrl: fullBoard,
+      imageUrl: movementFreind,
     },
     {
       title: "Belly Buddy",
       content: "Chicken. Oatmeal. Berry.",
-      imageUrl: halfBoard,
+      imageUrl: bellyBuddy,
     },
     {
       title: "Belly Buddy Plus",
       content: "Horse. Oatmeal. Berry.",
-      imageUrl: fullBoard,
+      imageUrl: bellyBuddyPlus,
     },
     {
       title: "Veggie Amigo",
       content: "Egg. Pumpkin Seed Protein. Pumpkin.",
-      imageUrl: halfBoard,
+      imageUrl: veggieAmigo,
     },
   ];
   return products;

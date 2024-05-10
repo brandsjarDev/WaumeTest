@@ -18,6 +18,7 @@ import starterpacket from "@public/assets/images/starterpacket.png";
 import ThemeButton from "@components/themeButton";
 import Accordions from "@components/howItWorks/accordions";
 import dynamic from "next/dynamic";
+import Lagern from "@public/assets/images/Lagern.png";
 
 // Importing components dynamically with SSR disabled
 const DynamicNavbar = dynamic(() => import("@components/Nav"), { ssr: false });
@@ -57,10 +58,8 @@ const Page = () => {
       <DynamicNavbar />
       <div className="">
         <Image src={howitworks} style={{ objectFit: "fill" }} />
-        <DynamicHowItWorks />
-        <DynamicWave />
-        <DynamicOtherProducts title={title} className="bg-secondary md:py-0" />
-        <div className="flex bg-secondary h-24 rounded-b-[70%]"></div>
+        <DynamicHowItWorks className="bg-secondary" />
+        <DynamicOtherProducts title={title} className="md:p y-0" />
         <DynamicNutritionNeeds />
         <ImageRowLayout imageUrl={threesausage}>
           <div className="flex flex-col justify-start gap-5">
@@ -79,7 +78,7 @@ const Page = () => {
         <DynamicWave />
         <div className="bg-secondaryLight">
           <ImageRowLayout
-            imageUrl={threesausage}
+            imageUrl={Lagern}
             reverse
             className="bg-secondaryDark"
           >
@@ -104,14 +103,11 @@ const Page = () => {
             <p className="text-slate-500 leading-8">
               EUR 25.00 (Including 13% VAT) + Shipping Cost
             </p>
-            <div>
+            <a href="/form">
               <ThemeButton size="xl">Add to cart</ThemeButton>
-            </div>
+            </a>
           </div>
         </ImageRowLayout>
-        <h2 className="text-2xl md:text-4xl text-center font-hossRound  mt-10 md:mt-20">
-          Frequently Asked Questions
-        </h2>
         <DynamicAccordions />
         {/* <Hero />
         <NutritionNeeds />

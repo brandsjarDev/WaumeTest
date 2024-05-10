@@ -16,11 +16,11 @@ const HumanFood = () => {
             <br /> to feeding your
             <br /> dog human food
           </h1>
-          <div className="flex justify-center">
+          <a href="/form" className="flex justify-center">
             <ThemeButton size="lg" className="bg-[#53A2A4]">
               Get Started
             </ThemeButton>
-          </div>
+          </a>
         </div>
       </div>
     </div>

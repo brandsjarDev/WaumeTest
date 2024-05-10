@@ -1,0 +1,72 @@
+/*
+Theme Name: Salient Child Theme
+Description: This is a custom child theme for Salient
+Theme URI:   https://themeforest.net/item/salient-responsive-multipurpose-theme/4363266
+Author: Peter Waltl
+Author URI:  https://themeforest.net/user/themenectar
+Template: salient
+Version: 1.0
+*/
+
+
+
+/* key-visual */
+
+.key-visual{
+	position: fixed;
+	bottom: 24px;
+	right: 24px;
+	width: 86px;
+	height: 86px;
+	background-color: transparent;
+	background-image: url('https://waume.waltl.at/wp-content/uploads/2023/04/waume-keyvisual.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	pointer-events: none;
+	z-index: 99;
+	z-index: 1;
+	transition: bottom 0.3s ease;
+	animation: fadeInFromBottom 1800ms ease-out;
+	-webkit-animation: fadeInFromBottom 1800ms ease-out;
+	-moz-animation: fadeInFromBottom 1800ms ease-out;
+	-o-animation: fadeInFromBottom 1800ms ease-out;
+	-ms-animation: fadeInFromBottom 1800ms ease-out;
+}
+@media screen and (max-width: 1670px) and (min-width: 1301px){
+	.key-visual{
+		bottom: 18px;
+		right: 18px;
+		width: 68px;
+		height: 68px;
+	}
+}
+@media screen and (max-width: 1300px){
+	.key-visual{
+		bottom: 12px;
+		right: 12px;
+		width: 48px;
+		height: 48px;
+	}
+}
+
+@keyframes fadeInFromBottom {
+	0% {opacity:0;transform:translateY(40px) rotate(-90deg);}
+	100% {opacity:1;transform:translateY(0px) rotate(0deg);}
+}
+@keyframes fadeInHalf {
+	0% {opacity:0;}
+	100% {opacity:0.65;}
+}
+
+.an-cookie-banner-active .key-visual{
+	bottom: 100px;
+}
+
+@media screen and (max-width: 1000px){
+	.an-cookie-banner-active .key-visual{
+		bottom: 182px;
+	}
+		
+
+

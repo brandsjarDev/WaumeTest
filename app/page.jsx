@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { CssBaseline, Container, Paper, Box } from "@material-ui/core";
-
 // Dynamically import components with SSR disabled
 const DynamicNavbar = dynamic(() => import("@components/Nav"), { ssr: false });
 const DynamicHero = dynamic(() => import("@components/hero"), { ssr: false });
@@ -25,7 +24,10 @@ const DynamicTestimonials = dynamic(() => import("@components/testimonial"), {
 const DynamicFreshFood = dynamic(() => import("@components/freshFood"), {
   ssr: false,
 });
-
+const DynamicAccordions = dynamic(
+  () => import("@components/howItWorks/accordions"),
+  { ssr: false }
+);
 const Home = () => {
   useEffect(() => {
     // Add any initialization logic here
@@ -35,8 +37,7 @@ const Home = () => {
     <>
       <CssBaseline />
       <div className="bg-[#fafafa]">
-        {/* Render dynamically imported components */}
-        <DynamicNavbar className="bg-secondaryLight" />
+        <DynamicNavbar />
         <DynamicHero />
         <DynamicNutritionNeeds />
         <DynamicHowItWorks />
@@ -44,6 +45,7 @@ const Home = () => {
         <DynamicConsultation />
         <DynamicTestimonials />
         <DynamicFreshFood />
+        <DynamicAccordions more />
       </div>
     </>
   );

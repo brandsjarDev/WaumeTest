@@ -16,11 +16,11 @@ const OtherProducts = ({
     <>
       <div
         className={cn(
-          "flex flex-col gap-10 md:gap-20 py-20 md:py-40 px-5",
+          "flex flex-col gap-10 md:gap-20 py-10 md:py-20 px-5",
           className
         )}
       >
-        <h1 className="flex justify-center text-center text-2xl md:text-4xl  font-hossRound">
+        <h1 className=" text-center text-2xl md:text-4xl  font-hossRound">
           {title}
         </h1>
         <div>
@@ -31,7 +31,7 @@ const OtherProducts = ({
                 title={item.title}
                 content={item.content}
                 imageUrl={item.imageUrl}
-                className="text-center"
+                className="text-center bg-secondary "
                 knowMore
               />
             ))}

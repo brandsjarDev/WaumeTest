@@ -19,7 +19,7 @@ const FreshIngridients = ({ prodName }) => {
                 title={item.title}
                 content={item.content}
                 imageUrl={item.imageUrl}
-                className="text-center border-primary border-[1px]"
+                className="text-center border-[1px]"
               />
             ))}
           </div>

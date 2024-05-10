@@ -12,7 +12,7 @@ const ThemeButton = ({
 }) => {
   return (
     <Button
-      className={`flex justify-center bg-primary hover:bg-primaryDark text-white  rounded-[14px]  ${className}`}
+      className={`flex justify-center bg-primary hover:border-2 hover:border-primary hover:bg-white text-white hover:text-black  rounded-[14px]  ${className}`}
       onClick={onClick}
       disabled={disabled || loading}
       size={size}

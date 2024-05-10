@@ -1,6 +1,10 @@
 import React from "react";
-import ThemeAccordion from "@components/themeAccordion";
 import { getAccordianData } from "@helpers/prodData";
+import Navbar from "@components/Nav";
+import ThemeButton from "@components/themeButton";
+const ThemeAccordion = dynamic(() => import("@components/themeAccordion"), {
+  ssr: false,
+});
 
 const accordianData = [
   {
@@ -20,19 +24,33 @@ const accordianData = [
   },
 ];
 
-const Accordions = ({ data = accordianData }) => (
+const Accordions = ({
+  title = "Frequently Asked Questions",
+  data = accordianData,
+  more = false,
+}) => (
   <>
+    {" "}
+    <h2 className="text-2xl md:text-4xl text-center  mt-10 md:mt-16  ">
+      {title}
+    </h2>
     <div className="flex flex-col justify-center items-center  gap-10 md:gap-15 py-10 md:py-20 px-5">
       <div className="flex flex-col justify-center w-3/4 items-center  text-lg gap-5 md:gap-10">
         {data.map((item) => (
           <ThemeAccordion
             title={item.title}
             content={item.content}
-            className="bg-primary text-white rounded-xl px-5 md:px-10"
+            className="bg-secondary rounded-xl px-5 md:px-10"
           />
         ))}
       </div>
-    </div>{" "}
+      {more && (
+        <a href="faq">
+          {" "}
+          <ThemeButton size="xl">More FAQ's</ThemeButton>
+        </a>
+      )}
+    </div>
   </>
 );
 
