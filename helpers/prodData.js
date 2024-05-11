@@ -16,15 +16,29 @@ import bellyBuddy from "@public/assets/images/belly-buddy.png";
 import bellyBuddyPlus from "@public/assets/images/belly-buddy-plus.png";
 import movementFreind from "@public/assets/images/movement-friend.png";
 import veggieAmigo from "@public/assets/images/veggie-amigo.png";
+import bellyBuddyProd from "@public/assets/images/BellyBuddy.jpg";
+import bellyBuddyMoblieProd from "@public/assets/images/bellyBuddyMobile.jpg";
+import bellyBuddyPlusProd from "@public/assets/images/bellyBuddyPlus.jpg";
+import bellyBuddyPlusMoblieProd from "@public/assets/images/bellyBuddyPlusMobile.jpg";
+import movementFriendProd from "@public/assets/images/movementFriend.png";
+import movementFriendMobile from "@public/assets/images/movementFriendMobile.jpg";
+import veggieAmigoProd from "@public/assets/images/veggieAmigo.jpg";
+import veggieAmigoMobile from "@public/assets/images/veggieAmigoMobile.jpg";
+import movementFreindProd from "@public/assets/images/movement-friend.png";
 
 export default function getContent(prodName) {
   let obj = {};
   obj.title = "Movement Friend";
+  obj.img = movementFriendProd;
+  obj.mobileImg = movementFriendMobile;
   obj.ingredients = "Beef with quinoa, carrots and peas";
   obj.description =
     "WAUME Movement Friend with beef provides your four-legged friend with all the important nutrients to lead a long, active dog life. Because running and jumping are just fun. Movement Friend is a complete food for adult dogs.";
   if (prodName == "Belly-Buddy") {
     obj.title = "Belly Buddy";
+    obj.img = bellyBuddyProd;
+    obj.mobileImg = bellyBuddyMoblieProd;
+
     obj.ingredients = "Oat with oat flakes, carrots and berries";
     obj.description =
       "Waume Belly Buddy with chicken is an easily digestible and well-tolerated dog food. This means that even sensitive four-legged friends are prepared for all adventures. Belly Buddy is a complete food for adult dogs.";
@@ -34,12 +48,16 @@ export default function getContent(prodName) {
     obj.ingredients = "Horse meat with oat flakes, carrots and berries";
     obj.description =
       "WAUME Belly Buddy Plus with horse muscle meat is particularly easy to digest and digestible. This means that even picky furry friends will get their taste for something. Belly Buddy Plus is a delicious complete food for adult dogs.";
+    obj.img = bellyBuddyPlusProd;
+    obj.mobileImg = bellyBuddyPlusMoblieProd;
   }
   if (prodName == "Veggies-Amigo") {
     obj.title = "Veggies Amigo";
     obj.ingredients = "Vegetarian menu with egg and pumpkin seed protein";
     obj.description =
       "Go Veggie, go Veggie Amigo - the meatless alternative for your furry friend. An easily digestible, low-purine and wholesome meal to provide your four-legged friend with all the important nutrients. The Veggie Amigo is a complete vegetarian food for adult dogs.";
+    obj.img = veggieAmigoProd;
+    obj.mobileImg = veggieAmigoMobile;
   }
 
   return obj;

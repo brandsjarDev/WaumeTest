@@ -9,6 +9,10 @@ import StarterBox from "@components/starterBox";
 import Consultation from "@components/consultation";
 import starterpacket from "@public/assets/images/starterpacket.png";
 import deadDog from "@public/assets/images/deadDog.png";
+import peter from "@public/assets/images/peter.png";
+import luna from "@public/assets/images/luna.png";
+import thaddeus from "@public/assets/images/thaddeus.png";
+import bea from "@public/assets/images/bea.png";
 import team from "@public/assets/images/team.png";
 import ThemeButton from "@components/themeButton";
 import Village from "@public/assets/images/village.png";
@@ -133,28 +137,24 @@ text-xs  md:text-sm text-slate-500 gap-5"
           <ImageRowLayout imageUrl={team} className="">
             <div className="h-[750px] flex-col justify-around content-around gap-10">
               <TeamMember
-                imageSrc={aboutUsHero}
+                imageSrc={bea}
                 name="Bea"
-                description="A creative mind with great attention to detail. Canine
-                    nutritionist and nutritionist"
+                description="A creative mind with great attention to detail. Canine nutritionist and nutritionist"
               />
               <TeamMember
-                imageSrc={aboutUsHero}
-                name="Bea"
-                description="A creative mind with great attention to detail. Canine
-                  nutritionist and nutritionist"
+                imageSrc={thaddeus}
+                name="Squidward"
+                description="A lateral thinker, WAUME sous chef and dog dad"
               />
               <TeamMember
-                imageSrc={aboutUsHero}
-                name="Bea"
-                description="A creative mind with great attention to detail. Canine
-                nutritionist and nutritionist"
+                imageSrc={peter}
+                name="Peter"
+                description="A go-getter, Chef de Cuisine and Dogdad of 4"
               />
               <TeamMember
-                imageSrc={aboutUsHero}
-                name="Bea"
-                description="A creative mind with great attention to detail. Canine
-              nutritionist and nutritionist"
+                imageSrc={luna}
+                name="Luna"
+                description="CPCO- Chief Plate Cleaning Officer and Head of Taste-Testing, the secret boss of WAUME"
               />
             </div>
           </ImageRowLayout>

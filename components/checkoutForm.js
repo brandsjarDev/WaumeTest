@@ -90,7 +90,10 @@ export default function CheckoutForm({
     try {
       setCancelLoading(true);
       const response = await axios.post("/api/payment", formData);
-      if (response.status == 200) toast.success(response.data.message);
+      if (response.status == 200) {
+        toast.success(response.data.message);
+        setFormData({ ...formData, subscriptionId: "" });
+      }
       if (response.status == 400) toast.error(response.data.error);
     } catch (err) {
       console.log(err);

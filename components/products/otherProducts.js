@@ -24,14 +24,14 @@ const OtherProducts = ({
           {title}
         </h1>
         <div>
-          <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-15">
+          <div className="flex flex-col md:flex-row justify-center gap-10 md:gap-15">
             {products.map((item, index) => (
               <Card
                 key={index}
                 title={item.title}
                 content={item.content}
                 imageUrl={item.imageUrl}
-                className="text-center bg-secondary "
+                className="text-center bg-secondary max-w-[346px] md:w-[346px]"
                 knowMore
               />
             ))}
