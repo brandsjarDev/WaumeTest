@@ -3,8 +3,12 @@ import React, { useState } from "react";
 
 const Checkbox = ({ value, setValue }) => {
   // State to manage the checked 1state of the checkbox
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked1, setIsChecked1] = useState(
+    value.parkingPermit == "Park in front of my front door"
+  );
+  const [isChecked2, setIsChecked2] = useState(
+    value.parkingPermit == "Collection station/branch of he Austrian Post"
+  );
 
   // Function to handle changes to the checkbox state
   const handleCheckboxChange1 = (event) => {
