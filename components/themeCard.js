@@ -10,6 +10,7 @@ const Card = ({
   active,
   onClick,
   className,
+  mainIngredient,
   price,
   href = "/",
   knowMore = false,
@@ -28,11 +29,17 @@ const Card = ({
           <Image src={imageUrl ? imageUrl : FoodImage} alt={title} />
         )}
       </div>
-      <div className="flex-col justify-center">
-        <div className="flex justify-center font-hossRound  text-xl my-5">
+      <div className="flex-col justify-center gap-5">
+        <div className="flex justify-center font-hossRound  text-xl mt-5">
           {title}
         </div>
-        <p className="flex justify-center text-gray-700 text-base">{content}</p>
+        {mainIngredient && (
+          <p className="text-center text-gray-700 text-xs md:text-sm my-2">
+            {mainIngredient}
+          </p>
+        )}
+        <p className="text-center text-gray-700 text-base">{content}</p>
+
         {knowMore && (
           <a
             href={href}

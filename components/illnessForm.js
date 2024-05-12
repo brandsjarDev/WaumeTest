@@ -14,14 +14,17 @@ const illness = [
 const IllnessForm = ({ formData, setFormData }) => {
   const [open, setOpen] = useState(false);
   const handleSelect = (selectedIllness) => {
-    if (selectedIllness != "None") setOpen(true);
     if (formData.illness.includes(selectedIllness)) {
       const updatedIllness = formData.illness.filter(
         (item) => item !== selectedIllness
       );
       setFormData({ ...formData, illness: updatedIllness });
+    } else if (formData.illness.includes("None") || selectedIllness == "None") {
+      setFormData({ ...formData, illness: ["None"] });
+      return;
     } else {
       const updatedIllness = [...formData.illness, selectedIllness];
+      if (selectedIllness != "None") setOpen(true);
       setFormData({ ...formData, illness: updatedIllness });
     }
   };

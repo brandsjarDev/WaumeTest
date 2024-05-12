@@ -47,7 +47,7 @@ function getCost(prodType, unit, portion, plan) {
   if (portion == "half") num *= 0.6;
 
   if (plan == "Trial Pack") {
-    num = 25;
+    num = 15;
   }
 
   // Round off num to 2 decimal points

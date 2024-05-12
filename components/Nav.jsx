@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation"; // Import from 'next/router' instea
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "@store/slices/authSlice";
 import axios from "axios";
+import "@styles/google-translate.css";
+import { LanguageSwitcher } from "./langSwitcher";
 
 const Navbar = ({ className = "bg-white" }) => {
   const dropdownRef = useRef(null);
@@ -14,7 +16,26 @@ const Navbar = ({ className = "bg-white" }) => {
   const dispatch = useDispatch();
   const [showDropdown, setShowDropdown] = useState(false);
   const auth = useSelector((state) => state.auth);
+  ///g translate//
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.async = true;
+    document.body.appendChild(script);
 
+    window.googleTranslateElementInit = () => {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          includedLanguages: "de",
+          // layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        },
+        "google_translate_element"
+      );
+    };
+  }, []);
+  ////////////////////
   const toggleNavbar = () => {
     const navbar = document.getElementById("navbar-default");
     navbar.classList.toggle("hidden");
@@ -93,7 +114,7 @@ const Navbar = ({ className = "bg-white" }) => {
                 <li>
                   <Link
                     href="#"
-                    className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                    className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                     aria-current="page"
                   >
                     Home
@@ -102,7 +123,7 @@ const Navbar = ({ className = "bg-white" }) => {
                 <li>
                   <Link
                     href="/howItWorks"
-                    className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                    className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                     onClick={() => console.log("hii")}
                   >
                     How it works
@@ -111,7 +132,7 @@ const Navbar = ({ className = "bg-white" }) => {
                 <li className="relative parent">
                   <a
                     href="#"
-                    className="flex justify-between md:inline-flex items-center hover:bg-gray-50 space-x-2"
+                    className="flex justify-between md:inline-flex items-center hover:bg-gray-50 space-x-2 mt-1"
                   >
                     <span>Products</span>
                     <svg
@@ -160,7 +181,7 @@ const Navbar = ({ className = "bg-white" }) => {
                 <li>
                   <Link
                     href="/preparation"
-                    className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                    className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                   >
                     Preparation
                   </Link>
@@ -168,7 +189,7 @@ const Navbar = ({ className = "bg-white" }) => {
                 <li>
                   <Link
                     href="/aboutUs"
-                    className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                    className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                   >
                     About Us
                   </Link>
@@ -176,14 +197,22 @@ const Navbar = ({ className = "bg-white" }) => {
                 <li>
                   <Link
                     href="/faq"
-                    className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                    className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                   >
                     FAQ
                   </Link>
                 </li>
+                <li>
+                  <div
+                    id="google_translate_element"
+                    // className="w-10 h-2"
+                    // style={{ height: "20px" }}
+                  ></div>
+                </li>
               </ul>
             </div>
           </div>
+
           <div className="flex justify-evenly">
             <button
               className="w-[151px] h-[40px] ml-4 bg-primary text-white  hover:bg-[#4baead] rounded-md"
@@ -236,7 +265,7 @@ const Navbar = ({ className = "bg-white" }) => {
               <li>
                 <Link
                   href="#"
-                  className="block py-2 px-3  text-white bg-primary rounded md:bg-transparent md:text-blue-700 md:p-0 "
+                  className="block py-2 px-3  text-white bg-primary rounded md:bg-transparent md:text-blue-700 md:p-0 mt-1 "
                   aria-current="page"
                 >
                   Home
@@ -245,7 +274,7 @@ const Navbar = ({ className = "bg-white" }) => {
               <li>
                 <Link
                   href=""
-                  className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                   onClick={() => console.log("hii")}
                 >
                   How it works
@@ -256,7 +285,9 @@ const Navbar = ({ className = "bg-white" }) => {
                 onMouseLeave={handleMouseLeave}
               >
                 <div className="relative">
-                  <a className="block py-2 px-3 rounded md:p-0">Products</a>
+                  <a className="block py-2 px-3 rounded md:p-0 mt-1">
+                    Products
+                  </a>
                   {showDropdown && (
                     <div className="absolute z-10 mt-2 bg-white border border-gray-200 rounded-md shadow-lg">
                       <Link
@@ -290,7 +321,7 @@ const Navbar = ({ className = "bg-white" }) => {
               <li>
                 <Link
                   href="#"
-                  className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                 >
                   Preparation
                 </Link>
@@ -298,7 +329,7 @@ const Navbar = ({ className = "bg-white" }) => {
               <li>
                 <Link
                   href="#"
-                  className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                 >
                   About Us
                 </Link>
@@ -306,7 +337,7 @@ const Navbar = ({ className = "bg-white" }) => {
               <li>
                 <Link
                   href="#"
-                  className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                 >
                   FAQ
                 </Link>
@@ -314,7 +345,7 @@ const Navbar = ({ className = "bg-white" }) => {
               <li>
                 <Link
                   href="/login"
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                   onClick={() =>
                     isLoggedIn ? handleLogout() : router.push("/login")
                   }

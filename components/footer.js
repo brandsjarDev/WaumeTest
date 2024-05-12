@@ -15,22 +15,15 @@ const Footer = () => {
             <li className="mb-5 text-lg">
               <a href="/howItWorks">How it works</a>
             </li>
-            <li>
-              <a href="/recipes">Recipes</a>
-            </li>
+            <li></li>
             <li>
               <a href="/preparation">Preparation</a>
-            </li>
-            <li>
-              <a href="/blogs">Blogs</a>
             </li>
           </ul>
 
           {/* Second List */}
           <ul className="space-y-5 mt-10 md:mt-0">
-            <li className="mb-5 text-lg">
-              <a href="/blogs">Blogs</a>
-            </li>
+            <li className="mb-5 text-lg">Products</li>
             <li>
               <a href="/products/Movement-Friend">Movement Friend</a>
             </li>
@@ -47,9 +40,7 @@ const Footer = () => {
 
           {/* Third List */}
           <ul className="space-y-5 mt-10 md:mt-0">
-            <li className="mb-5 text-lg">
-              <a href="/support">Support</a>
-            </li>
+            <li className="mb-5 text-lg">Support</li>
             <li>
               <a href="/faq">FAQ</a>
             </li>
@@ -64,19 +55,19 @@ const Footer = () => {
           {/* Fourth List */}
           <ul className="space-y-5 mt-10 md:mt-0">
             <li className="mb-5 text-lg">
-              <a href="/company">Company</a>
+              <a href="">Company</a>
             </li>
             <li>
               <a href="/aboutUs">About Us</a>
             </li>
             <li>
-              <a href="/data">Data</a>
+              <a href="">Data</a>
             </li>
             <li>
               <a href="/TnC">Terms of Service</a>
             </li>
             <li>
-              <a href="/protection">Protection</a>
+              <a href="">Protection</a>
             </li>
           </ul>
         </div>

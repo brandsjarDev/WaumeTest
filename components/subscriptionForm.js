@@ -40,7 +40,7 @@ const SubscriptionForm = ({ formData, setFormData }) => {
   function getContent(step) {
     switch (step) {
       case 0:
-        return "Eur 25";
+        return "Eur 15";
       case 1:
         return `Eur ${getCost(step)}`;
       case 2:
@@ -57,7 +57,7 @@ const SubscriptionForm = ({ formData, setFormData }) => {
   function getCost(step) {
     switch (step) {
       case 0:
-        return 25;
+        return 15;
       case 1:
         return formData.prodCost;
       case 2:

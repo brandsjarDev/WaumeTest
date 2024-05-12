@@ -11,7 +11,7 @@ const Stepper = ({ currentStep, steps }) => {
 
   return (
     <>
-      <div className="h-[350px]">
+      <div className="h-[350px] md:text-4xl">
         {steps?.map((step, i) => (
           <div
             key={i}

@@ -11,9 +11,10 @@ const ONE_MONTH = 31;
 
 const products = [
   {
-    title: "Movement Friend",
+    title: "Movement Friend ",
+    mainIngredient: "(Beef)",
     name: "beef",
-    allergyName: "Poultry",
+    allergyName: "Beef",
     content: "EUR 111.11/ Month",
     imageUrl: bellyBuddy,
     active: true,
@@ -21,23 +22,25 @@ const products = [
   },
   {
     title: "Belly Buddy",
+    mainIngredient: "(Chicken)",
     name: "chicken",
-    allergyName: "Beef",
+    allergyName: "Poultry",
     content: "EUR 111.11/ Month",
     imageUrl: bellyBuddyPlus,
     href: "/products/Belly-Buddy",
   },
   {
-    title: "Belly Buddy Plus",
+    title: "Belly Buddy Plus ",
+    mainIngredient: "(Horse)",
     name: "horse",
     allergyName: "Horse",
     href: "/products/Belly-Buddy-Plus",
-
     content: "EUR 111.11/ Month",
     imageUrl: movementFreind,
   },
   {
     title: "Veggie Amigo",
+    mainIngredient: "(Veg)",
     name: "veg",
     allergyName: "Vegetable Protein",
     href: "/products/Veggie-Amigo",
@@ -82,6 +85,7 @@ const ProductForm = ({ formData, setFormData }) => {
             key={index}
             title={item.title}
             content={`EUR ${getCost(item.name)}/ Month`}
+            mainIngredient={item.mainIngredient}
             imageUrl={item.imageUrl}
             active={formData.product == item.name}
             knowMore

@@ -5,16 +5,20 @@ const allergies = [
   "Horse",
   "Beef",
   "Poultry",
-  "No",
   "Vegetable Protein",
   "Insect Protein",
   "Millet",
   "Quinoa",
   "Oatmeal",
+  "No",
 ];
 
 const AllergyForm = ({ formData, setFormData }) => {
   const handleSelect = (allergy) => {
+    if (formData.allergies.includes("No") || allergy == "No") {
+      setFormData({ ...formData, allergies: ["No"] });
+      return;
+    }
     if (!formData.allergies.includes(allergy)) {
       const updatedAllergies = [...formData.allergies, allergy];
       setFormData({ ...formData, allergies: updatedAllergies });

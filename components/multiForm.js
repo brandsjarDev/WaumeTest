@@ -22,6 +22,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import userSlice from "@store/slices/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { setUserInfo } from "@store/slices/userSlice";
+import WarningDialog from "./dailogue";
 import axios from "axios";
 
 const public_stripe_key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
@@ -32,7 +33,10 @@ const validationArr = [
     { feild: "ownerName", type: "text", msg: "name" },
     { feild: "dogName", type: "text", msg: "Pet's Name" },
   ],
-  [{ feild: "weight", type: "text", msg: "weight" }],
+  [
+    { feild: "weight", type: "text", msg: "weight" },
+    { feild: "age", type: "text", msg: "age" },
+  ],
   [{ feild: "fatLevel", type: "singlecard", msg: "an option" }],
   [{ feild: "active", type: "singlecard", msg: "an option" }],
   [{ feild: "treat", type: "singlecard", msg: "an option" }],
@@ -71,6 +75,19 @@ function validateEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
+function validateAge(dateOfBirth) {
+  if (
+    !(new Date(dateOfBirth) instanceof Date) ||
+    isNaN(new Date(dateOfBirth).getTime())
+  ) {
+    return true;
+  }
+  const oneYearAgo = new Date();
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+
+  return dateOfBirth <= oneYearAgo;
+}
+
 function getSteps() {
   return ["Me", "My Dog", "Plan", "Checkout"];
 }
@@ -120,7 +137,7 @@ const LazyHorizontalStepper = React.lazy(() => import("./horizontalStepper"));
 const LinaerStepper = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.userInfo);
-
+  const [open, setOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [stepper, setStepper] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -170,6 +187,10 @@ const LinaerStepper = () => {
         toast.error("Please enter a valid email address");
         return false;
       }
+      if (item.feild === "age" && !validateAge(formData[item.feild])) {
+        setOpen(true);
+        // return false;
+      }
     }
     return true;
   }
@@ -199,7 +220,7 @@ const LinaerStepper = () => {
         <div
           className={`hidden md:flex md:flex-col ${
             (activeStep > 1 && activeStep) < 4 ? "justify-center" : ""
-          } md:w-1/5 p-1 md:p-4`}
+          } md:w-1/4 p-1 md:p-4`}
         >
           <Stepper currentStep={stepper} steps={getSteps()} />
         </div>
@@ -233,6 +254,17 @@ const LinaerStepper = () => {
           </ThemeButton>
         )}
       </div>
+      <WarningDialog
+        title="Unfortunately we have to interrupt here for a moment because your dog is still growing."
+        content="We recommend feeding WAUME only after height growth has been completed, which dogs usually complete at the age of 12-15 months.
+
+          If your dog has completed height growth or your vet has given the OK, click 'Next' to continue with the food generator.
+          
+          If you have any questions, please contact us or your veterinarian."
+        buttonText="Next"
+        isOpen={open}
+        setOpen={setOpen}
+      />
     </div>
   );
 };

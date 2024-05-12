@@ -139,6 +139,19 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide state"],
   },
+  companyName: {
+    type: String,
+    default: "",
+  },
+  orderComments: {
+    type: String,
+    default: "",
+  },
+  parkingPermit: {
+    type: String,
+    default: "",
+  },
+
   deliveryDate: {
     type: Date,
     required: true,

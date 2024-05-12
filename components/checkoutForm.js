@@ -8,6 +8,7 @@ import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 import "react-toastify/dist/ReactToastify.css";
 import WarningDialog from "./dailogue";
+import Checkbox from "./checkbox";
 
 const public_stripe_key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = loadStripe(public_stripe_key);
@@ -171,6 +172,14 @@ export default function CheckoutForm({
               setValue={setFormData}
               placeholder="Phone Number"
             />
+            <RoundInput
+              id="companyName"
+              type="text"
+              name="companyName"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Company Name (optional)"
+            />
 
             <RoundInput
               id="password"
@@ -241,6 +250,23 @@ export default function CheckoutForm({
               placeholder="Zip Code"
             />{" "}
           </div>{" "}
+          <div className="flex flex-col text-start mt-5 ">
+            {/* Section for three RoundInputs */}
+            <span className="my-5  font-hossRound">Parking Permit</span>
+            <Checkbox value={formData} setValue={setFormData} />{" "}
+          </div>
+          <div className="flex flex-col text-start mt-5 w-3/4">
+            {/* Section for three RoundInputs */}
+            <span className="my-5  font-hossRound">Parking Permit</span>
+            <RoundInput
+              id="order"
+              name="orderComments"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Order Comments"
+              type="paragraph"
+            />
+          </div>
           <div className="flex md:w-3/4 mt-5 md:mt-10">
             <ThemeButton
               className="w-full mt-5"

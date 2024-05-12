@@ -134,6 +134,19 @@ const paidUserSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  companyName: {
+    type: String,
+    default: "",
+  },
+  orderComments: {
+    type: String,
+    default: "",
+  },
+  parkingPermit: {
+    type: String,
+    default: "",
+  },
+
   forgotPasswordToken: {
     type: String,
     default: "",
@@ -154,7 +167,7 @@ const paidUserSchema = new mongoose.Schema({
   //   type: Boolean,
   //   default: false,
   // },
-  unitPerOrder:{
+  unitPerOrder: {
     type: Number,
     required: [true, "Please provide an unitPerOrder"],
   },

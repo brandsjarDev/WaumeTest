@@ -35,7 +35,7 @@ function getSubscriptionCost(title, formData) {
   if (title == "One Month" || title == "Per Month") return formData.prodCost;
   else if (title == "Three Month" || title == "Per Three Month")
     return parseFloat((formData.prodCost * 3).toFixed(2));
-  else return 25;
+  else return 15;
 }
 function getUnitPerOrder(title, formData) {
   if (title == "One Month" || title == "Per Month")
@@ -138,6 +138,9 @@ export const initialValue = {
   productId: "",
   unitPerOrder: "",
   deliveryDate: "",
+  companyName: "",
+  orderComments: "",
+  parkingPermit: "",
   hasActivePlan: false,
 };
 //   password: "",

@@ -33,7 +33,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
             id="dogName"
             type="text"
             name="dogName"
-            className="w-[100px] md:w-[200px]"
+            className="w-[100px] md:w-[300px]"
             value={formData}
             setValue={setFormData}
             placeholder="Name"

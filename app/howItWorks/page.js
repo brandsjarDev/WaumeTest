@@ -101,7 +101,7 @@ const Page = () => {
             <IconText text="Individually compiled varieties" />
             <IconText text="WAUME food guide and knife" />
             <p className="text-slate-500 leading-8">
-              EUR 25.00 (Including 13% VAT) + Shipping Cost
+              EUR 15.00 (Including 13% VAT) + Shipping Cost
             </p>
             <a href="/form">
               <ThemeButton size="xl">Add to cart</ThemeButton>

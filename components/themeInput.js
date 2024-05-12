@@ -7,12 +7,20 @@ const ThemeInput = ({
   setValue,
   placeholder,
   className,
+  maxValue,
   type = "text",
   ...rest
 }) => {
   const handleInputChange = (e) => {
-    if (type == "number" && e.target.value <= 0) return;
-    setValue({ ...value, [name]: e.target.value });
+    let newValue = e.target.value;
+    if (type == "number" && newValue <= 0) return;
+    if (type === "number") {
+      if (maxValue && newValue > maxValue) {
+        newValue = maxValue.toString();
+      }
+      if (newValue <= 0) return;
+    }
+    setValue({ ...value, [name]: newValue });
   };
 
   return (

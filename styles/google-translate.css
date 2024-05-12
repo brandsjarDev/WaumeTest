@@ -1,0 +1,33 @@
+/* styles/google-translate.css */
+
+/* Customize the Google Translate button */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+  }
+  
+  /* Customize the Google Translate button container */
+  #google_translate_element {
+    display: inline-block;
+    margin-left: 10px; /* Adjust the margin as needed */
+  }
+  .goog-logo-link {
+    display:none !important;
+    } 
+.goog-te-combo {
+    margin: 10px;
+}  
+.goog-te-gadget {
+    font-size: 0px;
+}
+#google_translate_element img
+        {
+            display: none !important;
+        }
+        #VIpgJd-ZVi9od-l4eHX-hSRGPd
+        {
+           color: white;
+        }
+        .VIpgJd-ZVi9od-l4eHX-hSRGPd
+        {
+           color: white;
+        }

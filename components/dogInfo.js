@@ -3,6 +3,8 @@ import BasicSelect from "./themeSelect";
 import ThemeInput from "@components/themeInput";
 import breeds from "@utils/breeds";
 import ThemeAutoSuggest from "./themeAutosuggest";
+import DatePicker from "./datePicker";
+
 // const breeds = [
 //   { label: "Affenpinscher", value: "Affenpinscher" },
 //   { label: "Afghan Hound", value: "Afghan Hound" },
@@ -12,12 +14,6 @@ import ThemeAutoSuggest from "./themeAutosuggest";
 const genderOptions = [
   { label: "He", value: "Male" },
   { label: "She", value: "Female" },
-];
-const durationOptions = [
-  { label: "Days", value: "Days" },
-
-  { label: "Months", value: "Months" },
-  { label: "Years", value: "Years" },
 ];
 
 export default function PersonalInfoForm({ formData, setFormData }) {
@@ -32,30 +28,18 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           setValue={setFormData}
           options={genderOptions}
         />
-        <span className="my-6 md:my-4">&nbsp;is</span>
+        <span className="my-6 md:my-4">&nbsp;is born on</span>
         <ThemeInput
-          className="w-[50px] md:w-[100px] mt-6"
+          className="w-[150px] md:w-[250px] mt-6"
           id="age"
-          type="number"
+          type="date"
           name="age"
           value={formData}
           setValue={setFormData}
           placeholder="Age"
           required
         />
-        <BasicSelect
-          className="w-[150px] md:w-[200px]"
-          label="Duration"
-          name="ageDuration"
-          value={formData}
-          setValue={setFormData}
-          options={durationOptions}
-        />
-
-        <span className="my-6 md:my-4"> old </span>
-
         <span className="my-6 md:my-4">&nbsp; and a</span>
-
         <ThemeAutoSuggest
           className="w-[150px] md:w-[300px]"
           label="Breed"
@@ -76,8 +60,10 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           value={formData}
           setValue={setFormData}
           placeholder="Weight"
+          maxValue={100}
           required
-        />
+        />{" "}
+        <span className="my-6 md:my-4">&nbsp; Kgs</span>
       </div>
     </>
   );
