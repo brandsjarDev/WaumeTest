@@ -6,12 +6,12 @@ import ThemeButton from "@components/themeButton";
 const HumanFood = () => {
   return (
     <div
-      className={`flex flex-col-reverse md:flex-row ${styles.heroBackground}`}
+      className={`flex flex-col md:flex-row justify-normal ${styles.heroBackground}`}
     >
-      {/* <Image src={FeedingDog} style={{ objectFit: "fill" }} /> */}
-      <div className="flex flex-col justify-center text-white w-full  top-[50%] bottom-[50%] ">
-        <div className="w-[300px] flex flex-col justify-center m-5">
-          <h1 className="text-2xl md:text-4xl font-hossRound  text-center mb-5 md:mb-10">
+      <Image src={FeedingDog} className="w-full" />
+      <div className="flex flex-col justify-center w-full text-white  top-[50%] bottom-[50%]">
+        <div className="w-[300px] flex flex-col justify-end m-5">
+          <h1 className="text-2xl md:text-4xl font-hossRound   mb-5 md:mb-10">
             The closest thing
             <br /> to feeding your
             <br /> dog human food

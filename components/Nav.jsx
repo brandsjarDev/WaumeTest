@@ -217,10 +217,10 @@ const Navbar = ({ className = "bg-white" }) => {
             <button
               className="w-[151px] h-[40px] ml-4 bg-primary text-white  hover:bg-[#4baead] rounded-md"
               onClick={() =>
-                auth.isLoggedIn ? handleLogout() : router.push("/login")
+                isLoggedIn ? handleLogout() : router.push("/login")
               }
             >
-              {auth.isLoggedIn ? "Logout" : "Login"}
+              {isLoggedIn ? "Logout" : "Login"}
             </button>
           </div>
         </div>
