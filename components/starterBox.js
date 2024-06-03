@@ -31,33 +31,22 @@ const StarterBox = ({ className }) => (
         className
       )}
     >
-      <div className="flex flex-col w-full md:flex-row justify-between items-center gap-5">
-        <div className="flex flex-col justify-between items-center mx-5 gap-5">
-          <h2 className="flex text-center justify-center text-3xl md:text-4xl font-hossRound ">
-            IN YOUR STARTER BOX
-          </h2>
+      <h2 className="text-center  text-2xl md:text-4xl font-hossRound ">
+        IN YOUR STARTER BOX
+      </h2>
 
-          <p className="text-center  text-slate-500 font-hossRound ">
-            All animals are in the best condition and vaccinated as always
-          </p>
-        </div>
-        <a href="/form">
-          {" "}
-          <ThemeButton size="xl">Get Started</ThemeButton>
-        </a>
-      </div>
       <div className="flex flex-col md:flex-row justify-center gap-5">
         <div>
           <HomeCard
             title="WAUME fresh food"
-            content="ready to eat for your dog."
+            content="Ready to eat for your dog."
             imageUrl={Sausage}
           />
         </div>
         <div>
           <HomeCard
             title="Guide"
-            content="information and tips for changing feed."
+            content="Information and tips for changing feed."
             imageUrl={Guide}
           />
         </div>
@@ -69,6 +58,10 @@ const StarterBox = ({ className }) => (
           />
         </div>
       </div>
+      <a href="/form">
+        {" "}
+        <ThemeButton size="xl">Get Started</ThemeButton>
+      </a>
     </div>
   </>
 );

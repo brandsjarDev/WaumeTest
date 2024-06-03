@@ -76,7 +76,6 @@ export default function CheckoutForm({
         state: formData.state,
       },
       unit: formData.unitPerOrder,
-      product: formData.productId,
       prodType: formData.product,
       portion: formData.portion,
       plan: formData.subscriptionTitle,

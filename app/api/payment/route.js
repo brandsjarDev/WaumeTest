@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import { connectToDB } from "@utils/database";
 import User from "@/models/user";
 import Event from "@/models/event";
-
+import Coupon from "@/models/coupon";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -38,14 +38,38 @@ function getNearestFifthDate() {
 
   return upcomingFifthDateTimeStamp;
 }
-function getCost(prodType, unit, portion, plan) {
+async function getDiscount(code) {
+  try {
+    await connectToDB();
+    const coupon = await Coupon.findOne({ code }).lean();
+    console.log("found", coupon);
+    if (coupon) return coupon.discountPercentage;
+    else return 0;
+  } catch (err) {
+    throw err;
+  }
+}
+async function getCost(
+  prodType,
+  unit,
+  portion,
+  plan,
+  couponCode,
+  shippingCost
+) {
   let num = unit;
   if (prodType === "chicken") num *= 0.012;
   if (prodType === "beef") num *= 0.012;
   if (prodType === "horse") num *= 0.0145;
   if (prodType === "veg") num *= 0.011;
   if (portion == "half") num *= 0.6;
-
+  console.log("couponCode \n \n", couponCode);
+  if (couponCode) {
+    const discountP = await getDiscount(couponCode);
+    if (discountP) num = num - (num * discountP) / 100;
+    console.log("couponCode \n \n", discountP, num);
+  }
+  if (shippingCost) num += shippingCost;
   if (plan == "Trial Pack") {
     num = 15;
   }
@@ -71,7 +95,7 @@ export async function PUT(req) {
     let userData = obj.userData;
     const user = await User.findOne({ email });
 
-    console.log("userData", userData.deliveryDate);
+    console.log("userData", userData.couponCode);
     if (user) {
       return NextResponse.json(
         { error: "User with this email already exists" },
@@ -109,7 +133,14 @@ export async function PUT(req) {
         {
           price_data: {
             currency: "eur",
-            unit_amount: getCost(prodType, unit, portion, plan),
+            unit_amount: await getCost(
+              prodType,
+              unit,
+              portion,
+              plan,
+              userData.couponCode,
+              userData.shippingCost
+            ),
             ...(paymentMode === "subscription" && {
               recurring: {
                 interval: "month",
@@ -171,6 +202,7 @@ export async function PATCH(req) {
     let { email, unit, prodType, portion, plan } = obj.stripeData;
     let userData = obj.userData;
     const userDataToUpdate = { ...userData, updatedAt: new Date() }; // Create a copy of userData
+    console.log("userData \n \n", userData.couponCode);
 
     delete userDataToUpdate.password;
     delete userDataToUpdate.email;
@@ -210,7 +242,7 @@ export async function PATCH(req) {
       const activeSubscription = await stripe.subscriptions.retrieve(
         activeSubscriptionId
       );
-      console.log("activeSubscription", activeSubscription);
+      // console.log("activeSubscription", activeSubscription);
 
       if (activeSubscription) {
         billingCycleAnchor = activeSubscription.current_period_end;
@@ -223,7 +255,17 @@ export async function PATCH(req) {
         ? "subscription"
         : "payment";
     const subscriptionPeriod = plan == "Per Month" ? 1 : 3;
-
+    console.log(
+      "cost == \n \n",
+      await getCost(
+        prodType,
+        unit,
+        portion,
+        plan,
+        userData.couponCode,
+        userData.shippingCost
+      )
+    );
     // 2. Create a new subscription
     const session = await stripe.checkout.sessions.create({
       success_url: `${process.env.DOMAIN}/success`,
@@ -235,7 +277,14 @@ export async function PATCH(req) {
         {
           price_data: {
             currency: "eur",
-            unit_amount: getCost(prodType, unit, portion, plan),
+            unit_amount: await getCost(
+              prodType,
+              unit,
+              portion,
+              plan,
+              userData.couponCode,
+              userData.shippingCost
+            ),
             ...(paymentMode === "subscription" && {
               recurring: {
                 interval: "month",

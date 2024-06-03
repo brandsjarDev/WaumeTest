@@ -12,7 +12,7 @@ const FreshIngridients = ({ prodName }) => {
           <h1 className="flex justify-center  font-hossRound">
             Fresh and natural ingredients
           </h1>
-          <div className="flex flex-col md:flex-row items-center md:items-stretch justify-center w-3/4 gap-10">
+          <div className="flex flex-col md:flex-row items-center md:items-stretch justify-center  gap-10">
             {ingredients.map((item, index) => (
               <Card
                 key={index}

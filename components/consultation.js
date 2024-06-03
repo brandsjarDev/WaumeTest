@@ -27,7 +27,7 @@ const Consultation = ({ className }) => (
         <br /> live healthy, happy lives.”
       </h1>
       <div className="flex flex-col">
-        <h1 className=" text-3xl md:text-4xl my-5 text-white font-hossRound">
+        <h1 className=" text-2xl md:text-4xl my-5 text-white font-hossRound">
           Personal consultation for every <br /> first order
         </h1>
         <p className="text-white">

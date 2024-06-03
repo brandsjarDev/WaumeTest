@@ -17,17 +17,17 @@ const Testimonials = ({ image }) => (
         &nbsp;&nbsp;&nbsp;
         <span className="text-slate-500">Active Omnivore</span>
       </p>
-      <h2 className="text-lg md:text-xl font-hossRound ">
-        600g WAUME Movement Freind per day, for super athletes
+      <h2 className="md:text-xl font-hossRound ">
+        600g WAUME Movement Friend per day, for super athletes
       </h2>
-      <p className="text-slate-500 md:leading-8">
+      <p className="text-xs md:text-base text-slate-500 md:leading-8">
         "The active 6-year-old Cocker Spaniel weighing 14kg needs
         <br />
         optimal dog food for his adventures in mountains
         <br />
         while hunting."
       </p>
-      <p className="flex text-slate-500">
+      <p className="flex text-slate-500 text-sm md:text-base">
         <div>
           <Image
             src={fresh3}
@@ -52,7 +52,9 @@ const Testimonials = ({ image }) => (
         </p>
       </div>
       <div>
-        <h2 className="text-lg font-hossRound ">Costs for Tobi's full board</h2>
+        <h2 className="md:text-lg font-hossRound ">
+          Costs for Tobi's full board
+        </h2>
         <p className="flex text-slate-500">4.5 EUR/day</p>
       </div>
     </div>

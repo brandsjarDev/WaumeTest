@@ -29,7 +29,7 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const user = useSelector((state) => state.user.userInfo);
-
+  console.log(auth, user);
   const handleLogin = async () => {
     try {
       setLoading(true);

@@ -90,10 +90,19 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  productId: {
-    type: String,
+  shippingCost: {
+    type: Number,
     default: 0,
   },
+  couponCode: {
+    type: String,
+    default: "",
+  },
+  discount: {
+    type: Number,
+    default: 0,
+  },
+
   addressLine1: {
     type: String,
     required: [true, "Please provide addressLine1"],

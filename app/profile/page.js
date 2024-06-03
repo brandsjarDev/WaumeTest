@@ -35,7 +35,7 @@ function subscriptionTitle(subscription) {
 function prodTitle(product) {
   let string = "plan";
   if (product == "horse") string = "Belly Buddy Plus";
-  if (product == "beef") string = "Movement Freind";
+  if (product == "beef") string = "Movement Friend";
   if (product == "chicken") string = "Belly Buddy";
   if (product == "veg") string = "Veggie Amigo";
   return string;

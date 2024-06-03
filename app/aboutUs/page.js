@@ -134,8 +134,8 @@ text-xs  md:text-sm text-slate-500 gap-5"
         </div>
         <div className="flex bg-secondary h-24 rounded-b-[70%]"></div>
         <div className="">
-          <ImageRowLayout imageUrl={team} className="">
-            <div className="h-[750px] flex-col justify-around content-around gap-10">
+          <ImageRowLayout imageUrl={team} className="pb-0">
+            <div className="md:h-[750px] flex-col justify-around content-around gap-5 md:gap-10">
               <TeamMember
                 imageSrc={bea}
                 name="Bea"
@@ -159,12 +159,12 @@ text-xs  md:text-sm text-slate-500 gap-5"
             </div>
           </ImageRowLayout>
         </div>
-        <div className="flex flex-col items-end justify-center bg-[url('/assets/images/Village.png')] text-white h-[800px] pr-10 md:pr-20">
+        <div className="flex flex-col items-end justify-center bg-[url('/assets/images/Village.png')] bg-cover bg-no-repeat text-white h-[800px] p-5 md:pr-20">
           <div className="flex flex-col  max-w-md">
             <h1 className="font-hossRound text-xl md:text-3xl text-start">
               Our Village
             </h1>
-            <p>
+            <p className="text-sm md:text-xl">
               Our mission is to create a place for dogs where they can feel
               comfortable and just be dogs. Pro Village is a place that makes
               dogs' hearts beat faster. True to the motto – Do what you love –

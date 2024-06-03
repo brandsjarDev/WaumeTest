@@ -146,10 +146,10 @@ const Navbar = ({ className = "bg-white" }) => {
                   <ul className="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-white md:shadow-lg md:rounded-b">
                     <li>
                       <Link
-                        href="products/Movement-Freind"
+                        href="products/Movement-Friend"
                         className="block py-2 px-4 hover:bg-gray-100"
                       >
-                        Movement Freind
+                        Movement Friend
                       </Link>
                     </li>
                     <li>
@@ -217,10 +217,10 @@ const Navbar = ({ className = "bg-white" }) => {
             <button
               className="w-[151px] h-[40px] ml-4 bg-primary text-white  hover:bg-[#4baead] rounded-md"
               onClick={() =>
-                isLoggedIn ? handleLogout() : router.push("/login")
+                auth.isLoggedIn ? handleLogout() : router.push("/login")
               }
             >
-              {isLoggedIn ? "Logout" : "Login"}
+              {auth.isLoggedIn ? "Logout" : "Login"}
             </button>
           </div>
         </div>
@@ -291,10 +291,10 @@ const Navbar = ({ className = "bg-white" }) => {
                   {showDropdown && (
                     <div className="absolute z-10 mt-2 bg-white border border-gray-200 rounded-md shadow-lg">
                       <Link
-                        href="products/Movement-Freind"
+                        href="products/Movement-Friend"
                         className="block py-2 px-4 hover:bg-gray-100"
                       >
-                        Movement Freind
+                        Movement Friend
                       </Link>
                       <Link
                         href="products/Belly-Buddy"

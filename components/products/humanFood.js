@@ -8,10 +8,10 @@ const HumanFood = () => {
     <div
       className={`flex flex-col-reverse md:flex-row ${styles.heroBackground}`}
     >
-      <Image src={FeedingDog} style={{ objectFit: "fill" }} />
+      {/* <Image src={FeedingDog} style={{ objectFit: "fill" }} /> */}
       <div className="flex flex-col justify-center text-white w-full  top-[50%] bottom-[50%] ">
         <div className="w-[300px] flex flex-col justify-center m-5">
-          <h1 className=" text-2xl md:text-4xl font-hossRound  text-center mb-5 md:mb-10">
+          <h1 className="text-2xl md:text-4xl font-hossRound  text-center mb-5 md:mb-10">
             The closest thing
             <br /> to feeding your
             <br /> dog human food

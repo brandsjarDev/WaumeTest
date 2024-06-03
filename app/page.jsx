@@ -2,6 +2,8 @@
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { CssBaseline, Container, Paper, Box } from "@material-ui/core";
+import CookieConsent from "@components/cookieConsent";
+
 // Dynamically import components with SSR disabled
 const DynamicNavbar = dynamic(() => import("@components/Nav"), { ssr: false });
 const DynamicHero = dynamic(() => import("@components/hero"), { ssr: false });
@@ -46,6 +48,7 @@ const Home = () => {
         <DynamicTestimonials />
         <DynamicFreshFood />
         <DynamicAccordions more />
+        <CookieConsent />
       </div>
     </>
   );
