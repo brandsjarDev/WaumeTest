@@ -348,7 +348,7 @@ const Navbar = ({ className = "bg-white" }) => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/preparation"
                   className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                 >
                   Preparation
@@ -356,7 +356,7 @@ const Navbar = ({ className = "bg-white" }) => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/aboutUs"
                   className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                 >
                   About Us
@@ -364,7 +364,7 @@ const Navbar = ({ className = "bg-white" }) => {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/faq"
                   className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                 >
                   FAQ
