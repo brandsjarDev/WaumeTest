@@ -14,15 +14,14 @@ const Card = ({
   price,
   href = "/",
   knowMore = false,
+  disabled = false,
 }) => {
   return (
     <div
-      className={`flex flex-col items-center justify-center ${
-        !active && "border-2"
-      } min-w-[200px] max-w-[290px]   ${
-        active && "border-8 border-primary"
-      } p-4 rounded-3xl ${className}`}
-      onClick={onClick}
+      className={`flex flex-col items-center justify-center min-w-[200px] max-w-[290px] p-4 rounded-3xl ${className} ${
+        disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+      } ${active && !disabled ? "border-8 border-primary" : "border-2"}`}
+      onClick={!disabled ? onClick : undefined}
     >
       <div className="flex justify-center">
         {imageUrl && (
@@ -50,7 +49,7 @@ const Card = ({
         {knowMore && (
           <a
             href={href}
-            className="flex justify-center text-primary text-xs  md:text-base mt-5"
+            className="flex justify-center text-primary text-xs md:text-base mt-5"
             target="_blank"
             rel="noopener noreferrer"
           >

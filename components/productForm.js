@@ -18,6 +18,7 @@ const products = [
     content: "EUR 111.11/ Month",
     imageUrl: bellyBuddy,
     active: true,
+    disabled: false,
     href: "/products/Movement-Friend",
   },
   {
@@ -27,6 +28,7 @@ const products = [
     allergyName: "Poultry",
     content: "EUR 111.11/ Month",
     imageUrl: bellyBuddyPlus,
+    disabled: false,
     href: "/products/Belly-Buddy",
   },
   {
@@ -34,6 +36,7 @@ const products = [
     mainIngredient: "(Horse)",
     name: "horse",
     allergyName: "Horse",
+    disabled: false,
     href: "/products/Belly-Buddy-Plus",
     content: "EUR 111.11/ Month",
     imageUrl: movementFreind,
@@ -43,6 +46,7 @@ const products = [
     mainIngredient: "(Veg)",
     name: "veg",
     allergyName: "Vegetable Protein",
+    disabled: true,
     href: "/products/Veggie-Amigo",
     content: "EUR 111.11/ Month",
     imageUrl: veggieAmigo,
@@ -91,6 +95,7 @@ const ProductForm = ({ formData, setFormData }) => {
             knowMore
             href={item.href}
             onClick={() => handleChange(item)}
+            disabled={item.disabled}
           />
         ))}
       </div>

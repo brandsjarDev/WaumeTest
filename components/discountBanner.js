@@ -1,6 +1,13 @@
+import { useState } from "react";
 import { X } from "lucide-react";
 
 export default function DiscountBanner() {
+  const [isVisible, setIsVisible] = useState(true);
+
+  if (!isVisible) {
+    return null; // Don't render the banner if it has been dismissed
+  }
+
   return (
     <div className="relative flex justify-center items-center gap-x-6 overflow-hidden bg-softBlack px-6 py-1 sm:px-2">
       <div className="flex flex-1 justify-center items-center gap-x-4 gap-y-2">
@@ -16,10 +23,11 @@ export default function DiscountBanner() {
           Use code <strong className="font-semibold">FIRST_ORDER</strong>
         </p>
       </div>
-      <div className="flex  justify-end">
+      <div className="flex justify-end">
         <button
           type="button"
           className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
+          onClick={() => setIsVisible(false)}
         >
           <span className="sr-only">Dismiss</span>
           <X className="h-5 w-5 text-white" aria-hidden="true" />

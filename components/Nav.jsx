@@ -32,9 +32,15 @@ const Navbar = ({ className = "bg-white" }) => {
         {
           pageLanguage: "en",
           includedLanguages: "de",
-          // layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
         },
         "google_translate_element"
+      );
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          includedLanguages: "de",
+        },
+        "google_translate_element_mobile"
       );
     };
   }, []);
@@ -259,6 +265,7 @@ const Navbar = ({ className = "bg-white" }) => {
           <Link href="/" className="flex items-center py-2 space-x-3 ">
             <Image src={logo} alt="logo" height={40} />
           </Link>
+
           <button
             data-collapse-toggle="navbar-default"
             type="button"
@@ -292,16 +299,7 @@ const Navbar = ({ className = "bg-white" }) => {
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white ">
               <li>
                 <Link
-                  href="#"
-                  className="block py-2 px-3  text-white bg-primary rounded md:bg-transparent md:text-blue-700 md:p-0 mt-1 "
-                  aria-current="page"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href=""
+                  href="/howItWorks"
                   className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                   onClick={() => console.log("hii")}
                 >
@@ -370,6 +368,13 @@ const Navbar = ({ className = "bg-white" }) => {
                   FAQ
                 </Link>
               </li>
+              {/* <li className="bg-red-500">
+                <div
+                  id="google_translate_element"
+                  // className="w-10 h-2"
+                  // style={{ height: "20px" }}
+                ></div>
+              </li> */}
               <li>
                 <Link
                   href="/login"

@@ -60,6 +60,11 @@ export default function CheckoutForm({
       setDiscountLoading(false);
     }
   };
+  const calculateTotalOrderPrice = () => {
+    const { subscriptionAmt, shippingCost, discount } = formData;
+    const discountAmount = discount ? subscriptionAmt * (discount / 100) : 0;
+    return (subscriptionAmt + shippingCost - discountAmount).toFixed(2);
+  };
 
   const handleSubscription = async () => {
     setLoading(true);
@@ -345,7 +350,7 @@ export default function CheckoutForm({
               {isExistingUser
                 ? "Update Box for EUR"
                 : "Start First Box for EUR"}
-              {formData.subscriptionAmt}
+              <span>EUR {calculateTotalOrderPrice()}</span>
             </ThemeButton>
             <p className="my-5  text-slate-400">
               <a href="/TnC">

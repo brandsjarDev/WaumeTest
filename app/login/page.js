@@ -85,9 +85,7 @@ const LoginPage = () => {
           >
             Login
           </ThemeButton>
-          <Link href="/forgotPassword" className="font-hossRound">
-            Forgot Password?
-          </Link>
+          <Link href="/forgotPassword">Forgot Password?</Link>
           <Image src={LoginDog} />
         </div>
       </div>
