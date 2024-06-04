@@ -44,7 +44,7 @@ function RoundSelect({
   return (
     <Select onValueChange={handleChange}>
       <SelectTrigger
-        className={`mx-4  h-[40px] p-4 rounded-full block border-[1px]  text-primary border-slate-500`}
+        className={`mx-4 max-w-[290px]  h-[40px]  rounded-full text-gray-500 border-[1px] border-slate-500`}
       >
         <SelectValue
           className="text-center"

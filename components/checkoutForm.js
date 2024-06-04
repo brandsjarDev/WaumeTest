@@ -299,14 +299,7 @@ export default function CheckoutForm({
               setValue={setFormData}
               placeholder="State"
             />
-            <RoundInput
-              id="country"
-              type="text"
-              name="country"
-              value={formData}
-              setValue={setFormData}
-              placeholder="Country"
-            />
+
             <RoundCountrySelect //also sets shipping cost
               // className="w-[100px] md:w-[150px]"
               label="Country"
