@@ -1,4 +1,7 @@
+
 .heroBackground {
-  background-image: url('../../public/assets/images/feedingdog.png');
-  background-position: center bottom; /* Place the background image at the center horizontally and at the bottom vertically */
+  background-image: url('/assets/images/feedingdog.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

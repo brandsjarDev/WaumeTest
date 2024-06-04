@@ -18,7 +18,7 @@ const ImageRowLayout = ({
       className={cn(
         `flex flex-col ${
           reverse ? "md:flex-row-reverse" : "md:flex-row"
-        } items-center justify-center md:justify-around gap-5 px-5 py-5 md:py-10 `,
+        } items-center justify-center md:justify-around  gap-2 md:gap-5 px-5 py-5 md:py-10 max-w-[1440px]`,
         className
       )}
     >
@@ -27,7 +27,7 @@ const ImageRowLayout = ({
       >
         <Image
           src={imageUrl}
-          className=" rounded-2xl"
+          className="rounded-2xl"
           width={width}
           height={height}
         />

@@ -8,7 +8,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "@store/slices/authSlice";
 import axios from "axios";
 import "@styles/google-translate.css";
-import { LanguageSwitcher } from "./langSwitcher";
+import { TranslateRounded } from "@material-ui/icons";
+import { CircleUserRound } from "lucide-react";
+import ThemeButton from "./themeButton";
+import DiscountBanner from "./discountBanner";
 
 const Navbar = ({ className = "bg-white" }) => {
   const dropdownRef = useRef(null);
@@ -83,7 +86,8 @@ const Navbar = ({ className = "bg-white" }) => {
   const isLoggedIn = document.cookie.includes("token");
   return (
     <>
-      <nav className={`z-50 hidden md:block sticky p-5 top-0 ${className}`}>
+      {!isLoggedIn && <DiscountBanner />}
+      <nav className={`z-50 hidden md:block sticky p-3 top-0 ${className}`}>
         <style>
           {`
           @media only screen and (min-width: 768px){
@@ -102,6 +106,7 @@ const Navbar = ({ className = "bg-white" }) => {
           }
           `}
         </style>
+
         <div className="max-w-screen-xl mx-auto flex justify-around items-center ">
           <div className="flex justify-center">
             <Link href="/">
@@ -146,10 +151,10 @@ const Navbar = ({ className = "bg-white" }) => {
                   <ul className="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-white md:shadow-lg md:rounded-b">
                     <li>
                       <Link
-                        href="products/Movement-Freind"
+                        href="products/Movement-Friend"
                         className="block py-2 px-4 hover:bg-gray-100"
                       >
-                        Movement Freind
+                        Movement Friend
                       </Link>
                     </li>
                     <li>
@@ -202,7 +207,8 @@ const Navbar = ({ className = "bg-white" }) => {
                     FAQ
                   </Link>
                 </li>
-                <li>
+
+                <li className={showDropdown ? "block" : "hidden"}>
                   <div
                     id="google_translate_element"
                     // className="w-10 h-2"
@@ -212,16 +218,38 @@ const Navbar = ({ className = "bg-white" }) => {
               </ul>
             </div>
           </div>
-
-          <div className="flex justify-evenly">
-            <button
-              className="w-[151px] h-[40px] ml-4 bg-primary text-white  hover:bg-[#4baead] rounded-md"
+          <CircleUserRound
+            height={40}
+            width={40}
+            onClick={() => {
+              router.push("/profile");
+            }}
+            className={`text-gray-500 cursor-pointer ${
+              isLoggedIn ? "block" : "hidden"
+            }`}
+          />
+          <div
+            className={
+              !showDropdown
+                ? "flex items-center cursor-pointer text-gray-500"
+                : "hidden"
+            }
+          >
+            <TranslateRounded
+              onClick={() => {
+                setShowDropdown((prev) => !prev);
+              }}
+            />
+          </div>
+          <div className="flex justify-evenly ">
+            <ThemeButton
+              className="w-[151px] h-[40px] ml-4 bg-primary text-white   rounded-md"
               onClick={() =>
                 isLoggedIn ? handleLogout() : router.push("/login")
               }
             >
               {isLoggedIn ? "Logout" : "Login"}
-            </button>
+            </ThemeButton>
           </div>
         </div>
       </nav>
@@ -291,10 +319,10 @@ const Navbar = ({ className = "bg-white" }) => {
                   {showDropdown && (
                     <div className="absolute z-10 mt-2 bg-white border border-gray-200 rounded-md shadow-lg">
                       <Link
-                        href="products/Movement-Freind"
+                        href="products/Movement-Friend"
                         className="block py-2 px-4 hover:bg-gray-100"
                       >
-                        Movement Freind
+                        Movement Friend
                       </Link>
                       <Link
                         href="products/Belly-Buddy"
@@ -345,7 +373,7 @@ const Navbar = ({ className = "bg-white" }) => {
               <li>
                 <Link
                   href="/login"
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
+                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 mt-1 "
                   onClick={() =>
                     isLoggedIn ? handleLogout() : router.push("/login")
                   }

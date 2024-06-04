@@ -32,11 +32,11 @@ const Accordions = ({
 }) => (
   <>
     {" "}
-    <h2 className="text-2xl md:text-4xl text-center  mt-10 md:mt-16  ">
+    <h2 className="text-2xl md:text-4xl text-center font-hossRound mt-10 md:mt-16  ">
       {title}
     </h2>
     <div className="flex flex-col justify-center items-center  gap-10 md:gap-15 py-10 md:py-20 px-5">
-      <div className="flex flex-col justify-center w-3/4 items-center  text-lg gap-5 md:gap-10">
+      <div className="flex flex-col justify-center w-3/4 items-center  text-lg gap-5 md:gap-14">
         {data.map((item) => (
           <ThemeAccordion
             title={item.title}

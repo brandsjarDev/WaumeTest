@@ -3,6 +3,12 @@ import { Subscriptions } from "@material-ui/icons";
 function roundToNearestFifty(num) {
   return Math.ceil(num / 50) * 50;
 }
+const countryOptions = [
+  { label: "Austria", value: "Austria", upperCost: 9.8, lowerCost: 9.8 },
+  { label: "Germany", value: "Germany", upperCost: 15, lowerCost: 12.5 },
+  { label: "Switzerland", value: "Switzerland", upperCost: 25, lowerCost: 20 },
+];
+
 function getCost(prodType, formData) {
   let num = 0;
   if (prodType === "chicken") num = formData.chicken * 0.012 * 31;
@@ -19,7 +25,7 @@ function getCost(prodType, formData) {
 export function getProdName(product) {
   let prodName = "Veggie Amigo";
   if (product === "chicken") prodName = "Belly Buddy";
-  if (product === "beef") prodName = "Movement Freind";
+  if (product === "beef") prodName = "Movement Friend";
   if (product === "horse") prodName = "Belly Buddy Plus";
   return prodName;
 }
@@ -61,6 +67,13 @@ function getDeliveryDate() {
     return new Date(nextYear, nextMonth % 12, targetDay);
   }
 }
+function getShippingCost(formData) {
+  let country = countryOptions.find((item) => item.value == formData.country);
+  country = country ? country : { upperCost: 0, lowerCost: 0 };
+  if (formData.prodCost > 100) return country.lowerCost;
+  else return country.upperCost;
+}
+
 //unitPerOrder
 export function calcFoodWeight(obj) {
   const { fatLevel, weight, active, treat } = obj;
@@ -95,7 +108,7 @@ export function calcFoodWeight(obj) {
   updatedObj.subscriptionAmt = getSubscriptionCost(obj.subscriptionTitle, obj);
   updatedObj.unitPerOrder = getUnitPerOrder(obj.subscriptionTitle, obj);
   updatedObj.deliveryDate = getDeliveryDate();
-
+  updatedObj.shippingCost = getShippingCost(obj);
   return updatedObj;
 }
 
@@ -135,7 +148,9 @@ export const initialValue = {
   veg: "",
   subscription: "",
   subscriptionTitle: "",
-  productId: "",
+  shippingCost: "",
+  couponCode: "",
+  discount: "",
   unitPerOrder: "",
   deliveryDate: "",
   companyName: "",

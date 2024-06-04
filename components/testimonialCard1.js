@@ -16,17 +16,17 @@ const Testimonials = ({}) => (
         &nbsp;&nbsp;&nbsp;
         <span className="text-slate-500">Feinspitz with a love for treats</span>
       </p>
-      <h2 className="text-lg md:text-xl font-hossRound ">
+      <h2 className="md:text-xl font-hossRound ">
         300g WAUME Veggie Lover per day, for well- padded four-legged friends
       </h2>
-      <p className="text-slate-500 md:leading-8">
+      <p className="text-xs md:text-base text-slate-500 md:leading-8">
         "The young 2-year-old French Bulldog lady, 10kg (optimally 8kg) is
         <br />
         optimally cared for with food that meets her fine taste and supports
         <br />
         her joy of movement."
       </p>
-      <p className="flex text-slate-500">
+      <p className="flex text-slate-500 text-xs md:text-base">
         <div>
           <Image
             src={fresh3}
@@ -52,7 +52,7 @@ const Testimonials = ({}) => (
         </p>
       </div>
       <div>
-        <h2 className="text-lg font-hossRound ">
+        <h2 className="md:text-lg font-hossRound ">
           Costs for Pippilotta's full board
         </h2>
         <p className="flex text-slate-500">3.2 EUR/day</p>

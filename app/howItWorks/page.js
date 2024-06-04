@@ -66,7 +66,7 @@ const Page = () => {
             <h2 className="text-2xl md:text-4xl font-hossRound ">
               Cover Your Dog’s Daily Nutritional Needs
             </h2>
-            <p className="text-slate-500 leading-8">
+            <p className="text-slate-500 leading-5 md:leading-8">
               WAUME is an individually portioned fresh food that is tailored to
               your dog's needs. The benefits:
             </p>
@@ -76,7 +76,7 @@ const Page = () => {
           </div>
         </ImageRowLayout>
         <DynamicWave />
-        <div className="bg-secondaryLight">
+        <div className="bg-secondaryLight flex justify-center">
           <ImageRowLayout
             imageUrl={Lagern}
             reverse

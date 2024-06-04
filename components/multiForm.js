@@ -84,8 +84,7 @@ function validateAge(dateOfBirth) {
   }
   const oneYearAgo = new Date();
   oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-
-  return dateOfBirth <= oneYearAgo;
+  return new Date(dateOfBirth) <= oneYearAgo;
 }
 
 function getSteps() {
@@ -214,7 +213,7 @@ const LinaerStepper = () => {
   };
   loading && getUserDetails();
   return (
-    <div className="flex-row w-full mb-5 max-w-[1440px]">
+    <div className="flex-row w-full mb-5 ">
       <ToastContainer />
       <div className="flex gap-10 w-full">
         <div

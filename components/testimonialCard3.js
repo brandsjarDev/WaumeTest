@@ -4,6 +4,7 @@ import quote from "@public/assets/images/quote.jpg";
 import fresh3 from "@public/assets/images/fresh3.png";
 import Image from "next/image";
 import TestimonialCard1 from "./testimonialCard1";
+
 const Testimonials = ({ image }) => (
   <div className="flex flex-col w-3/4 bg-white rounded-3xl md:flex-row-reverse justify-center gap-5 md:gap-10 p-5 md:p-10 mt-5 md:mt-10">
     <div>
@@ -16,17 +17,17 @@ const Testimonials = ({ image }) => (
         &nbsp;&nbsp;&nbsp;
         <span className="text-slate-500">Active Omnivore</span>
       </p>
-      <h2 className="text-lg md:text-xl font-hossRound ">
+      <h2 className="md:text-xl font-hossRound">
         400g WAUME Belly Buddy Plus per day, for sensitive stomachs
       </h2>
-      <p className="text-slate-500 md:leading-8">
+      <p className="text-xs md:text-base text-slate-500 md:leading-8">
         "For the 10-year-old mixed-breed lady weighing 26 kg, it is important to
         <br />
         have a stomach-friendly and well-tolerated food that supports her as she
         <br />
         grows older."
       </p>
-      <p className="flex text-slate-500">
+      <p className="flex text-slate-500 text-sm md:text-base">
         <div>
           <Image
             src={fresh3}
@@ -51,8 +52,8 @@ const Testimonials = ({ image }) => (
         </p>
       </div>
       <div>
-        <h2 className="text-lg font-hossRound ">
-          Costs for Narvanias's full board
+        <h2 className="md:text-lg font-hossRound">
+          Costs for Narvania's full board
         </h2>
         <p className="flex text-slate-500">6.5 EUR/day</p>
       </div>

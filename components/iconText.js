@@ -4,7 +4,7 @@ import heartIcon from "@public/assets/images/heart-icon.png";
 
 const IconText = ({ text, imageUrl = heartIcon }) => {
   return (
-    <p className="flex items-center text-slate-500 gap-2">
+    <p className="flex items-center text-slate-500 gap-2 text-xs md:text-base">
       <div className="min-w-[20px]">
         <Image
           src={imageUrl}

@@ -21,7 +21,7 @@ const HomeCard = ({
       </div>
 
       <span className="text-center text-sm md:text-xl my-2 md:my-3">
-        <span className="font-hossRound"> {title} </span> -
+        <span className="font-hossRound "> {title} </span> -
         <span className="text-slate-500"> {content}</span>
       </span>
     </div>

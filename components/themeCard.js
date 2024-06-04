@@ -19,18 +19,23 @@ const Card = ({
     <div
       className={`flex flex-col items-center justify-center ${
         !active && "border-2"
-      } max-w-[290px]   ${
+      } min-w-[200px] max-w-[290px]   ${
         active && "border-8 border-primary"
       } p-4 rounded-3xl ${className}`}
       onClick={onClick}
     >
       <div className="flex justify-center">
         {imageUrl && (
-          <Image src={imageUrl ? imageUrl : FoodImage} alt={title} />
+          <Image
+            src={imageUrl ? imageUrl : FoodImage}
+            alt={title}
+            width={200} // Set a fixed width
+            height={200}
+          />
         )}
       </div>
       <div className="flex-col justify-center gap-5">
-        <div className="flex justify-center font-hossRound  text-xl mt-5">
+        <div className="flex justify-center font-hossRound text-base md:text-xl mt-5">
           {title}
         </div>
         {mainIngredient && (
@@ -38,12 +43,14 @@ const Card = ({
             {mainIngredient}
           </p>
         )}
-        <p className="text-center text-gray-700 text-base">{content}</p>
+        <p className="text-center text-gray-700 text-xs md:text-base">
+          {content}
+        </p>
 
         {knowMore && (
           <a
             href={href}
-            className="flex justify-center text-primary text-base mt-5"
+            className="flex justify-center text-primary text-xs  md:text-base mt-5"
             target="_blank"
             rel="noopener noreferrer"
           >
