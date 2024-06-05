@@ -164,7 +164,7 @@ text-xs  md:text-sm text-slate-500 gap-5"
         </div>
         <div
           id="village"
-          className="flex flex-col items-end justify-center bg-[url('/assets/images/Village.png')] bg-cover bg-no-repeat text-white h-[800px] p-5 md:pr-20"
+          className="flex flex-col items-end justify-center bg-[url('/assets/images/village.png')] bg-cover bg-no-repeat text-white h-[800px] p-5 md:pr-20"
         >
           <div className="flex flex-col  max-w-md">
             <h1 className="font-hossRound text-xl md:text-3xl text-start">
