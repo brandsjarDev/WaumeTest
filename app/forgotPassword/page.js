@@ -4,6 +4,8 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
+import RoundInput from "@components/roundInput";
+import ThemeButton from "@components/themeButton";
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
@@ -27,27 +29,21 @@ const ForgotPasswordPage = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 bg-gray-100 rounded-lg">
+    <div className="max-w-md mx-auto mt-8 p-4 bg-gray-100 rounded-lg mb-20">
       <ToastContainer />
-      <div>
-        <p className="text-lg  mb-4">Forgot Password</p>
-        <form>
-          <input
-            className="block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <button
-            className="mt-4 bg-blue-500 hover:bg-blue-600 text-white  py-2 px-4 rounded"
-            type="button"
-            onClick={handleForgotPassword}
-          >
-            Forgot Password
-          </button>
-        </form>
-      </div>
+
+      <p className="text-lg text-center  mb-4">Forgot Password</p>
+      <form className="flex flex-col justify-center">
+        <RoundInput
+          type="email"
+          placeholder="Email"
+          value={email}
+          setValue={setEmail}
+        />
+        <ThemeButton className="mt-4" onClick={handleForgotPassword}>
+          Forgot Password
+        </ThemeButton>
+      </form>
     </div>
   );
 };

@@ -17,8 +17,13 @@ const Hero = ({ prodName }) => {
 
   return (
     <div
-      className={`flex flex-col h-[525px] md:h-[650px] bg-secondaryLight overflow-hidden pt-8`}
-      style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+      className={`flex flex-col h-[525px] md:h-[650px] md:flex-row bg-secondaryLight overflow-hidden pt-8`}
+      style={{
+        backgroundImage: `url(${backgroundImageUrl})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
     >
       {/* <Image src={BellyB} className=""/> */}
       <div className="md:w-1/2 h-full flex flex-col md:justify-center font-hossRound ">

@@ -4,6 +4,8 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
+import RoundInput from "@components/roundInput";
+import ThemeButton from "@components/themeButton";
 
 const ResetPasswordPage = () => {
   const [password, setPassword] = useState("");
@@ -18,7 +20,7 @@ const ResetPasswordPage = () => {
         return;
       }
 
-      const token = window.location.search.split("=")[1];
+      const token = new URLSearchParams(window.location.search).get("token");
       if (!token) {
         toast.error("Token not found");
         router.push("/");
@@ -44,32 +46,27 @@ const ResetPasswordPage = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 bg-gray-100 rounded-lg">
+    <div className="max-w-md mx-auto mt-8 p-4 bg-gray-100 mb-20 rounded-lg">
       <ToastContainer />
       <div>
-        <p className="text-lg  mb-4">Reset Password</p>
-        <form>
-          <input
-            className="block w-full rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+        <p className="text-lg text-center  mb-4">Reset Password</p>
+        <form className="flex flex-col justify-center">
+          <RoundInput
             type="password"
             placeholder="New Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            setValue={setPassword}
           />
-          <input
-            className="block w-full mt-2 rounded-md bg-gray-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+          <RoundInput
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            setValue={setConfirmPassword}
+            className="mt-2"
           />
-          <button
-            className="mt-4 bg-blue-500 hover:bg-blue-600 text-white  py-2 px-4 rounded"
-            type="button"
-            onClick={handleResetPassword}
-          >
+          <ThemeButton className="mt-4" onClick={handleResetPassword}>
             Reset Password
-          </button>
+          </ThemeButton>
         </form>
       </div>
     </div>

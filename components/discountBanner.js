@@ -1,15 +1,24 @@
 import { useState } from "react";
 import { X } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function DiscountBanner() {
   const [isVisible, setIsVisible] = useState(true);
+  const router = useRouter();
 
   if (!isVisible) {
     return null; // Don't render the banner if it has been dismissed
   }
 
+  const handleBannerClick = () => {
+    router.push("/form"); // Redirect to the form page when the banner is clicked
+  };
+
   return (
-    <div className="relative flex justify-center items-center gap-x-6 overflow-hidden bg-softBlack px-6 py-1 sm:px-2">
+    <div
+      className="relative flex justify-center items-center cursor-pointer gap-x-6 overflow-hidden bg-softBlack px-6 py-1 sm:px-2"
+      onClick={handleBannerClick}
+    >
       <div className="flex flex-1 justify-center items-center gap-x-4 gap-y-2">
         <p className="text-sm leading-6 text-white">
           Get 20% off your starter box now! Let's go!

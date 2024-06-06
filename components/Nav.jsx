@@ -113,7 +113,7 @@ const Navbar = ({ className = "bg-white" }) => {
           `}
         </style>
 
-        <div className="max-w-screen-xl mx-auto flex justify-around items-center ">
+        <div className="flex justify-evenly items-center ">
           <div className="flex justify-center">
             <Link href="/">
               <Image src={logo} height={50} alt="logo" />
@@ -124,7 +124,7 @@ const Navbar = ({ className = "bg-white" }) => {
               <ul className="flex flex-col font-hossRound p-4 md:p-0 mt-4 text-gray-500 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
                 <li>
                   <Link
-                    href="#"
+                    href="/"
                     className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                     aria-current="page"
                   >
@@ -224,16 +224,7 @@ const Navbar = ({ className = "bg-white" }) => {
               </ul>
             </div>
           </div>
-          <CircleUserRound
-            height={40}
-            width={40}
-            onClick={() => {
-              router.push("/profile");
-            }}
-            className={`text-gray-500 cursor-pointer ${
-              isLoggedIn ? "block" : "hidden"
-            }`}
-          />
+
           <div
             className={
               !showDropdown
@@ -257,6 +248,16 @@ const Navbar = ({ className = "bg-white" }) => {
               {isLoggedIn ? "Logout" : "Login"}
             </ThemeButton>
           </div>
+          <CircleUserRound
+            height={40}
+            width={40}
+            onClick={() => {
+              router.push("/profile");
+            }}
+            className={`text-gray-500 cursor-pointer ${
+              isLoggedIn ? "block" : "hidden"
+            }`}
+          />
         </div>
       </nav>
 
@@ -368,13 +369,17 @@ const Navbar = ({ className = "bg-white" }) => {
                   FAQ
                 </Link>
               </li>
-              {/* <li className="bg-red-500">
-                <div
-                  id="google_translate_element"
-                  // className="w-10 h-2"
-                  // style={{ height: "20px" }}
-                ></div>
-              </li> */}
+              <li>
+                {isLoggedIn && (
+                  <Link
+                    href="/profile"
+                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 mt-1 "
+                    onClick={() => router.push("/profile")}
+                  >
+                    Profile
+                  </Link>
+                )}
+              </li>
               <li>
                 <Link
                   href="/login"
