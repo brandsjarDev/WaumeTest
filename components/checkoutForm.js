@@ -153,10 +153,13 @@ export default function CheckoutForm({
         <h1 className="my-5 text-2xl md:text-4xl  text-start font-hossRound">
           Order Summary
         </h1>
-        <div className="flex gap-2 font-hossRound md:text-lg">
-          <h3 className=" ">Estimated Delivery Date </h3>
-          <span>- {formattedDate}</span>
-        </div>
+        {formData.subscriptionTitle &&
+          formData.subscriptionTitle != "Trial Pack" && (
+            <div className="flex gap-2 font-hossRound md:text-lg">
+              <h3 className=" ">Estimated Delivery Date </h3>
+              <span>- {formattedDate}</span>
+            </div>
+          )}
         <div className="flex md:w-1/2 my-10">
           <div className="flex flex-col gap-5 w-full text-lg md:text-2xl">
             <div className="flex justify-between">
