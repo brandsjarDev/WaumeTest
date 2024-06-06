@@ -13,10 +13,10 @@ const HowItWorks = ({ className }) => (
       <div className="grid col-span-3 flex-col justify-center text-2xl md:text-4xl gap-5 md:gap-10">
         <h1 className="justify-center font-hossRound">Here's how it works</h1>
       </div>
-      <div className="flex justify-around gap-10">
+      <div className="flex flex-col md:flex-row items-center justify-around gap-10">
         {/* First Card */}
         <div className="flex flex-col gap-5 max-w-xs ">
-          <div className="flex">
+          <div className="flex justify-center">
             <CircleWithImage imageUrl={chat} />
           </div>
           <h2 className="  md:text-lg font-hossRound max-h-10">
@@ -30,7 +30,7 @@ const HowItWorks = ({ className }) => (
         </div>
         {/* Second Card */}
         <div className="flex flex-col gap-5 max-w-xs">
-          <div className="flex">
+          <div className="flex justify-center">
             <CircleWithImage imageUrl={ParcelTracker} />
           </div>
           <h2 className="  md:text-lg font-hossRound">
@@ -44,10 +44,10 @@ const HowItWorks = ({ className }) => (
 
         {/* Third Card */}
         <div className="flex flex-col gap-5 max-w-xs">
-          <div className="flex">
+          <div className="flex justify-center">
             <CircleWithImage imageUrl={Calendar} />
           </div>
-          <h2 className="  text-lg font-hossRound">
+          <h2 className="md:text-lg font-hossRound">
             3. FRESH FOOD DELIVERED MONTHLY
           </h2>
           <p className=" text-slate-500 text-sm md:text-base">
