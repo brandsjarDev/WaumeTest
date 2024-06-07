@@ -66,7 +66,9 @@ async function getCost(
   console.log("couponCode \n \n", couponCode);
   if (couponCode) {
     const discountP = await getDiscount(couponCode);
-    if (discountP) num = num - (num * discountP) / 100;
+    const subscriptionWithoutTax = num - num * 0.13;
+
+    if (discountP) num = num - (subscriptionWithoutTax * discountP) / 100;
     console.log("couponCode \n \n", discountP, num);
   }
   if (shippingCost) num += shippingCost;

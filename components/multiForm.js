@@ -224,7 +224,7 @@ const LinaerStepper = () => {
           <Stepper currentStep={stepper} steps={getSteps()} />
         </div>
         <div className="grid grid-cols-1 p-1 md:p-4 mt-0 w-full">
-          <div className="flex flex-col md:flex-row  text-center items-center p-5">
+          <div className="flex flex-col md:flex-row justify-center text-center items-center p-5">
             <div className="md:hidden w-[270px]">
               {shouldLoadHorizontalStepper && (
                 <Suspense fallback={<div>Loading...</div>}>

@@ -32,6 +32,10 @@ export default function CheckoutForm({
         toast.error("Discount only applicable for full portion");
         return;
       }
+      if (!isExistingUser && formData.couponCode == "FIRST_ORDER") {
+        toast.error("Invalid coupon code");
+        return;
+      }
       setDiscountLoading(true);
       const response = await axios.post("/api/coupon", {
         code: formData.couponCode,
@@ -45,9 +49,17 @@ export default function CheckoutForm({
         console.log(response.data);
         toast.success("Coupon applied successfully!");
       } else {
+        setFormData({
+          ...formData,
+          discount: "",
+        });
         toast.error(response.data.message || "Failed to apply coupon.");
       }
     } catch (error) {
+      setFormData({
+        ...formData,
+        discount: "",
+      });
       if (error.response && error.response.status === 404) {
         toast.error("Invalid coupon code");
       } else if (error.response && error.response.status === 400) {
@@ -146,7 +158,16 @@ export default function CheckoutForm({
       options
     );
   }
+  const getSubscriptionWithoutTax = (amount = formData.subscriptionAmt) => {
+    const subscriptionAmt = parseFloat(amount);
+    if (isNaN(subscriptionAmt) || subscriptionAmt < 0) {
+      console.error("Invalid subscription amount");
+    }
 
+    const subscriptionWithoutTax = subscriptionAmt - subscriptionAmt * 0.13;
+
+    return subscriptionWithoutTax.toFixed(2);
+  };
   return (
     <>
       <div className="w-full">
@@ -166,9 +187,7 @@ export default function CheckoutForm({
               <span className=" ">{formData.dogName}'s Plan</span>
               <span>
                 EUR
-                {Number(
-                  formData.subscriptionAmt - formData.subscriptionAmt * 0.13
-                ).toFixed(2)}
+                {Number(getSubscriptionWithoutTax()).toFixed(2)}
               </span>
             </div>
 
@@ -177,18 +196,18 @@ export default function CheckoutForm({
               <span>EUR {formData.shippingCost}</span>
             </div>
             <div className="flex justify-between">
-              <span className=" ">Tax</span>
+              <span className=" ">Tax </span>
               <span>
                 EUR {Number(formData.subscriptionAmt * 0.13).toFixed(2)}
               </span>
             </div>
             {formData.discount && (
               <div className="flex justify-between">
-                <span className=" ">Discount&nbsp;{formData.discount}%</span>
+                <span className=" ">Discount&nbsp;({formData.discount}%)</span>
                 <span>
                   EUR
                   {(
-                    formData.subscriptionAmt *
+                    getSubscriptionWithoutTax() *
                     (formData.discount / 100)
                   ).toFixed(2)}
                 </span>
@@ -202,7 +221,7 @@ export default function CheckoutForm({
                 {(
                   formData.subscriptionAmt +
                   formData.shippingCost -
-                  formData.subscriptionAmt * (formData.discount / 100)
+                  getSubscriptionWithoutTax() * (formData.discount / 100)
                 ).toFixed(2)}
               </span>
             </div>
