@@ -369,9 +369,7 @@ export default function CheckoutForm({
               }}
               loading={loading}
             >
-              {isExistingUser
-                ? "Update Box for EUR"
-                : "Start First Box for EUR"}
+              {isExistingUser ? "Update Box for" : "Start First Box for"}
               <span>EUR {calculateTotalOrderPrice()}</span>
             </ThemeButton>
             <p className="my-5  text-slate-400">
