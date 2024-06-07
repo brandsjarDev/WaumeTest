@@ -32,7 +32,7 @@ export default function CheckoutForm({
         toast.error("Discount only applicable for full portion");
         return;
       }
-      if (!isExistingUser && formData.couponCode == "FIRST_ORDER") {
+      if (isExistingUser && formData.couponCode == "FIRST_ORDER") {
         toast.error("Invalid coupon code");
         return;
       }

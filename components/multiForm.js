@@ -234,7 +234,7 @@ const LinaerStepper = () => {
                   />
                 </Suspense>
               )}
-            </div>{" "}
+            </div>
             {getStepContent(activeStep, formData, setFormData, validate, toast)}
           </div>
         </div>
