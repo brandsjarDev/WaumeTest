@@ -74,8 +74,14 @@ export default function CheckoutForm({
   };
   const calculateTotalOrderPrice = () => {
     const { subscriptionAmt, shippingCost, discount } = formData;
-    const discountAmount = discount ? subscriptionAmt * (discount / 100) : 0;
-    return (subscriptionAmt + shippingCost - discountAmount).toFixed(2);
+    const discountAmount = discount
+      ? getSubscriptionWithoutTax() * (discount / 100)
+      : 0;
+    return (
+      getSubscriptionWithoutTax() +
+      shippingCost -
+      discountAmount
+    ).toFixed(2);
   };
 
   const handleSubscription = async () => {

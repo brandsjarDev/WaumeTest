@@ -33,7 +33,7 @@ const FatLvlForm = ({ formData, setFormData }) => {
         <h1 className="text-2xl md:text-4xl font-hossRound mb-5 md:mb-10">
           How would you describe your {formData.dogName}?
         </h1>
-        <div className="flex flex-col md:flex-row justify-center gap-8">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-8">
           {fatLvls.map((item, index) => (
             <Card
               key={index}
