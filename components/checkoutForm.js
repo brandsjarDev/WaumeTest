@@ -77,11 +77,7 @@ export default function CheckoutForm({
     const discountAmount = discount
       ? getSubscriptionWithoutTax() * (discount / 100)
       : 0;
-    return (
-      getSubscriptionWithoutTax() +
-      shippingCost -
-      discountAmount
-    ).toFixed(2);
+    return (subscriptionAmt + shippingCost - discountAmount).toFixed(2);
   };
 
   const handleSubscription = async () => {
@@ -192,7 +188,7 @@ export default function CheckoutForm({
             <div className="flex justify-between">
               <span className=" ">{formData.dogName}'s Plan</span>
               <span>
-                EUR
+                EUR&nbsp;
                 {Number(getSubscriptionWithoutTax()).toFixed(2)}
               </span>
             </div>
@@ -211,7 +207,7 @@ export default function CheckoutForm({
               <div className="flex justify-between">
                 <span className=" ">Discount&nbsp;({formData.discount}%)</span>
                 <span>
-                  EUR
+                  EUR&nbsp;
                   {(
                     getSubscriptionWithoutTax() *
                     (formData.discount / 100)
@@ -223,7 +219,7 @@ export default function CheckoutForm({
             <div className="flex justify-between">
               <span className=" ">TOTAL ORDER PRICE</span>
               <span>
-                EUR
+                EUR&nbsp;
                 {(
                   formData.subscriptionAmt +
                   formData.shippingCost -
@@ -355,7 +351,7 @@ export default function CheckoutForm({
             <span className="my-5">Parking Permit</span>
             <Checkbox value={formData} setValue={setFormData} />
           </div>
-          <div className="flex flex-col text-start mt-5 w-3/4">
+          <div className="flex flex-col text-start mt-5">
             {/* Section for three RoundInputs */}
             <span className="my-5">Notes on the order</span>
             <RoundInput
@@ -375,7 +371,7 @@ export default function CheckoutForm({
               }}
               loading={loading}
             >
-              {isExistingUser ? "Update Box for" : "Start First Box for"}
+              {isExistingUser ? "Update Box for " : "Start First Box for "}
               <span>EUR {calculateTotalOrderPrice()}</span>
             </ThemeButton>
             <p className="my-5  text-slate-400">
