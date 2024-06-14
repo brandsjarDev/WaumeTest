@@ -112,7 +112,7 @@ export async function PUT(req) {
       //   userId: auth0UserId, // Replace with actual Auth0 user ID
       // },
       address: {
-        city: address?.city,
+        // city: address?.city,
         country: address?.country,
         line1: address?.addressLine1,
         postal_code: address?.zipcode,

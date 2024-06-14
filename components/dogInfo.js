@@ -3,20 +3,29 @@ import BasicSelect from "./themeSelect";
 import ThemeInput from "@components/themeInput";
 import breeds from "@utils/breeds";
 import ThemeAutoSuggest from "./themeAutosuggest";
-import DatePicker from "./datePicker";
 
-// const breeds = [
-//   { label: "Affenpinscher", value: "Affenpinscher" },
-//   { label: "Afghan Hound", value: "Afghan Hound" },
-//   { label: "Airedale Terrier", value: "Airedale Terrier" },
-//   { label: "Akita", value: "Akita" },
-// ];
 const genderOptions = [
   { label: "He", value: "Male" },
   { label: "She", value: "Female" },
 ];
 
 export default function PersonalInfoForm({ formData, setFormData }) {
+  const [year, setYear] = useState("");
+  const [month, setMonth] = useState("");
+  const [day, setDay] = useState("");
+
+  const handleDateChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "year") setYear(value);
+    if (name === "month") setMonth(value);
+    if (name === "day") setDay(value);
+
+    setFormData({
+      ...formData,
+      age: `${year}-${month}-${day}`,
+    });
+  };
+
   return (
     <>
       <div className="flex flex-wrap justify-center items-center md:justify-start mb-4 md:text-[34px] mt-10 text-center md:text-end px-5">
@@ -29,16 +38,41 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           options={genderOptions}
         />
         <span className="my-6 md:my-4">&nbsp;is born on</span>
-        <ThemeInput
-          className="w-[150px] md:w-[250px] mt-6"
-          id="age"
-          type="date"
-          name="age"
-          value={formData}
-          setValue={setFormData}
-          placeholder="Age"
-          required
-        />
+        <div className="flex space-x-2">
+          <ThemeInput
+            className="w-[60px] md:w-[150px]"
+            id="year"
+            type="number"
+            name="birthYear"
+            value={formData}
+            setValue={setFormData}
+            placeholder="YYYY"
+            min={1900}
+            max={new Date().getFullYear()}
+          />
+          <ThemeInput
+            className="w-[40px] md:w-[100px]"
+            id="month"
+            type="number"
+            name="birthMonth"
+            value={formData}
+            setValue={setFormData}
+            placeholder="MM"
+            min={1}
+            max={12}
+          />
+          <ThemeInput
+            className="w-[40px] md:w-[100px]"
+            id="day"
+            type="number"
+            name="birthDay"
+            value={formData}
+            setValue={setFormData}
+            placeholder="DD"
+            min={1}
+            max={31}
+          />
+        </div>
         <span className="my-6 md:my-4">&nbsp; and a</span>
         <ThemeAutoSuggest
           className="w-[150px] md:w-[300px]"

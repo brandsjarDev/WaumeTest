@@ -61,7 +61,9 @@ const HowItWorks = ({ className }) => (
       <div className="grid justify-center col-span-3">
         <a href="/howItWorks">
           {" "}
-          <ThemeButton size="xl">Here's how it works</ThemeButton>
+          <ThemeButton secondary size="xl">
+            Here's how it works
+          </ThemeButton>
         </a>
       </div>
     </div>

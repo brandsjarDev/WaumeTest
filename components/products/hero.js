@@ -29,13 +29,9 @@ const Hero = ({ prodName }) => {
       <div className="md:w-1/2 h-full flex flex-col md:justify-center font-hossRound ">
         <div className="md:w-3/4 flex flex-col md:justify-center gap-4 md:gap-8 ml-10">
           <h1 className="block text-2xl md:text-4xl ">{content.title}</h1>
-          <div className="flex flex-col gap-4 font-bioSans">
-            <p className="text-slate-500 text-xl md:text-2xl">
-              {content.ingredients}
-            </p>
-            <p className="text-slate-500 text-xs md:text-sm">
-              {content.description}
-            </p>
+          <div className="flex flex-col gap-4 text-softBlack font-bioSans">
+            <p className="text-xl md:text-2xl">{content.ingredients}</p>
+            <p className="text-xs md:text-sm">{content.description}</p>
           </div>
           <a href="/form">
             <ThemeButton size="xl">Get Started</ThemeButton>

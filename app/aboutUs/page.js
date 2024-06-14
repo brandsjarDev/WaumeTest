@@ -137,7 +137,10 @@ text-xs  md:text-sm text-slate-500 gap-5"
         </div>
         <div id="team" className="flex bg-secondary h-24 rounded-b-[70%]"></div>
         <div className="">
-          <ImageRowLayout imageUrl={team} className="pb-0">
+          <h1 className="font-hossRound mt-5 text-2xl md:text-4xl text-center">
+            Our Team
+          </h1>
+          <ImageRowLayout imageUrl={team} className="pt-0">
             <div className="md:h-[750px] flex-col justify-around content-around gap-5 md:gap-10">
               <TeamMember
                 imageSrc={bea}
@@ -167,7 +170,7 @@ text-xs  md:text-sm text-slate-500 gap-5"
           className="flex flex-col items-end justify-center bg-[url('/assets/images/village.png')] bg-cover bg-no-repeat text-white h-[800px] p-5 md:pr-20"
         >
           <div className="flex flex-col  max-w-md">
-            <h1 className="font-hossRound text-xl md:text-3xl text-start">
+            <h1 className="font-hossRound text-2xl md:text-4xl text-start">
               Our Village
             </h1>
             <p className="text-sm md:text-xl">

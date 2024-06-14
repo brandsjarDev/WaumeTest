@@ -32,6 +32,7 @@ const OtherProducts = ({
                 content={item.content}
                 imageUrl={item.imageUrl}
                 className="text-center bg-secondary max-w-[346px] md:w-[346px]"
+                href={item.url}
                 knowMore
               />
             ))}

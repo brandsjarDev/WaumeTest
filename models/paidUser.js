@@ -23,20 +23,19 @@ const paidUserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a password"],
   },
-  age: {
-    type: String,
-    default: "",
-  },
-  ageDuration: {
-    type: String,
-    default: "",
-  },
-
-  gender: {
-    type: String,
-    default: "",
-  },
   birthDay: {
+    type: Number,
+    default: "",
+  },
+  birthMonth: {
+    type: Number,
+    default: "",
+  },
+  birthYear: {
+    type: Number,
+    default: "",
+  },
+  gender: {
     type: String,
     default: "",
   },
@@ -133,10 +132,7 @@ const paidUserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide zipcode"],
   },
-  city: {
-    type: String,
-    required: [true, "Please provide city"],
-  },
+
   state: {
     type: String,
     required: [true, "Please provide state"],

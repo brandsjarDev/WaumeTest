@@ -1,9 +1,8 @@
-"use client";
-
+import { useEffect, useState } from "react";
 import { CookieIcon } from "lucide-react";
 import { Button } from "./ui/button";
-import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import PrivacySetting from "./cookieBox";
 
 export default function CookieConsent({
   demo = false,
@@ -12,6 +11,7 @@ export default function CookieConsent({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [hide, setHide] = useState(false);
+  const [essentialChecked, setEssentialChecked] = useState(true);
 
   const accept = () => {
     setIsOpen(false);
@@ -106,10 +106,36 @@ export default function CookieConsent({
                 Learn more.
               </a>
             </p>
+
+            {/* Individual Privacy Settings */}
+            <div className="gap-5 space-y-5">
+              <PrivacySetting
+                heading="Essential (3)"
+                description="Essential services are required for the basic functionality of the website. They only contain technically necessary services. These services cannot be objected to."
+                checked={essentialChecked}
+                onChange={(e) => setEssentialChecked(e.target.checked)}
+              />
+              <PrivacySetting
+                heading="Functional ( 1 )"
+                description="Functional services are necessary to provide features that go beyond the essential functionality of the website, such as prettier fonts, video playback or interactive Web 2.0 features. Content from e.g. video and social media platforms is blocked by default and can be consented to. If the service is consented to, this content is loaded automatically without further manual consent."
+                checked={essentialChecked}
+                onChange={(e) => setEssentialChecked(e.target.checked)}
+              />
+              <PrivacySetting
+                heading="Statistics ( 1 )"
+                description="Individual privacy settings: StatisticsStatistics ( 1 )
+Statistics services are required to collect pseudonymized data about visitors to the website. The data enables us to better understand visitors and optimize the website."
+                checked={essentialChecked}
+                onChange={(e) => setEssentialChecked(e.target.checked)}
+              />
+            </div>
           </div>
           <div className="flex gap-2 p-4 py-5 border-t border-border dark:bg-background/20">
             <Button onClick={accept} className="w-full">
               Accept
+            </Button>
+            <Button onClick={accept} className="w-full">
+              Save individual selections
             </Button>
             <Button onClick={decline} className="w-full" variant="secondary">
               Decline

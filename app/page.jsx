@@ -48,7 +48,6 @@ const Home = () => {
         <DynamicTestimonials />
         <DynamicFreshFood />
         <DynamicAccordions more />
-        <CookieConsent />
       </div>
     </>
   );

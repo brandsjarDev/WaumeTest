@@ -115,6 +115,9 @@ export function calcFoodWeight(obj) {
 export const initialValue = {
   age: "",
   ageDuration: "",
+  birthDay: "",
+  birthMonth: "",
+  birthYear: "",
   ownerName: "",
   email: "",
   dogName: "",
@@ -136,7 +139,6 @@ export const initialValue = {
   phoneNumber: "",
   addressLine1: "",
   addressLine2: "",
-  city: "",
   state: "",
   zipcode: "",
   // cardNumber: "",

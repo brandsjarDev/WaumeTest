@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "../store/store";
 import Nav from "@components/Nav";
 import Footer from "@components/footer";
+import CookieConsent from "@components/cookieConsent";
 
 const RootLayout = ({ children }) => {
   return (
@@ -17,6 +18,7 @@ const RootLayout = ({ children }) => {
           <main className="app font-bioSans">{children}</main>
           <Footer />
         </Provider>
+        <CookieConsent />
       </body>
     </html>
   );

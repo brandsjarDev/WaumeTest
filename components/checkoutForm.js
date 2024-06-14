@@ -20,6 +20,7 @@ export default function CheckoutForm({
 }) {
   const [loading, setLoading] = useState(false);
   const [discountLoading, setDiscountLoading] = useState(false);
+  const [checked, setChecked] = useState(false);
 
   const [cancelLoading, setCancelLoading] = useState(false);
 
@@ -87,7 +88,6 @@ export default function CheckoutForm({
       name: formData.ownerName,
       email: formData.email,
       address: {
-        city: formData.city,
         country: formData.country,
         line1: formData.addressLine1,
         postal_code: formData.zipcode,
@@ -231,7 +231,7 @@ export default function CheckoutForm({
         </div>
         <div className="flex flex-col text-start mt-5">
           <span className="my-5 font-hossRound">Coupon Code</span>
-          <div className="flex gap-2">
+          <div className="flex flex-col md:flex-row gap-2">
             <RoundInput
               id="couponCode"
               type="text"
@@ -240,7 +240,11 @@ export default function CheckoutForm({
               setValue={setFormData}
               placeholder="Enter coupon code"
             />
-            <ThemeButton onClick={applyCoupon} loading={discountLoading}>
+            <ThemeButton
+              onClick={applyCoupon}
+              loading={discountLoading}
+              className={"mx-4 md:mx-0"}
+            >
               Apply
             </ThemeButton>
           </div>
@@ -312,14 +316,7 @@ export default function CheckoutForm({
               setValue={setFormData}
               placeholder="Address Line 2"
             />
-            <RoundInput
-              id="city"
-              type="text"
-              name="city"
-              value={formData}
-              setValue={setFormData}
-              placeholder="City"
-            />
+
             <RoundInput
               id="state"
               type="text"
@@ -346,12 +343,12 @@ export default function CheckoutForm({
               placeholder="Zip Code"
             />
           </div>
-          <div className="flex flex-col text-start mt-5 ">
+          <div className="flex flex-col text-sm md:text-base text-start mt-5 ">
             {/* Section for three RoundInputs */}
             <span className="my-5">Parking Permit</span>
             <Checkbox value={formData} setValue={setFormData} />
           </div>
-          <div className="flex flex-col text-start mt-5">
+          <div className="flex flex-col w-3/4 text-start mt-5">
             {/* Section for three RoundInputs */}
             <span className="my-5">Notes on the order</span>
             <RoundInput
@@ -363,9 +360,26 @@ export default function CheckoutForm({
               type="paragraph"
             />
           </div>
-          <div className="flex flex-col md:w-3/4 mt-5 md:mt-10">
+
+          <div className="flex flex-col text-start mt-5 ">
+            {/* Section for three RoundInputs */}
+            <div className="flex mt-2">
+              <input
+                type="checkbox"
+                checked={checked} // Set the checked state based on the state variable
+                onChange={() => setChecked((prev) => !prev)} // Handle changes to the checkbox state
+              />
+              {/* Label for the checkbox */}
+              <label className="ml-2 text-sm md:text-base">
+                By placing your order you agree to our general terms and
+                conditions and cancellation policy . *
+              </label>
+            </div>
+          </div>
+          <div className="flex flex-col md:w-3/4 mt-5">
             <ThemeButton
               className="w-full mt-5"
+              disabled={!checked}
               onClick={() => {
                 validate() && handleSubscription();
               }}
@@ -374,12 +388,6 @@ export default function CheckoutForm({
               {isExistingUser ? "Update Box for " : "Start First Box for "}
               <span>EUR {calculateTotalOrderPrice()}</span>
             </ThemeButton>
-            <p className="my-5  text-slate-400">
-              <a href="/TnC">
-                By placing your order you agree to our general terms and
-                conditions and cancellation policy . *
-              </a>
-            </p>
           </div>
           {formData.subscriptionId && (
             <div className="flex justify-center md:w-3/4 mt-5 md:mt-10">

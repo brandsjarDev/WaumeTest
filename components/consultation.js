@@ -38,8 +38,9 @@ const Consultation = ({ className }) => (
         <a href="/aboutUs">
           {" "}
           <ThemeButton
+            secondary
             size="lg"
-            className="w-[180px] md:w-[260px] mt-5 bg-primaryLight text-black"
+            className="w-[180px] md:w-[260px] mt-5 hover:border-white"
           >
             More about us
           </ThemeButton>

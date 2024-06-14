@@ -8,6 +8,7 @@ const ThemeInput = ({
   placeholder,
   className,
   maxValue,
+  onChange = () => {},
   type = "text",
   ...rest
 }) => {
@@ -21,6 +22,7 @@ const ThemeInput = ({
       if (newValue <= 0) return;
     }
     setValue({ ...value, [name]: newValue });
+    onChange(e);
   };
 
   return (

@@ -113,7 +113,7 @@ const Navbar = ({ className = "bg-white" }) => {
           `}
         </style>
 
-        <div className="flex justify-evenly items-center ">
+        <div className="flex justify-between items-center md:px-5">
           <div className="flex justify-center">
             <Link href="/">
               <Image src={logo} height={50} alt="logo" />
@@ -122,15 +122,6 @@ const Navbar = ({ className = "bg-white" }) => {
           <div className="flex justify-center">
             <div className="flex items-center py-2">
               <ul className="flex flex-col font-hossRound p-4 md:p-0 mt-4 text-gray-500 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 ">
-                <li>
-                  <Link
-                    href="/"
-                    className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
-                    aria-current="page"
-                  >
-                    Home
-                  </Link>
-                </li>
                 <li>
                   <Link
                     href="/howItWorks"
@@ -224,7 +215,6 @@ const Navbar = ({ className = "bg-white" }) => {
               </ul>
             </div>
           </div>
-
           <div
             className={
               !showDropdown
@@ -237,8 +227,17 @@ const Navbar = ({ className = "bg-white" }) => {
                 setShowDropdown((prev) => !prev);
               }}
             />
-          </div>
+          </div>{" "}
           <div className="flex justify-evenly ">
+            {!isLoggedIn && (
+              <ThemeButton
+                className="w-[151px] h-[40px] ml-4 bg-primary text-white   rounded-md"
+                onClick={() => router.push("/form")}
+              >
+                Get Started
+              </ThemeButton>
+            )}
+
             <ThemeButton
               className="w-[151px] h-[40px] ml-4 bg-primary text-white   rounded-md"
               onClick={() =>

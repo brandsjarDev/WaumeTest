@@ -35,7 +35,8 @@ const validationArr = [
   ],
   [
     { feild: "weight", type: "text", msg: "weight" },
-    { feild: "age", type: "text", msg: "age" },
+    { feild: "birthYear", type: "text", msg: "birthYear" },
+    { feild: "birthMonth", type: "text", msg: "birthMonth" },
   ],
   [{ feild: "fatLevel", type: "singlecard", msg: "an option" }],
   [{ feild: "active", type: "singlecard", msg: "an option" }],
@@ -65,7 +66,6 @@ const validationArr = [
     { feild: "phoneNumber", type: "text", msg: "phoneNumber" },
     { feild: "addressLine1", type: "text", msg: "addressLine1" },
     { feild: "addressLine2", type: "text", msg: "addressLine2" },
-    { feild: "city", type: "text", msg: "city" },
     { feild: "state", type: "text", msg: "state" },
     { feild: "zipcode", type: "text", msg: "zipcode" },
   ],
@@ -239,8 +239,13 @@ const LinaerStepper = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col-reverse md:flex-row justify-evenly w-full gap-5 px-5 mt-10">
-        <ThemeButton disabled={activeStep === 0} onClick={handleBack} size="xl">
+      <div className="flex flex-col-reverse md:flex-row justify-center w-full gap-5 px-5 mt-10">
+        <ThemeButton
+          secondary
+          disabled={activeStep === 0}
+          onClick={handleBack}
+          size="xl"
+        >
           Back
         </ThemeButton>
         {activeStep < 10 && (

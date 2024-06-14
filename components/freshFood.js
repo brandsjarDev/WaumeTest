@@ -13,14 +13,14 @@ const FreshFood = () => (
   <>
     <div className="flex  justify-center items-center bg-primary  gap-10 md:gap-15  mt-10 md:mt-20 py-10 md:px-10">
       <div className="flex flex-col w-full  justify-between items-center text-center gap-8 md:gap-5 px-5 md:px-15">
-        <h2 className="flex text-white font-semibold text-2xl md:text-5xl  font-hossRound ">
+        <h2 className="flex text-white  text-2xl md:text-5xl  font-hossRound ">
           Great Food For Great Dogs
         </h2>
         <p className="text-base md:text-lg  text-white">
           Individually portioned fresh food delivered straight to your doorstep
         </p>
         <a href="/form">
-          <ThemeButton className="bg-white text-primary" size="xl">
+          <ThemeButton secondary className="hover:border-white" size="xl">
             Get Started
           </ThemeButton>
         </a>

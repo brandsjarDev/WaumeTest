@@ -34,7 +34,11 @@ const Card = ({
         )}
       </div>
       <div className="flex-col justify-center gap-5">
-        <div className="flex justify-center font-hossRound text-base md:text-xl mt-5">
+        <div
+          className={`flex justify-center font-hossRound text-base md:text-xl ${
+            imageUrl && "mt-5"
+          }`}
+        >
           {title}
         </div>
         {mainIngredient && (

@@ -48,7 +48,9 @@ const Accordions = ({
       {more && (
         <a href="faq">
           {" "}
-          <ThemeButton size="xl">More FAQ's</ThemeButton>
+          <ThemeButton secondary size="xl">
+            More FAQ's
+          </ThemeButton>
         </a>
       )}
     </div>

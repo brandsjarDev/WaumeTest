@@ -238,21 +238,25 @@ export function getProdData() {
       title: "Movement Friend",
       content: "Beef. Quinoa. Carrot.",
       imageUrl: movementFreind,
+      url: "products/Movement-Friend",
     },
     {
       title: "Belly Buddy",
       content: "Chicken. Oatmeal. Berry.",
       imageUrl: bellyBuddy,
+      url: "products/Belly-Buddy",
     },
     {
       title: "Belly Buddy Plus",
       content: "Horse. Oatmeal. Berry.",
       imageUrl: bellyBuddyPlus,
+      url: "products/Belly-Buddy-Plus",
     },
     {
       title: "Veggie Amigo",
       content: "Egg. Pumpkin Seed Protein. Pumpkin.",
       imageUrl: veggieAmigo,
+      url: "products/Veggie-Amigo",
     },
   ];
   return products;

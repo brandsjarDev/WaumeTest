@@ -69,7 +69,6 @@ export default function CheckoutForm({
       name: formData.ownerName,
       email: formData.email,
       address: {
-        city: formData.city,
         country: formData.country,
         line1: formData.addressLine1,
         postal_code: formData.zipcode,
@@ -201,14 +200,6 @@ export default function CheckoutForm({
               value={formData}
               setValue={setFormData}
               placeholder="Address Line 2"
-            />
-            <RoundInput
-              id="city"
-              type="text"
-              name="city"
-              value={formData}
-              setValue={setFormData}
-              placeholder="City"
             />
             <RoundInput
               id="state"
