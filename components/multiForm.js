@@ -75,16 +75,31 @@ function validateEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
-function validateAge(dateOfBirth) {
+function validDate(birthYear, birthMonth) {
   if (
-    !(new Date(dateOfBirth) instanceof Date) ||
-    isNaN(new Date(dateOfBirth).getTime())
+    typeof birthYear != "number" ||
+    typeof birthMonth != "number" ||
+    birthMonth < 1 ||
+    birthMonth > 12 ||
+    birthYear < 1900 ||
+    birthYear > new Date().getFullYear()
   ) {
-    return true;
+    toast.error("invalid date");
+    return false;
+  } else return true;
+}
+function validateAge(birthYear, birthMonth) {
+  const birthDate = new Date(birthYear, birthMonth - 1);
+
+  if (isNaN(birthDate.getTime())) {
+    console.log("hi");
+    return false;
   }
+
   const oneYearAgo = new Date();
   oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-  return new Date(dateOfBirth) <= oneYearAgo;
+
+  return birthDate <= oneYearAgo;
 }
 
 function getSteps() {
@@ -186,7 +201,16 @@ const LinaerStepper = () => {
         toast.error("Please enter a valid email address");
         return false;
       }
-      if (item.feild === "age" && !validateAge(formData[item.feild])) {
+      if (
+        item.feild === "birthYear" &&
+        !validDate(formData.birthYear, formData.birthMonth)
+      ) {
+        return false;
+      }
+      if (
+        item.feild === "birthYear" &&
+        !validateAge(formData.birthYear, formData.birthMonth)
+      ) {
         setOpen(true);
         // return false;
       }

@@ -40,7 +40,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
         <span className="my-6 md:my-4">&nbsp;is born on</span>
         <div className="flex space-x-2">
           <ThemeInput
-            className="w-[60px] md:w-[150px]"
+            className="w-[65px] md:w-[150px]"
             id="year"
             type="number"
             name="birthYear"
@@ -48,10 +48,9 @@ export default function PersonalInfoForm({ formData, setFormData }) {
             setValue={setFormData}
             placeholder="YYYY"
             min={1900}
-            max={new Date().getFullYear()}
           />
           <ThemeInput
-            className="w-[40px] md:w-[100px]"
+            className="w-[50px] md:w-[100px]"
             id="month"
             type="number"
             name="birthMonth"
@@ -62,7 +61,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
             max={12}
           />
           <ThemeInput
-            className="w-[40px] md:w-[100px]"
+            className="w-[50px] md:w-[100px]"
             id="day"
             type="number"
             name="birthDay"

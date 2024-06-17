@@ -31,7 +31,7 @@ const Testimonials = () => {
     <>
       <div className="flex flex-col justify-center items-center   pt-20 md:pt-40">
         <h1 className="flex text-center text-2xl md:text-4xl font-hossRound justify-center">
-          What Our Beloved Clients Say About Us
+          What our beloved clients say about us
         </h1>
         <Carousel
           plugins={[

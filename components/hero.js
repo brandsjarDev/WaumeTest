@@ -17,7 +17,7 @@ const Hero = () => {
       <div className="h-full flex flex-col justify-center items-center md:p-5 p-10">
         <div className="flex flex-col justify-center gap-4 md:gap-8 ml-10 md:ml-20">
           <h1 className="font-hossRound items-center text-3xl md:text-5xl ">
-            Great Food For Great Dogs
+            Great food for great dogs
           </h1>
           <div className="flex flex-col gap-4 md:text-lg">
             <p className="text-slate-500">

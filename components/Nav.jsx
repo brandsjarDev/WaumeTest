@@ -234,12 +234,13 @@ const Navbar = ({ className = "bg-white" }) => {
                 className="w-[151px] h-[40px] ml-4 bg-primary text-white   rounded-md"
                 onClick={() => router.push("/form")}
               >
-                Get Started
+                Start now
               </ThemeButton>
             )}
 
             <ThemeButton
-              className="w-[151px] h-[40px] ml-4 bg-primary text-white   rounded-md"
+              secondary
+              className="w-[151px] h-[40px] ml-4 rounded-md"
               onClick={() =>
                 isLoggedIn ? handleLogout() : router.push("/login")
               }
@@ -367,6 +368,17 @@ const Navbar = ({ className = "bg-white" }) => {
                 >
                   FAQ
                 </Link>
+              </li>
+              <li>
+                {!isLoggedIn && (
+                  <Link
+                    href="/profile"
+                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 mt-1 "
+                    onClick={() => router.push("/form")}
+                  >
+                    Start now
+                  </Link>
+                )}
               </li>
               <li>
                 {isLoggedIn && (

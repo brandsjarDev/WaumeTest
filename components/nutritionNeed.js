@@ -9,9 +9,9 @@ const NutritionNeeds = () => (
       <div className="flex flex-col justify-center  md:text-4xl gap-5 md:gap-10 mb-10 md:mb-20">
         {" "}
         <h1 className="flex text-center text-2xl md:text-4xl font-hossRound justify-center">
-          Cover Your Dog’s Daily
+          Cover your dog’s daily
           <br />
-          Nutritional Needs
+          nutritional needs
         </h1>
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center gap-10">

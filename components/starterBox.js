@@ -32,7 +32,7 @@ const StarterBox = ({ className }) => (
       )}
     >
       <h2 className="text-center  text-2xl md:text-4xl font-hossRound ">
-        IN YOUR STARTER BOX
+        In your starter box:
       </h2>
 
       <div className="flex flex-col md:flex-row justify-center gap-5">

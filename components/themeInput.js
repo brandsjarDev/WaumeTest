@@ -14,13 +14,15 @@ const ThemeInput = ({
 }) => {
   const handleInputChange = (e) => {
     let newValue = e.target.value;
-    if (type == "number" && newValue <= 0) return;
+
     if (type === "number") {
+      newValue = Number(newValue); // Ensure the value is a number
       if (maxValue && newValue > maxValue) {
-        newValue = maxValue.toString();
+        newValue = maxValue;
       }
       if (newValue <= 0) return;
     }
+
     setValue({ ...value, [name]: newValue });
     onChange(e);
   };
@@ -32,7 +34,7 @@ const ThemeInput = ({
       onChange={handleInputChange}
       type={type}
       className={cn(
-        "mx-4 mt-4 h-[40px] p-2 pb-4 block border-b-4 text-center  text-primary border-white border-b-primary",
+        "mx-4 mt-4 h-[40px] p-2 pb-4 block border-b-4 text-center text-primary border-white border-b-primary",
         className
       )}
       placeholder={placeholder}
