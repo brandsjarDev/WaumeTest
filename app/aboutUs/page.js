@@ -86,7 +86,7 @@ const Page = () => {
               </div>
             </div>
           </div>
-          <DynamicWave className="bg-primary" />
+          <DynamicWave className="bg-primary m-[-1px]" />
         </div>
         <div
           id="story"
@@ -135,13 +135,16 @@ text-xs  md:text-sm text-slate-500 gap-5"
             </div>
           </ImageRowLayout>
         </div>
-        <div id="team" className="flex bg-secondary h-24 rounded-b-[70%]"></div>
+        <div
+          id="team"
+          className="flex bg-secondary h-24 rounded-b-[70%] mb-[-1px]"
+        ></div>
         <div className="">
-          <h1 className="font-hossRound mt-5 text-2xl md:text-4xl text-center">
+          <h1 className="font-hossRound mt-10 text-2xl md:text-4xl text-center">
             Our Team
           </h1>
-          <ImageRowLayout imageUrl={team} className="pt-0">
-            <div className="md:h-[750px] flex-col justify-around content-around gap-5 md:gap-10">
+          <ImageRowLayout imageUrl={team} className="pt-0 md:pt-0">
+            <div className="md:h-[600px] flex-col justify-around content-around gap-5 md:gap-10">
               <TeamMember
                 imageSrc={bea}
                 name="Bea"

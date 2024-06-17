@@ -103,7 +103,7 @@ const Page = () => {
             <p className="text-slate-500 leading-8">
               EUR 15.00 (Including 13% VAT) + Shipping Cost
             </p>
-            <a href="/form">
+            <a href="/form" className="flex justify-center">
               <ThemeButton size="xl">Add to cart</ThemeButton>
             </a>
           </div>
