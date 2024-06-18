@@ -1,7 +1,12 @@
 import { Subscriptions } from "@material-ui/icons";
 
 function roundToNearestFifty(num) {
-  return Math.ceil(num / 50) * 50;
+  const remainder = num % 50;
+  if (remainder < 25) {
+    return num - remainder;
+  } else {
+    return num + (50 - remainder);
+  }
 }
 const countryOptions = [
   { label: "Austria", value: "Austria", upperCost: 9.8, lowerCost: 9.8 },
