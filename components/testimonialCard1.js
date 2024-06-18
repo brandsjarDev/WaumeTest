@@ -6,27 +6,28 @@ import Image from "next/image";
 import TestimonialCard1 from "./testimonialCard1";
 
 const Testimonials = ({}) => (
-  <div className="flex flex-col md:w-3/4 bg-white rounded-3xl md:flex-row-reverse justify-center gap-5 md:gap-10 p-5 md:p-10 mt-5 md:mt-10">
-    <div>
-      <Image src={Veggie} height={600} className="rounded-3xl" />
+  <div className="flex flex-col md:h-[500px] md:w-3/5 bg-white rounded-3xl md:flex-row-reverse justify-center mt-5 md:mt-10">
+    <div className="md:w-1/2 p-5">
+      <Image src={Veggie} className="rounded-3xl" />
     </div>
-    <div className="flex flex-col gap-5 px-5">
+    <div className="flex flex-col md:w-1/2 gap-5 p-5 md:p-10 md:pb-0">
       <p>
-        <span className="">Pippilotta's menu</span>
-        &nbsp;&nbsp;&nbsp;
-        <span className="text-slate-500">Feinspitz with a love for treats</span>
+        <span className="md:text-lg">Pippi Longstocking's menu</span>
+      </p>
+      <p>
+        <span className="text-sm md:text-base">
+          Gourmet with a penchant for treats
+        </span>
       </p>
       <h2 className="md:text-xl font-hossRound ">
         300g WAUME Veggie Lover per day, for well- padded four-legged friends
       </h2>
-      <p className="text-xs md:text-base text-slate-500 md:leading-8">
+      <p className="text-xs md:text-sm text-slate-500 ">
         "The young 2-year-old French Bulldog lady, 10kg (optimally 8kg) is
-        <br />
-        optimally cared for with food that meets her fine taste and supports
-        <br />
-        her joy of movement."
+        optimally cared for with food that meets her fine taste and supports her
+        joy of movement."
       </p>
-      <p className="flex text-slate-500 text-xs md:text-base">
+      <p className="flex text-slate-500 text-xs md:text-sm">
         <div>
           <Image
             src={fresh3}
@@ -39,7 +40,7 @@ const Testimonials = ({}) => (
         Meets Pippilotta's selective taste
       </p>
       <div>
-        <p className="flex text-slate-500">
+        <p className="flex text-slate-500  text-xs md:text-sm">
           <Image
             src={fresh3}
             height={10}

@@ -372,9 +372,8 @@ const Navbar = ({ className = "bg-white" }) => {
               <li>
                 {!isLoggedIn && (
                   <Link
-                    href="/profile"
+                    href="/form"
                     className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 mt-1 "
-                    onClick={() => router.push("/form")}
                   >
                     Start now
                   </Link>
