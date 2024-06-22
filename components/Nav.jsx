@@ -19,9 +19,11 @@ const Navbar = ({ className = "bg-white" }) => {
   const dispatch = useDispatch();
   const [showDropdown, setShowDropdown] = useState(false);
   const auth = useSelector((state) => state.auth);
+
   ///g translate//
   useEffect(() => {
     const script = document.createElement("script");
+    document.cookie = "googtrans=/en/de; path=/";
     script.src =
       "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
@@ -31,14 +33,14 @@ const Navbar = ({ className = "bg-white" }) => {
       new google.translate.TranslateElement(
         {
           pageLanguage: "en",
-          includedLanguages: "de",
+          includedLanguages: "de,en",
         },
         "google_translate_element"
       );
       new google.translate.TranslateElement(
         {
           pageLanguage: "en",
-          includedLanguages: "de",
+          includedLanguages: "de,en",
         },
         "google_translate_element_mobile"
       );

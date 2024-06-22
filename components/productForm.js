@@ -15,7 +15,7 @@ const products = [
     mainIngredient: "(Beef)",
     name: "beef",
     allergyName: "Beef",
-    content: "EUR 111.11/ Month",
+    content: "€ 111.11/ Month",
     imageUrl: bellyBuddy,
     active: true,
     disabled: false,
@@ -26,7 +26,7 @@ const products = [
     mainIngredient: "(Chicken)",
     name: "chicken",
     allergyName: "Poultry",
-    content: "EUR 111.11/ Month",
+    content: "€ 111.11/ Month",
     imageUrl: bellyBuddyPlus,
     disabled: false,
     href: "/products/Belly-Buddy",
@@ -38,7 +38,7 @@ const products = [
     allergyName: "Horse",
     disabled: false,
     href: "/products/Belly-Buddy-Plus",
-    content: "EUR 111.11/ Month",
+    content: "€ 111.11/ Month",
     imageUrl: movementFreind,
   },
   {
@@ -48,7 +48,7 @@ const products = [
     allergyName: "Vegetable Protein",
     disabled: true,
     href: "/products/Veggie-Amigo",
-    content: "EUR 111.11/ Month",
+    content: "€ 111.11/ Month",
     imageUrl: veggieAmigo,
   },
 ];
@@ -86,9 +86,10 @@ const ProductForm = ({ formData, setFormData }) => {
       <div className="flex flex-col md:flex-row justify-center gap-10 mt-5">
         {filterProducts.map((item, index) => (
           <Card
+            translate="no"
             key={index}
             title={item.title}
-            content={`EUR ${getCost(item.name)}/ Month`}
+            content={`€ ${getCost(item.name)}/ Month`}
             mainIngredient={item.mainIngredient}
             imageUrl={item.imageUrl}
             active={formData.product == item.name}

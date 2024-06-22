@@ -54,7 +54,7 @@ const Testimonials = ({ image }) => (
         <h2 className="md:text-lg font-hossRound">
           Costs for Narvania's full board
         </h2>
-        <p className="flex text-slate-500">6.5 EUR/day</p>
+        <p className="flex text-slate-500">6.5 €/day</p>
       </div>
     </div>
   </div>

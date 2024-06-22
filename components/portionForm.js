@@ -49,7 +49,7 @@ const PortionForm = ({ formData, setFormData }) => {
             key={index}
             title={item.title}
             content={item.content}
-            price={`EUR ${getCost(formData, item.name)}`}
+            price={`€ ${getCost(formData, item.name)}`}
             imageUrl={item.imageUrl}
             active={formData.portion == item.name}
             onClick={() => setFormData({ ...formData, portion: item.name })}

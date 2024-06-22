@@ -116,7 +116,7 @@ export async function PUT(req) {
         country: address?.country,
         line1: address?.addressLine1,
         postal_code: address?.zipcode,
-        state: address?.state,
+        city: address?.city,
       },
     });
     const paymentMode =
@@ -351,6 +351,8 @@ export async function POST(req) {
     const event = {
       userId: user._id,
       ownerName: user.ownerName,
+      firstName: user.firstName,
+      lastName: user.lastName,
       stripeId: user.stripeId,
       subscriptionId: "",
       subscriptionTitle: user.subscriptionTitle,

@@ -10,6 +10,17 @@ const paidUserSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a name"],
   },
+  firstName: {
+    type: String,
+    required: [true, "Please provide firstName"],
+    default: "",
+  },
+  lastName: {
+    type: String,
+    required: [true, "Please provide lastName"],
+    default: "",
+  },
+
   dogName: {
     type: String,
     required: [true, "Please provide a name"],
@@ -133,9 +144,9 @@ const paidUserSchema = new mongoose.Schema({
     required: [true, "Please provide zipcode"],
   },
 
-  state: {
+  city: {
     type: String,
-    required: [true, "Please provide state"],
+    required: [true, "Please provide city"],
   },
   deliveryDate: {
     type: Date,

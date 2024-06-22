@@ -83,7 +83,10 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="flex justify-between text-[#777777] mt-20 mx-5 pb-5">
+      <div
+        translate="no"
+        className="flex justify-between text-[#777777] mt-20 mx-5 pb-5"
+      >
         © 2024 — Waume{" "}
         <div className="flex">
           <a

@@ -56,7 +56,7 @@ const Testimonials = ({}) => (
         <h2 className="md:text-lg font-hossRound ">
           Costs for Pippilotta's full board
         </h2>
-        <p className="flex text-slate-500">3.2 EUR/day</p>
+        <p className="flex text-slate-500">3.2 €/day</p>
       </div>
     </div>{" "}
   </div>

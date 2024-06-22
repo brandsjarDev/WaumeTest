@@ -10,7 +10,7 @@ const mapToSchemas = (value) => {
     addressLine2: value.addressLine2 || "",
     country: value.country || "", // Assuming country exists
     zipcode: value.zipcode,
-    state: value.state,
+    city: value.city,
     companyName: value.companyName || "",
     orderComments: value.orderComments || "",
     parkingPermit: value.parkingPermit || "",

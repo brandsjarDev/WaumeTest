@@ -12,6 +12,16 @@ const eventSchema = new mongoose.Schema({
     required: [true, "Please provide ownerName"],
     default: "",
   },
+  firstName: {
+    type: String,
+    required: [true, "Please provide firstName"],
+    default: "",
+  },
+  lastName: {
+    type: String,
+    required: [true, "Please provide lastName"],
+    default: "",
+  },
 
   subscriptionTitle: {
     type: String,

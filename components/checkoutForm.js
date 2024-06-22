@@ -9,6 +9,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import "react-toastify/dist/ReactToastify.css";
 import WarningDialog from "./dailogue";
 import Checkbox from "./checkbox";
+import { Subscript } from "lucide-react";
 
 const public_stripe_key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 
@@ -91,7 +92,7 @@ export default function CheckoutForm({
         country: formData.country,
         line1: formData.addressLine1,
         postal_code: formData.zipcode,
-        state: formData.state,
+        city: formData.city,
       },
       unit: formData.unitPerOrder,
       prodType: formData.product,
@@ -185,29 +186,36 @@ export default function CheckoutForm({
           )}
         <div className="flex md:w-1/2 my-10">
           <div className="flex flex-col gap-5 w-full text-lg md:text-2xl">
-            <div className="flex justify-between">
-              <span className=" ">{formData.dogName}'s Plan</span>
-              <span>
-                EUR&nbsp;
-                {Number(getSubscriptionWithoutTax()).toFixed(2)}
-              </span>
+            <div>
+              <div className="flex justify-between">
+                <span className=" ">{formData.subscriptionTitle}</span>
+                <span>
+                  €&nbsp;
+                  {Number(getSubscriptionWithoutTax()).toFixed(2)}
+                </span>
+              </div>
+              <div className="flex tet-xs md:text-sm">
+                {" "}
+                {formData.subscriptionTitle.includes("Per")
+                  ? "(Subscription)"
+                  : "(one time payment)"}
+              </div>
             </div>
-
             <div className="flex justify-between">
               <span className=" ">Shipping</span>
-              <span>EUR {formData.shippingCost}</span>
+              <span>€ {formData.shippingCost}</span>
             </div>
             <div className="flex justify-between">
               <span className=" ">Tax </span>
               <span>
-                EUR {Number(formData.subscriptionAmt * 0.13).toFixed(2)}
+                € {Number(formData.subscriptionAmt * 0.13).toFixed(2)}
               </span>
             </div>
             {formData.discount && (
               <div className="flex justify-between">
                 <span className=" ">Discount&nbsp;({formData.discount}%)</span>
                 <span>
-                  EUR&nbsp;
+                  €&nbsp;
                   {(
                     getSubscriptionWithoutTax() *
                     (formData.discount / 100)
@@ -219,7 +227,7 @@ export default function CheckoutForm({
             <div className="flex justify-between">
               <span className=" ">TOTAL ORDER PRICE</span>
               <span>
-                EUR&nbsp;
+                €&nbsp;
                 {(
                   formData.subscriptionAmt +
                   formData.shippingCost -
@@ -255,6 +263,22 @@ export default function CheckoutForm({
           <span className="my-5  font-hossRound">User Account</span>
           <div className="md:w-3/4 grid md:grid-cols-2 gap-5">
             <RoundInput
+              id="firstName"
+              type="text"
+              name="firstName"
+              value={formData}
+              setValue={setFormData}
+              placeholder="First Name"
+            />
+            <RoundInput
+              id="lastName"
+              type="text"
+              name="lastName"
+              value={formData}
+              setValue={setFormData}
+              placeholder="Last Name"
+            />
+            <RoundInput
               id="email"
               type="text"
               name="email"
@@ -262,7 +286,6 @@ export default function CheckoutForm({
               setValue={setFormData}
               placeholder="Email"
             />
-
             <RoundInput
               id="phoneNumber"
               type="text"
@@ -318,12 +341,12 @@ export default function CheckoutForm({
             />
 
             <RoundInput
-              id="state"
+              id="city"
               type="text"
-              name="state"
+              name="city"
               value={formData}
               setValue={setFormData}
-              placeholder="State"
+              placeholder="City"
             />
 
             <RoundCountrySelect //also sets shipping cost
@@ -386,7 +409,7 @@ export default function CheckoutForm({
               loading={loading}
             >
               {isExistingUser ? "Update Box for " : "Start First Box for "}
-              <span>EUR {calculateTotalOrderPrice()}</span>
+              <span>€ {calculateTotalOrderPrice()}</span>
             </ThemeButton>
           </div>
           {formData.subscriptionId && (

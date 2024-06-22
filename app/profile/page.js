@@ -103,7 +103,7 @@ const Profile = () => {
           </div>
           <div className="absolute cursor-pointer bottom-2 right-2">
             <span className="text-slate-500">
-              EUR {user?.subscriptionAmt}/ Month
+              € {user?.subscriptionAmt}/ Month
             </span>
           </div>
         </div>

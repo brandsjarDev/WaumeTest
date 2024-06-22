@@ -72,7 +72,7 @@ export default function CheckoutForm({
         country: formData.country,
         line1: formData.addressLine1,
         postal_code: formData.zipcode,
-        state: formData.state,
+        city: formData.city,
       },
       unit: formData.unitPerOrder,
       prodType: formData.product,
@@ -120,7 +120,7 @@ export default function CheckoutForm({
             <div className="flex justify-between">
               <span className=" ">{formData.dogName}'s Plan</span>
               <span>
-                EUR{" "}
+                €{" "}
                 {Number(
                   formData.subscriptionAmt - formData.subscriptionAmt * 0.13
                 ).toFixed(2)}
@@ -128,18 +128,18 @@ export default function CheckoutForm({
             </div>
             <div className="flex justify-between">
               <span className=" ">Shipping</span>
-              <span>EUR 0</span>
+              <span>€ 0</span>
             </div>
             <div className="flex justify-between">
               <span className=" ">Tax</span>
               <span>
-                EUR {Number(formData.subscriptionAmt * 0.13).toFixed(2)}
+                € {Number(formData.subscriptionAmt * 0.13).toFixed(2)}
               </span>
             </div>
             <div class="border-t-[3px]  border-primary"></div>
             <div className="flex justify-between">
               <span className=" ">TOTAL ORDER PRICE</span>
-              <span>EUR {formData.subscriptionAmt}</span>
+              <span>€ {formData.subscriptionAmt}</span>
             </div>
           </div>
         </div>
@@ -202,12 +202,12 @@ export default function CheckoutForm({
               placeholder="Address Line 2"
             />
             <RoundInput
-              id="state"
+              id="city"
               type="text"
-              name="state"
+              name="city"
               value={formData}
               setValue={setFormData}
-              placeholder="State"
+              placeholder="City"
             />
             <RoundInput
               id="country"
@@ -288,7 +288,7 @@ export default function CheckoutForm({
                 validate() && handleSubscription();
               }}
             >
-              Start First Box for EUR {formData.subscriptionAmt}
+              Start First Box for € {formData.subscriptionAmt}
             </ThemeButton>
           </div>
         </div>

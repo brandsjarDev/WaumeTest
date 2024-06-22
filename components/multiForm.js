@@ -66,7 +66,7 @@ const validationArr = [
     { feild: "phoneNumber", type: "text", msg: "phoneNumber" },
     { feild: "addressLine1", type: "text", msg: "addressLine1" },
     { feild: "addressLine2", type: "text", msg: "addressLine2" },
-    { feild: "state", type: "text", msg: "state" },
+    { feild: "city", type: "text", msg: "city" },
     { feild: "zipcode", type: "text", msg: "zipcode" },
   ],
 ];

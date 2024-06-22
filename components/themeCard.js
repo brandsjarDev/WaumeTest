@@ -10,6 +10,7 @@ const Card = ({
   active,
   onClick,
   className,
+  translate = "yes",
   mainIngredient,
   price,
   href = "/",
@@ -35,6 +36,7 @@ const Card = ({
       </div>
       <div className="flex-col justify-center gap-5">
         <div
+          translate={translate}
           className={`flex justify-center font-hossRound text-base md:text-xl ${
             imageUrl && "mt-5"
           }`}
