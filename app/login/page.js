@@ -57,7 +57,6 @@ const LoginPage = () => {
 
   return (
     <>
-      <DynamicNavbar />
       <div className="flex justify-center h-full my-10 md:my-20">
         <ToastContainer />
         <div className="flex flex-col items-center w-3/4 md:w-1/2 gap-4">

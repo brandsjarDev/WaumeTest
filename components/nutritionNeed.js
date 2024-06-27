@@ -9,20 +9,20 @@ const NutritionNeeds = () => (
       <div className="flex flex-col justify-center  md:text-4xl gap-5 md:gap-10 mb-10 md:mb-20">
         {" "}
         <h1 className="flex text-center text-2xl md:text-4xl font-hossRound justify-center">
-          Cover your dog’s daily
+          Decke den täglichen Bedarf an
           <br />
-          nutritional needs
+          Nährstoffen für deinen Hund.
         </h1>
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center gap-10">
         <HomeCard
-          title="Full Board"
-          content="Daily ration, the full pampering program for your darling."
+          title="Vollpension"
+          content="Tagesration, das volle Verwöhnprogramm für deinen Liebling."
           imageUrl={fullBoard}
         />
         <HomeCard
-          title="Half Board"
-          content="Half a daily ration as a nutrient-rich addition to the existing feed."
+          title="Halbpension"
+          content=" Halbe Tagesration als nährstoffreicher Zusatz zum bestehenden Futter."
           imageUrl={halfBoard}
         />
       </div>

@@ -33,27 +33,27 @@ const Footer = () => {
             <li className="mb-5 text-lg">About Us</li>
             <li>
               <a href="/aboutUs/#about" className="text-white">
-                Our goals
+                Unsere Ziele
               </a>
             </li>
             <li>
               <a href="/aboutUs/#story" className="text-white">
-                Our Story
+                Unsere Geschichte
               </a>
             </li>
             <li>
               <a href="/aboutUs/#team" className="text-white">
-                Our Team
+                Unser Team
               </a>
             </li>
             <li>
               <a href="/aboutUs/#village" className="text-white">
-                Our Village
+                Unsere Stadt
               </a>
             </li>
           </ul>
           <ul className="space-y-2 mt-10 md:mt-0">
-            <li className="mb-5 text-lg">Support</li>
+            <li className="mb-5 text-lg">Unterstützung</li>
             <li>
               <a href="/faq">Frequently asked questions</a>
             </li>
@@ -66,19 +66,19 @@ const Footer = () => {
           </ul>
           <ul className="space-y-2 mt-10 md:mt-0">
             <li className="mb-5 text-lg">
-              <a href="">Company</a>
+              <a href="">Unternehmen</a>
             </li>
             <li>
-              <a href="/aboutUs">About Us</a>
+              <a href="/aboutUs">Über uns</a>
             </li>
             <li>
-              <a href="/TnC">Terms of Service</a>
+              <a href="/TnC">Nutzungsbedingungen</a>
             </li>
             <li>
-              <a href="/dataProtection">Privacy Policy</a>
+              <a href="/dataProtection">Datenschutzrichtlinie</a>
             </li>
             <li>
-              <a href="/imprint">Imprint</a>
+              <a href="/imprint">Impressum</a>
             </li>
           </ul>
         </div>

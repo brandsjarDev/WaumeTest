@@ -21,12 +21,12 @@ const Hero = () => {
           </h1>
           <div className="flex flex-col gap-4 md:text-lg">
             <p className="text-slate-500">
-              Individually portioned fresh food delivered
+              Individuell portioniertes Frischfutter direkt vor die
             </p>
-            <p className="text-slate-500">straight to your doorstep.</p>
+            <p className="text-slate-500"> Haustür geliefert.</p>
           </div>
           <a href="/form">
-            <ThemeButton size="xl">Get Started</ThemeButton>
+            <ThemeButton size="xl">Jetzt starten</ThemeButton>
           </a>
         </div>
       </div>

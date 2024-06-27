@@ -73,7 +73,6 @@ const Profile = () => {
 
   return (
     <>
-      <Navbar />
       <div className="flex flex-col justify-center items-center h-full my-10 md:my-20">
         <h1 className="text-4xl mb-4 font-hossRound">My account</h1>
         <h3 className="text-2xl text-slate-500 mb-4 font-hossRound border-b-4 border-primary">

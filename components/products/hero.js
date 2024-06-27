@@ -34,7 +34,7 @@ const Hero = ({ prodName }) => {
             <p className="text-xs md:text-sm">{content.description}</p>
           </div>
           <a href="/form">
-            <ThemeButton size="xl">Get Started</ThemeButton>
+            <ThemeButton size="xl">Jetzt starten</ThemeButton>
           </a>
         </div>
       </div>

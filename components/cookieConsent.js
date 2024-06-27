@@ -60,71 +60,77 @@ export default function CookieConsent({
       <div className="dark:bg-secondary bg-background rounded-t-md border border-border shadow-lg dark:shadow-none h-full overflow-y-auto">
         <div className="grid gap-2 h-full">
           <div className="border-b border-border dark:border-background/20 h-14 flex items-center justify-between p-4">
-            <h1 className="text-lg font-medium">We use cookies</h1>
+            <h1 className="text-lg font-medium">Wir verwenden Cookies</h1>
             <CookieIcon className="h-[1.2rem] w-[1.2rem]" />
           </div>
           <div className="p-4 flex-grow overflow-y-auto">
             <p className="text-sm font-normal text-start">
-              We use cookies and similar technologies on our website and process
-              your personal data (e.g. IP address) to, for example, personalize
-              content and ads, integrate third-party media or analyze access to
-              our website. Data processing can also only take place as a result
-              of cookies being set. We share this data with third parties that
-              we name in the privacy settings. Data processing can take place
-              with your consent or on the basis of a legitimate interest that
-              you can object to in the privacy settings. You have the right not
-              to consent and to change or withdraw your consent at a later date.
-              You can find more information about the use of your data in our
-              privacy policy.
+              Wir nutzen auf unserer Website Cookies und ähnliche Technologien
+              und verarbeiten Ihre personenbezogenen Daten (z.B. IP-Adresse), um
+              beispielsweise Inhalte und Anzeigen zu personalisieren, Medien
+              Dritter einzubinden oder die Zugriffe auf unsere Website zu
+              analysieren. Eine Datenverarbeitung kann auch nur durch das Setzen
+              von Cookies erfolgen. Wir geben diese Daten an Dritte weiter, die
+              wir in den Datenschutzeinstellungen benennen. Die
+              Datenverarbeitung kann mit Ihrer Einwilligung oder aufgrund eines
+              berechtigten Interesses erfolgen, dem Sie in den
+              Datenschutzeinstellungen widersprechen können. Sie haben das
+              Recht, nicht einzuwilligen und Ihre Einwilligung zu einem späteren
+              Zeitpunkt zu ändern oder zu widerrufen. Weitere Informationen zur
+              Verwendung Ihrer Daten finden Sie in unserer Datenschutzerklärung.
             </p>
             <p className="text-sm font-normal text-start my-5 text-slate-400">
-              Some services process personal data in unsafe third countries. By
-              consenting to the use of these services, you also agree to the
-              processing of your data in these unsafe third countries in
-              accordance with Art. 49 Para. 1 lit. a GDPR. This entails the risk
-              that your data will be processed by authorities for control and
-              monitoring purposes, possibly without the possibility of legal
-              redress. U Are you under 14 years old? Unfortunately, you do not
-              have to agree to this service yourself in order to see this
-              content. Ask your parents or guardians to agree to the service
-              with you! By accepting all services, you allow Adobe Fonts
-              2(Functional)and Google Analytics 3(Statistics)These are divided
-              into groups Essential 1 , Functional 2 and Statistics 3 according
-              to their purpose (affiliation indicated by superscript numbers).
-              In addition, the WooCommerce Stripe Payment Gateway 1,U(Essential,
-              data processing in unsafe third countries)and WooCommerce
-              1(Essential)on the basis of a legitimate interest.
+              Einige Dienste verarbeiten personenbezogene Daten in unsicheren
+              Drittländern. Indem Sie in die Nutzung dieser Dienste einwilligen,
+              willigen Sie auch in die Verarbeitung Ihrer Daten in diesen
+              unsicheren Drittländern gemäß Art. 49 Abs. 1 lit. a DSGVO ein.
+              Dies birgt das Risiko, dass Ihre Daten durch Behörden zu Kontroll-
+              und Überwachungszwecken verarbeitet werden, möglicherweise ohne
+              dass Sie Rechtsbehelfsmöglichkeiten haben. Sie sind unter 14 Jahre
+              alt? Leider müssen Sie diesem Dienst nicht selbst zustimmen, um
+              diesen Inhalt zu sehen. Bitten Sie Ihre Eltern oder
+              Erziehungsberechtigten, dem Dienst gemeinsam mit Ihnen
+              zuzustimmen! Indem Sie alle Dienste akzeptieren, erlauben Sie
+              Adobe Fonts 2 (Funktional) und Google Analytics 3 (Statistik).
+              Diese sind je nach Zweck (Zugehörigkeit durch hochgestellte Zahlen
+              gekennzeichnet) in die Gruppen Essenziell 1, Funktional 2 und
+              Statistik 3 unterteilt. Darüber hinaus erfolgt die
+              Datenverarbeitung in unsicheren Drittländern und WooCommerce
+              1(Essential) auf Grundlage eines berechtigten Interesses über das
+              WooCommerce Stripe Payment Gateway 1,U(Essential,
+              Datenverarbeitung in unsicheren Drittländern) und WooCommerce
+              1(Essential).
               <br />
               <br />
               <span className="text-xs">
-                By clicking "
+                Beim Klicken "
                 <span className="font-medium opacity-80">Accept</span>", you
-                agree to our use of cookies.
+                erklären Sie sich mit unserer Cookie-Nutzung einverstanden.
               </span>
               <br />
               <a href="TnC" className="text-xs underline">
-                Learn more.
+                Erfahren Sie mehr.
               </a>
             </p>
 
             {/* Individual Privacy Settings */}
             <div className="gap-5 space-y-5">
               <PrivacySetting
-                heading="Essential (3)"
-                description="Essential services are required for the basic functionality of the website. They only contain technically necessary services. These services cannot be objected to."
+                heading="Essenzielle (3)"
+                description="Essenzielle Dienste sind für die grundlegende Funktionalität der Website erforderlich. Sie beinhalten nur technisch notwendige Dienste. Diesen Diensten kann kein Widerspruch entgegengehalten werden."
                 checked={essentialChecked}
                 onChange={(e) => setEssentialChecked(e.target.checked)}
               />
               <PrivacySetting
-                heading="Functional ( 1 )"
-                description="Functional services are necessary to provide features that go beyond the essential functionality of the website, such as prettier fonts, video playback or interactive Web 2.0 features. Content from e.g. video and social media platforms is blocked by default and can be consented to. If the service is consented to, this content is loaded automatically without further manual consent."
+                heading="Funktionale ( 1 )"
+                description="Funktionale Dienste sind notwendig, um Funktionen bereitzustellen, die über die wesentliche Funktionalität der Website hinausgehen, wie zum Beispiel schönere Schriftarten, Videowiedergabe oder interaktive Web 2.0-Funktionen. Inhalte von z.B. Video- und Social-Media-Plattformen werden standardmäßig blockiert und können zugestimmt werden. Wird dem Dienst zugestimmt, werden diese Inhalte ohne weitere manuelle Zustimmung automatisch geladen."
                 checked={essentialChecked}
                 onChange={(e) => setEssentialChecked(e.target.checked)}
               />
               <PrivacySetting
-                heading="Statistics ( 1 )"
-                description="Individual privacy settings: StatisticsStatistics ( 1 )
-Statistics services are required to collect pseudonymized data about visitors to the website. The data enables us to better understand visitors and optimize the website."
+                heading="Statistik ( 1 )"
+                description="Individuelle Datenschutzeinstellungen: StatistikStatistik ( 1 )
+Statistikdienste sind erforderlich, um pseudonymisierte Daten über Besucher der Website zu sammeln. Die Daten ermöglichen es uns, Besucher besser zu verstehen und die Website zu optimieren."
                 checked={essentialChecked}
                 onChange={(e) => setEssentialChecked(e.target.checked)}
               />

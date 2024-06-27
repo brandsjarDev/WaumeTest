@@ -17,11 +17,12 @@ const FreshFood = () => (
           Great Food For Great Dogs
         </h2>
         <p className="text-base md:text-lg  text-white">
-          Individually portioned fresh food delivered straight to your doorstep
+          Individuell portioniertes Frischfutter direkt vor die Haustür
+          geliefert.
         </p>
         <a href="/form">
           <ThemeButton secondary className="hover:border-white" size="xl">
-            Get Started
+            Jetzt starten
           </ThemeButton>
         </a>
       </div>
@@ -31,31 +32,31 @@ const FreshFood = () => (
       <div className="flex flex-col justify-center items-center max-w-xs mx-5 gap-5 ">
         <CircleWithImage imageUrl={fresh1} className="w-auto" />
         <h2 className="flex text-center justify-center text-base font-hossRound text-slate-500">
-          Without The Addition Of Preservatives
+          OHNE ZUSATZ VON KONSERVIERUNGSSTOFFEN
         </h2>
       </div>
       <div className="flex flex-col justify-center items-center max-w-xs mx-5 gap-5 ">
         <CircleWithImage imageUrl={fresh2} className="right-10" />
         <h2 className="flex text-center justify-center text-base font-hossRound text-slate-500">
-          100% Fresh And Regional Ingredients
+          100 % FRISCHE UND REGIONALE ZUTATEN
         </h2>
       </div>
       <div className="flex flex-col justify-center items-center max-w-xs mx-5 gap-5 ">
         <CircleWithImage imageUrl={fresh3} />
         <h2 className="flex text-center justify-center text-base font-hossRound text-slate-500">
-          Individually Prepared In Own Production
+          INDIVIDUELL ZUBEREITET IN EIGENER PRODUKTION
         </h2>
       </div>
       <div className="flex flex-col justify-center items-center max-w-xs mx-5 gap-5 ">
         <CircleWithImage imageUrl={fresh4} />
         <h2 className="flex text-center justify-center text-base font-hossRound text-slate-500">
-          Optimal Supply Of Vitamins & Minerals
+          OPTIMALE VERSORGUNG MIT VITAMINEN & MINERALSTOFFEN
         </h2>
       </div>
       <div className="flex flex-col justify-center items-center max-w-xs mx-5 gap-5 ">
         <CircleWithImage imageUrl={fresh5} className="w-20" />
         <h2 className="flex text-center justify-center text-base font-hossRound text-slate-500">
-          Co2 Neutral Shipping
+          CO2 NEUTRALER VERSAND
         </h2>
       </div>
     </div>

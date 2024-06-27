@@ -12,13 +12,11 @@ const HumanFood = () => {
       <div className="flex flex-col justify-center w-full text-white  top-[50%] bottom-[50%]">
         <div className="w-[300px] flex flex-col justify-end m-5">
           <h1 className="text-center text-2xl md:text-4xl font-hossRound   mb-5 md:mb-10">
-            The closest thing
-            <br /> to feeding your
-            <br /> dog human food
+            Das Nächste um dich zu ernähren Hundefreundliches Futter
           </h1>
           <a href="/form" className="flex justify-center">
             <ThemeButton size="lg" className="bg-[#53A2A4]">
-              Get Started
+              Jetzt starten
             </ThemeButton>
           </a>
         </div>

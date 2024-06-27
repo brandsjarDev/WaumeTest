@@ -35,7 +35,6 @@ const Home = () => {
   return (
     <>
       <div className="bg-[#fafafa]">
-        <Navbar className="bg-secondaryLight" />
         {/* Render dynamically imported components */}
         <DynamicHero />
         <DynamicFreshIngredients />

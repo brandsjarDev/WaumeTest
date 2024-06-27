@@ -22,18 +22,18 @@ const Consultation = ({ className }) => (
     </div>
     <div className="flex flex-col justify-between ml-10 z-10">
       <h1 className="text-4xl hidden md:block mb-5 md:mt-16 font-hossRound">
-        “Dogs are amazing and deserve <br />
-        only the best food so they can
-        <br /> live healthy, happy lives.”
+        “Hunde sind einfach großartig und <br />
+        verdienen nur das beste Futter, damit sie ein gesundes und glückliches
+        Leben führen können.”
       </h1>
       <div className="flex flex-col">
         <h1 className=" text-2xl md:text-4xl my-5 text-white font-hossRound">
-          Personal consultation for every <br /> first order
+          Persönliches Beratungsgespräch <br /> zu jeder ersten Bestellung.
         </h1>
         <p className="text-white">
-          Order your starter box and also receive a consultation with our
+          Bestelle deine Starterbox und erhalte zusätzlich ein Beratungsgespräch
           <br />
-          nutritionist and dog mom Beatrix.
+          mit unserer Ernährungswissenschaftlerin und Hundemama Beatrix.
         </p>
         <a href="/aboutUs">
           {" "}
@@ -42,7 +42,7 @@ const Consultation = ({ className }) => (
             size="lg"
             className="w-[180px] md:w-[260px] mt-5 hover:border-white"
           >
-            More about us
+            Mehr über uns
           </ThemeButton>
         </a>
       </div>

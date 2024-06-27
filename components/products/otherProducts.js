@@ -6,7 +6,7 @@ import { cn } from "@lib/utils";
 const products = getProdData();
 
 const OtherProducts = ({
-  title = "The right recipe for every dog",
+  title = "Für jeden Hund das passende Rezept",
   className,
 }) => {
   console.log(

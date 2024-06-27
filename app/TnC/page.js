@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 
 const TnC = () => {
+  "googtrans=/en/de; path=/";
   return (
     <div className="flex flex-col justify-center p-5 md:p-10">
       <h1 className="font-hossRound text-4xl">

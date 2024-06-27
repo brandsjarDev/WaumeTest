@@ -31,31 +31,31 @@ export default function getContent(prodName) {
   obj.title = "Movement Friend";
   obj.img = movementFriendProd;
   obj.mobileImg = movementFriendMobile;
-  obj.ingredients = "Beef with quinoa, carrots and peas";
+  obj.ingredients = "Rindfleisch mit Quinoa, Karotten und Erbsen";
   obj.description =
-    "WAUME Movement Friend with beef provides your four-legged friend with all the important nutrients to lead a long, active dog life. Because running and jumping are just fun. Movement Friend is a complete food for adult dogs.";
+    "WAUME Movement Friend mit Rindfleisch versorgt deinen Vierbeiner mit allen wichtigen Nährstoffen, um ein langes aktives Hundeleben zu führen. Weil Laufen und Springen einfach Spaß machen. Movement Friend ist ein Alleinfuttermittel für adulte Hunde.";
   if (prodName == "Belly-Buddy") {
     obj.title = "Belly Buddy";
     obj.img = bellyBuddyProd;
     obj.mobileImg = bellyBuddyMoblieProd;
 
-    obj.ingredients = "Oat with oat flakes, carrots and berries";
+    obj.ingredients = "Hühnerfleisch mit Haferflocken, Karotten und Beeren";
     obj.description =
-      "Waume Belly Buddy with chicken is an easily digestible and well-tolerated dog food. This means that even sensitive four-legged friends are prepared for all adventures. Belly Buddy is a complete food for adult dogs.";
+      "Waume Belly Buddy mit Hühnerfleisch ist ein leicht verdauliches und gut verträgliches Hundefutter. So sind auch sensible Vierbeiner für alle Abenteuer gewappnet. Belly Buddy ist ein Alleinfuttermittel für adulte Hunde.";
   }
   if (prodName == "Belly-Buddy-Plus") {
     obj.title = "Belly Buddy Plus";
-    obj.ingredients = "Horse meat with oat flakes, carrots and berries";
+    obj.ingredients = "Pferdefleisch mit Haferflocken, Karotten und Beeren";
     obj.description =
-      "WAUME Belly Buddy Plus with horse muscle meat is particularly easy to digest and digestible. This means that even picky furry friends will get their taste for something. Belly Buddy Plus is a delicious complete food for adult dogs.";
+      "WAUME Belly Buddy Plus mit Muskelfleisch vom Pferd ist besonders leicht verdaulich und bekömmlich. Damit kommen auch wählerische Fellnasen auf den Waume Geschmack. Belly Buddy Plus ist ein köstliches Alleinfuttermittel für adulte Hunde.";
     obj.img = bellyBuddyPlusProd;
     obj.mobileImg = bellyBuddyPlusMoblieProd;
   }
   if (prodName == "Veggies-Amigo") {
     obj.title = "Veggies Amigo";
-    obj.ingredients = "Vegetarian menu with egg and pumpkin seed protein";
+    obj.ingredients = "Vegetarisches Menü mit Ei und Kürbiskernprotein";
     obj.description =
-      "Go Veggie, go Veggie Amigo - the meatless alternative for your furry friend. An easily digestible, low-purine and wholesome meal to provide your four-legged friend with all the important nutrients. The Veggie Amigo is a complete vegetarian food for adult dogs.";
+      "Go Veggie, go Veggie Amigo- die fleischlose Alternative für deine Fellnase. Eine leicht verdauliche, purinarme und vollwertige Mahlzeit, um deinen Vierbeiner mit allen wichtigen Nährstoffen zu versorgen. Der Veggie Amigo ist ein vegetarisches Alleinfuttermittel für adulte Hunde.";
     obj.img = veggieAmigoProd;
     obj.mobileImg = veggieAmigoMobile;
   }
@@ -66,46 +66,46 @@ export default function getContent(prodName) {
 export function getIngredients(prodName) {
   let ingredients = [
     {
-      title: "Beef",
-      content: "High quality protein source",
+      title: "Rindfleisch",
+      content: "Hochwertige Proteinquelle",
       imageUrl: beefImage,
     },
     {
-      title: "Millet and quinoa",
-      content: "Rich in iron, magnesium and zinc",
+      title: "Hirse und Quinoa",
+      content: "Reich an Eisen, Magnesium und Zink",
       imageUrl: milletAndQuinoa,
     },
     {
-      title: "Peas",
-      content: "Green blobs and rich in phytochemicals",
+      title: "Erbsen",
+      content: "Grüne Kleckse und reich an sekundären Pflanzenstoffen",
       imageUrl: peas,
     },
     {
-      title: "Pumpkin seeds",
-      content: "contain essential omega-3 fatty acids",
+      title: "Kürbiskerne",
+      content: "Enthalten essentielle Omega-3 Fettsäuren",
       imageUrl: pumpkinSeeds,
     },
   ];
   if (prodName == "Belly-Buddy") {
     ingredients = [
       {
-        title: "Chicken meat",
-        content: "Particularly easy to digest protein",
+        title: "Hühnerfleisch",
+        content: "Besonders leicht verdauliches Protein",
         imageUrl: Chicken,
       },
       {
-        title: "Oatmeal",
-        content: "fiber for a relaxed stomach feeling",
+        title: "Haferflocken",
+        content: "Ballaststoffe für ein entspanntes Bauchgefühl",
         imageUrl: Oat,
       },
       {
-        title: "Carrots",
-        content: "Boiled and chopped carrots soothe the tummy",
+        title: "Karotten",
+        content: "Gekochte und zerkleinerte Karotten beruhigen den Bauch",
         imageUrl: carrots,
       },
       {
-        title: "Pumpkin seeds",
-        content: "contain essential omega-3 fatty acids",
+        title: "Beeren",
+        content: "Reich an wertvollne Antioxidantien",
         imageUrl: berries,
       },
     ];
@@ -113,23 +113,23 @@ export function getIngredients(prodName) {
   if (prodName == "Belly-Buddy-Plus") {
     ingredients = [
       {
-        title: "Horse meat",
-        content: "Easily digestible source of protein",
+        title: "Pferdefleisch",
+        content: "Leicht verdauliche Proteinquelle",
         imageUrl: horse,
       },
       {
-        title: "Oatmeal",
-        content: "fiber for a relaxed stomach feeling",
+        title: "Haferflocken",
+        content: "Ballaststoffe für ein entspanntes Bauchgefühl",
         imageUrl: Oat,
       },
       {
-        title: "Carrots",
-        content: "rich in vitamins",
+        title: "Karotten",
+        content: "Reich an Vitaminen",
         imageUrl: carrots,
       },
       {
-        title: "Berries",
-        content: "A local superfood",
+        title: "Beeren",
+        content: "Ein heimisches Superfood",
         imageUrl: berries,
       },
     ];
@@ -137,19 +137,19 @@ export function getIngredients(prodName) {
   if (prodName == "Veggies-Amigo") {
     ingredients = [
       {
-        title: "Eggs",
-        content: "contain all essential amino acids",
+        title: "Eier",
+        content: "Enthält alle essentiellen Aminosäuren",
         imageUrl: eggs,
       },
       {
-        title: "Pumpkin seed protein",
+        title: "Kürbiskernprotein",
         content:
-          "A true masterpiece of nature, very rich in protein and fiber.",
+          "Ein wahres Meisterwerk der Natur, sehr protein- und ballaststoffreich.",
         imageUrl: pumpkinProtein,
       },
       {
-        title: "Millet",
-        content: "provides lots of iron and magnesium",
+        title: "Hirse",
+        content: "Liefert viel Eisen und Magnesium",
         imageUrl: millet,
       },
     ];
@@ -160,73 +160,73 @@ export function getIngredients(prodName) {
 export function getAccordianData(prodName) {
   let accordianData = [
     {
-      title: "Composition",
+      title: "Zusammensetzung",
       content:
-        "Beef 50% (muscle meat 30%, heart 15% and liver 5% from beef), millet 15%, carrot 14%, quinoa 9%, apple 5%, peas 4%, vitamins and minerals, pumpkin seeds and hemp oil",
+        "Rind 50% (Muskelfleisch 30%, Herz 15% und Leber 5% vom Rind), Hirse 15%, Karotte 14%, Quinoa 9%, Apfel 5%, Erbsen 4%, Vitamine und Mineralstoffe, Kürbiskerne und Hanföl",
     },
     {
-      title: "Analytical Component",
+      title: "Analytische Bestandteile",
       content:
-        "Crude protein 10.4%, crude fat 7%, crude ash 1.8%, crude fiber 0.7%, moisture 71.9%",
+        "Rohprotein 10,4%, Rohfett 7%, Rohasche 1,8%, Rohfaser 0,7%, Feuchtigkeit 71,9%",
     },
     {
-      title: "Additives/Kg",
+      title: "Zusatzstoffe/Kg",
       content:
-        "Additives per kg (nutritional additives): 4.5 mg copper (3b405), 23 mg zinc (3b603), 3.8 mg manganese (3b503), 600 µg iodine (3b202), 83 µ selenium (3b821), 11,250 IU vitamin A (3a672a), 555 IU vitamin D3 (3a671), 50 mg vitamin E (3a700)",
+        "Zusatzstoffe je kg (ernährungsphysiologische Zusatzstoffe): 4,5 mg Kupfer (3b405), 23 mg Zink (3b603), 3,8 mg Mangan (3b503), 600µg Jod (3b202), 83 µ Selen (3b821), 11.250 I.E. Vitamin A (3a672a), 555 I.E. Vitamin D3 (3a671), 50 mg Vitamin E (3a700)",
     },
   ];
   if (prodName == "Belly-Buddy")
     accordianData = [
       {
-        title: "Composition",
+        title: "Zusammensetzung",
         content:
-          "Chicken 50% (muscle meat 29%, heart 16% and liver 5% from chicken) oat flakes 15%, millet 10%, carrots 10%, celery 5%, apple 4%, berry mix (raspberries, blueberries, blackberries) 3%, vitamins and minerals, linseed and hemp oil",
+          "Huhn 50% (Muskelfleisch 29%, Herz 16% und Leber 5% vom Huhn) Haferflocken 15%, Hirse 10%, Karotten 10%, Sellerie 5%, Apfel 4%, Beerenmix (Himbeeren, Blaubeeren, Brombeeren) 3%, Vitamine und Mineralstoffe, Leinsamen und Hanföl",
       },
       {
-        title: "Analytical Component",
+        title: "Analytische Bestandteile",
         content:
-          "Crude protein 10.9%, crude fat 4.6%, crude ash 0.6%, crude fiber 0.8%, moisture 73.8%",
+          "Rohprotein 10,9%, Rohfett 4,6%, Rohasche 0,6%, Rohfaser 0,8%, Feuchtigkeit 73,8%",
       },
       {
-        title: "Additives/Kg",
+        title: "Zusatzstoffe/Kg",
         content:
-          "Additives per kg (nutritional additives): 4.5 mg copper (3b405), 23 mg zinc (3b603), 3.8 mg manganese (3b503), 600 µg iodine (3b202), 83 µ selenium (3b821), 11,250 IU vitamin A (3a672a), 555 IU vitamin D3 (3a671), 50 mg vitamin E (3a700)",
+          "Zusatzstoffe je kg (ernährungsphysiologische Zusatzstoffe): 4,5 mg Kupfer (3b405), 23 mg Zink (3b603), 3,8 mg Mangan (3b503), 600µg Jod (3b202), 83 µ Selen (3b821), 11.250 I.E. Vitamin A (3a672a), 555 I.E. Vitamin D3 (3a671), 50 mg Vitamin E (3a700)",
       },
     ];
   if (prodName == "Belly-Buddy-Plus")
     accordianData = [
       {
-        title: "Composition",
+        title: "Zusammensetzung",
         content:
-          "Horse 50% (horse muscle meat) oat flakes 15%, millet 10%, carrots 10%, celery 5%, apple 4%, berry mix (raspberries, blueberries, blackberries) 3%, vitamins and minerals, linseed and hemp oil",
+          "Huhn 50% (Muskelfleisch 29%, Herz 16% und Leber 5% vom Huhn) Haferflocken 15%, Hirse 10%, Karotten 10%, Sellerie 5%, Apfel 4%, Beerenmix (Himbeeren, Blaubeeren, Brombeeren) 3%, Vitamine und Mineralstoffe, Leinsamen und Hanföl",
       },
       {
-        title: "Analytical Component",
+        title: "Analytische Bestandteile",
         content:
-          "Crude protein 10.7%, crude fat 7.6%, crude ash 1.6%, crude fiber 0.7%, moisture 73.8%",
+          "Rohprotein 10,9%, Rohfett 4,6%, Rohasche 0,6%, Rohfaser 0,8%, Feuchtigkeit 73,8%",
       },
       {
-        title: "Additives/Kg",
+        title: "Zusatzstoffe/Kg",
         content:
-          "Additives per kg (nutritional additives): 4.5 mg copper (3b405), 23 mg zinc (3b603), 3.8 mg manganese (3b503), 600 µg iodine (3b202), 83 µ selenium (3b821), 11,250 IU vitamin A (3a672a), 555 IU vitamin D3 (3a671), 50 mg vitamin E (3a700)",
+          "Zusatzstoffe je kg (ernährungsphysiologische Zusatzstoffe): 4,5 mg Kupfer (3b405), 23 mg Zink (3b603), 3,8 mg Mangan (3b503), 600µg Jod (3b202), 83 µ Selen (3b821), 11.250 I.E. Vitamin A (3a672a), 555 I.E. Vitamin D3 (3a671), 50 mg Vitamin E (3a700)",
       },
     ];
   if (prodName == "Veggies-Amigo")
     accordianData = [
       {
-        title: "Composition",
+        title: "Zusammensetzung",
         content:
-          "Millet 40%, quinoa 12%, egg white 10%, pumpkin seed protein 10%, carrot 10%, pumpkin 10%, egg yolk 4.5%, vitamins and minerals 2%, sunflower oil, brewer's yeast, eggshell ",
+          "Hirse 40%, Quinoa 12%, Eiklar 10%, Kürbiskerprotein 10%, Karotte 10%, Kürbis 10%, Eigelb 4,5%, Vitamine und Mineralstoffe 2%, Sonnenblumenöl, Bierhefe, Eierschale",
       },
       {
-        title: "Analytical Component",
+        title: "Analytische Bestandteile",
         content:
-          "Crude protein 9.9%, crude fat 4.7%, crude ash 2.7%, crude fiber 0.8%, moisture 71.5%",
+          "Rohprotein 9,9%, Rohfett 4,7%, Rohasche 2,7%, Rohfaser 0,8%, Feuchtigkeit 71,5%",
       },
       {
-        title: "Additives/Kg",
+        title: "Zusatzstoffe/Kg",
         content:
-          "Additives per kg (nutritional additives): 4.5 mg copper (3b405), 23 mg zinc (3b603), 3.8 mg manganese (3b503), 600 µg iodine (3b202), 83 µ selenium (3b821), 11,250 IU vitamin A (3a672a), 555 IU vitamin D3 (3a671), 50 mg vitamin E (3a700)",
+          "Zusatzstoffe je kg (ernährungsphysiologische Zusatzstoffe): 4,5 mg Kupfer (3b405), 23 mg Zink (3b603), 3,8 mg Mangan (3b503), 600µg Jod (3b202), 83 µ Selen (3b821), 11.250 I.E. Vitamin A (3a672a), 555 I.E. Vitamin D3 (3a671), 50 mg Vitamin E (3a700)",
       },
     ];
   return accordianData;
@@ -236,25 +236,25 @@ export function getProdData() {
   const products = [
     {
       title: "Movement Friend",
-      content: "Beef. Quinoa. Carrot.",
+      content: "Rind. Quinoa. Karotte.",
       imageUrl: movementFreind,
       url: "products/Movement-Friend",
     },
     {
       title: "Belly Buddy",
-      content: "Chicken. Oatmeal. Berry.",
+      content: "Huhn. Oatmeal. Berry.",
       imageUrl: bellyBuddy,
       url: "products/Belly-Buddy",
     },
     {
       title: "Belly Buddy Plus",
-      content: "Horse. Oatmeal. Berry.",
+      content: "Pferd. Haferflocken. Beeren",
       imageUrl: bellyBuddyPlus,
       url: "products/Belly-Buddy-Plus",
     },
     {
       title: "Veggie Amigo",
-      content: "Egg. Pumpkin Seed Protein. Pumpkin.",
+      content: "Ei. Kürbiskernprotein. Kürbis",
       imageUrl: veggieAmigo,
       url: "products/Veggie-Amigo",
     },

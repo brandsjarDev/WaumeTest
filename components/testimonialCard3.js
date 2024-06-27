@@ -9,22 +9,19 @@ const Testimonials = ({ image }) => (
     </div>
     <div className="flex flex-col md:w-1/2 gap-5 p-5 md:p-10 md:pb-0">
       <p>
-        <span className="md:text-lg">Narvania's menu</span>
+        <span className="md:text-lg">Narvanias Speiseplan</span>
       </p>
       <p>
         <span className="text-sm md:text-base">
-          Cozy, elderly lady with stomach problems
+          Gemütliche, ältere Dame mit Magenproblemen
         </span>
       </p>
       <h2 className="md:text-xl font-hossRound">
-        400g WAUME Belly Buddy Plus per day, for sensitive stomachs
+        400g WAUME Belly Buddy Plus pro Tag, für sensiblen Magen
       </h2>
       <p className="text-xs md:text-sm text-slate-500">
-        "For the 10-year-old mixed-breed lady weighing 26 kg, it is important to
-        <br />
-        have a stomach-friendly and well-tolerated food that supports her as she
-        <br />
-        grows older."
+        "Für die 10-jährige Mischlings-Dame mit 26 kg ist ein magenschonendes
+        und gut verträgliches Futter wichtig, das sie im Alter unterstützt."
       </p>
       <p className="flex text-slate-500 text-xs md:text-sm">
         <div>
@@ -36,7 +33,7 @@ const Testimonials = ({ image }) => (
             className="mr-5 h-auto"
           />
         </div>
-        Nutrient-rich portion of fresh food on top of your dry food
+        Nährstoffreiche Portion Frischfutter auf ihr Trockenfutter
       </p>
       <div>
         <p className="flex text-slate-500 text-xs md:text-sm">
@@ -47,14 +44,14 @@ const Testimonials = ({ image }) => (
             style={{ objectFit: "contain" }}
             className="mr-5 h-auto"
           />
-          Stomach-friendly ingredients
+          Magenschonende Zutaten
         </p>
       </div>
       <div>
         <h2 className="md:text-lg font-hossRound">
-          Costs for Narvania's full board
+          Kosten für Narvanias’s Vollpension
         </h2>
-        <p className="flex text-slate-500">6.5 €/day</p>
+        <p className="flex text-slate-500"> 6,5 EUR/Tag</p>
       </div>
     </div>
   </div>

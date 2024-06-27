@@ -29,7 +29,6 @@ const HumanFood = () => {
 
   return (
     <>
-      <Navbar />
       <div className="">
         {/* Render dynamically imported components */}
         <DynamicHero />

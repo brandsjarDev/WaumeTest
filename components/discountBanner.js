@@ -21,7 +21,7 @@ export default function DiscountBanner() {
     >
       <div className="flex flex-1 justify-center items-center gap-x-4 gap-y-2">
         <p className="text-sm leading-6 text-white">
-          Get 15% off your starter box now! Let's go!
+          Sichere dir jetzt 15 % Rabatt auf deine Starterbox! Los geht‘s!
           <svg
             viewBox="0 0 2 2"
             className="mx-2 inline h-0.5 w-0.5 fill-current"
@@ -29,7 +29,8 @@ export default function DiscountBanner() {
           >
             <circle cx={1} cy={1} r={1} />
           </svg>
-          Use code <strong className="font-semibold">FIRST_ORDER</strong>
+          Verwende den Code
+          <strong className="font-semibold">FIRST_ORDER</strong>
         </p>
       </div>
       <div className="flex justify-end">

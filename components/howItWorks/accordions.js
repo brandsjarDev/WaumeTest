@@ -9,24 +9,24 @@ const ThemeAccordion = dynamic(() => import("@components/themeAccordion"), {
 
 const accordianData = [
   {
-    title: "WHY FRESH FOOD, WHY WAUME?",
+    title: "WARUM FRISCHFUTTER, WARUM WAUME?",
     content:
-      "Dog food comes in a wide variety of shapes and variants. With WAUME we have developed a fresh food that is fresh, healthy and optimally meets your needs. Because our goal is not just to provide your dog with food that fills him up - but to provide him with well-being for his entire dog's life. In order to ensure optimal nutrition and coverage of all important minerals and vitamins, our WAUME varieties are subjected to a full analysis. This means that a laboratory analyzes the food for all essential nutrients. This means you can be sure that your dog is optimally supplied with all nutrients. For us, fresh food means using fresh, high-quality ingredients that are processed and packaged directly. Through an optimized heating process we can retain a large proportion of the nutrients. Whether your dog is a picky eater struggling with a specific health issue or he is completely healthy and will eat just about anything, we have seen the positive effects of feeding fresh food to our own dogs and our dogs Customers experience first-hand. There is nothing magical about our food: WAUME is fresh food that is practical. Dog food, the way it should be. Great Food for Great Dogs",
+      "Hundefutter gibt es in den verschiedensten Formen und Varianten. Wir haben mit WAUME ein Frischfutter entwickelt, das frisch, gesund und optimal bedarfsdeckend ist. Denn unser Ziel ist es, deinem Hund nicht nur einfach ein Futter vor die Nase zu stellen, das ihn satt macht- sondern ihm Wohlbefinden für sein ganzes Hundeleben zu bereiten. Um eine optimale Ernährung und Bedarfsdeckung aller wichtigen Mineralstoffe und Vitamine zu gewährleisten, werden unsere WAUME Sorten einer Vollanalyse unterzogen. Das bedeutet, ein Labor analysiert das Futter auf alle essentiellen Nährstoffe. Damit kannst du sicher sein, dass dein Hund optimal mit allen Nährstoffen versorgt ist. Frischfutter bedeutet für uns, frische Zutaten in hoher Qualität zu verwenden, diese werden direkt verarbeitet und abgepackt. Durch ein optimiertes Erhitzungsverfahren können wir einen großen Teil der Nährstoffe aufrechterhalten. Ganz gleich, ob dein Hund ein wählerischer Esser ist, der mit einem bestimmten Gesundheitsproblem zu kämpfen hat, oder ob er völlig gesund ist und so gut wie alles frisst – wir haben die positiven Auswirkungen der Fütterung von Frischfutter bei unseren eigenen Hunden und den Hunden unserer Kunden aus erster Hand erfahren. Unser Futter hat nichts Magisches an sich: WAUME ist frisches Futter, das praktisch ist. Hundefutter, so wie es sein sollte. Great Food for Great Dogs",
   },
   {
-    title: "HOW IS YOUR FOOD PREPARED?",
+    title: "WIE WIRD EUER FUTTER ZUBEREITET?",
     content:
-      "In short, with a lot of love. Longer answer: Our ingredients are locally sourced, high quality and are cooked and hand packaged in small batches in our own production at Pro Village. Our dogs can attest to how delicious it is. You can find more information on our homepage under “About Us” and on the Pro Village homepage www.pro-village.eu .",
+      "Kurz gesagt, mit ganz viel Liebe. Längere Antwort: Unsere Zutaten werden regional, in hoher Qualität bezogen und werden in kleinen Chargen in unserer eigenen Produktion im Pro Village selbst gekocht und von Hand verpackt. Unsere Hunde können bezeugen, wie köstlich es ist. Mehr Informationen findest du auf unserer Homepage bei “Über Uns” und auf der Homepage von Pro Village www.pro-village.eu.",
   },
   {
-    title: "How do I store the food",
+    title: "WIE MUSS ICH DAS FUTTER LAGERN?",
     content:
-      "It is best to store your WAUME in a cool, dark place and protected from direct sunlight. WAUME does not need to be stored in the refrigerator or freezer.",
+      "Optimal lagerst du dein WAUME kühl, dunkel und vor direkter Sonneneinstrahlung geschützt. WAUME muss nicht im Kühlschrank oder Tiefkühlschrank gelagert werden.",
   },
 ];
 
 const Accordions = ({
-  title = "Frequently Asked Questions",
+  title = "Häufig gestellte Fragen",
   data = accordianData,
   more = false,
 }) => (
@@ -49,7 +49,7 @@ const Accordions = ({
         <a href="faq">
           {" "}
           <ThemeButton secondary size="xl">
-            More FAQ's
+            Alle Fragen anzeigen
           </ThemeButton>
         </a>
       )}

@@ -9,102 +9,101 @@ const Accordions = dynamic(() => import("@components/howItWorks/accordions"), {
 
 const accordianData1 = [
   {
-    title: "HOW DO I KNOW WHEN MY NEXT DELIVERY WILL ARRIVE?",
+    title: "WOHER WEISS ICH, WANN MEINE NÄCHSTE LIEFERUNG ANKOMMT?",
     content:
-      "When you place your first order, we will let you know when the first delivery will arrive, after which you will receive WAUME every 4 weeks. You can change the order at any time in the login area .",
+      "Wir werden dir bei deiner ersten Bestellung mitteilen, wann die erste Lieferung kommt, danach bekommst du WAUME alle 4 Wochen zugeschickt. Du kannst die Bestellung im Loginbereich jederzeit ändern.",
   },
   {
-    title: "CAN I SEND THE FOOD BACK TO YOU?",
+    title: " KANN ICH DAS FUTTER AN EUCH ZURÜCKSCHICKEN?",
     content:
-      "If your dog doesn't tolerate the food or your pet doesn't like it, you can contact us and we will find a solution    ",
+      "Sollte dein Hund das Futter nicht vertragen, oder es deinem Liebling nicht schmecken, kannst du dich bei uns melden und wir werden eine Lösung finden.",
   },
   {
-    title: "WHEN WILL I RECEIVE THE DELIVERY?",
+    title: " WANN ERHALTE ICH DIE LIEFERUNG?",
     content:
-      "When you place your first order, we will let you know when the next delivery will be sent. After that, you will receive a new delivery approximately every 28 days, usually between Tuesday and Friday. If you are not at home, your package will be left in front of the door (with a drop-off permit from Austrian Post) or delivered to an Austrian Post collection point near you.",
+      "Bei deiner ersten Bestellung teilen wir dir mit, wann die nächste Lieferung zugeschickt wird. Danach erhältst du zirka alle 28 Tage eine neue Lieferung, meist zwischen Dienstag und Freitag. Solltest du nicht zuhause sein, wird dein Paket vor der Tür abgestellt (mit Abstellgenehmigung der Österreichischen Post), oder in eine Abholstation der Österreichischen Post in deiner Nähe geliefert.",
   },
   {
-    title: "WHERE AND HOW CAN I BUY YOUR FOOD?",
+    title: "WO UND WIE KANN ICH EUER FUTTER KAUFEN?",
     content:
-      "You can order WAUME on our website – either as a subscription or as a one-off trial package.",
+      "Du kannst WAUME auf unserer Webseite bestellen – entweder als Abo oder einmalig als Probierpaket.",
   },
 ];
 const accordianData2 = [
   {
-    title: "DOES THE SUBSCRIPTION RENEW AUTOMATICALLY?",
+    title: "VERLÄNGERT SICH DAS ABO AUTOMATISCH?",
     content:
-      "Yes, subscriptions renew automatically. You can cancel/change/pause subscriptions at any time in the login area .",
+      "Ja, Abos verlängern sich automatisch. Du kannst Abos im Loginbereich jederzeit kündigen/ändern/pausieren.",
   },
   {
-    title: "WHAT HAPPENS IF I GO ON VACATION?",
+    title: " WAS PASSIERT, WENN ICH IN DEN URLAUB FAHRE?",
     content:
-      "You can pause your subscription at any time. Please let us know in good time. You can take WAUME with you on vacation without any problems. Make sure not to expose the food to direct sun and store it in a cool, dark place.",
+      "Du kannst dein Abo jederzeit pausieren. Gib uns bitte rechtzeitig Bescheid. Du kannst WAUME ohne Probleme  in den Urlaub mitnehmen. Achte darauf, das Futter nicht direkter Sonne auszusetzen und es  kühl und dunkel zu lagern.",
   },
   {
-    title: "HOW DO I EDIT, CHANGE, PAUSE OR CANCEL MY SUBSCRIPTION?",
+    title: "WIE KANN ICH MEIN ABO BEARBEITEN, ÄNDERN, PAUSIEREN ODER KÜNDIGEN?",
     content:
-      "You can edit, change and pause subscriptions at any time in the login area .You can also cancel your subscription in the login area . Please make your changes on time, at least 10 days before the next delivery.",
+      "Du kannst Abos im Loginbereich jederzeit bearbeiten, ändern und pausieren.Im Loginbereich kannst du dein Abo auch kündigen. Bitte erledige deine Änderungen rechtzeitig, mindestens 10 Tage vor der nächsten Lieferung.",
   },
 ];
 const accordianData3 = [
   {
-    title: "HOW DO YOU KNOW HOW MUCH FOOD MY DOG ​​NEEDS PER DAY?",
+    title: "WOHER WISST IHR, WIE VIEL FUTTER MEIN HUND PRO TAG BENÖTIGT?",
     content:
-      "Our food generator ensures that your dog gets the right portion of food because we calculate the exact number of calories based on your information about weight, breed, age, activity level and body constitution.We also take into account any intolerances your dog may have and recommend our appropriate recipes.If your dog is underweight or overweight, you can easily indicate this in the configurator and we will adjust the portions so that he reaches his ideal weight!",
+      "Unser Futter-Generator stellt sicher, dass dein Hund die richtige Portion Futter bekommt, denn wir berechnen die exakte Kalorienzahl auf der Grundlage deiner Angaben zu Gewicht, Rasse, Alter, Aktivitätsniveau und Körperkonstitution.Wir berücksichtigen auch eventuelle Unverträglichkeiten deines Hundes und empfehlen unsere passenden Rezepte. Ist dein Hund unter- oder übergewichtig, kannst du dies im Konfigurator ganz einfach angeben und wir passen die Portionen an, damit er sein Idealgewicht erreicht!",
   },
   {
-    title: "HOW DOES THE FEED CHANGE WORK?",
+    title: "WIE FUNKTIONIERT DIE FUTTERUMSTELLUNG?",
     content:
-      "We would be happy to guide you through our conversion guide, which is included in our starter box. For most dogs, the transition means gradually getting used to the new food so that their gastrointestinal tract doesn't get upset. If this habituation occurs too quickly, your dog's digestive tract will not have the opportunity to adjust to the new food, which can lead to unwanted diarrhea. Slow adaptation can be particularly useful for sensitive dogs. The background to this is that a new food influences the bacterial flora in your dog's intestines. The adaptation takes about 7 days.With your first order you will receive a detailed feeding guide and a guide on changing your dog's food.Day 1 & 2	25% WAUME	75% previous feed Day 3 & 4	50% WOW	50% previous feed Day 5 & 6	75% WOW	25% previous feed From day 7	100% WOW	0% previous feed. With your first order you will receive a detailed feeding guide and a guide on changing your dog's food.",
+      "Wir führen dich gerne durch unseren Umstellungs-Guide, der in unserer Starter Box enthalten ist. Für die meisten Hunde bedeutet die Umstellung, dass sie allmählich an das neue Futter gewöhnt werden, damit ihr Magen-Darm-Trakt nicht durcheinandergerät. Erfolgt diese Gewöhnung zu schnell, hat der Verdauungstrakt deines Hundes keine Möglichkeit, sich auf das neue Futter einzustellen, weshalb es zu unerwünschten Durchfällen kommen kann. Eine langsame Anpassung kann vor allem bei empfindlichen Hunden sinnvoll sein. Hintergrund dazu ist, dass ein neues Futter die Bakterienflora im Darm deines Hundes beeinflusst. Die Adaption dauert etwa 7 Tage.",
   },
 ];
 const accordianData4 = [
   {
     title:
-      "WHAT HAPPENS IF THE SAUSAGE IS OPENED ONCE AND IS NOT FED STRAIGHT AWAY?",
+      "WAS PASSIERT, WENN DIE WURST EINMAL GEÖFFNET IST UND NICHT GLEICH VERFÜTTERT WIRD?",
     content:
-      "After opening the sausage, the food must be consumed within 24 hours. After opening, the food must be stored in the refrigerator. Ideally covered or in a lockable box.",
+      "Nach dem Öffnen der Wurst ist das Futter innerhalb von 24 Stunden zu verbrauchen. Nach dem Öffnen muss das Futter im Kühlschrank gelagert werden. Optimalerweise abgedeckt, oder in einer verschließbaren Box.",
   },
   {
-    title: "HOW SHOULD I STORE THE FOOD?",
+    title: "WIE MUSS ICH DAS FUTTER LAGERN?",
     content:
-      "It is best to store your WAUME in a cool, dark place and protected from direct sunlight. WAUME does not need to be stored in the refrigerator or freezer.",
+      "Optimal lagerst du dein WAUME kühl, dunkel und vor direkter Sonneneinstrahlung geschützt. WAUME muss nicht im Kühlschrank oder Tiefkühlschrank gelagert werden.",
   },
   {
-    title: "IS WAUME ALSO SUITABLE FOR PUPPIES?",
+    title: "IST WAUME AUCH FÜR WELPEN GEEIGNET?",
     content:
-      "WAUME is a complete food for fully grown adult dogs. We therefore only recommend WAUME after height growth has been completed. Your dog will have completed this between 12 and 15 months. Your dog can then enjoy WAUME to the fullest. Are you unsure whether your dog has finished growing in height yet? It's best to contact your veterinarian.",
+      "WAUME ist ein Alleinfuttermittel für ausgewachsene, adulte Hunde. Wir empfehlen WAUME daher erst nach Abschluss des Höhenwachstums. Dieses hat dein Hund zwischen 12 und 15 Monaten abgeschlossen. Danach kann dein Hund WAUME in vollen Zügen genießen. Bist du dir unsicher, ob dein Hund das Höhenwachstum schon abgeschlossen hat? Kontaktiere am besten deinen Tierarzt.",
   },
   {
-    title: "HOW IS YOUR FOOD PREPARED?",
+    title: "WIE WIRD EUER FUTTER ZUBEREITET?",
     content:
-      "In short, with a lot of love. Longer answer: Our ingredients are locally sourced, high quality and are cooked in small batches in our own production at Pro Village and packaged by hand. Our dogs can attest to how delicious it is. You can find more information on our homepage under “About Us” and on the Pro Village homepage www.pro-village.eu .",
+      "Kurz gesagt, mit ganz viel Liebe. Längere Antwort: Unsere Zutaten werden regional, in hoher Qualität bezogen und werden in kleinen Chargen in unserer eigenen Produktion im Pro Village selbst gekocht und von Hand verpackt. Unsere Hunde können bezeugen, wie köstlich es ist. Mehr Informationen findest du auf unserer Homepage bei “Über Uns” und auf der Homepage von Pro Village www.pro-village.eu.",
   },
   {
-    title: "MY DOG ​​IS OVERWEIGHT, IS WAUME A SUITABLE FOOD?",
+    title: " MEIN HUND IST ÜBERGEWICHTIG, IST WAUME EIN GEEIGNETES FUTTER?",
     content:
-      "The health of dogs is particularly important to us. Our recipes and feeding plans are based on the latest science and high quality standards. The food generator is used to determine the optimal amount of energy per day by specifying the breed, age, activity level and ideal weight. In this way, we create individually packaged daily rations that are truly tailored to your dog's needs. Our team will be with you from the start to monitor your dog's progress and make adjustments to your plan.",
+      "Die Gesundheit der Hunde liegt uns besonders am Herzen. Unsere Rezepturen und Futterpläne richten sich nach dem neuesten Stand der Wissenschaft und auf hohen Qualitätsstandards. Mit dem Futter-Generator wird durch die Angabe von Rasse, Alter, Aktivitätsniveau und Idealgewicht die optimale Energiemenge pro Tag ermittelt. Auf diese Weise erstellen wir individuell abgepackte Tagesrationen, die wirklich auf die Bedürfnisse deines Hundes zugeschnitten sind. Unser Team steht dir von Anfang an zur Seite, um die Fortschritte deines Hundes zu überwachen und Anpassungen an deinem Plan vorzunehmen.",
   },
   {
-    title: "WHY FRESH FOOD, WHY WAUME?",
+    title: "WARUM FRISCHFUTTER, WARUM WAUME?",
     content:
-      "Dog food comes in a wide variety of shapes and variants. With WAUME we have developed a fresh food that is fresh, healthy and optimally meets your needs. Because our goal is not just to provide your dog with food that fills him up - but to provide him with well-being for his entire dog's life. In order to ensure optimal nutrition and coverage of all important minerals and vitamins, our WAUME varieties are subjected to a full analysis. This means that a laboratory analyzes the food for all essential nutrients. This means you can be sure that your dog is optimally supplied with all nutrients.For us, fresh food means using fresh, high-quality ingredients that are processed and packaged directly. Through an optimized heating process we can retain a large proportion of the nutrients. Whether your dog is a picky eater struggling with a specific health issue or he is completely healthy and will eat just about anything, we have seen the positive effects of feeding fresh food to our own dogs and our dogs Customers experience first-hand. There is nothing magical about our food: WAUME is fresh food that is practical. Dog food, the way it should be. Great Food for Great Dogs",
+      "Hundefutter gibt es in den verschiedensten Formen und Varianten. Wir haben mit WAUME ein Frischfutter entwickelt, das frisch, gesund und optimal bedarfsdeckend ist. Denn unser Ziel ist es, deinem Hund nicht nur einfach ein Futter vor die Nase zu stellen, das ihn satt macht- sondern ihm Wohlbefinden für sein ganzes Hundeleben zu bereiten. Um eine optimale Ernährung und Bedarfsdeckung aller wichtigen Mineralstoffe und Vitamine zu gewährleisten, werden unsere WAUME Sorten einer Vollanalyse unterzogen. Das bedeutet, ein Labor analysiert das Futter auf alle essentiellen Nährstoffe. Damit kannst du sicher sein, dass dein Hund optimal mit allen Nährstoffen versorgt ist.Frischfutter bedeutet für uns, frische Zutaten in hoher Qualität zu verwenden, diese werden direkt verarbeitet und abgepackt. Durch ein optimiertes Erhitzungsverfahren können wir einen großen Teil der Nährstoffe aufrechterhalten.Ganz gleich, ob dein Hund ein wählerischer Esser ist, der mit einem bestimmten Gesundheitsproblem zu kämpfen hat, oder ob er völlig gesund ist und so gut wie alles frisst – wir haben die positiven Auswirkungen der Fütterung von Frischfutter bei unseren eigenen Hunden und den Hunden unserer Kunden aus erster Hand erfahren. Unser Futter hat nichts Magisches an sich: WAUME ist frisches Futter, das praktisch ist. Hundefutter, so wie es sein sollte. Great Food for Great Dogs",
   },
   {
-    title: "HOW IS WAUME BEST SERVED?",
+    title: "WIE WIRD WAUME AM BESTEN SERVIERT?",
     content:
-      "WAUME is individually pre-portioned for your dog. Simply cut the sausage open in a bowl at room temperature and add a little more water as needed. Tip: If your dog prefers warm meals or has a sensitive stomach, you can mix in some warm water.",
+      "WAUME ist individuell für deinen Hund vorportioniert. Einfach die Wurst bei Zimmertemperatur im Napf aufschneiden und je nach Bedarf noch etwas Wasser hinzufügen. Tipp: Bevorzugt dein Hund warme Mahlzeiten, oder hat er einen empfindlichen Magen, kannst du etwas warmes Wasser untermischen.",
   },
 ];
 
 export const Faq = () => {
   return (
     <>
-      <Navbar />
-      <Accordions title="Order and delivery" data={accordianData1} />
-      <Accordions title="Subscription" data={accordianData2} />{" "}
-      <Accordions title="Feed configurator" data={accordianData3} />
-      <Accordions title="The food" data={accordianData4} />
+      <Accordions title="Bestellung und Lieferung" data={accordianData1} />
+      <Accordions title="Abo" data={accordianData2} />{" "}
+      <Accordions title="Futterkonfigurator" data={accordianData3} />
+      <Accordions title="Das Futter" data={accordianData4} />
     </>
   );
 };

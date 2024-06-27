@@ -11,7 +11,7 @@ const HowItWorks = ({ className }) => (
       className={`flex flex-col  gap-10  md:justify-between pb-10 pt-10 md:pt-20 px-5 ${className}`}
     >
       <div className="grid col-span-3 flex-col justify-center text-2xl md:text-4xl gap-5 md:gap-10">
-        <h1 className="justify-center font-hossRound">Here's how it works</h1>
+        <h1 className="justify-center font-hossRound">So funktioniert’s</h1>
       </div>
       <div className="flex flex-col md:flex-row items-center justify-around gap-10">
         {/* First Card */}
@@ -20,12 +20,12 @@ const HowItWorks = ({ className }) => (
             <CircleWithImage imageUrl={chat} />
           </div>
           <h2 className="  md:text-lg font-hossRound max-h-10">
-            1. TELL US SOMETHING ABOUT YOUR DOG
+            1. ERZÄHLE UNS ETWAS ÜBER DEINEN HUND
           </h2>
           <p className=" text-slate-500 text-sm md:text-base">
-            Every dog is unique. That's why it's even more important to find out
-            what your pet really needs so that they stay healthy and fit in the
-            long term.
+            Jeder Hund ist einzigartig. Daher ist es umso wichtiger
+            herauszufinden, was dein Liebling wirklich braucht, damit er
+            langfristig gesund und fit bleibt.
           </p>
         </div>
         {/* Second Card */}
@@ -34,11 +34,11 @@ const HowItWorks = ({ className }) => (
             <CircleWithImage imageUrl={ParcelTracker} />
           </div>
           <h2 className="  md:text-lg font-hossRound">
-            2. GET YOUR STARTER BOX
+            2. ERHALTE DEINE STARTERBOX
           </h2>
           <p className=" text-slate-500 text-xs md:text-base">
-            Our starter box contains fresh food for four weeks and everything
-            you need to serve it. Get -20% now.
+            Unsere Starterbox enthält Frischfutter für vier Wochen und alles
+            Notwendige um es zu servieren. Sichere dir jetzt -20%. Los gehts!
           </p>
         </div>
 
@@ -48,12 +48,12 @@ const HowItWorks = ({ className }) => (
             <CircleWithImage imageUrl={Calendar} />
           </div>
           <h2 className="md:text-lg font-hossRound">
-            3. FRESH FOOD DELIVERED MONTHLY
+            3. FRISCHFUTTER MONATLICH GELIEFERT
           </h2>
           <p className=" text-slate-500 text-sm md:text-base">
-            Regular deliveries save you the trip to the supermarket. You can
-            easily and conveniently receive freshly prepared dog food delivered
-            straight to your door.
+            Regelmäßige Lieferungen ersparen dir den Weg zum Supermarkt. Einfach
+            und bequem erhältst du frisch zubereitetes Hundefutter direkt vor
+            deine Haustüre geliefert.
           </p>
         </div>
       </div>
@@ -62,7 +62,7 @@ const HowItWorks = ({ className }) => (
         <a href="/howItWorks">
           {" "}
           <ThemeButton secondary size="xl">
-            Here's how it works
+            So funktioniert's
           </ThemeButton>
         </a>
       </div>

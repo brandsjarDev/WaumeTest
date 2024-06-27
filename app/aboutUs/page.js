@@ -55,7 +55,6 @@ const Page = () => {
 
   return (
     <>
-      <DynamicNavbar />
       <div className="">
         <div id="about" className="bg-red-500">
           <div
@@ -72,16 +71,18 @@ const Page = () => {
             <div className="flex justify-center items-center max-w-md">
               <div className="flex flex-col gap-5 md:gap-8">
                 <h2 className="text-start text-2xl md:text-4xl   font-hossRound ">
-                  About Us
+                  Über uns
                 </h2>
                 <p>
-                  We have set ourselves the goal of producing dog food that is
-                  healthy, sustainable and easy to feed and handle.
+                  Wir haben es uns zum Ziel gesetzt ein Hundefutter zu
+                  produzieren, das gesund, nachhaltig und einfach in der
+                  Fütterung und Handhabung ist.
                 </p>
                 <p>
-                  We believe that every dog ​​deserves only the very best. A
-                  balanced diet is one of the most important building blocks for
-                  a long and happy life, not only for people but also for dogs.
+                  Wir sind der Meinung, dass jeder Hund nur das Allerbeste
+                  verdient. Eine ausgewogene Ernährung ist nicht nur für
+                  Menschen, sondern auch für Hunde einer der wichtigsten
+                  Grundbausteine für ein langes und glückliches Leben.
                 </p>
               </div>
             </div>
@@ -93,11 +94,11 @@ const Page = () => {
           className="flex flex-col items-center justify-center bg-secondary"
         >
           <h2 className=" text-2xl md:text-4xl text-center font-hossRound ">
-            Easy feeding. Tasty. Individually.
+            Einfache Fütterung. Schmackhaft. Individuell.
           </h2>
           <p className="text-slate-500 m-5 md:m-8">
-            Our recipes are based on fresh, high-quality ingredients, combined
-            with specialist knowledge of nutrition and animal health.
+            Grundlage unserer Rezepturen sind frische und hochwertige Zutaten,
+            kombiniert mit Fachwissen aus Ernährung und Tiergesundheit.
           </p>
           <ImageRowLayout
             imageUrl={deadDog}
@@ -109,28 +110,29 @@ const Page = () => {
 text-xs  md:text-sm text-slate-500 gap-5"
             >
               <p>
-                It all started about 2 years ago with 'Hot', our then
-                14-year-old Labrador. A loyal companion and best friend for many
-                years. At the age of 6, he was diagnosed with arthritis, a
-                degenerative joint wear and tear with recurring inflammation.
-                Movements became increasingly difficult with age, despite the
-                use of supportive preparations. This clinical picture is not
-                uncommon in many dogs. After researching and speaking with
-                veterinarians, we realized that a healthy diet tailored to Hot's
-                individual needs from an early age could have alleviated his
-                illness.
+                Alles begann vor ca. 2 Jahren mit ‘Hot’, unserem damals
+                14-jährigen Labrador. Ein treuer Begleiter und der beste Freund
+                über viele Jahre. Mit 6 Jahren wurde bei ihm Arthritis
+                diagnostiziert, eine degenerative Gelenksabnützung mit immer
+                wiederkehrenden Entzündungen. Bewegungen wurden im Alter immer
+                schwerer, trotz Verwendung unterstützender Präparate. Dieses
+                Krankheitsbild ist bei vielen Hunden nicht ungewöhnlich. Nach
+                Recherchen und Gesprächen mit Tierärzten wurde uns klar, dass
+                eine gesunde, auf Hot’s individuelle Bedürfnisse abgestimmte
+                Ernährung von klein auf seine Krankheit hätte lindern können.
               </p>
               <p>
-                The search for food began, strict diets began and hardly
-                anything actually seemed to help. Over time, we began to cook
-                food ourselves and that's how the idea came about: fresh food,
-                with high standards of quality and tolerability for the needs of
-                every dog, packaged in a simple and uncomplicated manner. Since
-                then, we have pursued our mission of tasty, healthy and
-                sustainable dog food. So far we have had 100% super clean
-                feeding bowls. Hot was the dog who helped us bring WAUME into
-                being. Today he is watching from heaven and is definitely still
-                licking all the food bowls perfectly clean.
+                Es begann die Futtersuche, strikte Diäten und kaum etwas schien
+                tatsächlich zu helfen. Mit der Zeit begannen wir selbst Futter
+                zu kochen und so entstand die Idee: Frischfutter, mit hohen
+                Ansprüchen an Qualität und Verträglichkeit für die Bedürfnisse
+                eines jeden Hundes, einfach und unkompliziert verpackt. Seither
+                verfolgen wir unsere Mission von schmackhaftem, gesunden und
+                nachhaltigem Hundefutter. Bisher verzeichnen wir 100% super
+                saubere Futterschüsseln. Hot war jener Hund, der uns geholfen
+                hat, WAUME ins Leben zu rufen, heute sieht er vom Himmel aus zu
+                und schleckt mit Sicherheit noch immer alle Futterschüsseln
+                picobello sauber.
               </p>
             </div>
           </ImageRowLayout>
@@ -141,29 +143,29 @@ text-xs  md:text-sm text-slate-500 gap-5"
         ></div>
         <div className="">
           <h1 className="font-hossRound mt-10 text-2xl md:text-4xl text-center">
-            Our Team
+            Unser Team
           </h1>
           <ImageRowLayout imageUrl={team} className="pt-0 md:pt-0">
             <div className="md:h-[600px] flex-col justify-around content-around gap-5 md:gap-10">
               <TeamMember
                 imageSrc={bea}
                 name="Bea"
-                description="A creative mind with great attention to detail. Canine nutritionist and nutritionist"
+                description="Ein kreativer Kopf, mit viel Liebe zum Detail. Hunde-Ernährungsberaterin und Ernährungswissenschaftlerin"
               />
               <TeamMember
                 imageSrc={thaddeus}
-                name="Squidward"
-                description="A lateral thinker, WAUME sous chef and dog dad"
+                name="Thaddäus"
+                description="Ein Querdenker, WAUME Souschef und Dogdad"
               />
               <TeamMember
                 imageSrc={peter}
                 name="Peter"
-                description="A go-getter, Chef de Cuisine and Dogdad of 4"
+                description="Ein Anpacker, Chef de Cuisine und Dogdad of 4"
               />
               <TeamMember
                 imageSrc={luna}
                 name="Luna"
-                description="CPCO- Chief Plate Cleaning Officer and Head of Taste-Testing, the secret boss of WAUME"
+                description="CPCO- Chief Plate Cleaning Officer and Head of Taste-Testing, die heimliche Chefin von WAUME"
               />
             </div>
           </ImageRowLayout>
@@ -174,20 +176,22 @@ text-xs  md:text-sm text-slate-500 gap-5"
         >
           <div className="flex flex-col  max-w-md">
             <h1 className="font-hossRound text-2xl md:text-4xl text-start">
-              Our Village
+              Pro Village
             </h1>
             <p className="text-sm md:text-xl">
-              Our mission is to create a place for dogs where they can feel
-              comfortable and just be dogs. Pro Village is a place that makes
-              dogs' hearts beat faster. True to the motto – Do what you love –
-              we live the dream of giving as many dogs as possible a beautiful
-              and healthy life. It all started with the 'Second Life for Dogs
-              Initiative' - the heart of Pro Village. Today we have over 100
-              dogs from animal shelters and the streets, for whom we have found
-              happy homes after their re-socialization. During the first tour of
-              the still undeveloped Pro Village property, our Hot dug up the
-              first bones here. Today we produce our WAUME food here and feed
-              our four-legged friends with a lot of love.
+              Wir haben es uns zur Aufgabe gemacht, einen Ort für Hunde zu
+              schaffen, an dem sie sich wohlfühlen und einfach Hunde sein
+              können. Pro Village ist ein Ort, der Hundeherzen höher schlagen
+              lässt. Ganz nach dem Motto – Tu das was du liebst – leben wir den
+              Traum, so vielen Hunden wie möglich ein schönes und gesundes Leben
+              zu ermöglichen. Alles begann mit der ‘Initiative zweites Leben für
+              Hunde’ – das Herzstück von Pro Village. Heute zählen wir über 100
+              Hunde aus Tierheimen und von der Straße, für die wir nach ihrer
+              Re-Sozialisierung ein glückliches Zuhause gefunden haben. Bei der
+              ersten Besichtigung des noch unbebauten Grundstücks von Pro
+              Village hat unser Hot hier die ersten Knochen ausgegraben. Heute
+              produzieren wir hier unser WAUME Futter und verköstigen Vierbeiner
+              mit viel Liebe.
             </p>
           </div>
         </div>

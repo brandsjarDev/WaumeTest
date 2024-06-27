@@ -49,6 +49,8 @@ const RootLayout = ({ children }) => {
       </head>
       <body>
         <Provider store={store}>
+          {" "}
+          <Nav />
           <main className="app font-bioSans">{children}</main>
           <Footer />
         </Provider>

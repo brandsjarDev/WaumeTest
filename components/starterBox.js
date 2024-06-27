@@ -32,35 +32,35 @@ const StarterBox = ({ className }) => (
       )}
     >
       <h2 className="text-center  text-2xl md:text-4xl font-hossRound ">
-        In your starter box:
+        In deiner Starterbox:
       </h2>
 
       <div className="flex flex-col md:flex-row justify-center gap-5">
         <div>
           <HomeCard
-            title="WAUME fresh food"
-            content="Ready to eat for your dog."
+            title="WAUME Frischfutter"
+            content="verzehrfertig für deinen Hund."
             imageUrl={Sausage}
           />
         </div>
         <div>
           <HomeCard
             title="Guide"
-            content="Information and tips for changing feed."
+            content="Informationen und Tipps zur Futterumstellung."
             imageUrl={Guide}
           />
         </div>
         <div>
           <HomeCard
-            title="Knife"
-            content="For easy opening of portions."
+            title="Messer"
+            content="Zum einfachen Öffnen der Portionen."
             imageUrl={Knife}
           />
         </div>
       </div>
       <a href="/form">
         {" "}
-        <ThemeButton size="xl">Get Started</ThemeButton>
+        <ThemeButton size="xl">Jetzt starten</ThemeButton>
       </a>
     </div>
   </>

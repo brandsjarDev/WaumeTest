@@ -48,14 +48,13 @@ const DynamicAccordions = dynamic(
 const Page = () => {
   const title = (
     <>
-      Based on your input, you will receive food
-      <br /> recommendations from which you can choose
+      Basierend auf deinen Eingaben erhältst du
+      <br /> Futter-Empfehlungen aus denen du wählen kannst.
     </>
   );
 
   return (
     <>
-      <DynamicNavbar />
       <div className="">
         <Image src={howitworks} style={{ objectFit: "fill" }} />
         <DynamicHowItWorks className="bg-secondary" />
@@ -64,15 +63,16 @@ const Page = () => {
         <ImageRowLayout imageUrl={threesausage}>
           <div className="flex flex-col justify-start gap-5">
             <h2 className="text-2xl md:text-4xl font-hossRound ">
-              Cover Your Dog’s Daily Nutritional Needs
+              Die Futtermenge wird an deinen Hund angepasst und in praktische
+              Portionen verpackt.
             </h2>
             <p className="text-slate-500 leading-5 md:leading-8">
-              WAUME is an individually portioned fresh food that is tailored to
-              your dog's needs. The benefits:
+              WAUME ist ein individuell portioniertes Frischfutter das sich nach
+              den Bedürfnissen deines Hundes richtet. Die Benefits:
             </p>
-            <IconText text="uncomplicated feeding, because one sausage = one meal" />
-            <IconText text="Makes weight management easier" />
-            <IconText text="Fresh food at every meal" />
+            <IconText text="eine unkomplizierte Fütterung, denn eine Wurst = eine Mahlzeit" />
+            <IconText text="erleichtert das Gewichtsmanagement" />
+            <IconText text="frisches Futter zu jeder Mahlzeit" />
           </div>
         </ImageRowLayout>
         <DynamicWave />
@@ -83,8 +83,7 @@ const Page = () => {
             className="bg-secondaryDark"
           >
             <h2 className="text-2xl md:text-4xl text-center font-hossRound ">
-              Fresh ingredients, gentle preparation, stored without
-              refrigeration
+              Frische Zutaten, schonende Zubereitung, ganz ohne Kühlung lagern.
             </h2>
           </ImageRowLayout>
           <div className="flex bg-secondary h-24 rounded-b-[70%]"></div>
@@ -94,17 +93,18 @@ const Page = () => {
         <ImageRowLayout imageUrl={starterpacket} className="my-5 md:my-10">
           <div className="flex flex-col justify-start gap-5">
             <h2 className="text-2xl md:text-4xl font-hossRound ">
-              Let your dog convince you! Order our sample box once.
+              Lass deinen Hund, dich überzeugen! Bestell einmalig unsere
+              Probierbox.
             </h2>
 
-            <IconText text="3 WAUME samples" />
-            <IconText text="Individually compiled varieties" />
-            <IconText text="WAUME food guide and knife" />
+            <IconText text="3 WAUME- Kostproben" />
+            <IconText text="Individuell zusammengestellte Sorten" />
+            <IconText text="WAUME- Futterguide und Messer" />
             <p className="text-slate-500 leading-8">
-              € 15.00 (Including 13% VAT) + Shipping Cost
+              15,00 € (inkl. 13 % MwSt.) + Versandkosten
             </p>
             <a href="/form" className="flex justify-center">
-              <ThemeButton size="xl">Add to cart</ThemeButton>
+              <ThemeButton size="xl">In den Warenkorb</ThemeButton>
             </a>
           </div>
         </ImageRowLayout>

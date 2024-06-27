@@ -13,7 +13,6 @@ const Page = ({ params }) => {
   return (
     <>
       <div className="bg-[#fafafa]">
-        <Navbar className="bg-secondaryLight" />
         <Hero prodName={params.prodName} />
         <FreshIngridients prodName={params.prodName} />
         <Accordions prodName={params.prodName} />

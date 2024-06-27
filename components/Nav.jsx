@@ -23,7 +23,7 @@ const Navbar = ({ className = "bg-white" }) => {
   ///g translate//
   useEffect(() => {
     const script = document.createElement("script");
-    document.cookie = "googtrans=/en/de; path=/";
+    // document.cookie = "googtrans=/en/de; path=/";
     script.src =
       "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
@@ -130,7 +130,7 @@ const Navbar = ({ className = "bg-white" }) => {
                     className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                     onClick={() => console.log("hii")}
                   >
-                    How it works
+                    So funktioniert’s
                   </Link>
                 </li>
                 <li className="relative parent">
@@ -138,7 +138,7 @@ const Navbar = ({ className = "bg-white" }) => {
                     href="#"
                     className="flex justify-between md:inline-flex items-center hover:bg-gray-50 space-x-2 mt-1"
                   >
-                    <span>Products</span>
+                    <span>Produkte</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-4 h-4 fill-current"
@@ -187,7 +187,7 @@ const Navbar = ({ className = "bg-white" }) => {
                     href="/preparation"
                     className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                   >
-                    Preparation
+                    Zubereitung
                   </Link>
                 </li>
                 <li>
@@ -195,7 +195,7 @@ const Navbar = ({ className = "bg-white" }) => {
                     href="/aboutUs"
                     className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                   >
-                    About Us
+                    Über Uns
                   </Link>
                 </li>
                 <li>
@@ -236,7 +236,7 @@ const Navbar = ({ className = "bg-white" }) => {
                 className="w-[151px] h-[40px] ml-4 bg-primary text-white   rounded-md"
                 onClick={() => router.push("/form")}
               >
-                Start now
+                Jetzt starten
               </ThemeButton>
             )}
 
@@ -247,7 +247,7 @@ const Navbar = ({ className = "bg-white" }) => {
                 isLoggedIn ? handleLogout() : router.push("/login")
               }
             >
-              {isLoggedIn ? "Logout" : "Login"}
+              {isLoggedIn ? "Ausloggen" : "Anmeldung"}
             </ThemeButton>
           </div>
           <CircleUserRound
@@ -306,7 +306,7 @@ const Navbar = ({ className = "bg-white" }) => {
                   className="block py-2 px-3  rounded  hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                   onClick={() => console.log("hii")}
                 >
-                  How it works
+                  So funktioniert’s
                 </Link>
               </li>
               <li
@@ -315,7 +315,7 @@ const Navbar = ({ className = "bg-white" }) => {
               >
                 <div className="relative">
                   <a className="block py-2 px-3 rounded md:p-0 mt-1">
-                    Products
+                    Produkte
                   </a>
                   {showDropdown && (
                     <div className="absolute z-10 mt-2 bg-white border border-gray-200 rounded-md shadow-lg">
@@ -352,7 +352,7 @@ const Navbar = ({ className = "bg-white" }) => {
                   href="/preparation"
                   className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                 >
-                  Preparation
+                  Zubereitung
                 </Link>
               </li>
               <li>
@@ -360,7 +360,7 @@ const Navbar = ({ className = "bg-white" }) => {
                   href="/aboutUs"
                   className="block py-2 px-3  rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 mt-1 "
                 >
-                  About Us
+                  Über Uns
                 </Link>
               </li>
               <li>
@@ -377,7 +377,7 @@ const Navbar = ({ className = "bg-white" }) => {
                     href="/form"
                     className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 mt-1 "
                   >
-                    Start now
+                    Jetzt starten
                   </Link>
                 )}
               </li>
@@ -400,7 +400,7 @@ const Navbar = ({ className = "bg-white" }) => {
                     isLoggedIn ? handleLogout() : router.push("/login")
                   }
                 >
-                  {isLoggedIn ? "Logout" : "Login"}
+                  {isLoggedIn ? "Ausloggen" : "Anmeldung"}
                 </Link>
               </li>
             </ul>

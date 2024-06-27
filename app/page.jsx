@@ -39,7 +39,6 @@ const Home = () => {
     <>
       <CssBaseline />
       <div className="bg-[#fafafa]">
-        <DynamicNavbar />
         <DynamicHero />
         <DynamicNutritionNeeds />
         <DynamicHowItWorks />

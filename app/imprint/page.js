@@ -1,6 +1,9 @@
+"use client";
 import React from "react";
 
 const Imprint = () => {
+  "googtrans=/en/de; path=/";
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-semibold mb-4">Imprint</h1>
