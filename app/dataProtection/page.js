@@ -2,7 +2,10 @@
 import React from "react";
 
 const PrivacyPolicy = () => {
-  "googtrans=/en/de; path=/";
+  React.useEffect(() => {
+    // This code runs only on the client side
+    document.cookie = "googtrans=/en/de; path=/";
+  }, []);
 
   return (
     <div className="flex flex-col  p-8 bg-gray-100 text-gray-800 ">

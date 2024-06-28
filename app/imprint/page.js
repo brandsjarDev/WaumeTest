@@ -2,7 +2,10 @@
 import React from "react";
 
 const Imprint = () => {
-  "googtrans=/en/de; path=/";
+  React.useEffect(() => {
+    // This code runs only on the client side
+    document.cookie = "googtrans=/en/de; path=/";
+  }, []);
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">

@@ -1,9 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 const TnC = () => {
-  "googtrans=/en/de; path=/";
+  React.useEffect(() => {
+    // This code runs only on the client side
+    document.cookie = "googtrans=/en/de; path=/";
+  }, []);
   return (
     <div className="flex flex-col justify-center p-5 md:p-10">
       <h1 className="font-hossRound text-4xl">
