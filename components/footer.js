@@ -30,7 +30,7 @@ const Footer = () => {
             </li>
           </ul>
           <ul className="space-y-2 mt-10 md:mt-0">
-            <li className="mb-5 text-lg">About Us</li>
+            <li className="mb-5 text-lg">Über uns</li>
             <li>
               <a href="/aboutUs/#about" className="text-white">
                 Unsere Ziele
