@@ -19,6 +19,7 @@ const Navbar = ({ className = "bg-white" }) => {
   const dispatch = useDispatch();
   const [showDropdown, setShowDropdown] = useState(false);
   const auth = useSelector((state) => state.auth);
+  let isLoggedIn = false;
 
   ///g translate//
   useEffect(() => {
@@ -45,6 +46,7 @@ const Navbar = ({ className = "bg-white" }) => {
         "google_translate_element_mobile"
       );
     };
+    isLoggedIn = document.cookie.includes("token");
   }, []);
   ////////////////////
   const toggleNavbar = () => {
@@ -83,15 +85,12 @@ const Navbar = ({ className = "bg-white" }) => {
     }
   }
 
-  console.log("user", document.cookie);
-
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  const isLoggedIn = document.cookie.includes("token");
   return (
     <>
       {!isLoggedIn && <DiscountBanner />}
