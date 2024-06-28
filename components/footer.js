@@ -9,7 +9,7 @@ const Footer = () => {
       <div className=" border-slate-500 p-4 mb-5">
         <div className="col-span-3 grid grid-cols-2 md:grid-cols-4 text-white text-center md:text-start gap-4 md:gap-8 mt-10 md:mt-0">
           <ul className="flex flex-col justify-center space-y-2 mt-10 md:mt-0">
-            <li className="mb-5 text-lg">Products</li>
+            <li className="mb-5 text-lg">PRODUKT</li>
             <li>
               <a href="/products/Movement-Friend">Movement Friend</a>
             </li>
@@ -23,10 +23,10 @@ const Footer = () => {
               <a href="/products/Veggie-Amigo">Veggie Amigo</a>
             </li>
             <li>
-              <a href="/howItWorks">How it works</a>
+              <a href="/howItWorks">So funktioniert's</a>
             </li>
             <li>
-              <a href="/preparation">Preparation</a>
+              <a href="/preparation">Rezepte</a>
             </li>
           </ul>
           <ul className="space-y-2 mt-10 md:mt-0">
@@ -55,7 +55,7 @@ const Footer = () => {
           <ul className="space-y-2 mt-10 md:mt-0">
             <li className="mb-5 text-lg">Unterstützung</li>
             <li>
-              <a href="/faq">Frequently asked questions</a>
+              <a href="/faq">Häufig gestellte Fragen</a>
             </li>
             <li>
               <a href="mailto:info@waume.at">info@waume.at</a>
