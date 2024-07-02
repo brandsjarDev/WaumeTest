@@ -64,13 +64,7 @@ async function getCost(
   if (prodType === "veg") num *= 0.011;
   if (portion == "half") num *= 0.6;
   console.log("couponCode \n \n", couponCode);
-  if (couponCode) {
-    const discountP = await getDiscount(couponCode);
-    const subscriptionWithoutTax = num - num * 0.13;
 
-    if (discountP) num = num - (subscriptionWithoutTax * discountP) / 100;
-    console.log("couponCode \n \n", discountP, num);
-  }
   if (shippingCost) num += shippingCost;
   if (plan == "Testpaket") {
     num = 15;

@@ -21,70 +21,16 @@ export default function CheckoutForm({
   toast,
 }) {
   const [loading, setLoading] = useState(false);
-  const [discountLoading, setDiscountLoading] = useState(false);
   const [checked, setChecked] = useState(false);
   const [cancelLoading, setCancelLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
   const isExistingUser = "_id" in formData;
 
-  const applyCoupon = async () => {
-    try {
-      if (formData.portion == "half") {
-        toast.error("Rabatt nur für volle Portion anwendbar");
-        return;
-      }
-      if (isExistingUser && formData.couponCode == "FIRST_ORDER") {
-        toast.error("Ungültiger Gutscheincode");
-        return;
-      }
-      setDiscountLoading(true);
-      const response = await axios.post("/api/coupon", {
-        code: formData.couponCode,
-      });
-
-      if (response.status === 200) {
-        setFormData({
-          ...formData,
-          discount: response.data.coupon.discountPercentage,
-        });
-        console.log(response.data);
-        toast.success("Gutschein erfolgreich angewendet!");
-      } else {
-        setFormData({
-          ...formData,
-          discount: "",
-        });
-        toast.error(
-          response.data.message || "Gutschein konnte nicht angewendet werden."
-        );
-      }
-    } catch (error) {
-      setFormData({
-        ...formData,
-        discount: "",
-      });
-      if (error.response && error.response.status === 404) {
-        toast.error("Ungültiger Gutscheincode");
-      } else if (error.response && error.response.status === 400) {
-        toast.error("Gutschein abgelaufen");
-      } else {
-        console.error("Fehler beim Anwenden des Gutscheins:", error);
-        toast.error(
-          "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
-        );
-      }
-    } finally {
-      setDiscountLoading(false);
-    }
-  };
-
   const calculateTotalOrderPrice = () => {
-    const { subscriptionAmt, shippingCost, discount } = formData;
-    const discountAmount = discount
-      ? getSubscriptionWithoutTax() * (discount / 100)
-      : 0;
-    return (subscriptionAmt + shippingCost - discountAmount).toFixed(2);
+    const { subscriptionAmt, shippingCost } = formData;
+
+    return (subscriptionAmt + shippingCost).toFixed(2);
   };
 
   const handleSubscription = async () => {
@@ -221,18 +167,7 @@ export default function CheckoutForm({
                 € {Number(formData.subscriptionAmt * 0.13).toFixed(2)}
               </span>
             </div>
-            {formData.discount && (
-              <div className="flex justify-between">
-                <span>Gutschein&nbsp;({formData.discount}%)</span>
-                <span>
-                  €&nbsp;
-                  {(
-                    getSubscriptionWithoutTax() *
-                    (formData.discount / 100)
-                  ).toFixed(2)}
-                </span>
-              </div>
-            )}
+
             <div class="border-t-[3px] border-primary"></div>
             <div className="flex justify-between">
               <span>GESAMT BESTELLUNGSPREIS</span>
@@ -241,7 +176,7 @@ export default function CheckoutForm({
                 {(
                   formData.subscriptionAmt +
                   formData.shippingCost -
-                  getSubscriptionWithoutTax() * (formData.discount / 100)
+                  getSubscriptionWithoutTax()
                 ).toFixed(2)}
               </span>
             </div>
