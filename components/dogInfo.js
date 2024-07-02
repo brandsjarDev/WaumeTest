@@ -78,7 +78,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
         />
         <span className="my-6 md:my-4">. &nbsp; </span>
         <span className="my-6 md:my-4">
-          <span className=""> {formData.dogName}'s</span>Gewicht beträgt{" "}
+          <span className=""> {formData.dogName}'s &nbsp;</span>Gewicht beträgt{" "}
         </span>
         <ThemeInput
           className="w-[150px] md:w-[300px] mt-6"
