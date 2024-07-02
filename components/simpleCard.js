@@ -3,7 +3,14 @@ import FoodImage from "@public/assets/images/fullBoard.png";
 
 import Image from "next/image";
 
-const SimpleCard = ({ title, content = "", active, onClick, className }) => {
+const SimpleCard = ({
+  title,
+  content = "",
+  subtitle,
+  active,
+  onClick,
+  className,
+}) => {
   return (
     <div
       className={`flex flex-col items-center justify-center ${
@@ -16,6 +23,7 @@ const SimpleCard = ({ title, content = "", active, onClick, className }) => {
       <div className="px-6 py-4">
         <div className=" text-xl">{title}</div>
         {content && <p className="text-gray-700 text-base">{content}</p>}
+        {subtitle && <p className="text-gray-500 text-base">{subtitle}</p>}
       </div>
     </div>
   );

@@ -29,8 +29,8 @@ export default function DiscountBanner() {
           >
             <circle cx={1} cy={1} r={1} />
           </svg>
-          Verwende den Code
-          <strong className="font-semibold">FIRST_ORDER</strong>
+          Verwende den Code &nbsp;
+          <strong className="font-semibold">FIRSTORDER</strong>
         </p>
       </div>
       <div className="flex justify-end">

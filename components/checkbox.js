@@ -46,7 +46,7 @@ const Checkbox = ({ value, setValue }) => {
           onChange={handleCheckboxChange1} // Handle changes to the checkbox state
         />
         {/* Label for the checkbox */}
-        <label className="ml-2">Park in front of my front door</label>
+        <label className="ml-2">Parken Sie vor meiner Haustür</label>
       </div>
       <div>
         <input
@@ -56,7 +56,7 @@ const Checkbox = ({ value, setValue }) => {
         />
         {/* Label for the checkbox */}
         <label className="ml-2">
-          Collection station/branch of he Austrian Post
+          Abholstation/Filiale der Österreichischen Post
         </label>
       </div>
     </div>

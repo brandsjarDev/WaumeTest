@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { CookieIcon } from "lucide-react";
-import { Button } from "./ui/button";
+
 import { cn } from "@/lib/utils";
 import PrivacySetting from "./cookieBox";
+import ThemeButton from "./themeButton";
 
 export default function CookieConsent({
   demo = false,
@@ -137,15 +138,15 @@ Statistikdienste sind erforderlich, um pseudonymisierte Daten über Besucher der
             </div>
           </div>
           <div className="flex gap-2 p-4 py-5 border-t border-border dark:bg-background/20">
-            <Button onClick={accept} className="w-full">
-              Accept
-            </Button>
-            <Button onClick={accept} className="w-full">
-              Save individual selections
-            </Button>
-            <Button onClick={decline} className="w-full" variant="secondary">
-              Decline
-            </Button>
+            <ThemeButton onClick={accept} className="w-full">
+              Akzeptieren
+            </ThemeButton>
+            <ThemeButton onClick={accept} className="w-full">
+              Individuelle Auswahl speichern
+            </ThemeButton>
+            <ThemeButton onClick={decline} className="w-full" secondary>
+              Ablehnen
+            </ThemeButton>
           </div>
         </div>
       </div>

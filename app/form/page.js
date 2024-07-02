@@ -11,7 +11,6 @@ const DynamicLinearStepper = dynamic(() => import("@components/multiForm"), {
 
 const Home = () => (
   <>
-    <DynamicNavbar className="bg-white" />
     <DynamicLinearStepper />
   </>
 );

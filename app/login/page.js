@@ -14,6 +14,7 @@ import Link from "next/link";
 import Image from "next/image";
 import LoginDog from "@public/assets/images/loginDog.png";
 import dynamic from "next/dynamic";
+import { setLcl } from "@helpers/lcl";
 
 // Importing Navbar dynamically with SSR disabled
 const DynamicNavbar = dynamic(() => import("@components/Nav"), { ssr: false });
@@ -36,7 +37,7 @@ const LoginPage = () => {
 
       const response = await axios.post("/api/login", userData);
       const { user } = response.data;
-
+      await setLcl("isLoggedIn", true);
       await dispatch(login({ isLoggedIn: true }));
       await dispatch(setUserInfo(user));
 

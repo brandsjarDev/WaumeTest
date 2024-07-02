@@ -38,7 +38,7 @@ const HowItWorks = ({ className }) => (
           </h2>
           <p className=" text-slate-500 text-xs md:text-base">
             Unsere Starterbox enthält Frischfutter für vier Wochen und alles
-            Notwendige um es zu servieren. Sichere dir jetzt -20%. Los gehts!
+            Notwendige um es zu servieren. Los gehts!
           </p>
         </div>
 

@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import SimpleCard from "@components/simpleCard";
 
 const allergies = [
-  "Horse",
-  "Beef",
-  "Poultry",
-  "Vegetable Protein",
-  "Insect Protein",
-  "Millet",
+  "Pferd",
+  "Rind",
+  "Huhn",
+  "Pflanzenprotein",
+  "Insektenprotein",
+  "Hirse",
   "Quinoa",
-  "Oatmeal",
-  "No",
+  "Haferflocken",
+  "Nein",
 ];
 
 const AllergyForm = ({ formData, setFormData }) => {
   const handleSelect = (allergy) => {
-    if (formData.allergies.includes("No") || allergy == "No") {
-      setFormData({ ...formData, allergies: ["No"] });
+    if (formData.allergies.includes("Nein") || allergy == "Nein") {
+      setFormData({ ...formData, allergies: ["Nein"] });
       return;
     }
     if (!formData.allergies.includes(allergy)) {
@@ -38,7 +38,7 @@ const AllergyForm = ({ formData, setFormData }) => {
     <>
       <div className="flex-col justify-center items-center text-4xl">
         <h1 className="flex justify-center items-center mt-2 mb-10">
-          Does {formData.dogName} have allergies?
+          Ist&nbsp; {formData.dogName}&nbsp; haben &nbsp;Allergien?
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-4 justify-items-center content-center gap-4">
           {" "}

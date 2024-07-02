@@ -3,12 +3,12 @@ import SimpleCard from "@components/simpleCard";
 import WarningDialog from "./dailogue";
 
 const illness = [
-  "Kidney disease",
-  "Liver disease",
-  "Pancreatitis",
-  "Lactating",
-  "Pregnant",
-  "None",
+  "Nierenkrankheit",
+  "Leberkrankheit",
+  "Pankreatitis",
+  "Stillend",
+  "Schwanger",
+  "Keine",
 ];
 
 const IllnessForm = ({ formData, setFormData }) => {
@@ -19,12 +19,15 @@ const IllnessForm = ({ formData, setFormData }) => {
         (item) => item !== selectedIllness
       );
       setFormData({ ...formData, illness: updatedIllness });
-    } else if (formData.illness.includes("None") || selectedIllness == "None") {
-      setFormData({ ...formData, illness: ["None"] });
+    } else if (
+      formData.illness.includes("Keine") ||
+      selectedIllness == "Keine"
+    ) {
+      setFormData({ ...formData, illness: ["Keine"] });
       return;
     } else {
       const updatedIllness = [...formData.illness, selectedIllness];
-      if (selectedIllness != "None") setOpen(true);
+      if (selectedIllness != "Keine") setOpen(true);
       setFormData({ ...formData, illness: updatedIllness });
     }
   };
@@ -33,7 +36,7 @@ const IllnessForm = ({ formData, setFormData }) => {
     <>
       <div className="flex-col justify-center text-4xl">
         <h1 className="flex justify-center mt-2 mb-10">
-          Does your dog have any illness?
+          Hat Ihr Hund eine Krankheit?
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-4 justify-items-center content-center gap-4">
           {illness.map((item, index) => (

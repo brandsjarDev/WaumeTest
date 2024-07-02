@@ -242,7 +242,7 @@ export function getProdData() {
     },
     {
       title: "Belly Buddy",
-      content: "Huhn. Oatmeal. Berry.",
+      content: "Huhn. Haferflocken. Beeren.",
       imageUrl: bellyBuddy,
       url: "products/Belly-Buddy",
     },

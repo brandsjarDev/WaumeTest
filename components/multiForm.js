@@ -24,11 +24,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUserInfo } from "@store/slices/userSlice";
 import WarningDialog from "./dailogue";
 import axios from "axios";
+import { getLcl } from "@helpers/lcl";
 
 const public_stripe_key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = loadStripe(public_stripe_key);
 
-const validationArr = [
+let validationArr = [
   [
     { feild: "ownerName", type: "text", msg: "name" },
     { feild: "dogName", type: "text", msg: "Pet's Name" },
@@ -61,6 +62,8 @@ const validationArr = [
   [{ feild: "subscriptionTitle", type: "singlecard", msg: "subscription" }],
   [
     { feild: "email", type: "text", msg: "email" },
+    { feild: "firstName", type: "text", msg: "first name" },
+    { feild: "lastName", type: "text", msg: "last name" },
 
     { feild: "password", type: "text", msg: "password" },
     { feild: "phoneNumber", type: "text", msg: "phoneNumber" },
@@ -84,6 +87,14 @@ function validDate(birthYear, birthMonth) {
     birthYear < 1900 ||
     birthYear > new Date().getFullYear()
   ) {
+    console.log(
+      typeof birthYear != "number",
+      typeof birthMonth != "number",
+      birthMonth < 1,
+      birthMonth > 12,
+      birthYear < 1900,
+      birthYear > new Date().getFullYear()
+    );
     toast.error("invalid date");
     return false;
   } else return true;
@@ -103,7 +114,7 @@ function validateAge(birthYear, birthMonth) {
 }
 
 function getSteps() {
-  return ["Me", "My Dog", "Plan", "Checkout"];
+  return ["Über Mich", "Mein Hund", "Plan", "Checkout"];
 }
 
 const checkPoints = [0, 6, 9];
@@ -163,6 +174,7 @@ const LinaerStepper = () => {
     if (window.innerWidth < 768) {
       setShouldLoadHorizontalStepper(true);
     }
+    // document.cookie = "googtrans=/en/de; path=/";
   }, []);
 
   const getUserDetails = async () => {
@@ -182,6 +194,11 @@ const LinaerStepper = () => {
   console.log("formData", formData);
 
   function validate() {
+    if (getLcl("isLoggedIn"))
+      validationArr[10] = validationArr[10].filter(
+        (item) => item.feild !== "password"
+      );
+
     for (let i = 0; i < validationArr[activeStep].length; i++) {
       const item = validationArr[activeStep][i];
 

@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import WarningDialog from "./dailogue";
 import Checkbox from "./checkbox";
 import { Subscript } from "lucide-react";
+import { getLcl } from "@helpers/lcl";
 
 const public_stripe_key = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 
@@ -22,20 +23,19 @@ export default function CheckoutForm({
   const [loading, setLoading] = useState(false);
   const [discountLoading, setDiscountLoading] = useState(false);
   const [checked, setChecked] = useState(false);
-
   const [cancelLoading, setCancelLoading] = useState(false);
-
   const [open, setOpen] = useState(false);
 
   const isExistingUser = "_id" in formData;
+
   const applyCoupon = async () => {
     try {
       if (formData.portion == "half") {
-        toast.error("Discount only applicable for full portion");
+        toast.error("Rabatt nur für volle Portion anwendbar");
         return;
       }
       if (isExistingUser && formData.couponCode == "FIRST_ORDER") {
-        toast.error("Invalid coupon code");
+        toast.error("Ungültiger Gutscheincode");
         return;
       }
       setDiscountLoading(true);
@@ -49,13 +49,15 @@ export default function CheckoutForm({
           discount: response.data.coupon.discountPercentage,
         });
         console.log(response.data);
-        toast.success("Coupon applied successfully!");
+        toast.success("Gutschein erfolgreich angewendet!");
       } else {
         setFormData({
           ...formData,
           discount: "",
         });
-        toast.error(response.data.message || "Failed to apply coupon.");
+        toast.error(
+          response.data.message || "Gutschein konnte nicht angewendet werden."
+        );
       }
     } catch (error) {
       setFormData({
@@ -63,17 +65,20 @@ export default function CheckoutForm({
         discount: "",
       });
       if (error.response && error.response.status === 404) {
-        toast.error("Invalid coupon code");
+        toast.error("Ungültiger Gutscheincode");
       } else if (error.response && error.response.status === 400) {
-        toast.error("Coupon expired");
+        toast.error("Gutschein abgelaufen");
       } else {
-        console.error("Error applying coupon:", error);
-        toast.error("An error occurred. Please try again later.");
+        console.error("Fehler beim Anwenden des Gutscheins:", error);
+        toast.error(
+          "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+        );
       }
     } finally {
       setDiscountLoading(false);
     }
   };
+
   const calculateTotalOrderPrice = () => {
     const { subscriptionAmt, shippingCost, discount } = formData;
     const discountAmount = discount
@@ -96,7 +101,7 @@ export default function CheckoutForm({
       },
       unit: formData.unitPerOrder,
       prodType: formData.product,
-      portion: formData.portion,
+      portion: formData.potion,
       plan: formData.subscriptionTitle,
     };
     const userData = { ...formData };
@@ -128,12 +133,14 @@ export default function CheckoutForm({
     } catch (error) {
       if (error?.response?.status == 400)
         toast.error(error.response.data.error);
-      else toast.error("An error occurred. Please try again later.");
-      console.error("Error:", error);
+      else
+        toast.error(
+          "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+        );
+      console.error("error:", error);
     } finally {
       setLoading(false);
     }
-    // }
   };
 
   async function cancelSubscription() {
@@ -147,7 +154,9 @@ export default function CheckoutForm({
       if (response.status == 400) toast.error(response.data.error);
     } catch (err) {
       console.log(err);
-      toast.error("An error occurred. Please try again later.");
+      toast.error(
+        "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+      );
     } finally {
       setCancelLoading(false);
     }
@@ -157,30 +166,32 @@ export default function CheckoutForm({
   let formattedDate = "";
   if (formData.deliveryDate) {
     formattedDate = new Date(formData.deliveryDate).toLocaleDateString(
-      "en-GB",
+      "de-DE",
       options
     );
   }
+
   const getSubscriptionWithoutTax = (amount = formData.subscriptionAmt) => {
     const subscriptionAmt = parseFloat(amount);
     if (isNaN(subscriptionAmt) || subscriptionAmt < 0) {
-      console.error("Invalid subscription amount");
+      console.error("Ungültiger Abonnementbetrag");
     }
 
     const subscriptionWithoutTax = subscriptionAmt - subscriptionAmt * 0.13;
 
     return subscriptionWithoutTax.toFixed(2);
   };
+
   return (
     <>
       <div className="w-full">
-        <h1 className="my-5 text-2xl md:text-4xl  text-start font-hossRound">
-          Order Summary
+        <h1 className="my-5 text-2xl md:text-4xl text-start font-hossRound">
+          Bestellübersicht
         </h1>
         {formData.subscriptionTitle &&
-          formData.subscriptionTitle != "Trial Pack" && (
+          formData.subscriptionTitle != "Testpaket" && (
             <div className="flex gap-2 font-hossRound md:text-lg">
-              <h3 className=" ">Estimated Delivery Date </h3>
+              <h3>Voraussichtliches Lieferdatum</h3>
               <span>- {formattedDate}</span>
             </div>
           )}
@@ -188,32 +199,31 @@ export default function CheckoutForm({
           <div className="flex flex-col gap-5 w-full text-lg md:text-2xl">
             <div>
               <div className="flex justify-between">
-                <span className=" ">{formData.subscriptionTitle}</span>
+                <span>{formData.subscriptionTitle}</span>
                 <span>
                   €&nbsp;
                   {Number(getSubscriptionWithoutTax()).toFixed(2)}
                 </span>
               </div>
               <div className="flex tet-xs md:text-sm">
-                {" "}
-                {formData.subscriptionTitle.includes("Per")
-                  ? "(Subscription)"
-                  : "(one time payment)"}
+                {formData.subscriptionTitle.includes("Pro")
+                  ? "(Abonnement)"
+                  : "(Einmalige Zahlung)"}
               </div>
             </div>
             <div className="flex justify-between">
-              <span className=" ">Shipping</span>
+              <span>Versand</span>
               <span>€ {formData.shippingCost}</span>
             </div>
             <div className="flex justify-between">
-              <span className=" ">Tax </span>
+              <span>Steuer</span>
               <span>
                 € {Number(formData.subscriptionAmt * 0.13).toFixed(2)}
               </span>
             </div>
             {formData.discount && (
               <div className="flex justify-between">
-                <span className=" ">Discount&nbsp;({formData.discount}%)</span>
+                <span>Gutschein&nbsp;({formData.discount}%)</span>
                 <span>
                   €&nbsp;
                   {(
@@ -223,9 +233,9 @@ export default function CheckoutForm({
                 </span>
               </div>
             )}
-            <div class="border-t-[3px]  border-primary"></div>
+            <div class="border-t-[3px] border-primary"></div>
             <div className="flex justify-between">
-              <span className=" ">TOTAL ORDER PRICE</span>
+              <span>GESAMT BESTELLUNGSPREIS</span>
               <span>
                 €&nbsp;
                 {(
@@ -237,30 +247,10 @@ export default function CheckoutForm({
             </div>
           </div>
         </div>
-        <div className="flex flex-col text-start mt-5">
-          <span className="my-5 font-hossRound">Coupon Code</span>
-          <div className="flex flex-col md:flex-row gap-2">
-            <RoundInput
-              id="couponCode"
-              type="text"
-              name="couponCode"
-              value={formData}
-              setValue={setFormData}
-              placeholder="Enter coupon code"
-            />
-            <ThemeButton
-              onClick={applyCoupon}
-              loading={discountLoading}
-              className={"mx-4 md:mx-0"}
-            >
-              Apply
-            </ThemeButton>
-          </div>
-        </div>
 
         <div className="flex flex-col text-start my-5 md:my-10">
           {/* Section for three RoundInputs */}
-          <span className="my-5  font-hossRound">User Account</span>
+          <span className="my-5 font-hossRound">Benutzerkonto</span>
           <div className="md:w-3/4 grid md:grid-cols-2 gap-5">
             <RoundInput
               id="firstName"
@@ -268,7 +258,7 @@ export default function CheckoutForm({
               name="firstName"
               value={formData}
               setValue={setFormData}
-              placeholder="First Name"
+              placeholder="Vorname"
             />
             <RoundInput
               id="lastName"
@@ -276,7 +266,7 @@ export default function CheckoutForm({
               name="lastName"
               value={formData}
               setValue={setFormData}
-              placeholder="Last Name"
+              placeholder="Nachname"
             />
             <RoundInput
               id="email"
@@ -284,7 +274,7 @@ export default function CheckoutForm({
               name="email"
               value={formData}
               setValue={setFormData}
-              placeholder="Email"
+              placeholder="E-Mail"
             />
             <RoundInput
               id="phoneNumber"
@@ -292,7 +282,7 @@ export default function CheckoutForm({
               name="phoneNumber"
               value={formData}
               setValue={setFormData}
-              placeholder="Phone Number"
+              placeholder="Telefonnummer"
             />
             <RoundInput
               id="companyName"
@@ -300,28 +290,31 @@ export default function CheckoutForm({
               name="companyName"
               value={formData}
               setValue={setFormData}
-              placeholder="Company Name (optional)"
+              placeholder="Firmenname (optional)"
             />
-
-            <RoundInput
-              id="password"
-              type="password"
-              name="password"
-              value={formData}
-              setValue={setFormData}
-              placeholder="Password"
-            />
-            <RoundInput
-              id="confirmPassword"
-              type="password"
-              name="confirmPassword"
-              value={formData}
-              setValue={setFormData}
-              placeholder="Confirm Password"
-            />
+            {!getLcl("isLoggedIn") && (
+              <>
+                <RoundInput
+                  id="password"
+                  type="password"
+                  name="password"
+                  value={formData}
+                  setValue={setFormData}
+                  placeholder="Passwort"
+                />
+                <RoundInput
+                  id="confirmPassword"
+                  type="password"
+                  name="confirmPassword"
+                  value={formData}
+                  setValue={setFormData}
+                  placeholder="Passwort bestätigen"
+                />
+              </>
+            )}
           </div>
           {/* Section for RoundInputs for address */}
-          <span className="my-5  font-hossRound">Address</span>
+          <span className="my-5 font-hossRound">Adresse</span>
           <div className="md:w-3/4 grid md:grid-cols-2 items-center gap-5">
             <RoundInput
               id="addressLine1"
@@ -329,7 +322,7 @@ export default function CheckoutForm({
               name="addressLine1"
               value={formData}
               setValue={setFormData}
-              placeholder="Address Line 1"
+              placeholder="Adresszeile 1"
             />
             <RoundInput
               id="addressLine2"
@@ -337,21 +330,19 @@ export default function CheckoutForm({
               name="addressLine2"
               value={formData}
               setValue={setFormData}
-              placeholder="Address Line 2"
+              placeholder="Adresszeile 2"
             />
-
             <RoundInput
               id="city"
               type="text"
               name="city"
               value={formData}
               setValue={setFormData}
-              placeholder="City"
+              placeholder="Stadt"
             />
-
-            <RoundCountrySelect //also sets shipping cost
+            <RoundCountrySelect
               // className="w-[100px] md:w-[150px]"
-              label="Country"
+              label="Land"
               name="country"
               value={formData}
               setValue={setFormData}
@@ -363,28 +354,27 @@ export default function CheckoutForm({
               name="zipcode"
               value={formData}
               setValue={setFormData}
-              placeholder="Zip Code"
+              placeholder="Postleitzahl"
             />
           </div>
-          <div className="flex flex-col text-sm md:text-base text-start mt-5 ">
+          <div className="flex flex-col text-sm md:text-base text-start mt-5">
             {/* Section for three RoundInputs */}
-            <span className="my-5">Parking Permit</span>
+            <span className="my-5">Parkgenehmigung</span>
             <Checkbox value={formData} setValue={setFormData} />
           </div>
           <div className="flex flex-col w-3/4 text-start mt-5">
             {/* Section for three RoundInputs */}
-            <span className="my-5">Notes on the order</span>
+            <span className="my-5">Bestellnotizen</span>
             <RoundInput
               id="order"
               name="orderComments"
               value={formData}
               setValue={setFormData}
-              placeholder="Order Comments"
+              placeholder="Bestellkommentare"
               type="paragraph"
             />
           </div>
-
-          <div className="flex flex-col text-start mt-5 ">
+          <div className="flex flex-col text-start mt-5">
             {/* Section for three RoundInputs */}
             <div className="flex mt-2">
               <input
@@ -394,8 +384,12 @@ export default function CheckoutForm({
               />
               {/* Label for the checkbox */}
               <label className="ml-2 text-sm md:text-base">
-                By placing your order you agree to our general terms and
-                conditions and cancellation policy . *
+                Mit der Bestellung stimmen Sie unseren
+                <a className="text-blue-400" href="/TnC" target="_blank">
+                  {" "}
+                  Allgemeinen Geschäftsbedingungen
+                </a>{" "}
+                und unserer Stornierungsrichtlinie zu. *
               </label>
             </div>
           </div>
@@ -408,7 +402,10 @@ export default function CheckoutForm({
               }}
               loading={loading}
             >
-              {isExistingUser ? "Update Box for " : "Start First Box for "}
+              {isExistingUser
+                ? "Box aktualisieren für "
+                : "Erste Box starten für "}
+              &nbsp;
               <span>€ {calculateTotalOrderPrice()}</span>
             </ThemeButton>
           </div>
@@ -419,13 +416,13 @@ export default function CheckoutForm({
                 loading={cancelLoading}
                 size="xl"
               >
-                Cancel Subscription
+                Abonnement kündigen
               </ThemeButton>
             </div>
           )}
           <WarningDialog
-            title="Are you sure you want to cancel the subscription?"
-            buttonText="Yes"
+            title="Sind Sie sicher, dass Sie das Abonnement kündigen möchten?"
+            buttonText="Ja"
             isOpen={open}
             setOpen={setOpen}
             callBack={cancelSubscription}

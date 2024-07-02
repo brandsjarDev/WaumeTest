@@ -21,10 +21,12 @@ const PrivacyPolicy = () => {
       </p>
 
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">1. Responsible body</h2>
+        <h2 className="text-2xl font-semibold mb-2">
+          1. Verantwortliche Stelle
+        </h2>
         <p className="mb-2">
-          The responsible body within the meaning of the General Data Protection
-          Regulation (GDPR) is:
+          Die verantwortliche Stelle im Sinne der Datenschutz-Grundverordnung
+          (DSGVO) ist:
         </p>
         <address className="not-italic mb-4">
           PPF Pro Petfood GmbH
@@ -33,12 +35,12 @@ const PrivacyPolicy = () => {
           <br />
           A-8041 Graz
           <br />
-          Phone:{" "}
+          Telefon:{" "}
           <a href="tel:+4369911343715" className="text-blue-500 underline">
             0699 11343715
           </a>
           <br />
-          Email:{" "}
+          E-Mail:{" "}
           <a href="mailto:info@waume.at" className="text-blue-500 underline">
             info@waume.at
           </a>
@@ -47,138 +49,147 @@ const PrivacyPolicy = () => {
 
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">
-          2. Collection and processing of personal data
+          2. Erhebung und Verarbeitung personenbezogener Daten
         </h2>
 
         <div className="mb-6">
-          <h3 className="text-xl font-semibold mb-2">2.1. Access data</h3>
+          <h3 className="text-xl font-semibold mb-2">2.1. Zugriffsdaten</h3>
           <p className="mb-2">
-            Every time you access our website, information is automatically
-            recorded by the web server and stored in so-called server log files.
-            This data includes:
+            Bei jedem Zugriff auf unsere Website werden Informationen
+            automatisch durch den Webserver erfasst und in sogenannten
+            Server-Logfiles gespeichert. Diese Daten umfassen:
           </p>
           <ul className="list-disc list-inside mb-2">
-            <li>Date and time of access</li>
-            <li>IP address of the accessing device</li>
-            <li>Name and URL of the retrieved file</li>
-            <li>Website from which access is made (referrer URL)</li>
-            <li>Browser and operating system used</li>
+            <li>Datum und Uhrzeit des Zugriffs</li>
+            <li>IP-Adresse des zugreifenden Geräts</li>
+            <li>Name und URL der abgerufenen Datei</li>
+            <li>Website, von der der Zugriff erfolgt (Referrer-URL)</li>
+            <li>Verwendeter Browser und Betriebssystem</li>
           </ul>
           <p className="mb-2">
-            This data is processed to ensure a smooth connection and comfortable
-            use of our website. The legal basis for this is Art. 6 Paragraph 1
-            Letter f of GDPR. The data is only stored for as long as it is
-            necessary for the purposes for which it was collected or processed.
+            Diese Daten werden verarbeitet, um eine reibungslose Verbindung und
+            komfortable Nutzung unserer Website zu gewährleisten.
+            Rechtsgrundlage hierfür ist Art. 6 Abs. 1 Buchstabe f DSGVO. Die
+            Daten werden nur so lange gespeichert, wie es für die Zwecke, für
+            die sie erhoben oder verarbeitet wurden, erforderlich ist.
           </p>
         </div>
 
         <div className="mb-6">
-          <h3 className="text-xl font-semibold mb-2">2.2. Contact form</h3>
+          <h3 className="text-xl font-semibold mb-2">2.2. Kontaktformular</h3>
           <p className="mb-2">
-            If you contact us via the contact form on our website, the data you
-            provide (e.g. name, email address, message) will be stored by us to
-            process your request and in the event of follow-up questions. We
-            will not pass this data on without your consent. The processing of
-            the data entered in the contact form is therefore carried out
-            exclusively on the basis of your consent (Art. 6 Para. 1 lit. a
-            GDPR). The data will be deleted as soon as it is no longer required
-            for the purpose of its processing or you revoke your consent.
+            Wenn Sie uns über das Kontaktformular auf unserer Website
+            kontaktieren, werden die von Ihnen bereitgestellten Daten (z.B.
+            Name, E-Mail-Adresse, Nachricht) von uns gespeichert, um Ihre
+            Anfrage zu bearbeiten und bei Folgefragen darauf zurückzugreifen.
+            Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht
+            weitergegeben. Die Verarbeitung der in das Kontaktformular
+            eingegebenen Daten erfolgt daher ausschließlich auf Grundlage Ihrer
+            Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Die Daten werden
+            gelöscht, sobald sie für die Zwecke ihrer Verarbeitung nicht mehr
+            erforderlich sind oder Sie Ihre Einwilligung widerrufen.
           </p>
         </div>
 
         <div className="mb-6">
           <h3 className="text-xl font-semibold mb-2">
-            2.3. Ordering process in the online shop
+            2.3. Bestellvorgang im Online-Shop
           </h3>
           <p className="mb-2">
-            If you would like to place an order in our online shop, the
-            provision of certain personal data is required in order to conclude
-            and process the contract with you. The data you provide will be used
-            to fulfill the contract and may be passed on to third parties if
-            this is necessary to deliver the ordered goods or to process the
-            payment. The legal basis for the processing of this data is Art. 6
-            Para. 1 lit. b GDPR.
+            Wenn Sie eine Bestellung in unserem Online-Shop aufgeben möchten,
+            ist die Angabe bestimmter personenbezogener Daten erforderlich, um
+            den Vertrag mit Ihnen abzuschließen und abzuwickeln. Die von Ihnen
+            bereitgestellten Daten werden zur Erfüllung des Vertrags verwendet
+            und können an Dritte weitergegeben werden, wenn dies zur Lieferung
+            der bestellten Waren oder zur Abwicklung der Zahlung erforderlich
+            ist. Rechtsgrundlage für die Verarbeitung dieser Daten ist Art. 6
+            Abs. 1 lit. b DSGVO.
           </p>
           <p className="mb-2">
-            We work with the payment service providers Stripe, WooCommerce
-            Payments, and Paypal to process payments in our online shop. When
-            you select a payment method, your payment details are transmitted to
-            the respective payment service provider. Your data is processed by
-            the payment service providers on the basis of Art. 6 Para. 1 lit. b
-            GDPR.
+            Wir arbeiten mit den Zahlungsdienstleistern Stripe, WooCommerce
+            Payments und Paypal zusammen, um Zahlungen in unserem Online-Shop
+            abzuwickeln. Wenn Sie eine Zahlungsmethode auswählen, werden Ihre
+            Zahlungsdetails an den jeweiligen Zahlungsdienstleister übermittelt.
+            Ihre Daten werden von den Zahlungsdienstleistern auf der Grundlage
+            von Art. 6 Abs. 1 lit. b DSGVO verarbeitet.
           </p>
         </div>
 
         <div>
           <h3 className="text-xl font-semibold mb-2">
-            2.4. Fonts from Adobe Typekit
+            2.4. Schriften von Adobe Typekit
           </h3>
           <p className="mb-2">
-            On our website, we use fonts from Adobe Typekit, a service of Adobe
-            Systems Software Ireland Limited, 4-6 Riverwalk, Citywest Business
-            Campus, Dublin 24, Ireland. When you visit our website, your browser
-            downloads the required fonts directly from the Adobe servers in
-            order to display them correctly. Your IP address is transmitted to
-            Adobe and stored there. The use of Adobe Typekit is based on Art. 6
-            Para. 1 lit. f GDPR.
+            Auf unserer Website verwenden wir Schriften von Adobe Typekit, einem
+            Dienst von Adobe Systems Software Ireland Limited, 4-6 Riverwalk,
+            Citywest Business Campus, Dublin 24, Irland. Wenn Sie unsere Website
+            besuchen, lädt Ihr Browser die erforderlichen Schriften direkt von
+            den Adobe-Servern herunter, um sie korrekt anzuzeigen. Dabei wird
+            Ihre IP-Adresse an Adobe übertragen und dort gespeichert. Die
+            Verwendung von Adobe Typekit erfolgt auf der Grundlage von Art. 6
+            Abs. 1 lit. f DSGVO.
           </p>
 
           <h4 className="text-lg font-semibold mb-2">
-            2.4.1 Purpose of data processing
+            2.4.1 Zweck der Datenverarbeitung
           </h4>
           <p className="mb-2">
-            The integration of Adobe Fonts enables us to ensure an attractive
-            presentation of our website through the use of fonts. Certain data,
-            such as your IP address, is transferred to the Adobe servers and
-            processed there.
+            Die Integration von Adobe Fonts ermöglicht es uns, eine attraktive
+            Darstellung unserer Website durch die Verwendung von Schriften zu
+            gewährleisten. Bestimmte Daten, wie Ihre IP-Adresse, werden an die
+            Adobe-Server übertragen und dort verarbeitet.
           </p>
 
-          <h4 className="text-lg font-semibold mb-2">2.4.2 Legal basis</h4>
+          <h4 className="text-lg font-semibold mb-2">2.4.2 Rechtsgrundlage</h4>
           <p className="mb-2">
-            The processing of your data is based on our legitimate interests in
-            accordance with Art. 6 (1) (f) GDPR. Our legitimate interest is to
-            offer you an attractive and user-friendly website.
+            Die Verarbeitung Ihrer Daten erfolgt auf der Grundlage unserer
+            berechtigten Interessen gemäß Art. 6 Abs. 1 lit. f DSGVO. Unser
+            berechtigtes Interesse besteht darin, Ihnen eine attraktive und
+            benutzerfreundliche Website anzubieten.
           </p>
 
           <h4 className="text-lg font-semibold mb-2">
-            2.4.3 Transfer of data to third parties
+            2.4.3 Übermittlung von Daten an Dritte
           </h4>
           <p className="mb-2">
-            When integrating Adobe Fonts, your data will be transferred to
-            Adobe. Adobe has submitted to the EU-US Privacy Shield Framework to
-            ensure an appropriate level of data protection.
+            Bei der Integration von Adobe Fonts werden Ihre Daten an Adobe
+            übermittelt. Adobe hat sich dem EU-US Privacy Shield Framework
+            unterworfen, um ein angemessenes Datenschutzniveau zu gewährleisten.
           </p>
 
-          <h4 className="text-lg font-semibold mb-2">2.4.4 Storage period</h4>
+          <h4 className="text-lg font-semibold mb-2">2.4.4 Speicherdauer</h4>
           <p>
-            The data we collect in connection with the integration of Adobe
-            Fonts is only stored for the duration of use of our website and is
-            then deleted.
+            Die im Zusammenhang mit der Integration von Adobe Fonts erhobenen
+            Daten werden nur für die Dauer der Nutzung unserer Website
+            gespeichert und dann gelöscht.
           </p>
         </div>
       </div>
 
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">3. Your rights</h2>
+        <h2 className="text-2xl font-semibold mb-2">3. Ihre Rechte</h2>
         <p className="mb-2">
-          You have the right to receive information about the data we have
-          stored about you. You also have the right to correct, delete or
-          restrict the processing of your data. You can also object to the
-          processing of your data or assert your right to data portability.
-          Please contact the responsible body named above.
+          Sie haben das Recht, Auskunft über die von uns über Sie gespeicherten
+          Daten zu erhalten. Sie haben auch das Recht, Ihre Daten zu
+          korrigieren, zu löschen oder die Verarbeitung Ihrer Daten
+          einzuschränken. Sie können auch der Verarbeitung Ihrer Daten
+          widersprechen oder Ihr Recht auf Datenübertragbarkeit geltend machen.
+          Bitte wenden Sie sich an die oben genannte verantwortliche Stelle.
         </p>
         <p>
-          In addition, you have the right to complain to a data protection
-          supervisory authority.
+          Darüber hinaus haben Sie das Recht, sich bei einer
+          Datenschutzaufsichtsbehörde zu beschweren.
         </p>
       </div>
 
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">4. Responsible body</h2>
+        <h2 className="text-2xl font-semibold mb-2">
+          4. Verantwortliche Stelle
+        </h2>
         <p className="mb-2">
-          The responsible body within the meaning of the General Data Protection
-          Regulation (GDPR) for the processing of your personal data on the
-          website www.waume.at is:
+          Die verantwortliche Stelle im Sinne der Datenschutz-Grundverordnung
+          (DSGVO) für die Verarbeitung Ihrer personenbezogenen Daten auf der
+          Website www.waume.at ist:
         </p>
         <address className="not-italic mb-4">
           PPF Pro Petfood GmbH
@@ -187,12 +198,12 @@ const PrivacyPolicy = () => {
           <br />
           A-8041 Graz
           <br />
-          Phone:{" "}
+          Telefon:{" "}
           <a href="tel:+4369911343715" className="text-blue-500 underline">
             0699 11343715
           </a>
           <br />
-          Email:{" "}
+          E-Mail:{" "}
           <a href="mailto:info@waume.at" className="text-blue-500 underline">
             info@waume.at
           </a>
@@ -201,33 +212,34 @@ const PrivacyPolicy = () => {
 
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">
-          5. Collection and processing of personal data
+          5. Erhebung und Verarbeitung personenbezogener Daten
         </h2>
 
         <p className="mb-2">
-          We collect and process personal data that you voluntarily provide to
-          us when using our website and online shop. This includes your name,
-          address, email address, and telephone number. This data is used to
-          process your orders, to communicate with you, and to fulfill our
-          contractual obligations. The legal basis for the processing of your
-          data is Art. 6 Para. 1 lit. b GDPR.
+          Wir erheben und verarbeiten personenbezogene Daten, die Sie uns
+          freiwillig zur Verfügung stellen, wenn Sie unsere Website und unseren
+          Online-Shop nutzen. Dazu gehören Ihr Name, Adresse, E-Mail-Adresse und
+          Telefonnummer. Diese Daten werden verwendet, um Ihre Bestellungen zu
+          bearbeiten, mit Ihnen zu kommunizieren und unsere vertraglichen
+          Verpflichtungen zu erfüllen. Die Rechtsgrundlage für die Verarbeitung
+          Ihrer Daten ist Art. 6 Abs. 1 lit. b DSGVO.
         </p>
       </div>
 
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">
-          6. Transfer of data to third parties
+          6. Übermittlung von Daten an Dritte
         </h2>
 
         <p className="mb-2">
-          In order to process your orders, we may pass your data on to third
-          parties. This includes in particular the transfer of your data to
-          payment service providers such as Stripe, WooCommerce Payments, and
-          Paypal in order to process the payments. In addition, we may pass your
-          data on to shipping service providers in order to enable the delivery
-          of the ordered goods. Your data will be passed on exclusively for the
-          purpose of fulfilling the contract and on the basis of Art. 6 Para. 1
-          lit. b GDPR.
+          Zur Abwicklung Ihrer Bestellungen können wir Ihre Daten an Dritte
+          weitergeben. Dies umfasst insbesondere die Übermittlung Ihrer Daten an
+          Zahlungsdienstleister wie Stripe, WooCommerce Payments und Paypal zur
+          Abwicklung der Zahlungen. Darüber hinaus können wir Ihre Daten an
+          Versanddienstleister weitergeben, um die Lieferung der bestellten
+          Waren zu ermöglichen. Ihre Daten werden ausschließlich zum Zwecke der
+          Vertragserfüllung und auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO
+          weitergegeben.
         </p>
       </div>
 
@@ -235,74 +247,79 @@ const PrivacyPolicy = () => {
         <h2 className="text-2xl font-semibold mb-2">7. WooCommerce</h2>
 
         <p className="mb-2">
-          We have integrated the open-source shop system WooCommerce as a plugin
-          on our website. This WooCommerce plugin is based on the content
-          management system WordPress, which is a subsidiary of Automattic Inc.
-          (60 29th Street #343, San Francisco, CA 94110, USA). The implemented
-          functions send, store, and process data to Automattic Inc. In this
-          privacy policy, we inform you about what data is involved, how the
-          network uses this data, and how you can manage or prevent data
-          storage.
+          Wir haben das Open-Source-Shop-System WooCommerce als Plugin auf
+          unserer Website integriert. Dieses WooCommerce-Plugin basiert auf dem
+          Content-Management-System WordPress, das eine Tochtergesellschaft von
+          Automattic Inc. (60 29th Street #343, San Francisco, CA 94110, USA)
+          ist. Die implementierten Funktionen senden, speichern und verarbeiten
+          Daten an Automattic Inc. In dieser Datenschutzerklärung informieren
+          wir Sie darüber, welche Daten betroffen sind, wie das Netzwerk diese
+          Daten verwendet und wie Sie die Datenverwaltung verwalten oder
+          verhindern können.
         </p>
 
         <p className="mb-2">
-          <strong>What is WooCommerce?</strong>
+          <strong>Was ist WooCommerce?</strong>
           <br />
-          WooCommerce is an online store system that has been part of the
-          WordPress directory since 2011 and is specifically designed for
-          WordPress websites. It is a customizable, open-source eCommerce
-          platform based on WordPress and has also been integrated into our
-          website as a WordPress plugin.
+          WooCommerce ist ein Online-Shop-System, das seit 2011 Teil des
+          WordPress-Verzeichnisses ist und speziell für WordPress-Websites
+          konzipiert wurde. Es handelt sich um eine anpassbare,
+          Open-Source-eCommerce-Plattform auf Basis von WordPress, die auch als
+          WordPress-Plugin in unsere Website integriert wurde.
         </p>
 
         <p className="mb-2">
-          <strong>Why do we use WooCommerce on our website?</strong>
+          <strong>Warum verwenden wir WooCommerce auf unserer Website?</strong>
           <br />
-          We use this practical online shop solution to be able to offer you our
-          physical or digital products or services in the best possible way on
-          our website. The aim is to give you simple and easy access to our
-          range so that you can get the products you want quickly and easily.
-          With WooCommerce, we have found a good plugin that meets our
-          requirements for an online shop.
+          Wir verwenden diese praktische Online-Shop-Lösung, um Ihnen unsere
+          physischen oder digitalen Produkte oder Dienstleistungen bestmöglich
+          auf unserer Website anbieten zu können. Ziel ist es, Ihnen einen
+          einfachen und schnellen Zugang zu unserem Sortiment zu ermöglichen,
+          damit Sie die gewünschten Produkte schnell und einfach erhalten
+          können. Mit WooCommerce haben wir ein gutes Plugin gefunden, das
+          unsere Anforderungen an einen Online-Shop erfüllt.
         </p>
 
         <p className="mb-2">
-          <strong>What data is stored by WooCommerce?</strong>
+          <strong>Welche Daten speichert WooCommerce?</strong>
           <br />
-          Information that you actively enter into a text field in our online
-          shop can be collected and stored by WooCommerce or Automattic. So if
-          you register with us or order a product, Automattic can collect,
-          process, and store this data. In addition to email address, name, or
-          address, this can also include credit card or billing information.
-          Automattic can subsequently also use this information for its own
-          marketing campaigns.
+          Informationen, die Sie aktiv in ein Textfeld in unserem Online-Shop
+          eingeben, können von WooCommerce oder Automattic gesammelt und
+          gespeichert werden. Wenn Sie sich bei uns registrieren oder ein
+          Produkt bestellen, kann Automattic diese Daten sammeln, verarbeiten
+          und speichern. Neben E-Mail-Adresse, Name oder Adresse können auch
+          Kreditkarten- oder Rechnungsinformationen enthalten sein. Automattic
+          kann diese Informationen anschließend auch für eigene
+          Marketingkampagnen verwenden.
         </p>
 
         <p className="mb-2">
-          There is also information that Automattic automatically collects from
-          you in so-called server log files:
+          Es gibt auch Informationen, die Automattic automatisch von Ihnen in
+          sogenannten Server-Logdateien sammelt:
         </p>
 
         <ul className="list-disc list-inside mb-2">
-          <li>IP Address</li>
-          <li>Browser information</li>
-          <li>Preset language setting</li>
-          <li>Date and time of web access</li>
+          <li>IP-Adresse</li>
+          <li>Browser-Informationen</li>
+          <li>Voreingestellte Spracheinstellung</li>
+          <li>Datum und Uhrzeit des Webzugriffs</li>
         </ul>
 
         <p className="mb-2">
-          WooCommerce also places cookies in your browser and uses technologies
-          such as pixel tags (web beacons) to, for example, clearly identify you
-          as a user and possibly offer interest-based advertising. WooCommerce
-          uses a number of different cookies that are set depending on user
-          action. This means that if, for example, you put a product in your
-          shopping cart, a cookie is set so that the product remains in your
-          shopping cart when you leave our website and return at a later time.
+          WooCommerce platziert auch Cookies in Ihrem Browser und verwendet
+          Technologien wie Pixel-Tags (Web-Beacons), um Sie beispielsweise
+          eindeutig als Benutzer zu erkennen und möglicherweise
+          interessenbasierte Werbung anzubieten. WooCommerce verwendet eine
+          Reihe verschiedener Cookies, die je nach Benutzeraktion gesetzt
+          werden. Dies bedeutet, dass beispielsweise ein Cookie gesetzt wird,
+          wenn Sie ein Produkt in Ihren Warenkorb legen, damit das Produkt in
+          Ihrem Warenkorb bleibt, wenn Sie unsere Website verlassen und zu einem
+          späteren Zeitpunkt zurückkehren.
         </p>
 
         <p>
-          Here we show you an example list of possible cookies that can be set
-          by WooCommerce:
+          Hier zeigen wir Ihnen eine Beispielliste möglicher Cookies, die von
+          WooCommerce gesetzt werden können:
         </p>
 
         <ul className="list-disc list-inside mb-2">
@@ -310,163 +327,174 @@ const PrivacyPolicy = () => {
             <strong>Name:</strong> woocommerce_items_in_cart
           </li>
           <li>
-            <strong>Value:</strong> 1
+            <strong>Wert:</strong> 1
           </li>
           <li>
-            <strong>Purpose:</strong> The cookie helps WooCommerce determine
-            when the contents of the shopping cart change.
+            <strong>Zweck:</strong> Das Cookie hilft WooCommerce festzustellen,
+            wann sich der Inhalt des Warenkorbs ändert.
           </li>
           <li>
-            <strong>Expiry date:</strong> after end of session
+            <strong>Ablaufdatum:</strong> Nach Sitzungsende
           </li>
-          <li>...</li>
-          <li>More cookie details can be added similarly</li>
+          <li>Weitere Cookie-Details können ähnlich hinzugefügt werden</li>
         </ul>
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">8. Use of cookies</h2>
-          <p className="mb-2">
-            Our website uses cookies to make it easier to use the website and to
-            provide certain functions. Cookies are small text files that are
-            stored on your device and contain information about your use of the
-            website. You can control the use of cookies in your browser settings
-            and deactivate them if necessary. Please note, however, that this
-            may affect the functionality of the website. Cookies are used on the
-            basis of Art. 6 Para. 1 lit. f GDPR.
-          </p>
-        </div>
+      </div>
 
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">9. Real Cookie Banner</h2>
-          <p className="mb-2">
-            We use the consent tool “Real Cookie Banner” to manage the cookies
-            and similar technologies used (tracking pixels, web beacons, etc.)
-            and related consents. Details on how “Real Cookie Banner” works can
-            be found at{" "}
-            <a
-              href="https://devowl.io/de/rcb/datenverarbeitung/"
-              rel="noreferrer"
-              target="_blank"
-              className="text-blue-500 underline"
-            >
-              https://devowl.io/de/rcb/datenverarbeitung/
-            </a>
-            .
-          </p>
-          <p>
-            The legal basis for the processing of personal data in this context
-            is Art. 6 (1) (c) GDPR and Art. 6 (1) (f) GDPR. Our legitimate
-            interest is the management of the cookies and similar technologies
-            used and the related consents.
-          </p>
-        </div>
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-2">
+          8. Verwendung von Cookies
+        </h2>
+        <p className="mb-2">
+          Unsere Website verwendet Cookies, um die Nutzung der Website zu
+          erleichtern und bestimmte Funktionen bereitzustellen. Cookies sind
+          kleine Textdateien, die auf Ihrem Gerät gespeichert werden und
+          Informationen über Ihre Nutzung der Website enthalten. Sie können die
+          Verwendung von Cookies in Ihren Browsereinstellungen steuern und
+          gegebenenfalls deaktivieren. Bitte beachten Sie jedoch, dass dies die
+          Funktionalität der Website beeinträchtigen kann. Cookies werden auf
+          der Grundlage von Art. 6 Abs. 1 lit. f DSGVO verwendet.
+        </p>
+      </div>
 
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">10. Google Analytics</h2>
-          <p className="mb-2">
-            Our website uses Google Analytics, a web analysis service provided
-            by Google Inc. Google Analytics uses so-called "cookies" (see point
-            6). Our company relies on a predominantly legitimate interest in
-            creating website access statistics in a cost-efficient and simple
-            manner. (Art. 6, paragraph 1 f).
-          </p>
-          <p>
-            The information generated by the cookie on your use of the website
-            is usually transferred to a Google server in the USA and stored
-            there. However, if IP anonymization is activated on this website,
-            Google will shorten your IP address beforehand within the EU or in
-            other contracting states to the Agreement on the European Economic
-            Area.
-          </p>
-          <p>
-            Only in exceptional cases will the full IP address be transmitted to
-            a Google server in the USA and shortened there. On behalf of the
-            operator of this website, Google will use this information to
-            evaluate your use of the website, to compile reports on website
-            activity and to provide the website operator with other services
-            relating to website activity and internet usage. However, the IP
-            address transmitted by the browser as part of Google Analytics will
-            not be merged with other Google data.
-          </p>
-          <p>
-            You can prevent cookies from being saved by selecting the
-            appropriate settings on your browser; however, please note that if
-            you do this you may not be able to use all of the website's
-            functions to their full extent. In addition, you can prevent Google
-            from collecting the data generated by the cookie and relating to
-            your use of the website (including your IP address) and from
-            processing this data by downloading and installing the browser
-            plug-in available at the following link:{" "}
-            <a
-              href="http://tools.google.com/dlpage/gaoptout?hl=de"
-              rel="noreferrer"
-              target="_blank"
-              className="text-blue-500 underline"
-            >
-              http://tools.google.com/dlpage/gaoptout?hl=de
-            </a>
-          </p>
-          <p>
-            Further information on terms of use and data protection can be found
-            at{" "}
-            <a
-              href="http://www.google.com/analytics/terms/de.html"
-              rel="noreferrer"
-              target="_blank"
-              className="text-blue-500 underline"
-            >
-              http://www.google.com/analytics/terms/de.html
-            </a>{" "}
-            or at{" "}
-            <a
-              href="https://support.google.com/analytics/answer/6004245?hl=de"
-              rel="noreferrer"
-              target="_blank"
-              className="text-blue-500 underline"
-            >
-              https://support.google.com/analytics/answer/6004245?hl=de
-            </a>
-            .
-          </p>
-        </div>
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-2">9. Real Cookie Banner</h2>
+        <p className="mb-2">
+          Wir verwenden das Einwilligungstool "Real Cookie Banner", um die
+          verwendeten Cookies und ähnliche Technologien (Tracking-Pixel,
+          Web-Beacons usw.) und die damit verbundenen Einwilligungen zu
+          verwalten. Details zur Funktionsweise des "Real Cookie Banner" finden
+          Sie unter{" "}
+          <a
+            href="https://devowl.io/de/rcb/datenverarbeitung/"
+            rel="noreferrer"
+            target="_blank"
+            className="text-blue-500 underline"
+          >
+            https://devowl.io/de/rcb/datenverarbeitung/
+          </a>
+          .
+        </p>
+        <p>
+          Die Rechtsgrundlage für die Verarbeitung personenbezogener Daten in
+          diesem Kontext ist Art. 6 Abs. 1 lit. c DSGVO und Art. 6 Abs. 1 lit. f
+          DSGVO. Unser berechtigtes Interesse besteht in der Verwaltung der
+          verwendeten Cookies und ähnlichen Technologien sowie der damit
+          verbundenen Einwilligungen.
+        </p>
+      </div>
 
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">11. Data security</h2>
-          <p className="mb-2">
-            We take appropriate technical and organizational measures to protect
-            your data from loss, misuse, unauthorized access, or disclosure. Our
-            website and online shop are secured by SSL encryption to protect the
-            transmission of your data. In addition, only authorized employees
-            have access to your data and are obliged to maintain
-            confidentiality.
-          </p>
-        </div>
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-2">10. Google Analytics</h2>
+        <p className="mb-2">
+          Unsere Website verwendet Google Analytics, einen Webanalysedienst von
+          Google Inc. Google Analytics verwendet sogenannte "Cookies" (siehe
+          Punkt 6). Unser Unternehmen stützt sich auf ein überwiegend
+          berechtigtes Interesse an der Erstellung von
+          Website-Zugriffsstatistiken in kosteneffizienter und einfacher Weise
+          (Art. 6 Abs. 1 f).
+        </p>
+        <p>
+          Die durch das Cookie erzeugten Informationen über Ihre Benutzung der
+          Website werden in der Regel an einen Server von Google in den USA
+          übertragen und dort gespeichert. Wenn jedoch die IP-Anonymisierung auf
+          dieser Website aktiviert ist, wird Ihre IP-Adresse von Google
+          innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen
+          Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum
+          zuvor gekürzt.
+        </p>
+        <p>
+          Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von
+          Google in den USA übertragen und dort gekürzt. Im Auftrag des
+          Betreibers dieser Website wird Google diese Informationen benutzen, um
+          Ihre Nutzung der Website auszuwerten, um Reports über die
+          Website-Aktivitäten zusammenzustellen und um weitere mit der
+          Website-Nutzung und der Internetnutzung verbundene Dienstleistungen
+          gegenüber dem Website-Betreiber zu erbringen. Die im Rahmen von Google
+          Analytics von Ihrem Browser übermittelte IP-Adresse wird nicht mit
+          anderen Daten von Google zusammengeführt.
+        </p>
+        <p>
+          Sie können die Speicherung der Cookies durch eine entsprechende
+          Einstellung Ihrer Browser-Software verhindern; wir weisen Sie jedoch
+          darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche
+          Funktionen dieser Website vollumfänglich nutzen können. Darüber hinaus
+          können Sie die Erfassung der durch das Cookie erzeugten und auf Ihre
+          Nutzung der Website bezogenen Daten (inkl. Ihrer IP-Adresse) an Google
+          sowie die Verarbeitung dieser Daten durch Google verhindern, indem Sie
+          das unter dem folgenden Link verfügbare Browser-Plugin herunterladen
+          und installieren:{" "}
+          <a
+            href="http://tools.google.com/dlpage/gaoptout?hl=de"
+            rel="noreferrer"
+            target="_blank"
+            className="text-blue-500 underline"
+          >
+            http://tools.google.com/dlpage/gaoptout?hl=de
+          </a>
+        </p>
+        <p>
+          Weitere Informationen zu den Nutzungsbedingungen und zum Datenschutz
+          finden Sie unter{" "}
+          <a
+            href="http://www.google.com/analytics/terms/de.html"
+            rel="noreferrer"
+            target="_blank"
+            className="text-blue-500 underline"
+          >
+            http://www.google.com/analytics/terms/de.html
+          </a>{" "}
+          oder unter{" "}
+          <a
+            href="https://support.google.com/analytics/answer/6004245?hl=de"
+            rel="noreferrer"
+            target="_blank"
+            className="text-blue-500 underline"
+          >
+            https://support.google.com/analytics/answer/6004245?hl=de
+          </a>
+          .
+        </p>
+      </div>
 
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">
-            12. Changes to the Privacy Policy
-          </h2>
-          <p className="mb-2">
-            We reserve the right to change or modify this privacy policy at any
-            time. The most current version can be found on our website. We
-            recommend that you review the privacy policy regularly to be
-            informed of any changes.
-          </p>
-        </div>
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-2">11. Datensicherheit</h2>
+        <p className="mb-2">
+          Wir treffen angemessene technische und organisatorische Maßnahmen, um
+          Ihre Daten vor Verlust, Missbrauch, unbefugtem Zugriff oder
+          Offenlegung zu schützen. Unsere Website und unser Online-Shop sind
+          durch SSL-Verschlüsselung gesichert, um die Übertragung Ihrer Daten zu
+          schützen. Darüber hinaus haben nur befugte Mitarbeiter Zugang zu Ihren
+          Daten und sind zur Vertraulichkeit verpflichtet.
+        </p>
+      </div>
 
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-2">13. Contact</h2>
-          <p className="mb-2">
-            If you have any questions or concerns regarding the processing of
-            your personal data or if you wish to exercise your rights under the
-            GDPR, you can contact us at any time. Please use the contact details
-            provided above.
-          </p>
-          <p>
-            Thank you for your trust in our website and our online shop. We take
-            the protection of your data seriously and will do everything in our
-            power to protect your privacy and process your data securely.
-          </p>
-        </div>
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-2">
+          12. Änderungen der Datenschutzbestimmungen
+        </h2>
+        <p className="mb-2">
+          Wir behalten uns das Recht vor, diese Datenschutzerklärung jederzeit
+          zu ändern oder anzupassen. Die aktuellste Version finden Sie auf
+          unserer Website. Wir empfehlen Ihnen, die Datenschutzerklärung
+          regelmäßig zu überprüfen, um über etwaige Änderungen informiert zu
+          sein.
+        </p>
+      </div>
+
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold mb-2">13. Kontakt</h2>
+        <p className="mb-2">
+          Wenn Sie Fragen oder Bedenken zur Verarbeitung Ihrer personenbezogenen
+          Daten haben oder Ihre Rechte gemäß der DSGVO ausüben möchten, können
+          Sie uns jederzeit kontaktieren. Verwenden Sie bitte die oben
+          angegebenen Kontaktinformationen.
+        </p>
+        <p>
+          Vielen Dank für Ihr Vertrauen in unsere Website und unseren
+          Online-Shop. Wir nehmen den Schutz Ihrer Daten ernst und werden alles
+          in unserer Macht Stehende tun, um Ihre Privatsphäre zu schützen und
+          Ihre Daten sicher zu verarbeiten.
+        </p>
       </div>
     </div>
   );

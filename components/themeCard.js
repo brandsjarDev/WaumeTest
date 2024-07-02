@@ -59,7 +59,7 @@ const Card = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            KNOW MORE
+            MEHR INFOS
           </a>
         )}
         {price && (

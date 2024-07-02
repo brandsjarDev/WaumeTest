@@ -5,32 +5,32 @@ import fullBoard from "@public/assets/images/fullBoard.png";
 
 const products = [
   {
-    title: "Trial Pack",
-
+    title: "Testpaket",
+    subtitle: "einmalige Zahlung",
     imageUrl: fullBoard,
     active: true,
   },
   {
-    title: "One Month",
-
+    title: "Ein Monat",
+    subtitle: "einmalige Zahlung",
     imageUrl: fullBoard,
     active: true,
   },
   {
-    title: "Three Month",
-
+    title: "Drei Monate",
+    subtitle: "einmalige Zahlung",
     imageUrl: fullBoard,
     active: true,
   },
   {
-    title: "Per Month",
-
+    title: "Pro Monat",
+    subtitle: "Abonnement",
     imageUrl: fullBoard,
     active: true,
   },
   {
-    title: "Per Three Month",
-
+    title: "Pro Drei Monate",
+    subtitle: "Abonnement",
     imageUrl: fullBoard,
     active: true,
   },
@@ -40,17 +40,17 @@ const SubscriptionForm = ({ formData, setFormData }) => {
   function getContent(step) {
     switch (step) {
       case 0:
-        return "Eur 15";
+        return "15 €";
       case 1:
-        return `Eur ${getCost(step)}`;
+        return `€ ${getCost(step)}`;
       case 2:
-        return `Eur ${getCost(step)}`;
+        return `€ ${getCost(step)}`;
       case 3:
-        return `Eur ${getCost(step)}/ Month`;
+        return `€ ${getCost(step)}/ Monat`;
       case 4:
-        return `Eur ${getCost(step)}/ three month`;
+        return `€ ${getCost(step)}/ drei Monate`;
       default:
-        return "unknown step";
+        return "unbekannter Schritt";
     }
   }
 
@@ -73,11 +73,12 @@ const SubscriptionForm = ({ formData, setFormData }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-4  gap-4 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-10">
         {products.map((item, index) => (
           <Card
             key={index}
             title={item.title}
+            subtitle={item.subtitle}
             content={getContent(index)}
             active={formData.subscriptionTitle == item.title}
             onClick={() =>
@@ -92,4 +93,5 @@ const SubscriptionForm = ({ formData, setFormData }) => {
     </>
   );
 };
+
 export default SubscriptionForm;

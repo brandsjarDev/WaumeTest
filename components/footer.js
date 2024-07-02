@@ -30,7 +30,7 @@ const Footer = () => {
             </li>
           </ul>
           <ul className="space-y-2 mt-10 md:mt-0">
-            <li className="mb-5 text-lg">Über uns</li>
+            <li className="mb-5 text-lg">ÜBER UNS</li>
             <li>
               <a href="/aboutUs/#about" className="text-white">
                 Unsere Ziele
@@ -48,12 +48,12 @@ const Footer = () => {
             </li>
             <li>
               <a href="/aboutUs/#village" className="text-white">
-                Unsere Stadt
+                Pro Village
               </a>
             </li>
           </ul>
           <ul className="space-y-2 mt-10 md:mt-0">
-            <li className="mb-5 text-lg">Unterstützung</li>
+            <li className="mb-5 text-lg">SUPPORT</li>
             <li>
               <a href="/faq">Häufig gestellte Fragen</a>
             </li>
@@ -66,16 +66,16 @@ const Footer = () => {
           </ul>
           <ul className="space-y-2 mt-10 md:mt-0">
             <li className="mb-5 text-lg">
-              <a href="">Unternehmen</a>
+              <a href="">SONSTIGES</a>
             </li>
             <li>
               <a href="/aboutUs">Über uns</a>
             </li>
             <li>
-              <a href="/TnC">Nutzungsbedingungen</a>
+              <a href="/TnC">AGB</a>
             </li>
             <li>
-              <a href="/dataProtection">Datenschutzrichtlinie</a>
+              <a href="/dataProtection">Datenschutz</a>
             </li>
             <li>
               <a href="/imprint">Impressum</a>

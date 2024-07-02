@@ -12,9 +12,9 @@ const ONE_MONTH = 31;
 const products = [
   {
     title: "Movement Friend ",
-    mainIngredient: "(Beef)",
+    mainIngredient: "(Rind)",
     name: "beef",
-    allergyName: "Beef",
+    allergyName: "Rind",
     content: "€ 111.11/ Month",
     imageUrl: bellyBuddy,
     active: true,
@@ -23,9 +23,9 @@ const products = [
   },
   {
     title: "Belly Buddy",
-    mainIngredient: "(Chicken)",
+    mainIngredient: "(Huhn)",
     name: "chicken",
-    allergyName: "Poultry",
+    allergyName: "Huhn",
     content: "€ 111.11/ Month",
     imageUrl: bellyBuddyPlus,
     disabled: false,
@@ -33,9 +33,9 @@ const products = [
   },
   {
     title: "Belly Buddy Plus ",
-    mainIngredient: "(Horse)",
+    mainIngredient: "(Pferd)",
     name: "horse",
-    allergyName: "Horse",
+    allergyName: "Pferd",
     disabled: false,
     href: "/products/Belly-Buddy-Plus",
     content: "€ 111.11/ Month",
@@ -43,9 +43,9 @@ const products = [
   },
   {
     title: "Veggie Amigo",
-    mainIngredient: "(Veg)",
+    mainIngredient: "(Gemüse)",
     name: "veg",
-    allergyName: "Vegetable Protein",
+    allergyName: "Pflanzenprotein",
     disabled: true,
     href: "/products/Veggie-Amigo",
     content: "€ 111.11/ Month",

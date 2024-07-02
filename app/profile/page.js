@@ -24,11 +24,11 @@ const Navbar = dynamic(() => import("@components/Nav"), { ssr: false });
 const DynamicImage = dynamic(() => import("next/image"), { ssr: false });
 
 function subscriptionTitle(subscription) {
-  let string = "Trial Pack";
-  if (subscription == "Per Month") string = "Monthly subscription";
-  if (subscription == "Per Three Month") string = "Three Monthly subscription";
-  if (subscription == "One Month") string = "One Month Plan";
-  if (subscription == "Three Month") string = "Three Month Plan";
+  let string = "Testpaket";
+  if (subscription == "Pro Monat") string = "Monatliches Abonnement";
+  if (subscription == "Pro Drei Monate") string = "Dreimonatliches Abonnement";
+  if (subscription == "Ein Monat") string = "Einmonatiger Plan";
+  if (subscription == "Drei Monate") string = "Dreimonatiger Plan";
   return string;
 }
 
@@ -88,10 +88,11 @@ const Profile = () => {
               {subscriptionTitle(user?.subscriptionTitle)}
             </h1>
             <h2 className="text-xl mb-4 font-hossRound">
-              {prodTitle(user?.product)} ({user?.portion} Board)
+              {prodTitle(user?.product)} (
+              {user?.portion == "full" ? "Vollpension" : "Halbpension"} Board)
             </h2>
             <h2 className="text-xl mb-4 font-hossRound">
-              Next Delivery:{" "}
+              Nächste Lieferung:{" "}
               <span className="text-slate-500">
                 {formatDate(user?.deliveryDate)}
               </span>

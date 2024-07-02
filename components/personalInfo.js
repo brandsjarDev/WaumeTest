@@ -12,7 +12,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
     <>
       <div className="flex flex-col justify-start items-center gap-5 md:gap-10">
         <div className="flex flex-wrap mb-4 text-xl md:text-[34px] justify-center md:justify-start  text-center md:text-end">
-          <span className="my-6 md:my-4"> My name is</span>
+          <span className="my-6 md:my-4"> Ich heiße</span>
           <ThemeInput
             className="w-[170px] md:w-[300px]"
             id="ownerName"
@@ -26,9 +26,9 @@ export default function PersonalInfoForm({ formData, setFormData }) {
         </div>
 
         <div className="flex flex-wrap mb-4 text-xl md:text-[34px] justify-center md:justify-start  text-center md:text-end">
-          <span className="my-6 md:my-4"> I have a dog</span>
+          <span className="my-6 md:my-4"> und mein hund</span>
 
-          <span className="my-6 md:my-4">&nbsp; named</span>
+          <span className="my-6 md:my-4">&nbsp; heißt</span>
           <ThemeInput
             id="dogName"
             type="text"

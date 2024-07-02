@@ -50,6 +50,8 @@ export async function POST(req) {
           updatedAt,
           unitPerOrder,
           ownerName,
+          firstName,
+          lastName,
         } = savedPaidUser;
 
         const event = {
@@ -62,6 +64,8 @@ export async function POST(req) {
           updatedAt,
           unitPerOrder,
           hasActivePlan: true,
+          firstName,
+          lastName,
           ownerName,
         };
         const newEvent = new Event(event);

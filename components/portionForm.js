@@ -6,17 +6,17 @@ import fullBoard from "@public/assets/images/fullBoard.png";
 const ONE_MONTH = 31;
 const products = [
   {
-    title: "Full Board",
+    title: "Vollpension",
     name: "full",
-    content: "Daily ration, the full pampering program for your darling.",
+    content: "Tagesration, das volle Verwöhnprogramm für Ihren Liebling.",
     imageUrl: fullBoard,
     active: true,
   },
   {
-    title: "Half Board",
+    title: "Halbpension",
     name: "half",
     content:
-      "Half a daily ration as a nutrient-rich addition to the existing feed.",
+      "Eine halbe Tagesration als nährstoffreiche Ergänzung zum bestehenden Futter.",
     imageUrl: halfBoard,
     active: false,
   },

@@ -12,6 +12,7 @@ import { TranslateRounded } from "@material-ui/icons";
 import { CircleUserRound } from "lucide-react";
 import ThemeButton from "./themeButton";
 import DiscountBanner from "./discountBanner";
+import { getLcl, setLcl } from "@helpers/lcl";
 
 const Navbar = ({ className = "bg-white" }) => {
   const dropdownRef = useRef(null);
@@ -19,7 +20,6 @@ const Navbar = ({ className = "bg-white" }) => {
   const dispatch = useDispatch();
   const [showDropdown, setShowDropdown] = useState(false);
   const auth = useSelector((state) => state.auth);
-  let isLoggedIn = false;
 
   ///g translate//
   useEffect(() => {
@@ -46,7 +46,6 @@ const Navbar = ({ className = "bg-white" }) => {
         "google_translate_element_mobile"
       );
     };
-    isLoggedIn = document.cookie.includes("token");
   }, []);
   ////////////////////
   const toggleNavbar = () => {
@@ -78,10 +77,13 @@ const Navbar = ({ className = "bg-white" }) => {
     try {
       const res = await axios.get("/api/logout");
       console.log("res=", res);
-      dispatch(logout());
-      router.push("/login");
     } catch (error) {
       console.log(error.message);
+    } finally {
+      setLcl("isLoggedIn", false);
+
+      router.push("/login");
+      window.location.reload();
     }
   }
 
@@ -91,6 +93,7 @@ const Navbar = ({ className = "bg-white" }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  const isLoggedIn = getLcl("isLoggedIn");
   return (
     <>
       {!isLoggedIn && <DiscountBanner />}

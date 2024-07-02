@@ -7,7 +7,7 @@ function getCost(prodType, unit, portion, plan) {
   if (prodType === "veg") num *= 0.011;
   if (portion == "half") num *= 0.6;
 
-  if (plan == "Trial Pack") {
+  if (plan == "Testpaket") {
     num = 25;
   }
 
@@ -47,7 +47,7 @@ describe("getCost function", () => {
 
   // Test case for Trial Pack
   it("should return the cost for Trial Pack", () => {
-    const cost = getCost("chicken", 1, "full", "Trial Pack");
+    const cost = getCost("chicken", 1, "full", "Testpaket");
     console.log("const", cost);
     expect(Number.isInteger(cost)).toBe(true); // Check if the returned value is a number
   });

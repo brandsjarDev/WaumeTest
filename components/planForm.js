@@ -5,7 +5,6 @@ import halfBoard from "@public/assets/images/halfBoard.png";
 import fullBoard from "@public/assets/images/fullBoard.png";
 import { Typography, TextField, Button } from "@material-ui/core";
 import { calcFoodWeight } from "@helpers/foodCalc";
-import PortionForm from "./portionFOrm";
 
 function getStepContent(step, formData, setFormData) {
   switch (step) {

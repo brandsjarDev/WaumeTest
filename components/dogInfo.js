@@ -5,8 +5,8 @@ import breeds from "@utils/breeds";
 import ThemeAutoSuggest from "./themeAutosuggest";
 
 const genderOptions = [
-  { label: "He", value: "Male" },
-  { label: "She", value: "Female" },
+  { label: "Er", value: "Male" },
+  { label: "Sie", value: "Female" },
 ];
 
 export default function PersonalInfoForm({ formData, setFormData }) {
@@ -31,13 +31,13 @@ export default function PersonalInfoForm({ formData, setFormData }) {
       <div className="flex flex-wrap justify-center items-center md:justify-start mb-4 md:text-[34px] mt-10 text-center md:text-end px-5">
         <BasicSelect
           className="w-[100px] md:w-[150px]"
-          label="He/She"
+          label="Er/Sie"
           name="gender"
           value={formData}
           setValue={setFormData}
           options={genderOptions}
         />
-        <span className="my-6 md:my-4">&nbsp;is born on</span>
+        <span className="my-6 md:my-4">&nbsp;ist geboren am</span>
         <div className="flex space-x-2">
           <ThemeInput
             className="w-[65px] md:w-[150px]"
@@ -47,7 +47,6 @@ export default function PersonalInfoForm({ formData, setFormData }) {
             value={formData}
             setValue={setFormData}
             placeholder="YYYY"
-            min={1900}
           />
           <ThemeInput
             className="w-[50px] md:w-[100px]"
@@ -57,8 +56,6 @@ export default function PersonalInfoForm({ formData, setFormData }) {
             value={formData}
             setValue={setFormData}
             placeholder="MM"
-            min={1}
-            max={12}
           />
           <ThemeInput
             className="w-[50px] md:w-[100px]"
@@ -68,11 +65,9 @@ export default function PersonalInfoForm({ formData, setFormData }) {
             value={formData}
             setValue={setFormData}
             placeholder="DD"
-            min={1}
-            max={31}
           />
         </div>
-        <span className="my-6 md:my-4">&nbsp; and a</span>
+        <span className="my-6 md:my-4">&nbsp; und ein</span>
         <ThemeAutoSuggest
           className="w-[150px] md:w-[300px]"
           label="Breed"
@@ -83,7 +78,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
         />
         <span className="my-6 md:my-4">. &nbsp; </span>
         <span className="my-6 md:my-4">
-          <span className=""> {formData.dogName}'s</span> weight is{" "}
+          <span className=""> {formData.dogName}'s</span>Gewicht beträgt{" "}
         </span>
         <ThemeInput
           className="w-[150px] md:w-[300px] mt-6"
@@ -93,7 +88,6 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           value={formData}
           setValue={setFormData}
           placeholder="Weight"
-          maxValue={100}
           required
         />{" "}
         <span className="my-6 md:my-4">&nbsp; Kgs</span>

@@ -43,15 +43,15 @@ export function formatDate(date) {
   return new Date(date).toLocaleDateString("en-GB", options);
 }
 function getSubscriptionCost(title, formData) {
-  if (title == "One Month" || title == "Per Month") return formData.prodCost;
-  else if (title == "Three Month" || title == "Per Three Month")
+  if (title == "Ein Monat" || title == "Pro Monat") return formData.prodCost;
+  else if (title == "Drei Monate" || title == "Pro Drei Monate")
     return parseFloat((formData.prodCost * 3).toFixed(2));
   else return 15;
 }
 function getUnitPerOrder(title, formData) {
-  if (title == "One Month" || title == "Per Month")
+  if (title == "Ein Monat" || title == "Pro Monat")
     return formData.product ? 31 * formData[formData.product] : 0;
-  else if (title == "Three Month" || title == "Per Three Month")
+  else if (title == "Drei Monate" || title == "Pro Drei Monate")
     return formData.product ? 93 * formData[formData.product] : 0;
   else return 1; //1 unit of trial pack
 }

@@ -17,10 +17,6 @@ const ThemeInput = ({
 
     if (type === "number") {
       newValue = Number(newValue); // Ensure the value is a number
-      if (maxValue && newValue > maxValue) {
-        newValue = maxValue;
-      }
-      if (newValue <= 0) return;
     }
 
     setValue({ ...value, [name]: newValue });

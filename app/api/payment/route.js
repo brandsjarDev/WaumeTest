@@ -72,7 +72,7 @@ async function getCost(
     console.log("couponCode \n \n", discountP, num);
   }
   if (shippingCost) num += shippingCost;
-  if (plan == "Trial Pack") {
+  if (plan == "Testpaket") {
     num = 15;
   }
 
@@ -97,7 +97,7 @@ export async function PUT(req) {
     let userData = obj.userData;
     const user = await User.findOne({ email });
 
-    console.log("userData", userData.couponCode);
+    console.log("userData", userData.firstName, userData.lastName);
     if (user) {
       return NextResponse.json(
         { error: "User with this email already exists" },
@@ -120,16 +120,18 @@ export async function PUT(req) {
       },
     });
     const paymentMode =
-      plan == "Per Month" || plan == "Per Three Month"
+      plan == "Pro Monat" || plan == "Pro Drei Monate"
         ? "subscription"
         : "payment";
-    const subscriptionPeriod = plan == "Per Month" ? 1 : 3;
+    const subscriptionPeriod = plan == "Pro Monat" ? 1 : 3;
 
     const session = await stripe.checkout.sessions.create({
       success_url: `${process.env.DOMAIN}/success`,
       cancel_url: `${process.env.DOMAIN}`,
       payment_method_types: ["card"],
       mode: paymentMode,
+      allow_promotion_codes: true,
+
       billing_address_collection: "auto",
       line_items: [
         {
@@ -210,14 +212,6 @@ export async function PATCH(req) {
     delete userDataToUpdate.email;
     const user = await User.findOne({ email });
 
-    const validPassword = await bcryptjs.compare(
-      userData.password,
-      user.password
-    );
-    if (!validPassword) {
-      return Response.json({ error: "Invalid password" }, { status: 400 });
-    }
-
     const subscriptions = await stripe.subscriptions.list({
       customer: user.stripeId,
     });
@@ -253,10 +247,10 @@ export async function PATCH(req) {
       }
     }
     const paymentMode =
-      plan == "Per Month" || plan == "Per Three Month"
+      plan == "Pro Monat" || plan == "Pro Drei Monate"
         ? "subscription"
         : "payment";
-    const subscriptionPeriod = plan == "Per Month" ? 1 : 3;
+    const subscriptionPeriod = plan == "Pro Monat" ? 1 : 3;
     console.log(
       "cost == \n \n",
       await getCost(
@@ -274,6 +268,7 @@ export async function PATCH(req) {
       cancel_url: `${process.env.DOMAIN}`,
       payment_method_types: ["card"],
       mode: paymentMode,
+      allow_promotion_codes: true,
       billing_address_collection: "auto",
       line_items: [
         {
