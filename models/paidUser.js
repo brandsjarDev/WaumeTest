@@ -54,6 +54,15 @@ const paidUserSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  breed1: {
+    type: String,
+    default: "",
+  },
+  breed2: {
+    type: String,
+    default: "",
+  },
+
   weight: {
     type: String,
     required: [true, "Please provide weight"],

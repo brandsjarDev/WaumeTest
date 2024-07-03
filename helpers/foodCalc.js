@@ -130,6 +130,8 @@ export const initialValue = {
   dogName: "",
   gender: "",
   breed: "",
+  breed1: "",
+  breed2: "",
   weight: "",
   fatLevel: "",
   active: "",

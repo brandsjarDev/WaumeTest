@@ -67,7 +67,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
             placeholder="DD"
           />
         </div>
-        <span className="my-6 md:my-4">&nbsp; und ein</span>
+        <span className="my-6 md:my-4 md:mx-4">&nbsp; und ein</span>
         <ThemeAutoSuggest
           className="w-[150px] md:w-[300px]"
           label="Breed"
@@ -76,12 +76,34 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           setValue={setFormData}
           options={breeds}
         />
+        {formData.breed == "mix" && (
+          <>
+            <span className="my-6 md:my-4 md:mx-4">of &nbsp; </span>
+            <ThemeAutoSuggest
+              className="w-[150px] md:w-[300px]"
+              label="Breed"
+              name="breed1"
+              value={formData}
+              setValue={setFormData}
+              options={breeds}
+            />
+            <span className="my-6 md:my-4 md:mx-4">and&nbsp; </span>
+            <ThemeAutoSuggest
+              className="w-[150px] md:w-[300px]"
+              label="Breed"
+              name="breed2"
+              value={formData}
+              setValue={setFormData}
+              options={breeds}
+            />
+          </>
+        )}
         <span className="my-6 md:my-4">. &nbsp; </span>
         <span className="my-6 md:my-4">
           <span className=""> {formData.dogName}'s &nbsp;</span>Gewicht beträgt{" "}
         </span>
         <ThemeInput
-          className="w-[150px] md:w-[300px] mt-6"
+          className="w-[150px] md:w-[200px] mt-6"
           id="weight"
           type="number"
           name="weight"
