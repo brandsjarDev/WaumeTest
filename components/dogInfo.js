@@ -69,7 +69,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
         </div>
         <span className="my-6 md:my-4 md:mx-4">&nbsp; und ein</span>
         <ThemeAutoSuggest
-          className="w-[150px] md:w-[300px]"
+          className="w-[150px] md:w-[350px]"
           label="Breed"
           name="breed"
           value={formData}
@@ -80,7 +80,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           <>
             <span className="my-6 md:my-4 md:mx-4">of &nbsp; </span>
             <ThemeAutoSuggest
-              className="w-[150px] md:w-[300px]"
+              className="w-[150px] md:w-[350px]"
               label="Breed"
               name="breed1"
               value={formData}
@@ -89,7 +89,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
             />
             <span className="my-6 md:my-4 md:mx-4">and&nbsp; </span>
             <ThemeAutoSuggest
-              className="w-[150px] md:w-[300px]"
+              className="w-[150px] md:w-[350px]"
               label="Breed"
               name="breed2"
               value={formData}
