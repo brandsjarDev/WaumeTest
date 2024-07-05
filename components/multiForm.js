@@ -31,46 +31,46 @@ const stripePromise = loadStripe(public_stripe_key);
 
 let validationArr = [
   [
-    { feild: "ownerName", type: "text", msg: "name" },
-    { feild: "dogName", type: "text", msg: "Pet's Name" },
+    { feild: "ownerName", type: "text", msg: "Name" },
+    { feild: "dogName", type: "text", msg: "Name des Haustiers" },
   ],
   [
-    { feild: "weight", type: "text", msg: "weight" },
-    { feild: "birthYear", type: "text", msg: "birthYear" },
-    { feild: "birthMonth", type: "text", msg: "birthMonth" },
+    { feild: "weight", type: "text", msg: "Gewicht" },
+    { feild: "birthYear", type: "text", msg: "Geburtsjahr" },
+    { feild: "birthMonth", type: "text", msg: "Geburtsmonat" },
   ],
-  [{ feild: "fatLevel", type: "singlecard", msg: "an option" }],
-  [{ feild: "active", type: "singlecard", msg: "an option" }],
-  [{ feild: "treat", type: "singlecard", msg: "an option" }],
+  [{ feild: "fatLevel", type: "singlecard", msg: "eine Option" }],
+  [{ feild: "active", type: "singlecard", msg: "eine Option" }],
+  [{ feild: "treat", type: "singlecard", msg: "eine Option" }],
   [
     {
       feild: "allergies",
       type: "multicard",
-      msg: "allergy if not select none",
+      msg: "eine Allergie, wenn keine ausgewählt wurde",
     },
   ],
   [
     {
       feild: "illness",
       type: "multicard",
-      msg: "illness if not select none",
+      msg: "eine Krankheit, wenn keine ausgewählt wurde",
     },
   ],
-  [{ feild: "product", type: "singlecard", msg: "product" }],
-  [{ feild: "portion", type: "singlecard", msg: "portion" }],
+  [{ feild: "product", type: "singlecard", msg: "Produkt" }],
+  [{ feild: "portion", type: "singlecard", msg: "Portion" }],
 
-  [{ feild: "subscriptionTitle", type: "singlecard", msg: "subscription" }],
+  [{ feild: "subscriptionTitle", type: "singlecard", msg: "Abonnement" }],
   [
-    { feild: "email", type: "text", msg: "email" },
-    { feild: "firstName", type: "text", msg: "first name" },
-    { feild: "lastName", type: "text", msg: "last name" },
+    { feild: "email", type: "text", msg: "E-Mail" },
+    { feild: "firstName", type: "text", msg: "Vorname" },
+    { feild: "lastName", type: "text", msg: "Nachname" },
 
-    { feild: "password", type: "text", msg: "password" },
-    { feild: "phoneNumber", type: "text", msg: "phoneNumber" },
-    { feild: "addressLine1", type: "text", msg: "addressLine1" },
-    { feild: "addressLine2", type: "text", msg: "addressLine2" },
-    { feild: "city", type: "text", msg: "city" },
-    { feild: "zipcode", type: "text", msg: "zipcode" },
+    { feild: "password", type: "text", msg: "Passwort" },
+    { feild: "phoneNumber", type: "text", msg: "Telefonnummer" },
+    { feild: "addressLine1", type: "text", msg: "Adresszeile 1" },
+    { feild: "addressLine2", type: "text", msg: "Adresszeile 2" },
+    { feild: "city", type: "text", msg: "Stadt" },
+    { feild: "zipcode", type: "text", msg: "Postleitzahl" },
   ],
 ];
 function validateEmail(email) {
@@ -95,7 +95,7 @@ function validDate(birthYear, birthMonth) {
       birthYear < 1900,
       birthYear > new Date().getFullYear()
     );
-    toast.error("invalid date");
+    toast.error("Ungültiges Datum");
     return false;
   } else return true;
 }
@@ -153,7 +153,7 @@ function getStepContent(step, formData, setFormData, validate, toast) {
         />
       );
     default:
-      return "unknown step";
+      return "Unbekannter Schritt";
   }
 }
 
@@ -300,13 +300,13 @@ const LinaerStepper = () => {
         )}
       </div>
       <WarningDialog
-        title="Unfortunately we have to interrupt here for a moment because your dog is still growing."
-        content="We recommend feeding WAUME only after height growth has been completed, which dogs usually complete at the age of 12-15 months.
+        title="Leider müssen wir hier kurz unterbrechen, weil Ihr Hund noch im Wachstum ist."
+        content="Wir empfehlen, WAUME erst nach Abschluss des Wachstums in der Höhe zu füttern, was Hunde normalerweise im Alter von 12-15 Monaten abschließen.
 
-          If your dog has completed height growth or your vet has given the OK, click 'Next' to continue with the food generator.
-          
-          If you have any questions, please contact us or your veterinarian."
-        buttonText="Next"
+    Wenn Ihr Hund das Wachstum abgeschlossen hat oder Ihr Tierarzt grünes Licht gegeben hat, klicken Sie auf 'Weiter', um mit dem Futtergenerator fortzufahren.
+    
+    Wenn Sie Fragen haben, kontaktieren Sie uns bitte oder Ihren Tierarzt."
+        buttonText="Weiter"
         isOpen={open}
         setOpen={setOpen}
       />

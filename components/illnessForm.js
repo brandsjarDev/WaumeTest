@@ -50,13 +50,13 @@ const IllnessForm = ({ formData, setFormData }) => {
           ))}
         </div>
         <WarningDialog
-          title="Unfortunately we have to interrupt you here because your dog is suffering from an illness."
-          content="We recommend contacting your veterinarian in advance to see whether WAUME is suitable for your four-legged friend.
+          title="Leider müssen wir Sie hier unterbrechen, da Ihr Hund unter einer Krankheit leidet."
+          content="Wir empfehlen Ihnen, im Voraus Ihren Tierarzt zu kontaktieren, um herauszufinden, ob WAUME für Ihren Vierbeiner geeignet ist.
 
-For questions or more information, contact us or ask your veterinarian.
+Für Fragen oder weitere Informationen kontaktieren Sie uns oder fragen Sie Ihren Tierarzt.
 
-If you have already done this, click 'next' to continue."
-          buttonText="Next"
+Wenn Sie dies bereits getan haben, klicken Sie auf 'Weiter', um fortzufahren."
+          buttonText="Weiter"
           isOpen={open}
           setOpen={setOpen}
         />
