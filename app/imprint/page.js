@@ -9,10 +9,10 @@ const Imprint = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-semibold mb-4">Imprint</h1>
+      <h1 className="text-3xl font-semibold mb-4">Impressum</h1>
       <p className="mb-4">
-        Responsible for the content of this website is (disclosure according to
-        Section 25 of the Media Act):
+        Verantwortlich für den Inhalt dieser Website (Angaben gemäß § 25 des
+        Mediengesetzes):
       </p>
       <address className="mb-4">
         PPF Pro Petfood GmbH
@@ -21,25 +21,25 @@ const Imprint = () => {
         <br />
         A-8041 Graz
         <br />
-        Phone: 0699 11343715
+        Telefon: 0699 11343715
         <br />
-        Email: info@waume.at
+        E-Mail: info@waume.at
       </address>
       <p className="mb-4">
-        Business purpose: Animal feed products
+        Unternehmensgegenstand: Tierfutterprodukte
         <br />
-        Company registration number: FN583126p
+        Firmenbuchnummer: FN583126p
         <br />
-        Company court: LG for ZRS Graz
+        Firmengericht: LG für ZRS Graz
         <br />
         UID: ATU78401702
       </p>
       <p className="mb-4">
-        Member of the Styrian Chamber of Commerce
+        Mitglied der Wirtschaftskammer Steiermark
         <br />
-        Applicable legal basis: Trade Regulations
+        Anwendbare Rechtsvorschrift: Gewerbeordnung
         <br />
-        (current version see RIS:{" "}
+        (aktuelle Fassung siehe RIS:{" "}
         <a
           href="http://www.ris.bka.gv.at/bundesrecht/"
           target="_blank"
@@ -49,43 +49,46 @@ const Imprint = () => {
           http://www.ris.bka.gv.at/bundesrecht/
         </a>
         )<br />
-        Supervisory authority: Municipality of Graz
+        Aufsichtsbehörde: Stadt Graz
       </p>
       <h2 className="text-xl font-semibold mb-2">AGB</h2>
       <p className="mb-4">
-        Information on dispute resolution: Consumers have the opportunity to
-        submit complaints to the EU's online dispute resolution platform.
+        Informationen zur Streitbeilegung: Verbraucher haben die Möglichkeit,
+        Beschwerden an die Online-Streitbeilegungsplattform der EU zu richten.
       </p>
-      <h2 className="text-xl font-semibold mb-2">Disclaimer for content</h2>
+      <h2 className="text-xl font-semibold mb-2">
+        Haftungsausschluss für Inhalte
+      </h2>
       <p className="mb-4">
-        We continually update and optimize the content of this website and
-        strive to provide accurate and up-to-date information. However, we do
-        not guarantee that the information provided on this website is complete,
-        correct, and up-to-date. This also applies to links to other websites.
-        We reserve the right to make changes or additions to the information
-        provided without prior notice. If you notice any questionable or illegal
-        content, please inform us immediately.
+        Wir aktualisieren und optimieren kontinuierlich den Inhalt dieser
+        Website und bemühen uns, genaue und aktuelle Informationen
+        bereitzustellen. Dennoch übernehmen wir keine Gewähr für die
+        Vollständigkeit, Richtigkeit und Aktualität der bereitgestellten
+        Informationen. Dies gilt auch für Links zu anderen Websites. Wir
+        behalten uns das Recht vor, ohne vorherige Ankündigung Änderungen oder
+        Ergänzungen an den bereitgestellten Informationen vorzunehmen. Wenn Sie
+        auf fragwürdige oder rechtswidrige Inhalte stoßen, informieren Sie uns
+        bitte umgehend.
       </p>
-      <h2 className="text-xl font-semibold mb-2">Disclaimer for links</h2>
+      <h2 className="text-xl font-semibold mb-2">
+        Haftungsausschluss für Links
+      </h2>
       <p className="mb-4">
-        Our website contains links to external websites for whose content we are
-        not responsible. We accept no liability for linked websites because we
-        had no knowledge of illegal activities, have not noticed any legal
-        violations to date and we remove linked content immediately as soon as
-        we become aware of any legal violations. If you notice any illegal links
-        on our website, please let us know.
+        Unsere Website enthält Links zu externen Websites, für deren Inhalt wir
+        nicht verantwortlich sind. Wir übernehmen keine Haftung für verlinkte
+        Websites, da wir keine Kenntnis von illegalen Aktivitäten haben, bisher
+        keine Rechtsverstöße festgestellt wurden und wir verlinkte Inhalte
+        umgehend entfernen, sobald wir von etwaigen Rechtsverletzungen Kenntnis
+        erlangen. Wenn Sie auf unserer Website illegale Links entdecken, lassen
+        Sie es uns bitte wissen.
       </p>
-      <h2 className="text-xl font-semibold mb-2">Copyright notice</h2>
+      <h2 className="text-xl font-semibold mb-2">Urheberrechtshinweis</h2>
       <p className="mb-4">
-        All content presented on this website (images, photos, texts, videos) is
-        subject to Austrian copyright law. If necessary, we will take legal
-        action against the unauthorized use of parts of our content. If you
-        discover materials on this website that violate copyright, please let us
-        know.
-      </p>
-      <p>
-        Website conception, design & development by Waltl & Waltl Werbeagentur
-        GmbH
+        Alle auf dieser Website präsentierten Inhalte (Bilder, Fotos, Texte,
+        Videos) unterliegen dem österreichischen Urheberrecht. Bei Bedarf werden
+        wir rechtliche Schritte gegen die unbefugte Nutzung von Teilen unserer
+        Inhalte einleiten. Wenn Sie Materialien auf dieser Website entdecken,
+        die gegen das Urheberrecht verstoßen, informieren Sie uns bitte.
       </p>
     </div>
   );

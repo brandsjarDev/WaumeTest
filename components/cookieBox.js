@@ -15,7 +15,7 @@ const PrivacySetting = ({ heading, description, onChange }) => {
         <h2 className="font-medium">{heading}</h2>
         <p className="text-sm text-slate-700 mt-2">{description}</p>
         <a href="#" className="text-sm underline mt-2 inline-block">
-          Show service information
+          Zeigen Sie die Serviceinformationen.
         </a>
       </div>
     </div>

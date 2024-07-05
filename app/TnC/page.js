@@ -559,6 +559,51 @@ const TnC = () => {
             der Nutzung der Produkte oder Dienstleistungen entstehen,
             freizustellen und schadlos zu halten.
           </li>
+          <li className="mb-2">
+            WAUME ist weder verpflichtet noch bereit, an einem
+            Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+            teilzunehmen.
+          </li>
+        </ol>
+        <li className="mb-2">Schlussbestimmungen</li>
+        <ol className="list-decimal ml-6">
+          {" "}
+          <li className="mb-2">
+            Ist der Kunde als Unternehmer tätig, so unterliegen alle rechtlichen
+            Beziehungen zwischen den Parteien dem Recht des Landes, in dem WAUME
+            seinen Geschäftssitz hat. Die UN-Konvention über den internationalen
+            Warenkauf findet keine Anwendung. Der ausschließliche Gerichtsstand
+            für alle Streitigkeiten, die sich aus diesem Vertrag ergeben, ist
+            der Geschäftssitz von WAUME.
+          </li>
+          <li className="mb-2">
+            Ist der Kunde als Verbraucher tätig, so unterliegen alle rechtlichen
+            Beziehungen zwischen den Parteien dem Recht des Landes, in dem der
+            Kunde seinen gewöhnlichen Aufenthalt hat. Der ausschließliche
+            Gerichtsstand für alle Streitigkeiten, die sich aus diesem Vertrag
+            ergeben, ist der Wohnsitz des Kunden.
+          </li>
+          <li className="mb-2">
+            {" "}
+            Der Kunde ist nicht berechtigt, Ansprüche oder Rechte aus dem
+            Vertrag mit WAUME ohne vorherige schriftliche Zustimmung von WAUME
+            an Dritte abzutreten oder zu übertragen.
+          </li>{" "}
+          <li className="mb-2">
+            Sollten einzelne Bestimmungen dieser Allgemeinen
+            Geschäftsbedingungen ganz oder teilweise unwirksam oder
+            undurchführbar sein oder werden, so berührt dies nicht die
+            Gültigkeit der übrigen Bestimmungen. Anstelle der unwirksamen oder
+            undurchführbaren Bestimmung gilt eine solche wirksame und
+            durchführbare Regelung als vereinbart, die dem wirtschaftlichen
+            Zweck der unwirksamen oder undurchführbaren Bestimmung am nächsten
+            kommt. Gleiches gilt für den Fall, dass sich in diesen Allgemeinen
+            Geschäftsbedingungen eine Regelungslücke herausstellen sollte. Die
+            Vertragsparteien verpflichten sich, die unwirksame, undurchführbare
+            oder lückenhafte Bestimmung durch eine angemessene Regelung zu
+            ersetzen, die dem wirtschaftlichen Zweck der ursprünglichen Regelung
+            entspricht und den Vertragszweck nicht gefährdet.
+          </li>
         </ol>
       </ol>
     </div>

@@ -357,7 +357,7 @@ export async function POST(req) {
     return NextResponse.json(
       {
         message:
-          "Subscription cancelled successfully,subscription will end at end of billing cycle",
+          "Das Abonnement wurde erfolgreich gekündigt, Die Kündigung wird zum Ende des Abrechnungszeitraums wirksam.",
       },
       { status: 200 }
     );
