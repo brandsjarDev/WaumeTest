@@ -20,13 +20,13 @@ export default function PersonalInfoForm({ formData, setFormData }) {
             name="ownerName"
             value={formData}
             setValue={setFormData}
-            placeholder="Enter Your Name"
+            placeholder="Name"
             required
           />
         </div>
 
         <div className="flex flex-wrap mb-4 text-xl md:text-[34px] justify-center md:justify-start  text-center md:text-end">
-          <span className="my-6 md:my-4"> und mein hund</span>
+          <span className="my-6 md:my-4"> und mein Hund</span>
 
           <span className="my-6 md:my-4">&nbsp; heißt</span>
           <ThemeInput

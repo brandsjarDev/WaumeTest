@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
+import { calcFoodWeight } from "@helpers/foodCalc";
 const countryOptions = [
   { label: "Austria", value: "Austria", upperCost: 9.8, lowerCost: 9.8 },
   { label: "Germany", value: "Germany", upperCost: 15, lowerCost: 12.5 },
@@ -31,11 +31,13 @@ function RoundSelect({
 }) {
   const handleChange = (selectedValue) => {
     console.log("selectedValue", selectedValue);
-    setValue({
+    const newValue = {
       ...value,
       [name]: selectedValue,
       shippingCost: getCost(value, selectedValue),
-    });
+    };
+
+    setValue(calcFoodWeight(newValue));
   };
 
   const getLabel = (value) => {

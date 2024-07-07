@@ -3,11 +3,11 @@ import SimpleCard from "@components/simpleCard";
 import WarningDialog from "./dailogue";
 
 const illness = [
-  "Nierenkrankheit",
-  "Leberkrankheit",
+  "Nierenerkrankung",
+  "Lebererkrankung",
   "Pankreatitis",
-  "Stillend",
-  "Schwanger",
+  "Laktieren",
+  "Trächtig",
   "Keine",
 ];
 
@@ -36,7 +36,7 @@ const IllnessForm = ({ formData, setFormData }) => {
     <>
       <div className="flex-col justify-center text-4xl">
         <h1 className="flex justify-center mt-2 mb-10">
-          Hat Ihr Hund eine Krankheit?
+          Hat {formData.dogName} eine Erkrankung, oder besondere Lebensumstände?
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-4 justify-items-center content-center gap-4">
           {illness.map((item, index) => (

@@ -38,7 +38,7 @@ const AllergyForm = ({ formData, setFormData }) => {
     <>
       <div className="flex-col justify-center items-center text-4xl">
         <h1 className="flex justify-center items-center mt-2 mb-10">
-          Ist&nbsp; {formData.dogName}&nbsp; haben &nbsp;Allergien?
+          Hat&nbsp; {formData.dogName}&nbsp;Allergien, oder Unverträglichkeiten?
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-4 justify-items-center content-center gap-4">
           {" "}

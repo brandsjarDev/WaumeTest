@@ -287,7 +287,7 @@ const LinaerStepper = () => {
           onClick={handleBack}
           size="xl"
         >
-          Back
+          Weiter
         </ThemeButton>
         {activeStep < 10 && (
           <ThemeButton
@@ -295,7 +295,7 @@ const LinaerStepper = () => {
             onClick={handleNext}
             size="xl"
           >
-            {activeStep === 9 ? "Finish" : "Next"}
+            {activeStep === 9 ? "Beenden" : "Zurück"}
           </ThemeButton>
         )}
       </div>

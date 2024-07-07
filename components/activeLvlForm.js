@@ -3,7 +3,7 @@ import Card from "@components/themeCard";
 
 const descriptions = [
   {
-    title: "Gelegentlicher Sportler",
+    title: "Gelegenheits Sportler",
     name: "low",
     content: "(0-2 Stunden Bewegung pro Tag)",
     imageUrl: "https://picsum.photos/200",
@@ -15,7 +15,7 @@ const descriptions = [
     imageUrl: "https://picsum.photos/200",
   },
   {
-    title: "Top-Athlet",
+    title: "Supersportler",
     name: "high",
     content: "(Mehr als 3 Stunden pro Tag)",
     imageUrl: "https://picsum.photos/200",

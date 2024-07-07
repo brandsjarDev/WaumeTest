@@ -24,6 +24,8 @@ function getCost(prodType, formData) {
   // Round off num to 2 decimal points
   if (formData.portion == "half") num *= 0.6;
   num = parseFloat(num.toFixed(2));
+  if (formData.country == "Switzerland") num *= 0.87; //13% tax reduced
+  num = parseFloat(num.toFixed(2));
 
   return num;
 }

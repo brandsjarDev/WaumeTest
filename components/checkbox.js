@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const Checkbox = ({ value, setValue }) => {
   // State to manage the checked 1state of the checkbox
   const [isChecked1, setIsChecked1] = useState(
-    value.parkingPermit == "Park in front of my front door"
+    value.parkingPermit == "Abstellen vor meiner Haustüre"
   );
   const [isChecked2, setIsChecked2] = useState(
     value.parkingPermit == "Collection station/branch of he Austrian Post"
@@ -13,7 +13,7 @@ const Checkbox = ({ value, setValue }) => {
   // Function to handle changes to the checkbox state
   const handleCheckboxChange1 = (event) => {
     if (event) {
-      setValue({ ...value, parkingPermit: "Park in front of my front door" });
+      setValue({ ...value, parkingPermit: "Abstellen vor meiner Haustüre" });
       setIsChecked1(true);
       setIsChecked2(false);
     } else {
@@ -46,7 +46,7 @@ const Checkbox = ({ value, setValue }) => {
           onChange={handleCheckboxChange1} // Handle changes to the checkbox state
         />
         {/* Label for the checkbox */}
-        <label className="ml-2">Parken Sie vor meiner Haustür</label>
+        <label className="ml-2">Abstellen vor meiner Haustüre</label>
       </div>
       <div>
         <input
@@ -56,7 +56,7 @@ const Checkbox = ({ value, setValue }) => {
         />
         {/* Label for the checkbox */}
         <label className="ml-2">
-          Abholstation/Filiale der Österreichischen Post
+          Abholstation/ Filiale der Österreichischen Post
         </label>
       </div>
     </div>

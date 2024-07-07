@@ -122,7 +122,7 @@ export default function CheckoutForm({
     if (isNaN(subscriptionAmt) || subscriptionAmt < 0) {
       console.error("Ungültiger Abonnementbetrag");
     }
-
+    if (formData.country == "Switzerland") return subscriptionAmt;
     const subscriptionWithoutTax = subscriptionAmt - subscriptionAmt * 0.13;
 
     return subscriptionWithoutTax.toFixed(2);
@@ -161,23 +161,21 @@ export default function CheckoutForm({
               <span>Versand</span>
               <span>€ {formData.shippingCost}</span>
             </div>
-            <div className="flex justify-between">
-              <span>Steuer</span>
-              <span>
-                € {Number(formData.subscriptionAmt * 0.13).toFixed(2)}
-              </span>
-            </div>
+            {formData.country != "Switzerland" && (
+              <div className="flex justify-between">
+                <span>Steuer</span>
+                <span>
+                  € {Number(formData.subscriptionAmt * 0.13).toFixed(2)}
+                </span>
+              </div>
+            )}
 
             <div class="border-t-[3px] border-primary"></div>
             <div className="flex justify-between">
               <span>GESAMT BESTELLUNGSPREIS</span>
               <span>
                 €&nbsp;
-                {(
-                  formData.subscriptionAmt +
-                  formData.shippingCost -
-                  getSubscriptionWithoutTax()
-                ).toFixed(2)}
+                {(formData.subscriptionAmt + formData.shippingCost).toFixed(2)}
               </span>
             </div>
           </div>
@@ -294,7 +292,7 @@ export default function CheckoutForm({
           </div>
           <div className="flex flex-col text-sm md:text-base text-start mt-5">
             {/* Section for three RoundInputs */}
-            <span className="my-5">Parkgenehmigung</span>
+            <span className="my-5">Abstellgenehmigung</span>
             <Checkbox value={formData} setValue={setFormData} />
           </div>
           <div className="flex flex-col w-3/4 text-start mt-5">

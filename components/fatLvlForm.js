@@ -32,7 +32,7 @@ const FatLvlForm = ({ formData, setFormData }) => {
     <>
       <div className="flex flex-col  justify-center">
         <h1 className="text-2xl md:text-4xl font-hossRound mb-5 md:mb-10">
-          Wie würden Sie Ihren {formData.dogName} beschreiben?
+          Wie würdest du {formData.dogName}'s aktuelle Figur beschreiben?
         </h1>
         <div className="flex flex-col md:flex-row justify-center items-center gap-8">
           {fatLvls.map((item, index) => (

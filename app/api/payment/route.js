@@ -55,7 +55,8 @@ async function getCost(
   portion,
   plan,
   couponCode,
-  shippingCost
+  shippingCost,
+  country
 ) {
   let num = unit;
   if (prodType === "chicken") num *= 0.012;
@@ -64,6 +65,7 @@ async function getCost(
   if (prodType === "veg") num *= 0.011;
   if (portion == "half") num *= 0.6;
   console.log("couponCode \n \n", couponCode);
+  if (country == "Switzerland") num *= 0.87; //13% tax reduced
 
   if (shippingCost) num += shippingCost;
   if (plan == "Testpaket") {
@@ -137,7 +139,8 @@ export async function PUT(req) {
               portion,
               plan,
               userData.couponCode,
-              userData.shippingCost
+              userData.shippingCost,
+              userData.country
             ),
             ...(paymentMode === "subscription" && {
               recurring: {
@@ -274,7 +277,8 @@ export async function PATCH(req) {
               portion,
               plan,
               userData.couponCode,
-              userData.shippingCost
+              userData.shippingCost,
+              userData.country
             ),
             ...(paymentMode === "subscription" && {
               recurring: {

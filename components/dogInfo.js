@@ -70,7 +70,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
         <span className="my-6 md:my-4 md:mx-4">&nbsp; und ein</span>
         <ThemeAutoSuggest
           className="w-[150px] md:w-[350px]"
-          label="Breed"
+          label="Rasse"
           name="breed"
           value={formData}
           setValue={setFormData}
@@ -109,7 +109,7 @@ export default function PersonalInfoForm({ formData, setFormData }) {
           name="weight"
           value={formData}
           setValue={setFormData}
-          placeholder="Weight"
+          placeholder="Gewicht"
           required
         />{" "}
         <span className="my-6 md:my-4">&nbsp; Kgs</span>
