@@ -203,21 +203,22 @@ const LinaerStepper = () => {
       const item = validationArr[activeStep][i];
 
       if (item.type === "text" && !formData[item.feild]) {
-        toast.error(`Please enter ${item.msg}`);
+        toast.error(`Bitte geben Sie ${item.msg} ein`);
         return false;
       }
       if (item.type === "singlecard" && !formData[item.feild]) {
-        toast.error(`Please select ${item.msg}`);
+        toast.error(`Bitte wählen Sie ${item.msg}`);
         return false;
       }
       if (item.type === "multicard" && formData[item.feild].length === 0) {
-        toast.error(`Please select ${item.msg}`);
+        toast.error(`Bitte wählen Sie ${item.msg}`);
         return false;
       }
       if (item.feild === "email" && !validateEmail(formData[item.feild])) {
-        toast.error("Please enter a valid email address");
+        toast.error("Bitte geben Sie eine gültige E-Mail-Adresse ein");
         return false;
       }
+
       if (
         item.feild === "birthYear" &&
         !validDate(formData.birthYear, formData.birthMonth)
