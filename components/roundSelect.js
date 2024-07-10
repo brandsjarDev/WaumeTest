@@ -6,14 +6,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { calcFoodWeight } from "@helpers/foodCalc";
-const countryOptions = [
-  { label: "Austria", value: "Austria", upperCost: 9.8, lowerCost: 9.8 },
-  { label: "Germany", value: "Germany", upperCost: 15, lowerCost: 12.5 },
-  { label: "Switzerland", value: "Switzerland", upperCost: 25, lowerCost: 20 },
-];
+import { calcFoodWeight, countryOptions } from "@helpers/foodCalc";
 
-function getCost(value, selectedCountry) {
+function getShipCost(value, selectedCountry) {
   let country = countryOptions.find((item) => item.value == selectedCountry);
   country = country ? country : { upperCost: 15, lowerCost: 12.5 };
   if (value.prodCost > 100) return country.lowerCost;
@@ -34,7 +29,7 @@ function RoundSelect({
     const newValue = {
       ...value,
       [name]: selectedValue,
-      shippingCost: getCost(value, selectedValue),
+      shippingCost: getShipCost(value, selectedValue),
     };
 
     setValue(calcFoodWeight(newValue));

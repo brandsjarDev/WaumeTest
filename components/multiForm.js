@@ -71,6 +71,7 @@ let validationArr = [
     { feild: "addressLine2", type: "text", msg: "Adresszeile 2" },
     { feild: "city", type: "text", msg: "Stadt" },
     { feild: "zipcode", type: "text", msg: "Postleitzahl" },
+    { feild: "parkingPermit", type: "singlecard", msg: "Abstellgenehmigung" },
   ],
 ];
 function validateEmail(email) {
@@ -288,7 +289,7 @@ const LinaerStepper = () => {
           onClick={handleBack}
           size="xl"
         >
-          Weiter
+          Zurück
         </ThemeButton>
         {activeStep < 10 && (
           <ThemeButton
@@ -296,9 +297,9 @@ const LinaerStepper = () => {
             onClick={handleNext}
             size="xl"
           >
-            {activeStep === 9 ? "Beenden" : "Zurück"}
+            Weiter
           </ThemeButton>
-        )}
+        )}{" "}
       </div>
       <WarningDialog
         title="Leider müssen wir hier kurz unterbrechen, weil Ihr Hund noch im Wachstum ist."

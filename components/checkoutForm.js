@@ -169,7 +169,6 @@ export default function CheckoutForm({
                 </span>
               </div>
             )}
-
             <div class="border-t-[3px] border-primary"></div>
             <div className="flex justify-between">
               <span>GESAMT BESTELLUNGSPREIS</span>
@@ -178,6 +177,13 @@ export default function CheckoutForm({
                 {(formData.subscriptionAmt + formData.shippingCost).toFixed(2)}
               </span>
             </div>
+            <span className="text-xs md:text-base text-primary ">
+              Du kannst Rabattcodes im nächsten Schritt, im Zahlungsprozess,
+              eingeben.
+              {!getLcl("isLoggedIn") && (
+                <span> Verwende den Code FIRSTORDER</span>
+              )}
+            </span>
           </div>
         </div>
 
@@ -317,12 +323,12 @@ export default function CheckoutForm({
               />
               {/* Label for the checkbox */}
               <label className="ml-2 text-sm md:text-base">
-                Mit der Bestellung stimmen Sie unseren
+                Mit deiner Bestellung erklärst du dich mit unseren
                 <a className="text-blue-400" href="/TnC" target="_blank">
                   {" "}
                   Allgemeinen Geschäftsbedingungen
                 </a>{" "}
-                und unserer Stornierungsrichtlinie zu. *
+                und Widerrufsbestimmungen einverstanden. *
               </label>
             </div>
           </div>
@@ -336,8 +342,8 @@ export default function CheckoutForm({
               loading={loading}
             >
               {isExistingUser
-                ? "Box aktualisieren für "
-                : "Erste Box starten für "}
+                ? "Bestellung aktualisieren für "
+                : "Bestellen Sie Ihre erste Box für "}
               &nbsp;
               <span>€ {calculateTotalOrderPrice()}</span>
             </ThemeButton>

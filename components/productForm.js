@@ -64,6 +64,7 @@ const ProductForm = ({ formData, setFormData }) => {
     if (prodType === "beef") num = formData.beef * 0.012 * ONE_MONTH;
     if (prodType === "horse") num = formData.horse * 0.0145 * ONE_MONTH;
     if (prodType === "veg") num = formData.veg * 0.011 * ONE_MONTH;
+    // if (formData.country == "Switzerland") num *= 0.87; //13% tax reduced
 
     // Round off num to 2 decimal points
     num = parseFloat(num.toFixed(2));
@@ -78,7 +79,7 @@ const ProductForm = ({ formData, setFormData }) => {
     setFormData({
       ...formData,
       product: obj.name,
-      prodCost: getCost(obj.name),
+      // prodCost: getCost(obj.name, formData),
     });
   }
   return (

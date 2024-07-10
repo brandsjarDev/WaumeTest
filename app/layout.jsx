@@ -52,7 +52,7 @@ const RootLayout = ({ children }) => {
           {" "}
           <Nav />
           <main className="app font-bioSans">{children}</main>
-          <Footer />
+          {/* <Footer /> */}
         </Provider>
         <CookieConsent />
       </body>

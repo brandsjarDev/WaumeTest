@@ -8,14 +8,17 @@ function roundToNearestFifty(num) {
     return num + (50 - remainder);
   }
 }
-const countryOptions = [
-  { label: "Austria", value: "Austria", upperCost: 9.8, lowerCost: 9.8 },
+export const countryOptions = [
+  { label: "Austria", value: "Austria", upperCost: 9.8, lowerCost: 0 },
   { label: "Germany", value: "Germany", upperCost: 15, lowerCost: 12.5 },
   { label: "Switzerland", value: "Switzerland", upperCost: 25, lowerCost: 20 },
 ];
 
-function getCost(prodType, formData) {
+export function getCost(prodType, formData) {
+  console.log(formData);
+  if (!prodType) return 0;
   let num = 0;
+  console.log(formData);
   if (prodType === "chicken") num = formData.chicken * 0.012 * 31;
   if (prodType === "beef") num = formData.beef * 0.012 * 31;
   if (prodType === "horse") num = formData.horse * 0.0145 * 31;
@@ -23,9 +26,11 @@ function getCost(prodType, formData) {
 
   // Round off num to 2 decimal points
   if (formData.portion == "half") num *= 0.6;
-  num = parseFloat(num.toFixed(2));
+  // num = parseFloat(num.toFixed(2));
+  console.log(num, formData.country);
   if (formData.country == "Switzerland") num *= 0.87; //13% tax reduced
   num = parseFloat(num.toFixed(2));
+  console.log(num);
 
   return num;
 }
@@ -45,6 +50,7 @@ export function formatDate(date) {
   return new Date(date).toLocaleDateString("en-GB", options);
 }
 function getSubscriptionCost(title, formData) {
+  console.log(formData.prodCost);
   if (title == "Ein Monat" || title == "Pro Monat") return formData.prodCost;
   else if (title == "Drei Monate" || title == "Pro Drei Monate")
     return parseFloat((formData.prodCost * 3).toFixed(2));
@@ -111,11 +117,17 @@ export function calcFoodWeight(obj) {
   updatedObj.horse = roundToNearestFifty((kcal / 110) * 100);
   updatedObj.chicken = roundToNearestFifty((kcal / 123) * 100);
   updatedObj.veg = roundToNearestFifty((kcal / 126) * 100);
-  updatedObj.prodCost = obj.product ? getCost(obj.product, obj) : obj.prodCost;
-  updatedObj.subscriptionAmt = getSubscriptionCost(obj.subscriptionTitle, obj);
-  updatedObj.unitPerOrder = getUnitPerOrder(obj.subscriptionTitle, obj);
+  updatedObj.prodCost = getCost(updatedObj.product, updatedObj);
+  updatedObj.subscriptionAmt = getSubscriptionCost(
+    updatedObj.subscriptionTitle,
+    updatedObj
+  );
+  updatedObj.unitPerOrder = getUnitPerOrder(
+    updatedObj.subscriptionTitle,
+    updatedObj
+  );
   updatedObj.deliveryDate = getDeliveryDate();
-  updatedObj.shippingCost = getShippingCost(obj);
+  updatedObj.shippingCost = getShippingCost(updatedObj);
   return updatedObj;
 }
 
@@ -171,12 +183,3 @@ export const initialValue = {
   parkingPermit: "",
   hasActivePlan: false,
 };
-//   password: "",
-//   confirmPassword: "",
-//   phoneNo: "",
-//   street: "",
-//   addressLine1: "",
-//   addressLine2: "",
-//   city: "",
-//   state: "",
-//   zipcode: "",
