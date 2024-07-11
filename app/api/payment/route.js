@@ -123,7 +123,7 @@ export async function PUT(req) {
 
     const session = await stripe.checkout.sessions.create({
       success_url: `${process.env.DOMAIN}/success`,
-      cancel_url: `${process.env.DOMAIN}`,
+      cancel_url: `${process.env.DOMAIN}/form`,
       payment_method_types: ["card"],
       mode: paymentMode,
       allow_promotion_codes: true,

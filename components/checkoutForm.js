@@ -180,9 +180,6 @@ export default function CheckoutForm({
             <span className="text-xs md:text-base text-primary ">
               Du kannst Rabattcodes im nächsten Schritt, im Zahlungsprozess,
               eingeben.
-              {!getLcl("isLoggedIn") && (
-                <span> Verwende den Code FIRSTORDER</span>
-              )}
             </span>
           </div>
         </div>
@@ -342,10 +339,11 @@ export default function CheckoutForm({
               loading={loading}
             >
               {isExistingUser
-                ? "Bestellung aktualisieren für "
-                : "Bestellen Sie Ihre erste Box für "}
+                ? "Erste Box für "
+                : "Aktualisiere deine Box für "}
               &nbsp;
               <span>€ {calculateTotalOrderPrice()}</span>
+              {isExistingUser && "kostenpflichtig bestellen"}
             </ThemeButton>
           </div>
           {formData.subscriptionId && (
