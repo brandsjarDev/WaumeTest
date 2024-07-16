@@ -33,14 +33,15 @@ const Navbar = ({ className = "bg-white" }) => {
     window.googleTranslateElementInit = () => {
       new google.translate.TranslateElement(
         {
-          pageLanguage: "en",
+          pageLanguage: "de",
           includedLanguages: "de,en",
         },
         "google_translate_element"
       );
       new google.translate.TranslateElement(
         {
-          pageLanguage: "en",
+          pageLanguage: "de",
+
           includedLanguages: "de,en",
         },
         "google_translate_element_mobile"

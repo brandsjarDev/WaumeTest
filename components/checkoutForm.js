@@ -68,7 +68,7 @@ export default function CheckoutForm({
       if (response.status == 400) toast.error(response.data.error);
       if (response.status === 409) {
         if (response.data && response.data.redirectUrl) {
-          window.location.href = response.data.redirectUrl;
+          window.open(response.data.redirectUrl, "_blank");
         }
       } else {
         const session = response.data;
@@ -338,12 +338,10 @@ export default function CheckoutForm({
               }}
               loading={loading}
             >
-              {isExistingUser
-                ? "Erste Box für "
-                : "Aktualisiere deine Box für "}
+              {!isExistingUser
+                ? "Bestellung aktualisieren und zahlen "
+                : "Jetzt kostenpflichtig bestellen "}
               &nbsp;
-              <span>€ {calculateTotalOrderPrice()}</span>
-              {isExistingUser && "kostenpflichtig bestellen"}
             </ThemeButton>
           </div>
           {formData.subscriptionId && (

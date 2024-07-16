@@ -12,7 +12,7 @@ const fatLvls = [
     imageUrl: skinny,
   },
   {
-    title: "Genau",
+    title: "Genau richtig",
     name: "normal",
     content:
       "Die Taille ist klar sichtbar mit etwas Fettpolsterung, die Rippen sind leicht zu fühlen.",
